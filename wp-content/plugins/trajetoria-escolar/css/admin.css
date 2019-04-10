@@ -1,0 +1,44 @@
+section{
+    border: 3px solid #DFDFDF;
+    border-radius: 6px;
+    width: 97%;
+    padding: 10px;
+    margin-top: 10px;
+}
+section .form-item{
+    margin-top: 25px;
+}
+section fieldset{
+    margin-top: 50px;
+}
+section legend{
+    color: red;
+    font-weight: bold;
+}
+section ul>li{
+    list-style: box;
+    list-style-position: inside;
+}
+.error-validation{
+    border: 1px red solid;
+    border-radius: 3px;
+}
+label{
+    font-weight: bold;
+}
+br{
+    margin-bottom: 16px;
+}
+table{
+    border-collapse: collapse;
+}
+tr, td{
+    border: 2px solid #DFDFDF;
+}
+td{
+    text-align: center;
+    min-width: 100px;
+}
+.postbox input[type="url"]{
+    width: 100%;
+}

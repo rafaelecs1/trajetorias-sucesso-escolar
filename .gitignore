@@ -1,0 +1,62 @@
+/*
+!wp-content/
+
+# ignore all files starting with .
+.*
+
+# track this file .gitignore (i.e. do NOT ignore it)
+!.gitignore
+
+# track .editorconfig file (i.e. do NOT ignore it)
+!.editorconfig
+
+# track readme.md in the root (i.e. do NOT ignore it)
+!readme.md
+
+# ignore all files that start with ~
+~*
+
+# ignore OS generated files
+ehthumbs.db
+Thumbs.db
+
+# ignore Editor files
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite
+
+# ignore compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# ignore packaged files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+wp-config.php
+wp-content/advanced-cache.php
+wp-content/plugins/contact-form-7
+wp-content/plugins/log-erro
+wp-content/plugins/wordpress-seo
+wp-content/plugins/wp-mail-smtp
+wp-content/plugins/wp-responsive-menu
+wp-content/plugins/wp-super-cache
+wp-content/cache/
+wp-content/upgrade/*
+wp-content/wp-cache-config.php
+wp-content/cache/.htaccess

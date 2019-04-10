@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>    Trajetória Escolar &raquo; \Unicef\TrajetoriaEscolar\Contract\IDistorcaoRepository
+</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+            <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+            <!--[if lt IE 9]>
+        <script src="https://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+        <![endif]-->
+        <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+        <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
+        <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap.js" type="text/javascript"></script>
+        <script src="../js/template.js" type="text/javascript"></script>
+        <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
+    
+            <link rel="shortcut icon" href="../img/favicon.ico"/>
+        <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
+        <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
+        <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
+    </head>
+<body>
+
+        <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> </a>
+                <a class="brand" href="../index.html">Trajetória Escolar</a>
+
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class="dropdown">
+                            <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                API Documentation <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                                                    <li><a>Namespaces</a></li>
+                                                                        <li><a href="../namespaces/Unicef.html">Unicef</a></li>
+                                                                                                                                </ul>
+                        </li>
+                        <li class="dropdown" id="charts-menu">
+                            <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                Charts <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../graph_class.html">
+                                        <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="reports-menu">
+                            <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                Reports <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../errors.html">
+                                        <i class="icon-list-alt"></i>&#160;Errors
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../markers.html">
+                                        <i class="icon-list-alt"></i>&#160;Markers
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../deprecated.html">
+                                        <i class="icon-list-alt"></i>&#160;Deprecated
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="go_to_top">
+            <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
+        </div>
+    </div>
+    
+    <div id="___" class="container">
+        <noscript>
+            <div class="alert alert-warning">
+                Javascript is disabled; several features are only available if Javascript is enabled.
+            </div>
+        </noscript>
+
+        
+            <style>
+        .deprecated h2 {
+            text-decoration: line-through;
+        }
+    </style>
+    <div class="row">
+        <div class="span4">
+                    <div class="btn-group view pull-right" data-toggle="buttons-radio">
+        <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button>
+        <button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+    </div>
+    <div class="btn-group visibility" data-toggle="buttons-checkbox">
+        <button class="btn public active" title="Show public elements">Public</button>
+        <button class="btn protected" title="Show protected elements">Protected</button>
+        <button class="btn private" title="Show private elements">Private</button>
+        <button class="btn inherited active" title="Show inherited elements">Inherited</button>
+    </div>
+
+        <ul class="side-nav nav nav-list">
+        <li class="nav-header">
+            <i class="icon-custom icon-method"></i> Methods
+            <ul>
+                                                                                                    <li class="method public">
+        <a href="#method_getDistorcaoId" title="getDistorcaoId :: Retornar o ID da distorção com as informações básicas/comuns">
+            <span class="description">Retornar o ID da distorção com as informações básicas/comuns</span><pre>getDistorcaoId</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getPorAno" title="getPorAno :: Retornar as quantidades detalhadas (0, 1, 2 e 3 anos) de crianças e adolescentes com e sem distorção idade-série por ano escolar">
+            <span class="description">Retornar as quantidades detalhadas (0, 1, 2 e 3 anos) de crianças e adolescentes com e sem distorção idade-série por ano escolar</span><pre>getPorAno</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getPorCorRaca" title="getPorCorRaca :: Retornar as quantidades de crianças e adolescentes com e sem distorção idade-série por cor/raça">
+            <span class="description">Retornar as quantidades de crianças e adolescentes com e sem distorção idade-série por cor/raça</span><pre>getPorCorRaca</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getPorGenero" title="getPorGenero :: Retornar as quantidades de crianças e adolescentes com e sem distorção idade-série por gênero">
+            <span class="description">Retornar as quantidades de crianças e adolescentes com e sem distorção idade-série por gênero</span><pre>getPorGenero</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getPorLocalizacao" title="getPorLocalizacao :: Retornar as quantidades de crianças e adolescentes com e sem distorção idade-série por localização">
+            <span class="description">Retornar as quantidades de crianças e adolescentes com e sem distorção idade-série por localização</span><pre>getPorLocalizacao</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getPorLocalizacaoDiferenciada" title="getPorLocalizacaoDiferenciada :: Retornar as quantidades de crianças e adolescentes com e sem distorção idade-série por localização diferenciada">
+            <span class="description">Retornar as quantidades de crianças e adolescentes com e sem distorção idade-série por localização diferenciada</span><pre>getPorLocalizacaoDiferenciada</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getPorTipoAno" title="getPorTipoAno :: Retornar as quantidades de crianças e adolescentes com e sem distorção idade-série por tipo de ano">
+            <span class="description">Retornar as quantidades de crianças e adolescentes com e sem distorção idade-série por tipo de ano</span><pre>getPorTipoAno</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getPorTipoEnsino" title="getPorTipoEnsino :: Retornar as quantidades de crianças e adolescentes com e sem distorção idade-série por tipo de ensino">
+            <span class="description">Retornar as quantidades de crianças e adolescentes com e sem distorção idade-série por tipo de ensino</span><pre>getPorTipoEnsino</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getPorTipoRede" title="getPorTipoRede :: Retornar as quantidades de crianças e adolescentes com e sem distorção idade-série por tipo de rede">
+            <span class="description">Retornar as quantidades de crianças e adolescentes com e sem distorção idade-série por tipo de rede</span><pre>getPorTipoRede</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getTotal" title="getTotal :: Retornar as quantidades de crianças e adolescentes em distorção idade-série">
+            <span class="description">Retornar as quantidades de crianças e adolescentes em distorção idade-série</span><pre>getTotal</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getTotalSem" title="getTotalSem :: Retornar as quantidades de crianças e adolescentes que não estão em distorção idade-série">
+            <span class="description">Retornar as quantidades de crianças e adolescentes que não estão em distorção idade-série</span><pre>getTotalSem</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_save" title="save :: Salvar as informações básicas/comuns relacionadas a uma distorção">
+            <span class="description">Salvar as informações básicas/comuns relacionadas a uma distorção</span><pre>save</pre>
+        </a>
+    </li>
+
+                                                </ul>
+        </li>
+        <li class="nav-header protected">» Protected
+            <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </ul>
+        </li>
+        <li class="nav-header private">» Private
+            <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </ul>
+        </li>
+        <li class="nav-header">
+            <i class="icon-custom icon-constant"></i> Constants
+            <ul>
+                            </ul>
+        </li>
+    </ul>
+
+
+        </div>
+
+        <div class="span8">
+            <div class="element class">
+                <h1>IDistorcaoRepository</h1>
+                <small style="display: block; text-align: right">
+                                            Extends 
+                                                        </small>
+                <p class="short_description">Define os métodos para realizar as operações de criação, atualização e recuperação de informações sobre distorção</p>
+                <div class="details">
+                    <div class="long_description">
+                        
+                    </div>
+                    <table class="table table-bordered">
+                                                                                    <tr>
+                                    <th>
+                                        package
+                                                                            </th>
+                                    <td>
+                                                                                    
+                                                                                <p>Unicef\TrajetoriaEscolar</p>
+                                    </td>
+                                </tr>
+                                                                                                                <tr>
+                                    <th>
+                                        subpackage
+                                                                            </th>
+                                    <td>
+                                                                                    
+                                                                                <p>Contract</p>
+                                    </td>
+                                </tr>
+                                                                                                                <tr>
+                                    <th>
+                                        author
+                                                                            </th>
+                                    <td>
+                                                                                    
+                                                                                <p>André Keher</p>
+                                    </td>
+                                </tr>
+                                                                                                                <tr>
+                                    <th>
+                                        copyright
+                                                                            </th>
+                                    <td>
+                                                                                    
+                                                                                <p>2018</p>
+                                    </td>
+                                </tr>
+                                                                        </table>
+
+                    <h3><i class="icon-custom icon-method"></i> Methods</h3>
+                                                                <a id="method_getDistorcaoId"></a>
+                        <div class="element clickable method public  method_getDistorcaoId" data-toggle="collapse" data-target=".method_getDistorcaoId .collapse">
+                            <h2>Retornar o ID da distorção com as informações básicas/comuns</h2>
+                            <pre>getDistorcaoId(\Unicef\TrajetoriaEscolar\Model\Distorcao $distorcao) : integer</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$distorcao</h4>
+                                                <code><a href="../classes/Unicef.TrajetoriaEscolar.Model.Distorcao.html">\Unicef\TrajetoriaEscolar\Model\Distorcao</a></code><p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>integer</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getPorAno"></a>
+                        <div class="element clickable method public  method_getPorAno" data-toggle="collapse" data-target=".method_getPorAno .collapse">
+                            <h2>Retornar as quantidades detalhadas (0, 1, 2 e 3 anos) de crianças e adolescentes com e sem distorção idade-série por ano escolar</h2>
+                            <pre>getPorAno(\Unicef\TrajetoriaEscolar\Contract\IDistorcao $origem, integer $anoReferencia) : array</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$origem</h4>
+                                                <code><a href="../classes/Unicef.TrajetoriaEscolar.Contract.IDistorcao.html">\Unicef\TrajetoriaEscolar\Contract\IDistorcao</a></code><p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$anoReferencia</h4>
+                                                <code>integer</code><p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>array</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getPorCorRaca"></a>
+                        <div class="element clickable method public  method_getPorCorRaca" data-toggle="collapse" data-target=".method_getPorCorRaca .collapse">
+                            <h2>Retornar as quantidades de crianças e adolescentes com e sem distorção idade-série por cor/raça</h2>
+                            <pre>getPorCorRaca(\Unicef\TrajetoriaEscolar\Contract\IDistorcao $origem, integer $anoReferencia) : array</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$origem</h4>
+                                                <code><a href="../classes/Unicef.TrajetoriaEscolar.Contract.IDistorcao.html">\Unicef\TrajetoriaEscolar\Contract\IDistorcao</a></code><p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$anoReferencia</h4>
+                                                <code>integer</code><p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>array</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getPorGenero"></a>
+                        <div class="element clickable method public  method_getPorGenero" data-toggle="collapse" data-target=".method_getPorGenero .collapse">
+                            <h2>Retornar as quantidades de crianças e adolescentes com e sem distorção idade-série por gênero</h2>
+                            <pre>getPorGenero(\Unicef\TrajetoriaEscolar\Contract\IDistorcao $origem, integer $anoReferencia) : array</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$origem</h4>
+                                                <code><a href="../classes/Unicef.TrajetoriaEscolar.Contract.IDistorcao.html">\Unicef\TrajetoriaEscolar\Contract\IDistorcao</a></code><p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$anoReferencia</h4>
+                                                <code>integer</code><p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>array</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getPorLocalizacao"></a>
+                        <div class="element clickable method public  method_getPorLocalizacao" data-toggle="collapse" data-target=".method_getPorLocalizacao .collapse">
+                            <h2>Retornar as quantidades de crianças e adolescentes com e sem distorção idade-série por localização</h2>
+                            <pre>getPorLocalizacao(\Unicef\TrajetoriaEscolar\Contract\IDistorcao $origem, integer $anoReferencia) : array</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$origem</h4>
+                                                <code><a href="../classes/Unicef.TrajetoriaEscolar.Contract.IDistorcao.html">\Unicef\TrajetoriaEscolar\Contract\IDistorcao</a></code><p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$anoReferencia</h4>
+                                                <code>integer</code><p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>array</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getPorLocalizacaoDiferenciada"></a>
+                        <div class="element clickable method public  method_getPorLocalizacaoDiferenciada" data-toggle="collapse" data-target=".method_getPorLocalizacaoDiferenciada .collapse">
+                            <h2>Retornar as quantidades de crianças e adolescentes com e sem distorção idade-série por localização diferenciada</h2>
+                            <pre>getPorLocalizacaoDiferenciada(\Unicef\TrajetoriaEscolar\Contract\IDistorcao $origem, integer $anoReferencia) : array</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$origem</h4>
+                                                <code><a href="../classes/Unicef.TrajetoriaEscolar.Contract.IDistorcao.html">\Unicef\TrajetoriaEscolar\Contract\IDistorcao</a></code><p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$anoReferencia</h4>
+                                                <code>integer</code><p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>array</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getPorTipoAno"></a>
+                        <div class="element clickable method public  method_getPorTipoAno" data-toggle="collapse" data-target=".method_getPorTipoAno .collapse">
+                            <h2>Retornar as quantidades de crianças e adolescentes com e sem distorção idade-série por tipo de ano</h2>
+                            <pre>getPorTipoAno(\Unicef\TrajetoriaEscolar\Contract\IDistorcao $origem, integer $anoReferencia) : array</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$origem</h4>
+                                                <code><a href="../classes/Unicef.TrajetoriaEscolar.Contract.IDistorcao.html">\Unicef\TrajetoriaEscolar\Contract\IDistorcao</a></code><p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$anoReferencia</h4>
+                                                <code>integer</code><p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>array</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getPorTipoEnsino"></a>
+                        <div class="element clickable method public  method_getPorTipoEnsino" data-toggle="collapse" data-target=".method_getPorTipoEnsino .collapse">
+                            <h2>Retornar as quantidades de crianças e adolescentes com e sem distorção idade-série por tipo de ensino</h2>
+                            <pre>getPorTipoEnsino(\Unicef\TrajetoriaEscolar\Contract\IDistorcao $origem, integer $anoReferencia) : array</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$origem</h4>
+                                                <code><a href="../classes/Unicef.TrajetoriaEscolar.Contract.IDistorcao.html">\Unicef\TrajetoriaEscolar\Contract\IDistorcao</a></code><p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$anoReferencia</h4>
+                                                <code>integer</code><p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>array</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getPorTipoRede"></a>
+                        <div class="element clickable method public  method_getPorTipoRede" data-toggle="collapse" data-target=".method_getPorTipoRede .collapse">
+                            <h2>Retornar as quantidades de crianças e adolescentes com e sem distorção idade-série por tipo de rede</h2>
+                            <pre>getPorTipoRede(\Unicef\TrajetoriaEscolar\Contract\IDistorcao $origem, integer $anoReferencia) : array</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$origem</h4>
+                                                <code><a href="../classes/Unicef.TrajetoriaEscolar.Contract.IDistorcao.html">\Unicef\TrajetoriaEscolar\Contract\IDistorcao</a></code><p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$anoReferencia</h4>
+                                                <code>integer</code><p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>array</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getTotal"></a>
+                        <div class="element clickable method public  method_getTotal" data-toggle="collapse" data-target=".method_getTotal .collapse">
+                            <h2>Retornar as quantidades de crianças e adolescentes em distorção idade-série</h2>
+                            <pre>getTotal(\Unicef\TrajetoriaEscolar\Contract\IDistorcao $origem, integer $anoReferencia) : integer</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$origem</h4>
+                                                <code><a href="../classes/Unicef.TrajetoriaEscolar.Contract.IDistorcao.html">\Unicef\TrajetoriaEscolar\Contract\IDistorcao</a></code><p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$anoReferencia</h4>
+                                                <code>integer</code><p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>integer</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getTotalSem"></a>
+                        <div class="element clickable method public  method_getTotalSem" data-toggle="collapse" data-target=".method_getTotalSem .collapse">
+                            <h2>Retornar as quantidades de crianças e adolescentes que não estão em distorção idade-série</h2>
+                            <pre>getTotalSem(\Unicef\TrajetoriaEscolar\Contract\IDistorcao $origem, integer $anoReferencia) : integer</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$origem</h4>
+                                                <code><a href="../classes/Unicef.TrajetoriaEscolar.Contract.IDistorcao.html">\Unicef\TrajetoriaEscolar\Contract\IDistorcao</a></code><p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$anoReferencia</h4>
+                                                <code>integer</code><p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>integer</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_save"></a>
+                        <div class="element clickable method public  method_save" data-toggle="collapse" data-target=".method_save .collapse">
+                            <h2>Salvar as informações básicas/comuns relacionadas a uma distorção</h2>
+                            <pre>save(\Unicef\TrajetoriaEscolar\Model\Distorção $distorcao) : integer</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$distorcao</h4>
+                                                <code>\Unicef\TrajetoriaEscolar\Model\Distorção</code><p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>integer</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                    
+                    
+                                                        </div>
+            </div>
+            <a id="\Unicef\TrajetoriaEscolar\Contract\IDistorcaoRepository"></a>
+            <ul class="breadcrumb">
+                <li><a href="../index.html"><i class="icon-custom icon-class"></i></a></li>
+                    
+    
+    <li><span class="divider">\</span><a href="../namespaces/Unicef.TrajetoriaEscolar.Contract.html">Contract</a></li>
+
+                <li class="active"><span class="divider">\</span><a href="../classes/Unicef.TrajetoriaEscolar.Contract.IDistorcaoRepository.html">IDistorcaoRepository</a></li>
+            </ul>
+        </div>
+    </div>
+
+    </div>
+
+        <footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
+            <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
+            generated on Thu, 06 Sep 2018 18:23:03 +0000.<br/>
+    </footer>
+    </body>
+</html>

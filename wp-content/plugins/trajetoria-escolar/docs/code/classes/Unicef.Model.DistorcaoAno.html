@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>    Trajetória Escolar &raquo; \Unicef\Model\DistorcaoAno
+</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+            <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+            <!--[if lt IE 9]>
+        <script src="https://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+        <![endif]-->
+        <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+        <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
+        <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap.js" type="text/javascript"></script>
+        <script src="../js/template.js" type="text/javascript"></script>
+        <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
+    
+            <link rel="shortcut icon" href="../img/favicon.ico"/>
+        <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
+        <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
+        <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
+    </head>
+<body>
+
+        <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> </a>
+                <a class="brand" href="../index.html">Trajetória Escolar</a>
+
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class="dropdown">
+                            <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                API Documentation <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                                                    <li><a>Namespaces</a></li>
+                                                                        <li><a href="../namespaces/Unicef.html">Unicef</a></li>
+                                                                                                                                </ul>
+                        </li>
+                        <li class="dropdown" id="charts-menu">
+                            <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                Charts <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../graph_class.html">
+                                        <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="reports-menu">
+                            <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                Reports <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../errors.html">
+                                        <i class="icon-list-alt"></i>&#160;Errors
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../markers.html">
+                                        <i class="icon-list-alt"></i>&#160;Markers
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../deprecated.html">
+                                        <i class="icon-list-alt"></i>&#160;Deprecated
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="go_to_top">
+            <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
+        </div>
+    </div>
+    
+    <div id="___" class="container">
+        <noscript>
+            <div class="alert alert-warning">
+                Javascript is disabled; several features are only available if Javascript is enabled.
+            </div>
+        </noscript>
+
+        
+            <style>
+        .deprecated h2 {
+            text-decoration: line-through;
+        }
+    </style>
+    <div class="row">
+        <div class="span4">
+                    <div class="btn-group view pull-right" data-toggle="buttons-radio">
+        <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button>
+        <button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+    </div>
+    <div class="btn-group visibility" data-toggle="buttons-checkbox">
+        <button class="btn public active" title="Show public elements">Public</button>
+        <button class="btn protected" title="Show protected elements">Protected</button>
+        <button class="btn private" title="Show private elements">Private</button>
+        <button class="btn inherited active" title="Show inherited elements">Inherited</button>
+    </div>
+
+        <ul class="side-nav nav nav-list">
+        <li class="nav-header">
+            <i class="icon-custom icon-method"></i> Methods
+            <ul>
+                                                                                                    <li class="method public inherited">
+        <a href="#method___construct" title="__construct :: Construtor que configura o tipo de ensino automaticamente com base no tipo de ano">
+            <span class="description">Construtor que configura o tipo de ensino automaticamente com base no tipo de ano</span><pre>__construct</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getAno" title="getAno :: Retorna o ano escolar">
+            <span class="description">Retorna o ano escolar</span><pre>getAno</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_getAnoReferencia" title="getAnoReferencia :: Retorna o ano de referência da distorção">
+            <span class="description">Retorna o ano de referência da distorção</span><pre>getAnoReferencia</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getDistorcao1" title="getDistorcao1 :: Retorna a quantidade de alunos com um ano de distorção">
+            <span class="description">Retorna a quantidade de alunos com um ano de distorção</span><pre>getDistorcao1</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getDistorcao2" title="getDistorcao2 :: Retorna a quantidade de alunos com dois anos de distorção">
+            <span class="description">Retorna a quantidade de alunos com dois anos de distorção</span><pre>getDistorcao2</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getDistorcao3" title="getDistorcao3 :: Retorna a quantidade de alunos com três anos de distorção">
+            <span class="description">Retorna a quantidade de alunos com três anos de distorção</span><pre>getDistorcao3</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_getDistorcaoId" title="getDistorcaoId :: Retorna o ID da distorção com as informações básicas">
+            <span class="description">Retorna o ID da distorção com as informações básicas</span><pre>getDistorcaoId</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_getEscola" title="getEscola :: Retorna a escola associada a distorção">
+            <span class="description">Retorna a escola associada a distorção</span><pre>getEscola</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_getId" title="getId :: Retorna o ID da distorção">
+            <span class="description">Retorna o ID da distorção</span><pre>getId</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getSemDistorcao" title="getSemDistorcao :: Retorna a quantidade de alunos sem distorção">
+            <span class="description">Retorna a quantidade de alunos sem distorção</span><pre>getSemDistorcao</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_getTipoAno" title="getTipoAno :: Retorna o tipo de ano">
+            <span class="description">Retorna o tipo de ano</span><pre>getTipoAno</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_getTipoEnsino" title="getTipoEnsino :: Retorna o tipo de ensino da distorção">
+            <span class="description">Retorna o tipo de ensino da distorção</span><pre>getTipoEnsino</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_setAno" title="setAno :: Seta o ano escolar">
+            <span class="description">Seta o ano escolar</span><pre>setAno</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_setAnoReferencia" title="setAnoReferencia :: Seta o ano de referência da distorção">
+            <span class="description">Seta o ano de referência da distorção</span><pre>setAnoReferencia</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_setDistorcao1" title="setDistorcao1 :: Seta a quantidade de alunos com um ano de distorção">
+            <span class="description">Seta a quantidade de alunos com um ano de distorção</span><pre>setDistorcao1</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_setDistorcao2" title="setDistorcao2 :: Seta a quantidade de alunos com dois anos de distorção">
+            <span class="description">Seta a quantidade de alunos com dois anos de distorção</span><pre>setDistorcao2</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_setDistorcao3" title="setDistorcao3 :: Seta a quantidade de alunos com três anos de distorção">
+            <span class="description">Seta a quantidade de alunos com três anos de distorção</span><pre>setDistorcao3</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_setDistorcaoId" title="setDistorcaoId :: Seta o ID da distorção com as informações básicas">
+            <span class="description">Seta o ID da distorção com as informações básicas</span><pre>setDistorcaoId</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_setEscola" title="setEscola :: Seta uma escola para a distorção">
+            <span class="description">Seta uma escola para a distorção</span><pre>setEscola</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_setId" title="setId :: Seta o ID da distorção">
+            <span class="description">Seta o ID da distorção</span><pre>setId</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_setSemDistorcao" title="setSemDistorcao :: Seta a quantidade de alunos sem distorção">
+            <span class="description">Seta a quantidade de alunos sem distorção</span><pre>setSemDistorcao</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_setTipoAno" title="setTipoAno :: Seta o tipo de ano">
+            <span class="description">Seta o tipo de ano</span><pre>setTipoAno</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_setTipoEnsino" title="setTipoEnsino :: Seta o tipo de ensino da distorção">
+            <span class="description">Seta o tipo de ensino da distorção</span><pre>setTipoEnsino</pre>
+        </a>
+    </li>
+
+                                                </ul>
+        </li>
+        <li class="nav-header protected">» Protected
+            <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </ul>
+        </li>
+        <li class="nav-header private">» Private
+            <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </ul>
+        </li>
+        <li class="nav-header">
+            <i class="icon-custom icon-constant"></i> Constants
+            <ul>
+                            </ul>
+        </li>
+    </ul>
+
+
+        </div>
+
+        <div class="span8">
+            <div class="element class">
+                <h1>DistorcaoAno</h1>
+                <small style="display: block; text-align: right">
+                                            Extends <a href="../classes/Unicef.Model.Distorcao.html">\Unicef\Model\Distorcao</a>
+                                                        </small>
+                <p class="short_description">Representa os dados de uma distorção idade-série por ano escolar</p>
+                <div class="details">
+                    <div class="long_description">
+                        
+                    </div>
+                    <table class="table table-bordered">
+                                                                                    <tr>
+                                    <th>
+                                        package
+                                                                            </th>
+                                    <td>
+                                                                                    
+                                                                                <p>Trajetória Escolar</p>
+                                    </td>
+                                </tr>
+                                                                                                                <tr>
+                                    <th>
+                                        author
+                                                                            </th>
+                                    <td>
+                                                                                    
+                                                                                <p>André Keher</p>
+                                    </td>
+                                </tr>
+                                                                                                                <tr>
+                                    <th>
+                                        copyright
+                                                                            </th>
+                                    <td>
+                                                                                    
+                                                                                <p>2018</p>
+                                    </td>
+                                </tr>
+                                                                                                                <tr>
+                                    <th>
+                                        extends
+                                                                            </th>
+                                    <td>
+                                                                                    
+                                                                                <p>\Unicef\Model\Distorcao</p>
+                                    </td>
+                                </tr>
+                                                                                                                                                                                </table>
+
+                    <h3><i class="icon-custom icon-method"></i> Methods</h3>
+                                                                <a id="method___construct"></a>
+                        <div class="element clickable method public  method___construct inherited" data-toggle="collapse" data-target=".method___construct .collapse">
+                            <h2>Construtor que configura o tipo de ensino automaticamente com base no tipo de ano</h2>
+                            <pre>__construct() : void</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                    
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getAno"></a>
+                        <div class="element clickable method public  method_getAno" data-toggle="collapse" data-target=".method_getAno .collapse">
+                            <h2>Retorna o ano escolar</h2>
+                            <pre>getAno() : integer</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>integer</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getAnoReferencia"></a>
+                        <div class="element clickable method public  method_getAnoReferencia inherited" data-toggle="collapse" data-target=".method_getAnoReferencia .collapse">
+                            <h2>Retorna o ano de referência da distorção</h2>
+                            <pre>getAnoReferencia() : integer</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>integer</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getDistorcao1"></a>
+                        <div class="element clickable method public  method_getDistorcao1" data-toggle="collapse" data-target=".method_getDistorcao1 .collapse">
+                            <h2>Retorna a quantidade de alunos com um ano de distorção</h2>
+                            <pre>getDistorcao1() : integer</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>integer</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getDistorcao2"></a>
+                        <div class="element clickable method public  method_getDistorcao2" data-toggle="collapse" data-target=".method_getDistorcao2 .collapse">
+                            <h2>Retorna a quantidade de alunos com dois anos de distorção</h2>
+                            <pre>getDistorcao2() : integer</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>integer</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getDistorcao3"></a>
+                        <div class="element clickable method public  method_getDistorcao3" data-toggle="collapse" data-target=".method_getDistorcao3 .collapse">
+                            <h2>Retorna a quantidade de alunos com três anos de distorção</h2>
+                            <pre>getDistorcao3() : integer</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>integer</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getDistorcaoId"></a>
+                        <div class="element clickable method public  method_getDistorcaoId inherited" data-toggle="collapse" data-target=".method_getDistorcaoId .collapse">
+                            <h2>Retorna o ID da distorção com as informações básicas</h2>
+                            <pre>getDistorcaoId() : integer</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>integer</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getEscola"></a>
+                        <div class="element clickable method public  method_getEscola inherited" data-toggle="collapse" data-target=".method_getEscola .collapse">
+                            <h2>Retorna a escola associada a distorção</h2>
+                            <pre>getEscola() : \Unicef\Model\Escola</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code><a href="../classes/Unicef.Model.Escola.html">\Unicef\Model\Escola</a></code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getId"></a>
+                        <div class="element clickable method public  method_getId inherited" data-toggle="collapse" data-target=".method_getId .collapse">
+                            <h2>Retorna o ID da distorção</h2>
+                            <pre>getId() : integer</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>integer</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getSemDistorcao"></a>
+                        <div class="element clickable method public  method_getSemDistorcao" data-toggle="collapse" data-target=".method_getSemDistorcao .collapse">
+                            <h2>Retorna a quantidade de alunos sem distorção</h2>
+                            <pre>getSemDistorcao() : integer</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>integer</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getTipoAno"></a>
+                        <div class="element clickable method public  method_getTipoAno inherited" data-toggle="collapse" data-target=".method_getTipoAno .collapse">
+                            <h2>Retorna o tipo de ano</h2>
+                            <pre>getTipoAno() : string</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>Valores retornandos:</p>
+<ul>
+<li>Iniciais;</li>
+<li>Finais;</li>
+<li>Todos.</li>
+</ul></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getTipoEnsino"></a>
+                        <div class="element clickable method public  method_getTipoEnsino inherited" data-toggle="collapse" data-target=".method_getTipoEnsino .collapse">
+                            <h2>Retorna o tipo de ensino da distorção</h2>
+                            <pre>getTipoEnsino() : string</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>Valores retornados:</p>
+<ul>
+<li>Fundamental;</li>
+<li>Médio.</li>
+</ul></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_setAno"></a>
+                        <div class="element clickable method public  method_setAno" data-toggle="collapse" data-target=".method_setAno .collapse">
+                            <h2>Seta o ano escolar</h2>
+                            <pre>setAno(integer $ano) : void</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$ano</h4>
+                                                <code>integer</code><p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_setAnoReferencia"></a>
+                        <div class="element clickable method public  method_setAnoReferencia inherited" data-toggle="collapse" data-target=".method_setAnoReferencia .collapse">
+                            <h2>Seta o ano de referência da distorção</h2>
+                            <pre>setAnoReferencia(integer $anoReferencia) : void</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$anoReferencia</h4>
+                                                <code>integer</code><p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_setDistorcao1"></a>
+                        <div class="element clickable method public  method_setDistorcao1" data-toggle="collapse" data-target=".method_setDistorcao1 .collapse">
+                            <h2>Seta a quantidade de alunos com um ano de distorção</h2>
+                            <pre>setDistorcao1(integer $distorcao1) : void</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$distorcao1</h4>
+                                                <code>integer</code><p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_setDistorcao2"></a>
+                        <div class="element clickable method public  method_setDistorcao2" data-toggle="collapse" data-target=".method_setDistorcao2 .collapse">
+                            <h2>Seta a quantidade de alunos com dois anos de distorção</h2>
+                            <pre>setDistorcao2(integer $distorcao2) : void</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$distorcao2</h4>
+                                                <code>integer</code><p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_setDistorcao3"></a>
+                        <div class="element clickable method public  method_setDistorcao3" data-toggle="collapse" data-target=".method_setDistorcao3 .collapse">
+                            <h2>Seta a quantidade de alunos com três anos de distorção</h2>
+                            <pre>setDistorcao3(integer $distorcao3) : void</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$distorcao3</h4>
+                                                <code>integer</code><p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_setDistorcaoId"></a>
+                        <div class="element clickable method public  method_setDistorcaoId inherited" data-toggle="collapse" data-target=".method_setDistorcaoId .collapse">
+                            <h2>Seta o ID da distorção com as informações básicas</h2>
+                            <pre>setDistorcaoId(mixed $distorcaoId) : void</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$distorcaoId</h4>
+                                                <code>mixed</code><p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_setEscola"></a>
+                        <div class="element clickable method public  method_setEscola inherited" data-toggle="collapse" data-target=".method_setEscola .collapse">
+                            <h2>Seta uma escola para a distorção</h2>
+                            <pre>setEscola(\Unicef\Model\Escola $escola) : void</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$escola</h4>
+                                                <code><a href="../classes/Unicef.Model.Escola.html">\Unicef\Model\Escola</a></code><p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_setId"></a>
+                        <div class="element clickable method public  method_setId inherited" data-toggle="collapse" data-target=".method_setId .collapse">
+                            <h2>Seta o ID da distorção</h2>
+                            <pre>setId(integer $id) : void</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$id</h4>
+                                                <code>integer</code><p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_setSemDistorcao"></a>
+                        <div class="element clickable method public  method_setSemDistorcao" data-toggle="collapse" data-target=".method_setSemDistorcao .collapse">
+                            <h2>Seta a quantidade de alunos sem distorção</h2>
+                            <pre>setSemDistorcao(integer $semDistorcao) : void</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$semDistorcao</h4>
+                                                <code>integer</code><p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_setTipoAno"></a>
+                        <div class="element clickable method public  method_setTipoAno inherited" data-toggle="collapse" data-target=".method_setTipoAno .collapse">
+                            <h2>Seta o tipo de ano</h2>
+                            <pre>setTipoAno(string $tipoAno) : void</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>Valores esperados:</p>
+<ul>
+<li>Iniciais;</li>
+<li>Finais;</li>
+<li>Todos.</li>
+</ul></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$tipoAno</h4>
+                                                <code>string</code><p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_setTipoEnsino"></a>
+                        <div class="element clickable method public  method_setTipoEnsino inherited" data-toggle="collapse" data-target=".method_setTipoEnsino .collapse">
+                            <h2>Seta o tipo de ensino da distorção</h2>
+                            <pre>setTipoEnsino(string $tipoEnsino) : void</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>Valores esperados:</p>
+<ul>
+<li>Fundamental;</li>
+<li>Médio.</li>
+</ul></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$tipoEnsino</h4>
+                                                <code>string</code><p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                    
+                    
+                                                                <h3><i class="icon-custom icon-property"></i> Properties</h3>
+                                                    <a id="property_ano"> </a>
+                            <div class="element clickable property  private property_ano" data-toggle="collapse" data-target=".property_ano .collapse">
+                                <h2>Ano escolar</h2>
+                                <pre>ano : </pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code></code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_semDistorcao"> </a>
+                            <div class="element clickable property  private property_semDistorcao" data-toggle="collapse" data-target=".property_semDistorcao .collapse">
+                                <h2>Quantidade de crianças e adolescentes sem distorção</h2>
+                                <pre>semDistorcao : </pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code></code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_distorcao1"> </a>
+                            <div class="element clickable property  private property_distorcao1" data-toggle="collapse" data-target=".property_distorcao1 .collapse">
+                                <h2>Quantidade de crianças e adolescentes com 1 ano de distorção</h2>
+                                <pre>distorcao1 : </pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code></code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_distorcao2"> </a>
+                            <div class="element clickable property  private property_distorcao2" data-toggle="collapse" data-target=".property_distorcao2 .collapse">
+                                <h2>Quantidade de crianças e adolescentes com 2 anos de distorção</h2>
+                                <pre>distorcao2 : </pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code></code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_distorcao3"> </a>
+                            <div class="element clickable property  private property_distorcao3" data-toggle="collapse" data-target=".property_distorcao3 .collapse">
+                                <h2>Quantidade de crianças e adolescentes com 3 anos de distorção</h2>
+                                <pre>distorcao3 : </pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code></code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_id"> </a>
+                            <div class="element clickable property  private property_id inherited" data-toggle="collapse" data-target=".property_id .collapse">
+                                <h2>ID da distorção</h2>
+                                <pre>id : </pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code></code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_distorcaoId"> </a>
+                            <div class="element clickable property  private property_distorcaoId inherited" data-toggle="collapse" data-target=".property_distorcaoId .collapse">
+                                <h2>ID da distorção com as informações básicas</h2>
+                                <pre>distorcaoId : </pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code></code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_escola"> </a>
+                            <div class="element clickable property  private property_escola inherited" data-toggle="collapse" data-target=".property_escola .collapse">
+                                <h2>Escola que a distorção se refere</h2>
+                                <pre>escola : </pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code></code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_anoReferencia"> </a>
+                            <div class="element clickable property  private property_anoReferencia inherited" data-toggle="collapse" data-target=".property_anoReferencia .collapse">
+                                <h2>Ano de referência da distorção</h2>
+                                <pre>anoReferencia : </pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code></code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_tipoEnsino"> </a>
+                            <div class="element clickable property  private property_tipoEnsino inherited" data-toggle="collapse" data-target=".property_tipoEnsino .collapse">
+                                <h2>Tipo de ensino da distorção:
+* Fundamental;
+* Médio.</h2>
+                                <pre>tipoEnsino : </pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code></code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_tipoAno"> </a>
+                            <div class="element clickable property  private property_tipoAno inherited" data-toggle="collapse" data-target=".property_tipoAno .collapse">
+                                <h2>Tipo de ano da distorção:
+* Iniciais;
+* Finais;
+* Todos.</h2>
+                                <pre>tipoAno : </pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code></code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                            </div>
+            </div>
+            <a id="\Unicef\Model\DistorcaoAno"></a>
+            <ul class="breadcrumb">
+                <li><a href="../index.html"><i class="icon-custom icon-class"></i></a></li>
+                    
+    
+    <li><span class="divider">\</span><a href="../namespaces/Unicef.Model.html">Model</a></li>
+
+                <li class="active"><span class="divider">\</span><a href="../classes/Unicef.Model.DistorcaoAno.html">DistorcaoAno</a></li>
+            </ul>
+        </div>
+    </div>
+
+    </div>
+
+        <footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
+            <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
+            generated on Thu, 06 Sep 2018 13:02:40 +0000.<br/>
+    </footer>
+    </body>
+</html>

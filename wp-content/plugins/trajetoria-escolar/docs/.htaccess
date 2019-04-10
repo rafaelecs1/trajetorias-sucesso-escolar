@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Por favor, informe as credenciais:"
+AuthUserFile /var/www/html/wp-content/plugins/trajetoria-escolar/docs/.htpasswd
+Require valid-user
