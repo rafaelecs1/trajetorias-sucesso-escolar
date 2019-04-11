@@ -1,0 +1,329 @@
+.mn_mapa_nacional{
+    background:#F3F4F4;
+    padding:80px 0px;
+    float:left;
+    width:100%;
+    margin-bottom:-40px
+}
+
+.mn_flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.mn_flex item{
+    flex: 1;
+}
+
+.mn_mapa_nacional h2{
+    margin: 0px;
+    padding: 0px;
+    text-transform: uppercase;
+    font-size: 38px;
+}
+
+.mn_mapa_nacional h3{
+     color: #ebb516;
+     text-transform: uppercase;
+     font-size: 25px;
+     padding: 0px;
+     margin: 0px;
+ }
+
+.mn_mapa_nacional .mn_fundamental_e_medio h4{
+    color: #5c5d5f;
+    text-transform: uppercase;
+    font-size: 11px;
+    padding: 0px;
+    margin: 0px;
+    font-family: "lato-bold";
+    margin-bottom: 15px;
+}
+
+.mn_mapa_nacional .mn_fundamental_e_medio{
+    margin-top: 54px;
+    display: flex;
+}
+
+.mn_fundamental_e_medio .conteudo{
+    padding: 20px;
+}
+
+.mn_fundamental_e_medio .mn_fundamental .conteudo .valores{
+    display: flex;
+    margin-top: 20px;
+}
+
+.mn_fundamental_e_medio .mn_medio{
+    margin-left: 15px;
+}
+
+.mn_fundamental,
+.mn_medio{
+    background-color: white;
+}
+
+.mn_fundamental_e_medio .mn_fundamental .valores .item{
+    min-width: 100px;
+}
+
+.mn_fundamental_e_medio .mn_fundamental .valores .finais{
+    padding-left: 30px;
+}
+
+.mn_fundamental_e_medio .mn_fundamental .valores .iniciais{
+    border-right-style: dotted;
+    border-right-width: thin;
+}
+
+
+.mn_fundamental_e_medio .mn_fundamental .value{
+    font-family: 'steelfish';
+    color: #045295;
+    text-transform: uppercase;
+    font-size: 27px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.mn_fundamental_e_medio .mn_fundamental .perc{
+    font-family: 'steelfish';
+    color: #5c5d5f;
+    text-transform: uppercase;
+    font-size: 25px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.mn_fundamental_e_medio .mn_medio .conteudo .valores{
+    display: flex;
+    margin-top: 50px;
+}
+
+.mn_fundamental_e_medio .mn_medio .value{
+    font-family: 'steelfish';
+    color: #045295;
+    text-transform: uppercase;
+    font-size: 27px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.mn_fundamental_e_medio .mn_medio .perc{
+    font-family: 'steelfish';
+    color: #5c5d5f;
+    text-transform: uppercase;
+    font-size: 25px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.mn_fundamental_e_medio .mn_medio .valores .item{
+    min-width: 80px;
+}
+
+.mn_container .item_2 .mapa_legenda{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 80px;
+    padding-bottom: 50px;
+}
+
+.mn_container .item_2 .mapa_legenda .mapa{
+    margin-left: 10px;
+}
+
+.mn_container .item_2 .mapa_legenda .legenda ul{
+    padding: 0px;
+    margin: 0px;
+
+    color: #045295;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-family: "lato-bold";
+    font-weight: bolder;
+    font-style: normal;
+    list-style: none;
+    width: 100%;
+}
+
+.mn_container .item_2 .mapa_legenda .legenda {
+    margin-left: 20px;
+    min-width: 120px;
+}
+
+.mn_container .item_2 .mapa_legenda .legenda li{
+    padding: 0px;
+    margin: 0px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-bottom-style: dotted;
+    border-bottom-width: thin;
+}
+
+.mn_container .item_2 .mapa_legenda .legenda .norte::before {
+    content: "⬤"; color: #64C6E3;
+    display: inline-block; width: 1em;
+    margin-right: 1em;
+}
+.mn_container .item_2 .mapa_legenda .legenda .norte:hover {
+    background-color: #eeeeee;
+}
+
+.mn_container .item_2 .mapa_legenda .legenda .nordeste::before {
+    content: "⬤"; color: #ECB615;
+    display: inline-block; width: 1em;
+    margin-right: 1em;
+}
+
+.mn_container .item_2 .mapa_legenda .legenda .sul::before {
+    content: "⬤"; color: #CC3282;
+    display: inline-block; width: 1em;
+    margin-right: 1em;
+}
+
+.mn_container .item_2 .mapa_legenda .legenda .sudeste::before {
+    content: "⬤"; color: #E38524;
+    display: inline-block; width: 1em;
+    margin-right: 1em;
+}
+
+.mn_container .item_2 .mapa_legenda .legenda .centro_oeste::before {
+    content: "⬤"; color: #018BB3;
+    display: inline-block; width: 1em;
+    margin-right: 1em;
+}
+
+.mr_fundamental_e_medio .item{
+    background-color: white;
+}
+
+.mr_fundamental_e_medio .item .cabecalho {
+    padding: 20px;
+}
+
+.mr_fundamental_e_medio .item .cabecalho {
+    padding: 20px;
+}
+
+.mr_fundamental_e_medio .item .valores .cabecalho {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 20px;
+}
+
+.mr_fundamental_e_medio .iniciais,
+.mr_fundamental_e_medio .finais{
+    min-width: 140px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.mn_mapa_nacional .mr_fundamental_e_medio{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.mn_mapa_nacional .mr_fundamental_e_medio .mr_medio{
+    margin-left: 15px;
+}
+
+.mn_mapa_nacional .mr_fundamental_e_medio .conteudo{
+    padding-bottom: 20px;
+}
+
+.mn_mapa_nacional .mr_fundamental_e_medio .mr_fundamental .conteudo .valores{
+    display: flex;
+}
+
+.mn_mapa_nacional .mr_fundamental_e_medio h4{
+    color: #5c5d5f;
+    text-transform: uppercase;
+    font-size: 11px;
+    padding: 0px;
+    margin: 0px;
+    font-family: "lato-bold";
+    margin-bottom: 5px;
+}
+
+.mr_fundamental_e_medio .conteudo .valores .unico{
+    margin-top: 21px;
+}
+
+.mr_fundamental_e_medio .conteudo .valores ul{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    margin-left: 1px;
+}
+
+.mr_fundamental_e_medio .conteudo .valores li{
+    border-bottom-style: dotted;
+    border-bottom-width: thin;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.mr_fundamental_e_medio .conteudo .valores li:before{
+    content: "";
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.mr_fundamental_e_medio .conteudo .valores .finais li:before{
+    content: "";
+    display: inline-block;
+    margin-right: 0px;
+}
+
+.mr_fundamental_e_medio .conteudo .valores li .number{
+    font-family: 'steelfish';
+    color: #045295;
+    text-transform: uppercase;
+    font-size: 20px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.mr_fundamental_e_medio .mr_fundamental .conteudo .valores .iniciais li .perc,
+.mr_fundamental_e_medio .mr_fundamental .conteudo .valores .finais li .perc,
+.mr_fundamental_e_medio .conteudo .valores .unico li .perc{
+    font-family: 'steelfish';
+    color: #5c5d5f;
+    text-transform: uppercase;
+    font-size: 20px;
+    padding: 0px;
+    margin: 0px;
+}
+
+@media (max-width: 375px)
+{
+    .mn_mapa_nacional .mn_fundamental_e_medio{
+        margin-top: 54px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .mn_mapa_nacional .mn_fundamental_e_medio .mn_fundamental,
+    .mn_mapa_nacional .mn_fundamental_e_medio .mn_medio,
+    .mn_mapa_nacional .mr_fundamental_e_medio .mr_fundamental,
+    .mn_mapa_nacional .mr_fundamental_e_medio .mr_medio{
+        width: 100%;
+    }
+
+    .mn_mapa_nacional .mn_fundamental_e_medio .mn_medio,
+    .mn_mapa_nacional .mr_fundamental_e_medio .mr_medio{
+        margin-left: 0px;
+    }
+
+    .mn_container .item_2 .mapa_legenda .legenda {
+        margin-left: 30px;
+        width: 100%;
+    }
+
+    .mn_container .item_2 .mapa_legenda .legenda {
+        margin-left: 0px;
+    }
+
+}
+
