@@ -157,6 +157,7 @@ class FrontEnd
         $rDistorcaoMapa = new MySQLMapaRepository();
         $distorcao = $rDistorcaoPainel->getBrasil(2018);
         $distorcaoMapa = $rDistorcaoMapa->getBrasil(2018);
+
         ob_start();
         wp_enqueue_style('mapa-nacional', plugin_dir_url(dirname(__FILE__)) . 'css/mapa-nacional.css');
         wp_enqueue_script('mapa-nacional', plugin_dir_url(dirname(__FILE__)) . 'js/mapa-nacional.js', array('jquery'), false, true);
@@ -487,7 +488,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                 <section class="genero">
                     <?php
                     foreach ($distorcao['genero'] as $k => $v) {
-                        echo self::gerarAmostra($k, $v['distorcao'], $distorcao['distorcao']);
+                        echo self::gerarAmostra($k, $v['distorcao'], $distorcao['total_geral']);
                     }
                     ?>
                 </section>
@@ -497,7 +498,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                 <section class="cor-raca">
                     <?php
                     foreach ($distorcao['cor_raca'] as $k => $v) {
-                        echo self::gerarAmostra($k, $v['distorcao'], $distorcao['distorcao']);
+                        echo self::gerarAmostra($k, $v['distorcao'], $distorcao['total_geral']);
                     }
                     ?>
                 </section>
@@ -507,7 +508,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                 <section class="localizacao">
                     <?php
                     foreach ($distorcao['localizacao'] as $k => $v) {
-                        echo self::gerarAmostra($k, $v['distorcao'], $distorcao['distorcao']);
+                        echo self::gerarAmostra($k, $v['distorcao'], $distorcao['total_geral']);
                     }
                     ?>
                 </section>
@@ -515,7 +516,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                 if (!empty($distorcao['localizacao_diferenciada'])) {
                     echo '<section class="localizacao-diferenciada">';
                     foreach ($distorcao['localizacao_diferenciada'] as $k => $v) {
-                        echo self::gerarAmostra($k, $v['distorcao'], $distorcao['distorcao']);
+                        echo self::gerarAmostra($k, $v['distorcao'], $distorcao['total_geral']);
                     }
                     echo '</section>';
                 }
