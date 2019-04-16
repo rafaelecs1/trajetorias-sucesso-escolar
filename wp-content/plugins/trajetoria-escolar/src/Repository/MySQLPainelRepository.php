@@ -76,6 +76,9 @@ class MySQLPainelRepository implements IPainelRepository
             return json_decode($painel, true);
         }
         $repository = new MySQLDistorcaoRepository();
+        $rDistorcaoPainel = new MySQLMapaRepository();
+        $totalGeral = $rDistorcaoPainel->getTotalGeral();
+
         $painel = array(
             'distorcao' => $repository->getTotalBrasil($anoReferencia),
             'regiao' => $repository->getTotalBrasil($anoReferencia),
@@ -86,6 +89,7 @@ class MySQLPainelRepository implements IPainelRepository
             'localizacao_diferenciada' => $repository->getPorLocalizacaoDiferenciadaBrasil($anoReferencia),
             'cor_raca' => $repository->getPorCorRacaBrasil($anoReferencia),
             'genero' => $repository->getPorGeneroBrasil($anoReferencia),
+            'total_geral' => $totalGeral
         );
 
         //Origem 1 = Brasil

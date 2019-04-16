@@ -210,7 +210,7 @@ class MySQLMapaRepository implements IMapaRepository
      *
      * @return array
      */
-    public function getDistorcaoGeral()
+    public function getDistorcaoGeral($anoReferencia = 0)
     {
         $resul = array();
         $query = $this->db->get_results(
@@ -229,6 +229,20 @@ class MySQLMapaRepository implements IMapaRepository
             }
         }
         return $resul;
+    }
+    public function getTotalGeral($anoReferencia = 0)
+    {
+        $resul = array();
+        $query = $this->db->get_results(
+            'SELECT              
+              SUM(sem_distorcao + distorcao_1 + distorcao_2 + distorcao_3) AS total
+            FROM te_distorcoes d
+            JOIN te_distorcoes_anos da ON d.id = da.distorcao_id
+            WHERE d.ano_referencia = 2018;',
+            ARRAY_A
+        );
+
+        return (int)$query[0]['total'];
     }
 
     public function getTotalBrasil($anoReferencia = 0)
