@@ -371,13 +371,8 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
 
             </section>
         </div>
-        <?php
-        return ob_get_clean();
-        ?>
-        <section class="ficha <?php echo $tipo; ?>">
-            Distorção idade-série no Brasil
 
-
+        <section class="ficha center">
             <section id="redes-de-ensino">
                 <header>
                     <h2>Redes de Ensino</h2>
