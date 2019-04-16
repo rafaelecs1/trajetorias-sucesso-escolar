@@ -83,13 +83,13 @@ class MySQLPainelRepository implements IPainelRepository
             'tipo_rede' => $repository->getPorTipoRedeBrasil($anoReferencia),
             'anos' => $repository->getPorAnoBrasil($anoReferencia),
             'localizacao' => $repository->getPorLocalizacaoBrasil($anoReferencia),
-//            'localizacao_diferenciada' => $repository->getPorLocalizacaoDiferenciada($origem, $anoReferencia),
+            'localizacao_diferenciada' => $repository->getPorLocalizacaoDiferenciadaBrasil($anoReferencia),
             'cor_raca' => $repository->getPorCorRacaBrasil($anoReferencia),
             'genero' => $repository->getPorGeneroBrasil($anoReferencia),
         );
+
         //Origem 1 = Brasil
         $this->saveBrasil(1, $anoReferencia, $painel);
-
         return $painel;
     }
     

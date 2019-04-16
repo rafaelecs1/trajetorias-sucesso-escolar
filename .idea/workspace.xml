@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="020b9080-addf-4942-89ac-1b7c47d7ba85" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/src/FrontEnd.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/src/FrontEnd.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/src/Repository/MySQLDistorcaoRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/src/Repository/MySQLDistorcaoRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/src/Repository/MySQLPainelRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/src/Repository/MySQLPainelRepository.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,37 +17,35 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/src/FrontEnd.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="374" column="36" selection-start-line="374" selection-start-column="36" selection-end-line="374" selection-end-column="36" />
-              <folding>
-                <element signature="e#19040#24730#0#HTML" />
-                <element signature="e#24739#25131#0#HTML" />
-                <element signature="e#25144#25544#0#HTML" />
-                <element signature="e#25557#26408#0#HTML" />
-              </folding>
+            <state relative-caret-position="1009">
+              <caret line="514" selection-start-line="514" selection-end-line="514" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/src/Repository/MySQLMapaRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="77" column="26" selection-start-line="77" selection-start-column="26" selection-end-line="77" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/js/mapa-nacional.js">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/src/Repository/MySQLPainelRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="75" column="28" selection-start-line="75" selection-end-line="76" />
+            <state relative-caret-position="50">
+              <caret line="77" column="53" lean-forward="true" selection-start-line="77" selection-start-column="53" selection-end-line="77" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/src/Repository/MySQLDistorcaoRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="356">
+              <caret line="756" column="55" lean-forward="true" selection-start-line="756" selection-start-column="55" selection-end-line="756" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/src/Contract/IDistorcao.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -54,10 +54,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getCacheBrasil</find>
       <find>$distorcao</find>
       <find>echo</find>
       <find>redes-de-ensino</find>
+      <find>getCacheBrasil</find>
+      <find>Localização</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -66,9 +67,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/src/Repository/MySQLPainelRepository.php" />
         <option value="$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/src/Repository/MySQLMapaRepository.php" />
         <option value="$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/src/FrontEnd.php" />
+        <option value="$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/src/Repository/MySQLPainelRepository.php" />
+        <option value="$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/src/Repository/MySQLDistorcaoRepository.php" />
       </list>
     </option>
   </component>
@@ -114,14 +116,6 @@
               <item name="wp-content" type="462c0819:PsiDirectoryNode" />
               <item name="plugins" type="462c0819:PsiDirectoryNode" />
               <item name="trajetoria-escolar" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="trajetoriaescolar.org.br" type="b2602c69:ProjectViewProjectNode" />
-              <item name="trajetoriaescolar.org.br" type="462c0819:PsiDirectoryNode" />
-              <item name="wp-content" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-              <item name="trajetoria-escolar" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -158,7 +152,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1555427044501</updated>
-      <workItem from="1555427045669" duration="6673000" />
+      <workItem from="1555427045669" duration="10564000" />
     </task>
     <task id="LOCAL-00001" summary="Remoção .idea">
       <created>1555427100245</created>
@@ -174,23 +168,30 @@
       <option name="project" value="LOCAL" />
       <updated>1555433878770</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Merge com front e ajustes">
+      <created>1555435626438</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1555435626438</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6673000" />
+    <option name="totallyTimeSpent" value="10564000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" visible="true" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.4377778" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -209,38 +210,49 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Remoção .idea" />
     <MESSAGE value="Merge com front" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge com front" />
+    <MESSAGE value="Merge com front e ajustes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge com front e ajustes" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/js/mapa-nacional.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/src/Repository/MySQLPainelRepository.php">
+    <entry file="file://$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/src/Contract/IDistorcao.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="75" column="28" selection-start-line="75" selection-end-line="76" />
+        <state relative-caret-position="204">
+          <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/src/Repository/MySQLMapaRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="77" column="26" selection-start-line="77" selection-start-column="26" selection-end-line="77" selection-end-column="26" />
+        <state relative-caret-position="102">
+          <caret line="97" column="27" selection-start-line="97" selection-start-column="27" selection-end-line="97" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/src/Repository/MySQLDistorcaoRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="756" column="55" lean-forward="true" selection-start-line="756" selection-start-column="55" selection-end-line="756" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/src/Repository/MySQLPainelRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="77" column="53" lean-forward="true" selection-start-line="77" selection-start-column="53" selection-end-line="77" selection-end-column="53" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/trajetoria-escolar/src/FrontEnd.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="374" column="36" selection-start-line="374" selection-start-column="36" selection-end-line="374" selection-end-column="36" />
-          <folding>
-            <element signature="e#19040#24730#0#HTML" />
-            <element signature="e#24739#25131#0#HTML" />
-            <element signature="e#25144#25544#0#HTML" />
-            <element signature="e#25557#26408#0#HTML" />
-          </folding>
+        <state relative-caret-position="1009">
+          <caret line="514" selection-start-line="514" selection-end-line="514" />
         </state>
       </provider>
     </entry>
