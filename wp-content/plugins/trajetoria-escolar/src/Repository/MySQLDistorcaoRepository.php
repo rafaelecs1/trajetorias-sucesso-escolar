@@ -729,6 +729,42 @@ class MySQLDistorcaoRepository implements IDistorcaoRepository
         }
         return $resul;
     }
+
+    public function getPorLocalizacaoDiferenciadaBrasil($anoReferencia = 0)
+    {
+        $resul = array();
+        $sql = sprintf(
+            'SELECT
+                esc.localizacao_diferenciada AS localizacao_dif,
+                SUM(dis_ano.sem_distorcao) + SUM(dis_ano.distorcao_1) AS sem_distorcao,
+                SUM(dis_ano.distorcao_2) + SUM(dis_ano.distorcao_3) AS distorcao
+            FROM te_estados est,
+                 te_municipios mun,
+                 te_escolas esc,
+                 te_distorcoes dis,
+                 te_distorcoes_anos dis_ano
+            WHERE est.id = mun.estado_id 
+            AND mun.id = esc.municipio_id
+            AND esc.id = dis.escola_id
+            AND dis.id = dis_ano.distorcao_id
+            AND esc.localizacao_diferenciada <> "Não se aplica"
+            --
+            AND dis.ano_referencia = %d
+            --
+            GROUP BY esc.localizacao_diferenciada;',
+            $anoReferencia
+        );
+        $query = $this->db->get_results($sql, ARRAY_A);
+        if (!empty($query)) {
+            foreach ($query as $item) {
+                $resul[$item['localizacao_dif']] = array(
+                    'sem_distorcao' => (int)$item['sem_distorcao'],
+                    'distorcao' => (int)$item['distorcao'],
+                );
+            }
+        }
+        return $resul;
+    }
     
     /**
      * Retorna as quantidades de crianças e adolescentes com e sem distorção idade-série por cor/raça
