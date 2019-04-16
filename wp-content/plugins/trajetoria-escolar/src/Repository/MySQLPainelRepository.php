@@ -10,7 +10,6 @@ namespace Unicef\TrajetoriaEscolar\Repository;
 use Unicef\TrajetoriaEscolar\Contract\IPainelRepository;
 use Unicef\TrajetoriaEscolar\Contract\IDistorcao;
 use Unicef\TrajetoriaEscolar\Repository\MySQLDistorcaoRepository;
-
 /**
  * Realiza as operações de banco de dados MySQL para o cache de painéis
  *
@@ -69,6 +68,30 @@ class MySQLPainelRepository implements IPainelRepository
         
         return $painel;
     }
+
+    public function getBrasil($anoReferencia = 0)
+    {
+        $painel = $this->getCacheBrasil(1, $anoReferencia);
+        if (!empty($painel)) {
+            return json_decode($painel, true);
+        }
+        $repository = new MySQLDistorcaoRepository();
+        $painel = array(
+            'distorcao' => $repository->getTotalBrasil($anoReferencia),
+            'regiao' => $repository->getTotalBrasil($anoReferencia),
+            'sem_distorcao' => $repository->getTotalSemBrasil($anoReferencia),
+            'tipo_rede' => $repository->getPorTipoRedeBrasil($anoReferencia),
+            'anos' => $repository->getPorAnoBrasil($anoReferencia),
+            'localizacao' => $repository->getPorLocalizacaoBrasil($anoReferencia),
+//            'localizacao_diferenciada' => $repository->getPorLocalizacaoDiferenciada($origem, $anoReferencia),
+            'cor_raca' => $repository->getPorCorRacaBrasil($anoReferencia),
+            'genero' => $repository->getPorGeneroBrasil($anoReferencia),
+        );
+        //Origem 1 = Brasil
+        $this->saveBrasil(1, $anoReferencia, $painel);
+
+        return $painel;
+    }
     
     /**
      * Retorna o cache de um painel
@@ -89,6 +112,21 @@ class MySQLPainelRepository implements IPainelRepository
             AND tipo = "%s";',
             $anoReferencia,
             $origem->getId(),
+            $tipo
+        ));
+    }
+    public function getCacheBrasil( $referencia, $anoReferencia = 0)
+    {
+        $tipo = 'Nacional';
+        return $this->db->get_var($this->db->prepare(
+            'SELECT 
+                painel 
+            FROM te_paineis 
+            WHERE ano_referencia = %d
+            AND referencia_id = %d
+            AND tipo = "%s";',
+            $anoReferencia,
+            $referencia,
             $tipo
         ));
     }
@@ -113,6 +151,19 @@ class MySQLPainelRepository implements IPainelRepository
             json_encode($painel)
         ));
         return $origem->getId();
+    }
+    public function saveBrasil($origem, $anoReferencia = 0, $painel = array())
+    {
+        $tipo = 'Nacional';
+        $this->db->query($this->db->prepare(
+            'INSERT INTO te_paineis (ano_referencia, referencia_id, tipo, painel) 
+                VALUES (%d, %d, "%s", "%s");',
+            $anoReferencia,
+            $origem,
+            $tipo,
+            json_encode($painel)
+        ));
+        return $origem;
     }
     
     /**

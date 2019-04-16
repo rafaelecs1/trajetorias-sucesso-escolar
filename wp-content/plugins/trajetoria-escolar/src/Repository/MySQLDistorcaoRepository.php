@@ -207,6 +207,48 @@ class MySQLDistorcaoRepository implements IDistorcaoRepository
         );
         return (int)$this->db->get_var($sql);
     }
+
+    public function getTotalBrasil($anoReferencia = 0)
+    {
+        $sql = sprintf(
+            'SELECT
+                SUM(dis_ano.distorcao_2) + SUM(dis_ano.distorcao_3) AS total
+            FROM te_estados est,
+                 te_municipios mun,
+                 te_escolas esc,
+                 te_distorcoes dis,
+                 te_distorcoes_anos dis_ano
+            WHERE est.id = mun.estado_id 
+            AND mun.id = esc.municipio_id
+            AND esc.id = dis.escola_id
+            AND dis.id = dis_ano.distorcao_id
+            --
+            AND dis.ano_referencia = %d',
+            $anoReferencia
+        );
+        return (int)$this->db->get_var($sql);
+    }
+
+    public function getTotalBrasilRegiao($anoReferencia = 0)
+    {
+        $sql = sprintf(
+            'SELECT
+                SUM(dis_ano.distorcao_2) + SUM(dis_ano.distorcao_3) AS total, SUM( CASE WHEN est.regiao = \'Norte\')
+            FROM te_estados est,
+                 te_municipios mun,
+                 te_escolas esc,
+                 te_distorcoes dis,
+                 te_distorcoes_anos dis_ano
+            WHERE est.id = mun.estado_id 
+            AND mun.id = esc.municipio_id
+            AND esc.id = dis.escola_id
+            AND dis.id = dis_ano.distorcao_id
+            --
+            AND dis.ano_referencia = %d',
+            $anoReferencia
+        );
+        return (int)$this->db->get_var($sql);
+    }
     
     /**
      * Retorna as quantidades de crianças e adolescentes que não estão em distorção idade-série
@@ -235,6 +277,26 @@ class MySQLDistorcaoRepository implements IDistorcaoRepository
             $anoReferencia,
             $this->getParamAlias($origem),
             $origem->getId()
+        );
+        return (int)$this->db->get_var($sql);
+    }
+    public function getTotalSemBrasil($anoReferencia = 0)
+    {
+        $sql = sprintf(
+            'SELECT
+                SUM(dis_ano.sem_distorcao) + SUM(dis_ano.distorcao_1) AS total
+            FROM te_estados est,
+                 te_municipios mun,
+                 te_escolas esc,
+                 te_distorcoes dis,
+                 te_distorcoes_anos dis_ano
+            WHERE est.id = mun.estado_id 
+            AND mun.id = esc.municipio_id
+            AND esc.id = dis.escola_id
+            AND dis.id = dis_ano.distorcao_id
+            --
+            AND dis.ano_referencia = %d;',
+            $anoReferencia
         );
         return (int)$this->db->get_var($sql);
     }
@@ -288,6 +350,51 @@ class MySQLDistorcaoRepository implements IDistorcaoRepository
                         'sem_distorcao' => (int)$item['sem_distorcao'],
                         'distorcao' => (int)$item['distorcao']
                         );
+                }
+            }
+        }
+        return $resul;
+    }
+
+    public function getPorTipoRedeBrasil($anoReferencia = 0)
+    {
+        $resul = array();
+        $sql = sprintf(
+            'SELECT
+                esc.dependencia,
+                dis.tipo_ensino,
+                dis.tipo_ano,
+                SUM(dis_ano.sem_distorcao) + SUM(dis_ano.distorcao_1) as sem_distorcao,
+                SUM(dis_ano.distorcao_2) + SUM(dis_ano.distorcao_3) AS distorcao
+            FROM te_estados est,
+                 te_municipios mun,
+                 te_escolas esc,
+                 te_distorcoes dis,
+                 te_distorcoes_anos dis_ano
+            WHERE est.id = mun.estado_id 
+            AND mun.id = esc.municipio_id
+            AND esc.id = dis.escola_id
+            AND dis.id = dis_ano.distorcao_id
+            AND (
+                dis_ano.sem_distorcao > 0
+                OR dis_ano.distorcao_1 > 0
+                OR dis_ano.distorcao_2 > 0
+                OR dis_ano.distorcao_3 > 0
+            )
+            --
+            AND dis.ano_referencia = %d
+            --
+            GROUP BY esc.dependencia, dis.tipo_ensino, dis.tipo_ano;',
+            $anoReferencia
+        );
+        $query = $this->db->get_results($sql, ARRAY_A);
+        if (!empty($query)) {
+            foreach ($query as $item) {
+                if (!isset($resul[$item['dependencia']][$item['tipo_ensino']][$item['tipo_ano']])) {
+                    $resul[$item['dependencia']][$item['tipo_ensino']][$item['tipo_ano']] = array(
+                        'sem_distorcao' => (int)$item['sem_distorcao'],
+                        'distorcao' => (int)$item['distorcao']
+                    );
                 }
             }
         }
@@ -443,7 +550,59 @@ class MySQLDistorcaoRepository implements IDistorcaoRepository
         }
         return $resul;
     }
-    
+
+    public function getPorAnoBrasil($anoReferencia = 0)
+    {
+        $resul = array();
+        $sql = sprintf(
+            'SELECT
+                dis.tipo_ano,
+                dis_ano.ano,
+                SUM(dis_ano.sem_distorcao) AS sem_distorcao,
+                SUM(dis_ano.distorcao_1) AS distorcao_1, 
+                SUM(dis_ano.distorcao_2) AS distorcao_2, 
+                SUM(dis_ano.distorcao_3) AS distorcao_3 
+            FROM te_estados est,
+                 te_municipios mun,
+                 te_escolas esc,
+                 te_distorcoes dis,
+                 te_distorcoes_anos dis_ano
+            WHERE est.id = mun.estado_id 
+            AND mun.id = esc.municipio_id
+            AND esc.id = dis.escola_id
+            AND dis.id = dis_ano.distorcao_id
+            AND (
+                dis_ano.sem_distorcao > 0
+                OR dis_ano.distorcao_1 > 0
+                OR dis_ano.distorcao_2 > 0
+                OR dis_ano.distorcao_3 > 0
+            )
+            -- AND (dis_ano.ano <> 4 OR dis.tipo_ano <> "Todos")
+            --
+            AND dis.ano_referencia = %d
+            --
+            GROUP BY                 
+                dis.tipo_ano,
+                dis_ano.ano;',
+            $anoReferencia
+        );
+        $query = $this->db->get_results($sql, ARRAY_A);
+        if (!empty($query)) {
+            foreach ($query as $item) {
+                if (!isset($resul[$item['tipo_ano']][$item['ano']])) {
+                    $resul[$item['tipo_ano']][$item['ano']] = array(
+                        (int)$item['sem_distorcao'],
+                        (int)$item['distorcao_1'],
+                        (int)$item['distorcao_2'],
+                        (int)$item['distorcao_3'],
+                    );
+                }
+            }
+        }
+        return $resul;
+    }
+
+
     /**
      * Retorna as quantidades de crianças e adolescentes com e sem distorção idade-série por localização
      *
@@ -488,7 +647,43 @@ class MySQLDistorcaoRepository implements IDistorcaoRepository
         }
         return $resul;
     }
-    
+
+    public function getPorLocalizacaoBrasil($anoReferencia = 0)
+    {
+        $resul = array();
+        $sql = sprintf(
+            'SELECT
+                esc.localizacao,
+                SUM(dis_ano.sem_distorcao) + SUM(dis_ano.distorcao_1) AS sem_distorcao,
+                SUM(dis_ano.distorcao_2) + SUM(dis_ano.distorcao_3) AS distorcao
+            FROM te_estados est,
+                 te_municipios mun,
+                 te_escolas esc,
+                 te_distorcoes dis,
+                 te_distorcoes_anos dis_ano
+            WHERE est.id = mun.estado_id 
+            AND mun.id = esc.municipio_id
+            AND esc.id = dis.escola_id
+            AND dis.id = dis_ano.distorcao_id
+            --
+            AND dis.ano_referencia = %d
+            --
+            GROUP BY esc.localizacao;',
+            $anoReferencia
+        );
+        $query = $this->db->get_results($sql, ARRAY_A);
+        if (!empty($query)) {
+            foreach ($query as $item) {
+                $resul[$item['localizacao']] = array(
+                    'sem_distorcao' => (int)$item['sem_distorcao'],
+                    'distorcao' => (int)$item['distorcao'],
+                );
+            }
+        }
+        return $resul;
+    }
+
+
     /**
      * Retorna as quantidades de crianças e adolescentes com e sem distorção idade-série por localização diferenciada
      *
@@ -610,7 +805,72 @@ class MySQLDistorcaoRepository implements IDistorcaoRepository
         }
         return $resul;
     }
-    
+
+    public function getPorCorRacaBrasil($anoReferencia = 0)
+    {
+        $resul = array();
+        $sql = sprintf(
+            'SELECT
+              "sem_distorcao" AS tipo_distorcao,
+              SUM(dis_raca.nao_declarada) AS "Não declarada",
+              SUM(dis_raca.branca) AS Branca,
+              SUM(dis_raca.preta) AS Preta,
+              SUM(dis_raca.parda) AS Parda,
+              SUM(dis_raca.amarela) AS Amarela,
+              SUM(dis_raca.indigena) AS Indígena
+            FROM te_estados est,
+                 te_municipios mun,
+                 te_escolas esc,
+                 te_distorcoes dis,
+                 te_distorcoes_racas dis_raca
+            WHERE est.id = mun.estado_id 
+            AND mun.id = esc.municipio_id
+            AND esc.id = dis.escola_id
+            AND dis.id = dis_raca.distorcao_id
+            AND dis_raca.tipo_distorcao IN (0, 1)
+            --
+            AND dis.ano_referencia = %d
+            --
+            UNION
+            --
+            SELECT
+              "distorcao",
+              SUM(dis_raca.nao_declarada),
+              SUM(dis_raca.branca),
+              SUM(dis_raca.preta),
+              SUM(dis_raca.parda),
+              SUM(dis_raca.amarela),
+              SUM(dis_raca.indigena)
+            FROM te_estados est,
+                 te_municipios mun,
+                 te_escolas esc,
+                 te_distorcoes dis,
+                 te_distorcoes_racas dis_raca
+            WHERE est.id =  mun.estado_id 
+            AND mun.id = esc.municipio_id
+            AND esc.id = dis.escola_id
+            AND dis.id = dis_raca.distorcao_id
+            AND dis_raca.tipo_distorcao IN (2, 3)
+            --
+            AND dis.ano_referencia = %d
+            ;',
+            $anoReferencia,
+            $anoReferencia
+        );
+        $query = $this->db->get_results($sql, ARRAY_A);
+        if (!empty($query)) {
+            foreach ($query[0] as $k => $v) {
+                $resul[$k] = array(
+                    'sem_distorcao' => $v,
+                    'distorcao' =>  $query[1][$k],
+                );
+            }
+            array_shift($resul);
+        }
+        return $resul;
+    }
+
+
     /**
      * Retorna as quantidades de crianças e adolescentes com e sem distorção idade-série por gênero
      *
@@ -678,7 +938,64 @@ class MySQLDistorcaoRepository implements IDistorcaoRepository
         }
         return $resul;
     }
-    
+
+    public function getPorGeneroBrasil($anoReferencia = 0)
+    {
+        $resul = array();
+        $sql = sprintf(
+            'SELECT
+                "sem_distorcao" AS tipo_distorcao,
+                SUM(dis_genero.masculino) AS Masculino,
+                SUM(dis_genero.feminino) AS Feminino
+            FROM te_estados est,
+                 te_municipios mun,
+                 te_escolas esc,
+                 te_distorcoes dis,
+                 te_distorcoes_generos dis_genero
+            WHERE est.id = mun.estado_id 
+            AND mun.id = esc.municipio_id
+            AND esc.id = dis.escola_id
+            AND dis.id = dis_genero.distorcao_id
+            AND dis_genero.tipo_distorcao IN (0, 1)
+            --
+            AND dis.ano_referencia = %d
+            --
+            UNION
+            --
+            SELECT
+                "distorcao",
+                SUM(dis_genero.masculino),
+                SUM(dis_genero.feminino)
+            FROM te_estados est,
+                 te_municipios mun,
+                 te_escolas esc,
+                 te_distorcoes dis,
+                 te_distorcoes_generos dis_genero
+            WHERE est.id = mun.estado_id 
+            AND mun.id = esc.municipio_id
+            AND esc.id = dis.escola_id
+            AND dis.id = dis_genero.distorcao_id
+            AND dis_genero.tipo_distorcao IN (2, 3)
+            --
+            AND dis.ano_referencia = %d
+            ;',
+            $anoReferencia,
+            $anoReferencia
+        );
+        $query = $this->db->get_results($sql, ARRAY_A);
+        if (!empty($query)) {
+            foreach ($query[0] as $k => $v) {
+                $resul[$k] = array(
+                    'sem_distorcao' => $v,
+                    'distorcao' =>  $query[1][$k],
+                );
+            }
+            array_shift($resul);
+        }
+        return $resul;
+    }
+
+
     /**
      * Retorna as 3 letras inicias do nome da classe que implementa a interface IDistorcao
      *
