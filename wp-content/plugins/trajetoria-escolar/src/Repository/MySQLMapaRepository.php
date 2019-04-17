@@ -218,7 +218,7 @@ class MySQLMapaRepository implements IMapaRepository
               ano_referencia,
               COUNT(*) AS total
             FROM te_distorcoes
-           WHERE ano_referencia = 2018;',
+           WHERE ano_referencia = 2019;',
             ARRAY_A
         );
         if (!empty($query)) {
@@ -238,7 +238,7 @@ class MySQLMapaRepository implements IMapaRepository
               SUM(sem_distorcao + distorcao_1 + distorcao_2 + distorcao_3) AS total
             FROM te_distorcoes d
             JOIN te_distorcoes_anos da ON d.id = da.distorcao_id
-            WHERE d.ano_referencia = 2018;',
+            WHERE d.ano_referencia = 2019;',
             ARRAY_A
         );
 
@@ -253,7 +253,7 @@ class MySQLMapaRepository implements IMapaRepository
                     JOIN te_escolas as e ON e.id = d.escola_id
                     JOIN te_municipios as m ON m.id = e.municipio_id
                     JOIN te_estados as es ON es.id = m.estado_id
-                    GROUP BY es.regiao, d.tipo_ano, d.ano_referencia HAVING d.ano_referencia = 2018',
+                    GROUP BY es.regiao, d.tipo_ano, d.ano_referencia HAVING d.ano_referencia = 2019',
             $anoReferencia
         );
         return $this->db->get_results($sql);

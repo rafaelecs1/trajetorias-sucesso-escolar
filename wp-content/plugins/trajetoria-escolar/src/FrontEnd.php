@@ -134,7 +134,7 @@ class FrontEnd
             $estado = new Estado($estado);
 
             $rMapa = new MySQLMapaRepository();
-            $mapa = $rMapa->get($estado, 2018);
+            $mapa = $rMapa->get($estado, 2019);
         }
         header('Content-type: application/json;charset=UTF-8');
         echo $mapa;
@@ -155,8 +155,8 @@ class FrontEnd
 
         $rDistorcaoPainel = new MySQLPainelRepository();
         $rDistorcaoMapa = new MySQLMapaRepository();
-        $distorcao = $rDistorcaoPainel->getBrasil(2018);
-        $distorcaoMapa = $rDistorcaoMapa->getBrasil(2018);
+        $distorcao = $rDistorcaoPainel->getBrasil(2019);
+        $distorcaoMapa = $rDistorcaoMapa->getBrasil(2019);
 
         ob_start();
         wp_enqueue_style('mapa-nacional', plugin_dir_url(dirname(__FILE__)) . 'css/mapa-nacional.css');
