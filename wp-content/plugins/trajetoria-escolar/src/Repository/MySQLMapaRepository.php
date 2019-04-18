@@ -95,8 +95,9 @@ class MySQLMapaRepository implements IMapaRepository
         }
         // Gera informações regionais
         $mapa->regiao = $valores;
-        $this->saveBrasil(2, $anoReferencia, (array)$mapa);
-        return $mapa;
+        $mapa = $this->saveBrasil(2, $anoReferencia, $mapa);
+
+        return (object)json_decode($mapa, true);
     }
 
     public function saveBrasil($origem, $anoReferencia = 0, $painel = array())
@@ -110,7 +111,7 @@ class MySQLMapaRepository implements IMapaRepository
             $tipo,
             json_encode($painel)
         ));
-        return $origem;
+        return json_encode($painel);
     }
 
     /**
@@ -230,6 +231,7 @@ class MySQLMapaRepository implements IMapaRepository
         }
         return $resul;
     }
+
     public function getTotalGeral($anoReferencia = 0)
     {
         $resul = array();
