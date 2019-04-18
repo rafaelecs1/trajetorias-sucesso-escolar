@@ -39,6 +39,10 @@ class Estado implements IDistorcao
      * Região do estado
      */
     private $regiao;
+    /**
+     * @var tipo
+     */
+    private $tipo;
 
     /**
      * Construtor da classe
@@ -47,14 +51,17 @@ class Estado implements IDistorcao
      * @param string $nome
      * @param string $limites
      * @param string $regiao
+     * @param
      * @return void
      */
+
     public function __construct($id = 0, $nome = '', $limites = '', $regiao = '')
     {
         $this->setId($id);
         $this->setNome($nome);
         $this->setLimites($limites);
         $this->setRegiao($regiao);
+        $this->tipo = 'estado';
     }
 
     /**

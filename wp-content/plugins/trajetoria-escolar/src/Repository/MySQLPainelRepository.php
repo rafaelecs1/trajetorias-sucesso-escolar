@@ -48,10 +48,18 @@ class MySQLPainelRepository implements IPainelRepository
      */
     public function get(IDistorcao $origem, $anoReferencia = 0)
     {
+        echo "<pre>";
+        var_dump($origem);exit;
+        echo "</pre>";
+
         $painel = $this->getCache($origem, $anoReferencia);
         if (!empty($painel)) {
             return json_decode($painel, true);
         }
+
+        $rDistorcaoPainel = new MySQLMapaRepository();
+        $totalGeral = $rDistorcaoPainel->getTotalGeral(2018);
+
         $repository = new MySQLDistorcaoRepository();
         $painel = array(
             'distorcao' => $repository->getTotal($origem, $anoReferencia),
@@ -62,6 +70,7 @@ class MySQLPainelRepository implements IPainelRepository
             'localizacao_diferenciada' => $repository->getPorLocalizacaoDiferenciada($origem, $anoReferencia),
             'cor_raca' => $repository->getPorCorRaca($origem, $anoReferencia),
             'genero' => $repository->getPorGenero($origem, $anoReferencia),
+            'total_geral' => $totalGeral
             );
         
         $this->save($origem, $anoReferencia, $painel);
@@ -77,7 +86,7 @@ class MySQLPainelRepository implements IPainelRepository
         }
         $repository = new MySQLDistorcaoRepository();
         $rDistorcaoPainel = new MySQLMapaRepository();
-        $totalGeral = $rDistorcaoPainel->getTotalGeral();
+        $totalGeral = $rDistorcaoPainel->getTotalGeral(2018);
 
         $painel = array(
             'distorcao' => $repository->getTotalBrasil($anoReferencia),
