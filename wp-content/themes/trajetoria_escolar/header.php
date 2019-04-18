@@ -82,5 +82,11 @@
     if(!empty($faixa)) {
         echo '<div class="faixa"><div class="center">', $faixa, '</div></div>';
     }
+
+    if( $_SERVER['REQUEST_URI'] === "/painel-brasil/") {
+        echo '<div class="faixa"><div class="center"><a href="/" class="button">Voltar</a> </div></div>';
+    }
+
     ?>
+
 	<div id="content" class="site-content <?php echo ((!is_home() && !is_front_page()) ? 'center' : 'home'); ?>">
