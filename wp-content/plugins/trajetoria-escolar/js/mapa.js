@@ -3,7 +3,7 @@ var map,
     label,
     infoWindow;
 jQuery(document).ready(function ($) {
-    $('h1:eq(1)').after('<p class="entry-header-description">Nas redes públicas municipais e estaduais (Censo Escolar 2017 - INEP/MEC)</p>');
+    $('h1:eq(1)').after('<p class="entry-header-description">Nas redes públicas municipais e estaduais (Censo Escolar 2018 - INEP/MEC)</p>');
     $('#estados').change(function () {
         let me = $(this);
         id = parseInt($(me).val());
