@@ -771,7 +771,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     <section class="genero">
                         <?php
                         foreach ($painel['genero'] as $k => $v) {
-                            echo self::gerarAmostra($k, $v['distorcao'], $painel['distorcao']);
+                            echo self::gerarAmostra($k, $v['distorcao'], $painel['total_geral']);
                         }
                         ?>
                     </section>
@@ -781,7 +781,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     <section class="cor-raca">
                         <?php
                         foreach ($painel['cor_raca'] as $k => $v) {
-                            echo self::gerarAmostra($k, $v['distorcao'], $painel['distorcao']);
+                            echo self::gerarAmostra($k, $v['distorcao'], $painel['total_geral']);
                         }
                         ?>
                     </section>
@@ -791,7 +791,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     <section class="localizacao">
                         <?php
                         foreach ($painel['localizacao'] as $k => $v) {
-                            echo self::gerarAmostra($k, $v['distorcao'], $painel['distorcao']);
+                            echo self::gerarAmostra($k, $v['distorcao'], $painel['total_geral']);
                         }
                         ?>
                     </section>
@@ -799,7 +799,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     if (!empty($painel['localizacao_diferenciada'])) {
                         echo '<section class="localizacao-diferenciada">';
                         foreach ($painel['localizacao_diferenciada'] as $k => $v) {
-                            echo self::gerarAmostra($k, $v['distorcao'], $painel['distorcao']);
+                            echo self::gerarAmostra($k, $v['distorcao'], $painel['total_geral']);
                         }
                         echo '</section>';
                     }

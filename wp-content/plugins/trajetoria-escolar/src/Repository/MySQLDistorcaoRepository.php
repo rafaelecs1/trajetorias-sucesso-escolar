@@ -228,27 +228,6 @@ class MySQLDistorcaoRepository implements IDistorcaoRepository
         );
         return (int)$this->db->get_var($sql);
     }
-
-    public function getTotalBrasilRegiao($anoReferencia = 0)
-    {
-        $sql = sprintf(
-            'SELECT
-                SUM(dis_ano.distorcao_2) + SUM(dis_ano.distorcao_3) AS total, SUM( CASE WHEN est.regiao = \'Norte\')
-            FROM te_estados est,
-                 te_municipios mun,
-                 te_escolas esc,
-                 te_distorcoes dis,
-                 te_distorcoes_anos dis_ano
-            WHERE est.id = mun.estado_id 
-            AND mun.id = esc.municipio_id
-            AND esc.id = dis.escola_id
-            AND dis.id = dis_ano.distorcao_id
-            --
-            AND dis.ano_referencia = %d',
-            $anoReferencia
-        );
-        return (int)$this->db->get_var($sql);
-    }
     
     /**
      * Retorna as quantidades de crianças e adolescentes que não estão em distorção idade-série
@@ -1033,13 +1012,34 @@ class MySQLDistorcaoRepository implements IDistorcaoRepository
 
 
     /**
-     * Retorna as 3 letras inicias do nome da classe que implementa a interface IDistorcao
-     *
-     * Facilita a construção dos parâmetros para as consultas dos outros métodos na classe
-     *
-     * @param mixed $origem
-     * @return
+     * @param IDistorcao $origem
+     * @param int $anoReferencia
+     * @return int
+     * Retorna total de matriculas por estado ou municipio
      */
+    public function getTotalMatriculas(IDistorcao $origem, $anoReferencia = 0)
+    {
+        $sql = sprintf(
+            'SELECT
+                SUM(dis_ano.sem_distorcao + dis_ano.distorcao_1 + dis_ano.distorcao_2 + dis_ano.distorcao_3) AS total
+            FROM te_estados est,
+                 te_municipios mun,
+                 te_escolas esc,
+                 te_distorcoes dis,
+                 te_distorcoes_anos dis_ano
+            WHERE est.id = mun.estado_id 
+            AND mun.id = esc.municipio_id
+            AND esc.id = dis.escola_id
+            AND dis.id = dis_ano.distorcao_id
+            --
+            AND dis.ano_referencia = %d
+            AND %s.id = %d;',
+            $anoReferencia,
+            $this->getParamAlias($origem),
+            $origem->getId()
+        );
+        return (int)$this->db->get_var($sql);
+    }
     private function getParamAlias(IDistorcao $origem)
     {
         $nome = get_class($origem);
