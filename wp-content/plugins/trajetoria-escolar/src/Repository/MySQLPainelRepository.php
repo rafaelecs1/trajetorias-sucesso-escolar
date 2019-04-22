@@ -5,11 +5,13 @@
  * @author André Keher
  * @copyright 2018
  */
+
 namespace Unicef\TrajetoriaEscolar\Repository;
 
 use Unicef\TrajetoriaEscolar\Contract\IPainelRepository;
 use Unicef\TrajetoriaEscolar\Contract\IDistorcao;
 use Unicef\TrajetoriaEscolar\Repository\MySQLDistorcaoRepository;
+
 /**
  * Realiza as operações de banco de dados MySQL para o cache de painéis
  *
@@ -25,7 +27,7 @@ class MySQLPainelRepository implements IPainelRepository
      * Objeto responsável pelas operações de banco de dados
      */
     private $db;
-    
+
     /**
      * Construtor da classe
      *
@@ -36,7 +38,7 @@ class MySQLPainelRepository implements IPainelRepository
         global $wpdb;
         $this->db = $wpdb;
     }
-    
+
     /**
      * Retorna um painel
      *
@@ -62,10 +64,11 @@ class MySQLPainelRepository implements IPainelRepository
             'localizacao_diferenciada' => $repository->getPorLocalizacaoDiferenciada($origem, $anoReferencia),
             'cor_raca' => $repository->getPorCorRaca($origem, $anoReferencia),
             'genero' => $repository->getPorGenero($origem, $anoReferencia),
-            );
-        
+            'total_geral' => $repository->getTotalMatriculas($origem, $anoReferencia),
+        );
+
         $this->save($origem, $anoReferencia, $painel);
-        
+
         return $painel;
     }
 
@@ -96,7 +99,7 @@ class MySQLPainelRepository implements IPainelRepository
         $this->saveBrasil(1, $anoReferencia, $painel);
         return $painel;
     }
-    
+
     /**
      * Retorna o cache de um painel
      *
@@ -119,7 +122,8 @@ class MySQLPainelRepository implements IPainelRepository
             $tipo
         ));
     }
-    public function getCacheBrasil( $referencia, $anoReferencia = 0)
+
+    public function getCacheBrasil($referencia, $anoReferencia = 0)
     {
         $tipo = 'Nacional';
         return $this->db->get_var($this->db->prepare(
@@ -134,7 +138,7 @@ class MySQLPainelRepository implements IPainelRepository
             $tipo
         ));
     }
-    
+
     /**
      * Salva o cache de um painel
      *
@@ -156,6 +160,7 @@ class MySQLPainelRepository implements IPainelRepository
         ));
         return $origem->getId();
     }
+
     public function saveBrasil($origem, $anoReferencia = 0, $painel = array())
     {
         $tipo = 'Nacional';
@@ -169,7 +174,7 @@ class MySQLPainelRepository implements IPainelRepository
         ));
         return $origem;
     }
-    
+
     /**
      * Apaga o cache de todos os painéis
      *
@@ -179,7 +184,7 @@ class MySQLPainelRepository implements IPainelRepository
     {
         $this->db->query('DELETE FROM te_paineis;');
     }
-    
+
     /**
      * Retorna um resumo da situação de cache dos painéis
      *
@@ -208,7 +213,7 @@ class MySQLPainelRepository implements IPainelRepository
         }
         return $resul;
     }
-    
+
     /**
      * Retorna o nome da classe
      *
