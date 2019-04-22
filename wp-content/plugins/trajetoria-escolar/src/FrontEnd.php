@@ -150,7 +150,7 @@ class FrontEnd
     public function mapaBarsil(){
 
         $rDistorcaoMapa = new MySQLMapaRepository();
-        $distorcaoMapa = $rDistorcaoMapa->getBrasil(2018);
+        $distorcaoMapa = $rDistorcaoMapa->getBrasil(2019);
 
         ob_start();
         wp_enqueue_style('mapa-nacional', plugin_dir_url(dirname(__FILE__)) . 'css/mapa-nacional.css');
@@ -653,7 +653,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                 return false;
             }
             $rPainel = new MySQLPainelRepository();
-            $painel = $rPainel->get($origem, 2018);
+            $painel = $rPainel->get($origem, 2019);
             ob_start();
             ?>
             <section class="ficha <?php echo $tipo; ?>">
