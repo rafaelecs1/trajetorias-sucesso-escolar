@@ -25,6 +25,11 @@ use Unicef\TrajetoriaEscolar\Repository\MySQLPainelRepository;
  */
 class FrontEnd
 {
+
+    private $year = null;
+    private $default_year = 2019;
+    private $years = [2018, 2019];
+
     /**
      * * Configura callbacks para shortcodes, actions e filters para customizar as páginas do site
      *
@@ -32,9 +37,12 @@ class FrontEnd
      */
     public function __construct()
     {
+        $this->year = (isset($_POST['select-year'])) ? (int)$_POST['select-year'] : $this->default_year;
+        $this->year = in_array($this->year, $this->years) ? $this->year : $this->default_year;
+
         //Shortcodes
         add_shortcode('painel_distorcao', array($this, 'painelDistorcao'));
-        add_shortcode('mapa_brasil', array($this, 'mapaBarsil'));
+        add_shortcode('mapa_brasil', array($this, 'mapaBrasil'));
         add_shortcode('painel_distorcao_brasil', array($this, 'painelDistorcaoBrasil'));
         add_shortcode('mapa_distorcao', array($this, 'mapaDistorcao'));
 
@@ -115,6 +123,7 @@ class FrontEnd
             'siteUrl' => site_url('/'),
             'ajaxUrl' => admin_url('admin-ajax.php'),
             'actionGetCidades' => 'get_cidades',
+            'year' => $this->year-1
         ));
         wp_enqueue_script('google_maps', 'https://maps.googleapis.com/maps/api/js?key=' . GOOGLE_MAPS_API_KEY . '&callback=myMap', array(), false, true);
         wp_enqueue_script('infobox', plugin_dir_url(dirname(__FILE__)) . 'js/infobox.min.js', array('google_maps'), false, true);
@@ -147,10 +156,10 @@ class FrontEnd
      *
      * @return string Marcacao HTML
      */
-    public function mapaBarsil(){
+    public function mapaBrasil(){
 
         $rDistorcaoMapa = new MySQLMapaRepository();
-        $distorcaoMapa = $rDistorcaoMapa->getBrasil(2019);
+        $distorcaoMapa = $rDistorcaoMapa->getBrasil($this->year);
 
         ob_start();
         wp_enqueue_style('mapa-nacional', plugin_dir_url(dirname(__FILE__)) . 'css/mapa-nacional.css');
@@ -165,7 +174,7 @@ class FrontEnd
                 <section class="mn_container mn_flex center">
 
                     <div class="item item_1">
-                        <h2>Distorção idade-série no Brasil</h2>
+                        <h2>Distorção idade-série no Brasil - <?php echo $this->year-1 ?></h2>
                         <div class="mn_fundamental_e_medio">
 
                             <div class="mn_fundamental">
@@ -409,7 +418,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                 </section>
 
                 <div class="center" style="text-align: center;">
-                    <p><a id="bt_link_nacional" style="" href="/painel-brasil">Ver dados nacionais</a></p>
+                    <p><a id="bt_link_nacional" style="" href="/painel-brasil/<?php echo $this->year-1?>">Ver dados nacionais</a></p>
                 </div>
 
             </div>
@@ -431,16 +440,33 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
         global $wp_query;
         $id = (int)(isset($wp_query->query_vars['painel_id'])) ? $wp_query->query_vars['painel_id'] : 0;
         $tipo = (isset($wp_query->query_vars['painel_tipo'])) ? $wp_query->query_vars['painel_tipo'] : '';
-        $origem = $painel = null;
+
+        //A URL aparece com um ano de atraso
+        $this->year = (isset($wp_query->query_vars['painel_ano'])) ? (int)$wp_query->query_vars['painel_ano']+1 : $this->default_year;
+        $this->year = in_array($this->year, $this->years) ? $this->year : $this->default_year;
+
         $rDistorcaoPainel = new MySQLPainelRepository();
-        $distorcao = $rDistorcaoPainel->getBrasil(2019);
+        $distorcao = $rDistorcaoPainel->getBrasil($this->year);
         ob_start();
+
         ?>
 
         <section class="ficha municipio">
             <section id="redes-de-ensino">
+
+                <div class="content-select-year-painel">
+                    <form name="form-year" id="form-year" method="post">
+                        <label>Ano referência
+                            <select class="select-year" id="select-year" name="select-year">
+                                <option value="<?php echo "http://".$_SERVER[HTTP_HOST]."/painel-brasil/2018/" ; ?>" <?php if( (int)$this->year == 2019 ) { echo "selected"; }?> >2018</option>
+                                <option value="<?php echo "http://".$_SERVER[HTTP_HOST]."/painel-brasil/2017/" ; ?>" <?php if( (int)$this->year == 2018) { echo "selected"; }?>>2017</option>
+                            </select>
+                        </label>
+                    </form>
+                </div>
+
                 <header>
-                    <h2>Redes de Ensino</h2>
+                    <h2>Redes de Ensino - <?php echo $this->year-1; ?></h2>
                 </header>
                 <section id="total-em-distorcao">
                     <header>
@@ -588,13 +614,6 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
             </section>
         </section>
 
-        <div class="remodal"
-             data-remodal-id="situacao-das-escolas" <?php echo ($tipo === 'escola') ? 'style="display:none"' : ''; ?>>
-            <button data-remodal-action="close" class="remodal-close"></button>
-            <div id="lista-escolas">
-            </div>
-        </div>
-
         <?php
         if ($tipo !== 'escola') {
             wp_enqueue_style('remodal', plugin_dir_url(dirname(__FILE__)) . 'css/remodal.css');
@@ -604,16 +623,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
 
         wp_enqueue_script('painel', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral.js', array('jquery'), false, true);
         $voltar = $especificacao = null;
-        if ($tipo === 'estado') {
-            $voltar = '#' . $origem->getId();
-            $especificacao = 'Estado:';
-        } elseif ($tipo === 'municipio') {
-            $voltar = '#' . $origem->getEstado()->getId();
-            $especificacao = 'Município:';
-        } elseif ($tipo === 'escola') {
-            $voltar = 'painel/municipio/' . $origem->getMunicipio()->getId() . '/';
-            $especificacao = $origem->getMunicipio()->getNome() . ' - Rede ' . $origem->getDependencia();
-        }
+
         wp_localize_script('painel', 'painel', array(
             'siteUrl' => site_url('/'),
             'ajaxUrl' => admin_url('admin-ajax.php'),
@@ -636,9 +646,14 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
         global $wp_query;
         $id = (int)(isset($wp_query->query_vars['painel_id'])) ? $wp_query->query_vars['painel_id'] : 0;
         $tipo = (isset($wp_query->query_vars['painel_tipo'])) ? $wp_query->query_vars['painel_tipo'] : '';
+        $ano = (int)(isset($wp_query->query_vars['painel_ano'])) ? $wp_query->query_vars['painel_ano'] : 0;
+
+        $this->year = $ano;
+        $this->year === 0 ? 2019 : $this->year+1;
+
         $origem = $painel = null;
 
-        if (!empty($id) && in_array($tipo, array('estado', 'municipio', 'escola'))) {
+        if (!empty($id) && !empty($ano) && in_array($tipo, array('estado', 'municipio', 'escola'))) {
             if ($tipo === 'estado') {
                 $rEst = new MySQLEstadoRepository();
                 $origem = $rEst->get($id);

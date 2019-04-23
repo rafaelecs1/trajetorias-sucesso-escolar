@@ -171,4 +171,9 @@ jQuery(document).ready(function ($) {
             ga('send', 'pageview', url + $(this).attr('href'));
         }
     });
+
+    $('#select-year').change(function () {
+        var value_link = $(this).val();
+        window.location.href = value_link;
+    });
 });

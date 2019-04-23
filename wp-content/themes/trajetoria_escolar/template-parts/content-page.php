@@ -12,6 +12,21 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+
+        <?php if (is_front_page()) {?>
+            <div class="content-select-year">
+                <form name="form-year" id="form-year" action="/" method="post">
+                    <label>Ano referência
+                        <select class="select-year" id="select-year" name="select-year">
+                            <option>Selecione</option>
+                            <option value="2019" <?php if( (int)$_POST['select-year'] == 2019 OR (int)$_POST['select-year'] == 0) { echo "selected"; }?> >2018</option>
+                            <option value="2018" <?php if( (int)$_POST['select-year'] == 2018) { echo "selected"; }?>>2017</option>
+                        </select>
+                    </label>
+                </form>
+            </div>
+        <?php } ?>
+
 	</header><!-- .entry-header -->
 
 	<?php trajetoria_escolar_post_thumbnail(); ?>

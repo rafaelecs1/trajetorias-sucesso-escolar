@@ -83,7 +83,7 @@
         echo '<div class="faixa"><div class="center">', $faixa, '</div></div>';
     }
 
-    if( $_SERVER['REQUEST_URI'] === "/painel-brasil/") {
+    if( strpos($_SERVER['REQUEST_URI'], '/painel-brasil/') !== false ) {
         echo '<div class="faixa"><div class="center"><a href="/" class="button">Voltar</a> </div></div>';
     }
 

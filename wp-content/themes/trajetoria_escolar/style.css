@@ -1104,9 +1104,9 @@ article .entry-header{
 }
 .ficha section header h2{
     color: #fff;
-    padding: 12px 0;
+    padding: 0px 0;
     font-size: 1.8em;
-    margin-bottom: 1%
+    margin-bottom: 1%;
 }
 .ficha #genero header h2{
     margin-bottom: 4%
@@ -1565,8 +1565,35 @@ h1, h2, h3, h4, h5, h6{
     text-align: center;
     font-size: 1.7em;
     margin-bottom: 0px;
-    margin-top: 5px
 }
+
+.content-select-year{
+	margin: auto;
+	text-align: center;
+	font-size: 1.7em;
+	margin-bottom: 0px;
+	margin-top: 20px;
+}
+
+.content-select-year-painel{
+	font-family: 'lato-light';
+	color: #2d2d2d;
+	font-size: 1.4em;
+}
+.content-select-year-painel .select-year{
+	border:  2px solid #F3F4F4;
+	width: 80px;
+	height: 50px;
+	margin-left: 20px;
+}
+
+.content-select-year .select-year{
+	border:  2px solid #F3F4F4;
+	width: 80px;
+	height: 50px;
+	margin-left: 20px;
+}
+
 .home-col{
     height: calc(100vh * 0.4296745725317154);
     min-height: 750px
