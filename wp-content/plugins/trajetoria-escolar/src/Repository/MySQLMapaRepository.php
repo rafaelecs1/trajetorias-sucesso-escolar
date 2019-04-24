@@ -221,14 +221,8 @@ class MySQLMapaRepository implements IMapaRepository
     public function getDistorcaoGeral($anoReferencia = 0)
     {
         $resul = array();
-        $query = $this->db->get_results(
-            'SELECT
-              ano_referencia,
-              COUNT(*) AS total
-            FROM te_distorcoes
-           WHERE ano_referencia = 2019;',
-            ARRAY_A
-        );
+        $sql = sprintf('SELECT ano_referencia, COUNT(*) AS total FROM te_distorcoes WHERE ano_referencia = %s', $anoReferencia);
+        $query = $this->db->get_results($sql,ARRAY_A);
         if (!empty($query)) {
             foreach ($query as $item) {
                 if (!isset($resul[$item['ano_referencia']])) {
@@ -241,15 +235,14 @@ class MySQLMapaRepository implements IMapaRepository
 
     public function getTotalGeral($anoReferencia = 0)
     {
-        $resul = array();
-        $query = $this->db->get_results(
+        $sql = sprintf(
             'SELECT              
-              SUM(sem_distorcao + distorcao_1 + distorcao_2 + distorcao_3) AS total
+            SUM(sem_distorcao + distorcao_1 + distorcao_2 + distorcao_3) AS total
             FROM te_distorcoes d
             JOIN te_distorcoes_anos da ON d.id = da.distorcao_id
-            WHERE d.ano_referencia = 2019;',
-            ARRAY_A
-        );
+            WHERE d.ano_referencia = %s',
+            $anoReferencia);
+        $query = $this->db->get_results($sql,ARRAY_A);
 
         return (int)$query[0]['total'];
     }

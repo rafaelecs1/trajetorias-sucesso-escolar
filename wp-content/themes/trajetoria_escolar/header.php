@@ -72,20 +72,24 @@
         </div>
     </header><!-- #masthead -->
     <?php
-    $faixa = null;
-    if(is_front_page()) {
-        $faixa = '<a class="bot1" href="' . site_url('por-que-e-fundamental-promover-trajetorias-de-sucesso-escolar-para-criancas-e-adolescentes') . '" rel="bookmark" class="button"><p>Por que é fundamental promover trajetórias de sucesso escolar para crianças e adolescentes?</p></a> <a class="bot2" href="' . site_url('download-dos-materiais') . '" rel="bookmark" class="button"><p>Recomendações para a promoção de trajetórias de sucesso escolar para crianças e adolescentes</p></a>';
-    }
-    if(strpos($_SERVER['REQUEST_URI'], '/painel/') !== false) {
-        $faixa = '<a href="#" class="button" id="voltar">Voltar para o ' . ((strpos($_SERVER['REQUEST_URI'], '/municipio/') !== false || strpos($_SERVER['REQUEST_URI'], '/estado/') !== false) ? 'mapa' : 'município') . '</a>';
-    }
-    if(!empty($faixa)) {
-        echo '<div class="faixa"><div class="center">', $faixa, '</div></div>';
-    }
+        $faixa = null;
 
-    if( strpos($_SERVER['REQUEST_URI'], '/painel-brasil/') !== false ) {
-        echo '<div class="faixa"><div class="center"><a href="/" class="button">Voltar</a> </div></div>';
-    }
+        if(is_front_page()) {
+            $faixa = '<a class="bot1" href="' . site_url('por-que-e-fundamental-promover-trajetorias-de-sucesso-escolar-para-criancas-e-adolescentes') . '" rel="bookmark" class="button"><p>Por que é fundamental promover trajetórias de sucesso escolar para crianças e adolescentes?</p></a> <a class="bot2" href="' . site_url('download-dos-materiais') . '" rel="bookmark" class="button"><p>Recomendações para a promoção de trajetórias de sucesso escolar para crianças e adolescentes</p></a>';
+        }
+
+        if(strpos($_SERVER['REQUEST_URI'], '/painel/') !== false) {
+            $faixa = '<a href="#" class="button" id="voltar">
+                Voltar para o ' . ((strpos($_SERVER['REQUEST_URI'], '/municipio/') !== false || strpos($_SERVER['REQUEST_URI'], '/estado/') !== false) ? 'mapa' : 'município') . '</a>';
+        }
+
+        if(!empty($faixa)) {
+            echo '<div class="faixa"><div class="center">', $faixa, '</div></div>';
+        }
+
+        if( strpos($_SERVER['REQUEST_URI'], '/painel-brasil/') !== false ) {
+            echo '<div class="faixa"><div class="center"><a href="/" class="button">Voltar</a> </div></div>';
+        }
 
     ?>
 

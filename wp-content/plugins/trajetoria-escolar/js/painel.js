@@ -43,7 +43,7 @@ jQuery(document).ready(function ($) {
                     if (d.length !== 0) {
                         $('#lista-escolas').html('').append('<h4>Lista de escolas</h4><h5>' + $('h1:eq(1)').text() + ' - Rede ' + rede + ':</h5><input type="search" id="filtrar-escolas" placeholder="Filtrar escolas"/><div class="lista"></div>');
                         $.each(d, function (i, o) {
-                            $('#lista-escolas .lista').append('<div class="escola"><a href="' + painel.siteUrl + 'painel/escola/' + o.id + '/">' + o.nome + '</a></div>');
+                            $('#lista-escolas .lista').append('<div class="escola"><a href="' + painel.siteUrl + 'painel/escola/' + o.id + '/' + (parseInt(painel.year)-1) + '/">' + o.nome + '</a></div>');
                         });
                         modal.open();
                         $('.ver-escolas').show();
@@ -167,5 +167,11 @@ jQuery(document).ready(function ($) {
             url = url.replace('#', '');
             ga('send', 'pageview', url + $(this).attr('href'));
         }
+    });
+
+    //Action for select year of panel
+    $('#select-year').change(function () {
+        var value_link = $(this).val();
+        window.location.href = value_link;
     });
 });

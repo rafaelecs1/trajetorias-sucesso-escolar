@@ -582,7 +582,6 @@ class BackEnd
         add_rewrite_rule('^painel/([^/]*)/([^/]*)/([^/]*)/?', 'index.php?page_id=25&painel_tipo=$matches[1]&painel_id=$matches[2]&painel_ano=$matches[3]', 'top');
         add_rewrite_rule('^painel-brasil/([^/]*)/?', 'index.php?page_id=129&painel_ano=$matches[1]', 'top');
 
-
     }
     
     /**

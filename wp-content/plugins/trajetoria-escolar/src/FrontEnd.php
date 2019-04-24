@@ -459,7 +459,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                         <label>Ano referência
                             <select class="select-year" id="select-year" name="select-year">
                                 <option value="<?php echo "http://".$_SERVER[HTTP_HOST]."/painel-brasil/2018/" ; ?>" <?php if( (int)$this->year == 2019 ) { echo "selected"; }?> >2018</option>
-                                <option value="<?php echo "http://".$_SERVER[HTTP_HOST]."/painel-brasil/2017/" ; ?>" <?php if( (int)$this->year == 2018) { echo "selected"; }?>>2017</option>
+                                <option value="<?php echo "http://".$_SERVER[HTTP_HOST]."/painel-brasil/2017/" ; ?>" <?php if( (int)$this->year == 2018) { echo "selected"; }?> >2017</option>
                             </select>
                         </label>
                     </form>
@@ -646,14 +646,14 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
         global $wp_query;
         $id = (int)(isset($wp_query->query_vars['painel_id'])) ? $wp_query->query_vars['painel_id'] : 0;
         $tipo = (isset($wp_query->query_vars['painel_tipo'])) ? $wp_query->query_vars['painel_tipo'] : '';
-        $ano = (int)(isset($wp_query->query_vars['painel_ano'])) ? $wp_query->query_vars['painel_ano'] : 0;
 
-        $this->year = $ano;
-        $this->year === 0 ? 2019 : $this->year+1;
+        //A URL aparece com um ano de atraso
+        $this->year = (isset($wp_query->query_vars['painel_ano'])) ? (int)$wp_query->query_vars['painel_ano']+1 : $this->default_year;
+        $this->year = in_array($this->year, $this->years) ? $this->year : $this->default_year;
 
         $origem = $painel = null;
 
-        if (!empty($id) && !empty($ano) && in_array($tipo, array('estado', 'municipio', 'escola'))) {
+        if (!empty($id) && in_array($tipo, array('estado', 'municipio', 'escola'))) {
             if ($tipo === 'estado') {
                 $rEst = new MySQLEstadoRepository();
                 $origem = $rEst->get($id);
@@ -668,13 +668,53 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                 return false;
             }
             $rPainel = new MySQLPainelRepository();
-            $painel = $rPainel->get($origem, 2019);
+            $painel = $rPainel->get($origem, $this->year);
             ob_start();
             ?>
             <section class="ficha <?php echo $tipo; ?>">
                 <section id="redes-de-ensino">
+
+                    <?php if ($tipo === "estado") { ?>
+                        <div class="content-select-year-painel">
+                            <form name="form-year" id="form-year" method="post">
+                                <label>Ano referência
+                                    <select class="select-year" id="select-year" name="select-year">
+                                        <option value="<?php echo "http://".$_SERVER[HTTP_HOST]."/painel/estado/".substr($_SERVER['REQUEST_URI'],15, 2)."/2018" ; ?>" <?php if( (int)$this->year == 2019 ) { echo "selected"; }?> >2018</option>
+                                        <option value="<?php echo "http://".$_SERVER[HTTP_HOST]."/painel/estado/".substr($_SERVER['REQUEST_URI'],15, 2)."/2017" ; ?>" <?php if( (int)$this->year == 2018) { echo "selected"; }?> >2017</option>
+                                    </select>
+                                </label>
+                            </form>
+                        </div>
+                    <?php } ?>
+
+                    <?php if ($tipo === "municipio") { ?>
+                        <div class="content-select-year-painel">
+                            <form name="form-year" id="form-year" method="post">
+                                <label>Ano referência
+                                    <select class="select-year" id="select-year" name="select-year">
+                                        <option value="<?php echo "http://".$_SERVER[HTTP_HOST]."/painel/municipio/".$this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI'])."/2018"; ?>" <?php if( (int)$this->year == 2019 ) { echo "selected"; }?> >2018</option>
+                                        <option value="<?php echo "http://".$_SERVER[HTTP_HOST]."/painel/municipio/".$this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI'])."/2017"; ?>" <?php if( (int)$this->year == 2018) { echo "selected"; }?> >2017</option>
+                                    </select>
+                                </label>
+                            </form>
+                        </div>
+                    <?php } ?>
+
+                    <?php if ($tipo === "escola") { ?>
+                        <div class="content-select-year-painel">
+                            <form name="form-year" id="form-year" method="post">
+                                <label>Ano referência
+                                    <select class="select-year" id="select-year" name="select-year">
+                                        <option value="<?php echo "http://".$_SERVER[HTTP_HOST]."/painel/escola/".$this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI'])."/2018"; ?>" <?php if( (int)$this->year == 2019 ) { echo "selected"; }?> >2018</option>
+                                        <option value="<?php echo "http://".$_SERVER[HTTP_HOST]."/painel/escola/".$this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI'])."/2017"; ?>" <?php if( (int)$this->year == 2018) { echo "selected"; }?> >2017</option>
+                                    </select>
+                                </label>
+                            </form>
+                        </div>
+                    <?php } ?>
+
                     <header>
-                        <h2>Redes de Ensino</h2>
+                        <h2>Redes de Ensino - <?php echo $this->year-1 ; ?></h2>
                     </header>
                     <section id="total-em-distorcao">
                         <header>
@@ -708,22 +748,22 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                         </div>
                     </section>
                     <?php
-                    if ($tipo !== 'escola') {
-                        foreach ($painel['tipo_rede'] as $rede => $ensinos) {
-                            echo '<section id="rede-', strtolower($rede), '">';
-                            echo '<header><h3>Rede ', $rede, '</h3></header>';
-                            foreach ($ensinos as $ensino => $anos) {
-                                foreach ($anos as $ano => $v) {
-                                    echo self::gerarAmostra('Ensino ' . $ensino . '<span class="bold">' . (($ensino !== 'Médio') ? '<br/><span class="bold">Anos ' . $ano . '</span>' : '') . '</span>', $v['distorcao'], $v['distorcao'] + $v['sem_distorcao']);
+                        if ($tipo !== 'escola') {
+                            foreach ($painel['tipo_rede'] as $rede => $ensinos) {
+                                echo '<section id="rede-', strtolower($rede), '">';
+                                echo '<header><h3>Rede ', $rede, '</h3></header>';
+                                foreach ($ensinos as $ensino => $anos) {
+                                    foreach ($anos as $ano => $v) {
+                                        echo self::gerarAmostra('Ensino ' . $ensino . '<span class="bold">' . (($ensino !== 'Médio') ? '<br/><span class="bold">Anos ' . $ano . '</span>' : '') . '</span>', $v['distorcao'], $v['distorcao'] + $v['sem_distorcao']);
+                                    }
                                 }
+                                if ($tipo === 'municipio') {
+                                    echo '<a class="situacao-das-escolas" data-municipio="', $id, '" data-rede="', sanitize_title($rede), '" href="#situacao-das-escolas-rede-', sanitize_title($rede), '">Situação das escolas</a>';
+                                    echo '<img style="display: none;" alt="Processando..." title="Processando..." src="', admin_url('images/loading.gif'), '"/>';
+                                }
+                                echo '</section>';
                             }
-                            if ($tipo === 'municipio') {
-                                echo '<a class="situacao-das-escolas" data-municipio="', $id, '" data-rede="', sanitize_title($rede), '" href="#situacao-das-escolas-rede-', sanitize_title($rede), '">Situação das escolas</a>';
-                                echo '<img style="display: none;" alt="Processando..." title="Processando..." src="', admin_url('images/loading.gif'), '"/>';
-                            }
-                            echo '</section>';
                         }
-                    }
                     ?>
                     <section id="graficos-por-tipo-ensino">
                         <?php
@@ -853,6 +893,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                 'especificacao' => $especificacao,
                 'graficosPorTipoAno' => $graficosPorTipoAno,
                 'graficoPorRedes' => $graficoPorRedes,
+                'year' => $this->year
             ));
             wp_enqueue_script('google_charts', 'https://www.gstatic.com/charts/loader.js', null, false, true);
             return ob_get_clean();
@@ -966,5 +1007,11 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                 $post->post_title = $id . ' - ' . $nome;
             }
         }
+    }
+
+    //Function to return the number of municipio where painel is type cidade
+    public function getNumberMunicipioOrSchool($text){
+        preg_match('/[0-9]+/', $text, $m);
+        return isset($m[0]) ? $m[0] : false;
     }
 }

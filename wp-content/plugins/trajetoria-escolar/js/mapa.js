@@ -97,7 +97,7 @@ jQuery(document).ready(function ($) {
                                 let content = '<div class="iw">';
                                 content +='<h3 class="map-nome">' + this.nome + '</h3>';
                                 content += '<section class="map-section"><span class="map-total">' + this.distorcao.toLocaleString('pt-BR') + ' (' + ((pol.distorcao * 100) / (pol.distorcao + pol.semDistorcao)).toFixed(1).replace('.', ',') + '%)</span> crianças e adolescentes em distorção idade-série.</section>';
-                                content += '<a href="' + mapa.siteUrl + 'painel/municipio/' + this.id + '/" class="map-button">Ver os dados</a>';
+                                content += '<a href="' + mapa.siteUrl + 'painel/municipio/' + this.id + '/' + mapa.year + '/" class="map-button">Ver os dados</a>';
                                 content += '</div>';
                                 infoWindow.setContent(content);
                                 infoWindow.setPosition(this.center);
@@ -161,7 +161,7 @@ jQuery(document).ready(function ($) {
     $(document).on('change', '#cidades', function () {
         let id = parseInt($(this).val());
         if (id > 0) {
-            window.location.href = mapa.siteUrl + 'painel/municipio/' + id + '/';
+            window.location.href = mapa.siteUrl + 'painel/municipio/' + id + '/' + mapa.year;
         }
     });
 
