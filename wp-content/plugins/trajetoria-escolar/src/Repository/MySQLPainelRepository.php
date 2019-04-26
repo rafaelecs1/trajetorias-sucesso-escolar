@@ -80,7 +80,7 @@ class MySQLPainelRepository implements IPainelRepository
         }
         $repository = new MySQLDistorcaoRepository();
         $rDistorcaoPainel = new MySQLMapaRepository();
-        $totalGeral = $rDistorcaoPainel->getTotalGeral();
+        $totalGeral = $rDistorcaoPainel->getTotalGeral($anoReferencia);
 
         $painel = array(
             'distorcao' => $repository->getTotalBrasil($anoReferencia),

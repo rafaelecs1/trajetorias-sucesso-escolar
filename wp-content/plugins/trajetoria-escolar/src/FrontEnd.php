@@ -144,7 +144,7 @@ class FrontEnd
             $estado = new Estado($estado);
 
             $rMapa = new MySQLMapaRepository();
-            $mapa = $rMapa->get($estado, 2019);
+            $mapa = $rMapa->get($estado, $this->year);
         }
         header('Content-type: application/json;charset=UTF-8');
         echo $mapa;
@@ -453,7 +453,6 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
 
         <section class="ficha municipio">
             <section id="redes-de-ensino">
-
                 <div class="content-select-year-painel">
                     <form name="form-year" id="form-year" method="post">
                         <label>Ano referência
@@ -464,7 +463,6 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                         </label>
                     </form>
                 </div>
-
                 <header>
                     <h2>Redes de Ensino - <?php echo $this->year-1; ?></h2>
                 </header>
