@@ -576,7 +576,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                 <section class="genero">
                     <?php
                     foreach ($distorcao['genero'] as $k => $v) {
-                        echo self::gerarAmostra($k, $v['distorcao'], $distorcao['total_geral']);
+                        echo self::gerarAmostra($k, $v['distorcao'], $v['distorcao'] + $v['sem_distorcao']);
                     }
                     ?>
                 </section>
@@ -586,7 +586,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                 <section class="cor-raca">
                     <?php
                     foreach ($distorcao['cor_raca'] as $k => $v) {
-                        echo self::gerarAmostra($k, $v['distorcao'], $distorcao['total_geral']);
+                        echo self::gerarAmostra($k, $v['distorcao'], $v['distorcao'] + $v['sem_distorcao']);
                     }
                     ?>
                 </section>
@@ -596,7 +596,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                 <section class="localizacao">
                     <?php
                     foreach ($distorcao['localizacao'] as $k => $v) {
-                        echo self::gerarAmostra($k, $v['distorcao'], $distorcao['total_geral']);
+                        echo self::gerarAmostra($k, $v['distorcao'], $v['distorcao'] + $v['sem_distorcao']);
                     }
                     ?>
                 </section>
@@ -604,7 +604,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                 if (!empty($distorcao['localizacao_diferenciada'])) {
                     echo '<section class="localizacao-diferenciada">';
                     foreach ($distorcao['localizacao_diferenciada'] as $k => $v) {
-                        echo self::gerarAmostra($k, $v['distorcao'], $distorcao['total_geral']);
+                        echo self::gerarAmostra($k, $v['distorcao'], $v['distorcao'] + $v['sem_distorcao']);
                     }
                     echo '</section>';
                 }
@@ -820,11 +820,11 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     </section>
                 </section>
                 <section id="genero">
-                    <header><h2>Gênero</h2></header>
+                    <header><h2>Gênero 1</h2></header>
                     <section class="genero">
                         <?php
                         foreach ($painel['genero'] as $k => $v) {
-                            echo self::gerarAmostra($k, $v['distorcao'], $painel['total_geral']);
+                            echo self::gerarAmostra($k, $v['distorcao'],$v['distorcao'] + $v['sem_distorcao']);
                         }
                         ?>
                     </section>
@@ -834,7 +834,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     <section class="cor-raca">
                         <?php
                         foreach ($painel['cor_raca'] as $k => $v) {
-                            echo self::gerarAmostra($k, $v['distorcao'], $painel['total_geral']);
+                            echo self::gerarAmostra($k, $v['distorcao'],$v['distorcao'] + $v['sem_distorcao']);
                         }
                         ?>
                     </section>
@@ -844,7 +844,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     <section class="localizacao">
                         <?php
                         foreach ($painel['localizacao'] as $k => $v) {
-                            echo self::gerarAmostra($k, $v['distorcao'], $painel['total_geral']);
+                            echo self::gerarAmostra($k, $v['distorcao'],$v['distorcao'] + $v['sem_distorcao']);
                         }
                         ?>
                     </section>
@@ -852,7 +852,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     if (!empty($painel['localizacao_diferenciada'])) {
                         echo '<section class="localizacao-diferenciada">';
                         foreach ($painel['localizacao_diferenciada'] as $k => $v) {
-                            echo self::gerarAmostra($k, $v['distorcao'], $painel['total_geral']);
+                            echo self::gerarAmostra($k, $v['distorcao'],$v['distorcao'] + $v['sem_distorcao']);
                         }
                         echo '</section>';
                     }

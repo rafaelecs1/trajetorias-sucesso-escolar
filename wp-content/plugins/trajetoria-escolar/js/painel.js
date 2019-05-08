@@ -9,7 +9,7 @@ jQuery(document).ready(function ($) {
         if (total <= 0) {
             total = 1;
         }
-        return ' <span class="perc">(' + ((valor * 100) / total).toFixed(1).replace('.', ',') + '%)</span>';
+        return ' <span class="perc">(' + ((valor * 100) / total).toFixed(2).replace('.', ',') + '%)</span>';
     }
     $('div.amostra').each(function () {
         $('div.valor', this).each(function () {
