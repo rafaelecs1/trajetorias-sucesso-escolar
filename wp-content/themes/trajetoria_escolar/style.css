@@ -1280,6 +1280,8 @@ a.situacao-das-escolas:hover{
 #cor-raca .cor-raca{
     background-color: #eeeeee;
     padding:14.5%;
+	padding-left: 10%;
+	padding-right: 10%;
     width: 100%;
     
 }

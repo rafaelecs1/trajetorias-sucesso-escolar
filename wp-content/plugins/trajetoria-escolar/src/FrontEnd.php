@@ -123,7 +123,7 @@ class FrontEnd
             'siteUrl' => site_url('/'),
             'ajaxUrl' => admin_url('admin-ajax.php'),
             'actionGetCidades' => 'get_cidades',
-            'year' => $this->year-1
+            'year' => $this->year - 1
         ));
         wp_enqueue_script('google_maps', 'https://maps.googleapis.com/maps/api/js?key=' . GOOGLE_MAPS_API_KEY . '&callback=myMap', array(), false, true);
         wp_enqueue_script('infobox', plugin_dir_url(dirname(__FILE__)) . 'js/infobox.min.js', array('google_maps'), false, true);
@@ -156,7 +156,8 @@ class FrontEnd
      *
      * @return string Marcacao HTML
      */
-    public function mapaBrasil(){
+    public function mapaBrasil()
+    {
 
         $rDistorcaoMapa = new MySQLMapaRepository();
         $distorcaoMapa = $rDistorcaoMapa->getBrasil($this->year);
@@ -174,7 +175,7 @@ class FrontEnd
                 <section class="mn_container mn_flex center">
 
                     <div class="item item_1">
-                        <h2>Distorção idade-série no Brasil - <?php echo $this->year-1 ?></h2>
+                        <h2>Distorção idade-série no Brasil - <?php echo $this->year - 1 ?></h2>
                         <div class="mn_fundamental_e_medio">
 
                             <div class="mn_fundamental">
@@ -185,14 +186,18 @@ class FrontEnd
 
                                         <div class="item iniciais">
                                             <h4>Anos iniciais</h4>
-                                            <div class="value value_fi"><?php echo number_format($distorcaoMapa->nacional['anos_iniciais'], 0, ',', '.' ); ?></div>
-                                            <div class="perc">[<span class="perc_fi"><?php echo number_format( ($distorcaoMapa->nacional['anos_iniciais'] * 100) / $distorcaoMapa->nacional['total_iniciais'], 2 ) ?></span>]%</div>
+                                            <div class="value value_fi"><?php echo number_format($distorcaoMapa->nacional['anos_iniciais'], 0, ',', '.'); ?></div>
+                                            <div class="perc">[<span
+                                                        class="perc_fi"><?php echo number_format(($distorcaoMapa->nacional['anos_iniciais'] * 100) / $distorcaoMapa->nacional['total_iniciais'], 2) ?></span>]%
+                                            </div>
                                         </div>
 
                                         <div class="item finais">
                                             <h4>Anos finais</h4>
-                                            <div class="value value_ff"><?php echo number_format($distorcaoMapa->nacional['anos_finais'], 0, ',', '.' ); ?></div>
-                                            <div class="perc">[<span><?php echo number_format( ($distorcaoMapa->nacional['anos_finais'] * 100) / $distorcaoMapa->nacional['total_finais'], 2 ) ?></span>]%</div>
+                                            <div class="value value_ff"><?php echo number_format($distorcaoMapa->nacional['anos_finais'], 0, ',', '.'); ?></div>
+                                            <div class="perc">
+                                                [<span><?php echo number_format(($distorcaoMapa->nacional['anos_finais'] * 100) / $distorcaoMapa->nacional['total_finais'], 2) ?></span>]%
+                                            </div>
                                         </div>
 
                                     </div>
@@ -207,8 +212,10 @@ class FrontEnd
                                     <div class="valores">
 
                                         <div class="item unico">
-                                            <div class="value value_mi"><?php echo number_format($distorcaoMapa->nacional['medio'], 0, ',', '.' ); ?></div>
-                                            <div class="perc">[<span class="perc_mi"><?php echo number_format( ($distorcaoMapa->nacional['medio'] * 100) / $distorcaoMapa->nacional['total_medio'], 2 ) ?></span>]%</div>
+                                            <div class="value value_mi"><?php echo number_format($distorcaoMapa->nacional['medio'], 0, ',', '.'); ?></div>
+                                            <div class="perc">[<span
+                                                        class="perc_mi"><?php echo number_format(($distorcaoMapa->nacional['medio'] * 100) / $distorcaoMapa->nacional['total_medio'], 2) ?></span>]%
+                                            </div>
                                         </div>
 
                                     </div>
@@ -224,20 +231,50 @@ class FrontEnd
                         <div class="mapa_legenda">
 
                             <div class="item mapa">
-                                <svg version="1.1" id="svg-map" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="225px" height="225px"xml:space="preserve">
+                                <svg version="1.1" id="svg-map" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="225px"
+                                     height="225px" xml:space="preserve">
 
         <style type="text/css">
-            .st0{fill:#64C6E3;}
-            .st1{fill:#018BB3;}
-            .st2{fill:#ECB615;}
-            .st3{fill:#E38524;}
-            .st4{fill:#CC3282;}
+            .st0 {
+                fill: #64C6E3;
+            }
 
-            .st0:hover{fill:#3E7A8B;}
-            .st1:hover{fill:#055871;}
-            .st2:hover{fill:#A3810F;}
-            .st3:hover{fill:#9E5F14;}
-            .st4:hover{fill:#9F2965;}
+            .st1 {
+                fill: #018BB3;
+            }
+
+            .st2 {
+                fill: #ECB615;
+            }
+
+            .st3 {
+                fill: #E38524;
+            }
+
+            .st4 {
+                fill: #CC3282;
+            }
+
+            .st0:hover {
+                fill: #3E7A8B;
+            }
+
+            .st1:hover {
+                fill: #055871;
+            }
+
+            .st2:hover {
+                fill: #A3810F;
+            }
+
+            .st3:hover {
+                fill: #9E5F14;
+            }
+
+            .st4:hover {
+                fill: #9F2965;
+            }
 
         </style>
 
@@ -321,22 +358,30 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                                             </div>
                                             <ul>
                                                 <li class="norte">
-                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[6]['total'], 0, ',', '.' ); ?></span>
-                                                    <span class="perc">[<span class="value"><?php echo number_format( ((int)$distorcaoMapa->regiao[6]['total'] * 100) / (int)$distorcaoMapa->regiao[6]['total_geral'], 2 ) ?></span>%]</span>
+                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[6]['total'], 0, ',', '.'); ?></span>
+                                                    <span class="perc">[<span
+                                                                class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[6]['total'] * 100) / (int)$distorcaoMapa->regiao[6]['total_geral'], 2) ?></span>%]</span>
                                                 </li>
                                                 <li class="nordeste">
-                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[3]['total'], 0, ',', '.' ); ?></span>
-                                                    <span class="perc">[<span class="value"><?php echo number_format( ((int)$distorcaoMapa->regiao[3]['total'] * 100) / (int)$distorcaoMapa->regiao[3]['total_geral'], 2 ) ?></span>%]</span>
+                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[3]['total'], 0, ',', '.'); ?></span>
+                                                    <span class="perc">[<span
+                                                                class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[3]['total'] * 100) / (int)$distorcaoMapa->regiao[3]['total_geral'], 2) ?></span>%]</span>
                                                 </li>
                                                 <li class="sudeste">
-                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[9]['total'], 0, ',', '.' ); ?></span>
-                                                    <span class="perc">[<span class="value"><?php echo number_format( ((int)$distorcaoMapa->regiao[9]['total'] * 100) / (int)$distorcaoMapa->regiao[9]['total_geral'], 2 ) ?></span>%]</span></li>
+                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[9]['total'], 0, ',', '.'); ?></span>
+                                                    <span class="perc">[<span
+                                                                class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[9]['total'] * 100) / (int)$distorcaoMapa->regiao[9]['total_geral'], 2) ?></span>%]</span>
+                                                </li>
                                                 <li class="sul">
-                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[12]['total'], 0, ',', '.' ); ?></span>
-                                                    <span class="perc">[<span class="value"><?php echo number_format( ((int)$distorcaoMapa->regiao[12]['total'] * 100) / (int)$distorcaoMapa->regiao[12]['total_geral'], 2 ) ?></span>%]</span></li>
+                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[12]['total'], 0, ',', '.'); ?></span>
+                                                    <span class="perc">[<span
+                                                                class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[12]['total'] * 100) / (int)$distorcaoMapa->regiao[12]['total_geral'], 2) ?></span>%]</span>
+                                                </li>
                                                 <li class="centro_oeste">
-                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[0]['total'], 0, ',', '.' ); ?></span>
-                                                    <span class="perc">[<span class="value"><?php echo number_format( ((int)$distorcaoMapa->regiao[0]['total'] * 100) / (int)$distorcaoMapa->regiao[0]['total_geral'], 2 ) ?></span>%]</span></li>
+                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[0]['total'], 0, ',', '.'); ?></span>
+                                                    <span class="perc">[<span
+                                                                class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[0]['total'] * 100) / (int)$distorcaoMapa->regiao[0]['total_geral'], 2) ?></span>%]</span>
+                                                </li>
                                             </ul>
                                         </div>
 
@@ -344,24 +389,29 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                                             <h4>Anos finais</h4>
                                             <ul>
                                                 <li class="norte">
-                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[7]['total'], 0, ',', '.' ); ?></span>
-                                                    <span class="perc">[<span class="value"><?php echo number_format( ((int)$distorcaoMapa->regiao[7]['total'] * 100) / (int)$distorcaoMapa->regiao[7]['total_geral'], 2 ) ?></span>%]</span>
+                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[7]['total'], 0, ',', '.'); ?></span>
+                                                    <span class="perc">[<span
+                                                                class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[7]['total'] * 100) / (int)$distorcaoMapa->regiao[7]['total_geral'], 2) ?></span>%]</span>
                                                 </li>
                                                 <li class="nordeste">
-                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[4]['total'], 0, ',', '.' ); ?></span>
-                                                    <span class="perc">[<span class="value"><?php echo number_format( ((int)$distorcaoMapa->regiao[4]['total'] * 100) / (int)$distorcaoMapa->regiao[4]['total_geral'], 2 ) ?></span>%]</span>
+                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[4]['total'], 0, ',', '.'); ?></span>
+                                                    <span class="perc">[<span
+                                                                class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[4]['total'] * 100) / (int)$distorcaoMapa->regiao[4]['total_geral'], 2) ?></span>%]</span>
                                                 </li>
                                                 <li class="sudeste">
-                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[10]['total'], 0, ',', '.' ); ?></span>
-                                                    <span class="perc">[<span class="value"><?php echo number_format( ((int)$distorcaoMapa->regiao[10]['total'] * 100) / (int)$distorcaoMapa->regiao[10]['total_geral'], 2 ) ?></span>%]</span>
+                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[10]['total'], 0, ',', '.'); ?></span>
+                                                    <span class="perc">[<span
+                                                                class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[10]['total'] * 100) / (int)$distorcaoMapa->regiao[10]['total_geral'], 2) ?></span>%]</span>
                                                 </li>
                                                 <li class="sul">
-                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[13]['total'], 0, ',', '.' ); ?></span>
-                                                    <span class="perc">[<span class="value"><?php echo number_format( ((int)$distorcaoMapa->regiao[13]['total'] * 100) / (int)$distorcaoMapa->regiao[13]['total_geral'], 2 ) ?></span>%]</span>
+                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[13]['total'], 0, ',', '.'); ?></span>
+                                                    <span class="perc">[<span
+                                                                class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[13]['total'] * 100) / (int)$distorcaoMapa->regiao[13]['total_geral'], 2) ?></span>%]</span>
                                                 </li>
                                                 <li class="centro_oeste">
-                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[1]['total'], 0, ',', '.' ); ?></span>
-                                                    <span class="perc">[<span class="value"><?php echo number_format( ((int)$distorcaoMapa->regiao[1]['total'] * 100) / (int)$distorcaoMapa->regiao[1]['total_geral'], 2 ) ?></span>%]</span>
+                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[1]['total'], 0, ',', '.'); ?></span>
+                                                    <span class="perc">[<span
+                                                                class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[1]['total'] * 100) / (int)$distorcaoMapa->regiao[1]['total_geral'], 2) ?></span>%]</span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -384,24 +434,29 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                                         <div class="item unico">
                                             <ul>
                                                 <li class="norte">
-                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[8]['total'], 0, ',', '.' ); ?></span>
-                                                    <span class="perc">[<span class="value"><?php echo number_format( ((int)$distorcaoMapa->regiao[8]['total'] * 100) / (int)$distorcaoMapa->regiao[8]['total_geral'], 2 ) ?></span>%]</span>
+                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[8]['total'], 0, ',', '.'); ?></span>
+                                                    <span class="perc">[<span
+                                                                class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[8]['total'] * 100) / (int)$distorcaoMapa->regiao[8]['total_geral'], 2) ?></span>%]</span>
                                                 </li>
                                                 <li class="nordeste">
-                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[5]['total'], 0, ',', '.' ); ?></span>
-                                                    <span class="perc">[<span class="value"><?php echo number_format( ((int)$distorcaoMapa->regiao[5]['total'] * 100) / (int)$distorcaoMapa->regiao[5]['total_geral'], 2 ) ?></span>%]</span>
+                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[5]['total'], 0, ',', '.'); ?></span>
+                                                    <span class="perc">[<span
+                                                                class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[5]['total'] * 100) / (int)$distorcaoMapa->regiao[5]['total_geral'], 2) ?></span>%]</span>
                                                 </li>
                                                 <li class="sudeste">
-                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[11]['total'], 0, ',', '.' ); ?></span>
-                                                    <span class="perc">[<span class="value"><?php echo number_format( ((int)$distorcaoMapa->regiao[11]['total'] * 100) / (int)$distorcaoMapa->regiao[11]['total_geral'], 2 ) ?></span>%]</span>
+                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[11]['total'], 0, ',', '.'); ?></span>
+                                                    <span class="perc">[<span
+                                                                class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[11]['total'] * 100) / (int)$distorcaoMapa->regiao[11]['total_geral'], 2) ?></span>%]</span>
                                                 </li>
                                                 <li class="sul">
-                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[14]['total'], 0, ',', '.' ); ?></span>
-                                                    <span class="perc">[<span class="value"><?php echo number_format( ((int)$distorcaoMapa->regiao[14]['total'] * 100) / (int)$distorcaoMapa->regiao[14]['total_geral'], 2 ) ?></span>%]</span>
+                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[14]['total'], 0, ',', '.'); ?></span>
+                                                    <span class="perc">[<span
+                                                                class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[14]['total'] * 100) / (int)$distorcaoMapa->regiao[14]['total_geral'], 2) ?></span>%]</span>
                                                 </li>
                                                 <li class="centro_oeste">
-                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[2]['total'], 0, ',', '.' ); ?></span>
-                                                    <span class="perc">[<span class="value"><?php echo number_format( ((int)$distorcaoMapa->regiao[2]['total'] * 100) / (int)$distorcaoMapa->regiao[2]['total_geral'], 2 ) ?></span>%]</span>
+                                                    <span class="number"><?php echo number_format((int)$distorcaoMapa->regiao[2]['total'], 0, ',', '.'); ?></span>
+                                                    <span class="perc">[<span
+                                                                class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[2]['total'] * 100) / (int)$distorcaoMapa->regiao[2]['total_geral'], 2) ?></span>%]</span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -418,7 +473,8 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                 </section>
 
                 <div class="center" style="text-align: center;">
-                    <p><a id="bt_link_nacional" style="" href="/painel-brasil/<?php echo $this->year-1?>">Ver dados nacionais</a></p>
+                    <p><a id="bt_link_nacional" style="" href="/painel-brasil/<?php echo $this->year - 1 ?>">Ver dados
+                            nacionais</a></p>
                 </div>
 
             </div>
@@ -442,7 +498,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
         $tipo = (isset($wp_query->query_vars['painel_tipo'])) ? $wp_query->query_vars['painel_tipo'] : '';
 
         //A URL aparece com um ano de atraso
-        $this->year = (isset($wp_query->query_vars['painel_ano'])) ? (int)$wp_query->query_vars['painel_ano']+1 : $this->default_year;
+        $this->year = (isset($wp_query->query_vars['painel_ano'])) ? (int)$wp_query->query_vars['painel_ano'] + 1 : $this->default_year;
         $this->year = in_array($this->year, $this->years) ? $this->year : $this->default_year;
 
         $rDistorcaoPainel = new MySQLPainelRepository();
@@ -457,14 +513,20 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     <form name="form-year" id="form-year" method="post">
                         <label>Ano referência
                             <select class="select-year" id="select-year" name="select-year">
-                                <option value="<?php echo "http://".$_SERVER[HTTP_HOST]."/painel-brasil/2018/" ; ?>" <?php if( (int)$this->year == 2019 ) { echo "selected"; }?> >2018</option>
-                                <option value="<?php echo "http://".$_SERVER[HTTP_HOST]."/painel-brasil/2017/" ; ?>" <?php if( (int)$this->year == 2018) { echo "selected"; }?> >2017</option>
+                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel-brasil/2018/"; ?>" <?php if ((int)$this->year == 2019) {
+                                    echo "selected";
+                                } ?> >2018
+                                </option>
+                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel-brasil/2017/"; ?>" <?php if ((int)$this->year == 2018) {
+                                    echo "selected";
+                                } ?> >2017
+                                </option>
                             </select>
                         </label>
                     </form>
                 </div>
                 <header>
-                    <h2>Redes de Ensino - <?php echo $this->year-1; ?></h2>
+                    <h2>Redes de Ensino - <?php echo $this->year - 1; ?></h2>
                 </header>
                 <section id="total-em-distorcao">
                     <header>
@@ -551,6 +613,12 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                 </section>
                 <section id="grafico-por-redes">
                     <header><h2>Total de Matrículas</h2></header>
+                    <div class="valor">
+                        <?php
+                        echo number_format((int)$distorcao['total_geral'], 0, ',', '.')
+                        ?>
+                    </div><hr>
+
                     <div id="grafico_por_redes" class="grafico"></div>
                     <?php
                     $graficoPorRedes = array();
@@ -646,7 +714,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
         $tipo = (isset($wp_query->query_vars['painel_tipo'])) ? $wp_query->query_vars['painel_tipo'] : '';
 
         //A URL aparece com um ano de atraso
-        $this->year = (isset($wp_query->query_vars['painel_ano'])) ? (int)$wp_query->query_vars['painel_ano']+1 : $this->default_year;
+        $this->year = (isset($wp_query->query_vars['painel_ano'])) ? (int)$wp_query->query_vars['painel_ano'] + 1 : $this->default_year;
         $this->year = in_array($this->year, $this->years) ? $this->year : $this->default_year;
 
         $origem = $painel = null;
@@ -677,8 +745,14 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                             <form name="form-year" id="form-year" method="post">
                                 <label>Ano referência
                                     <select class="select-year" id="select-year" name="select-year">
-                                        <option value="<?php echo "http://".$_SERVER[HTTP_HOST]."/painel/estado/".substr($_SERVER['REQUEST_URI'],15, 2)."/2018" ; ?>" <?php if( (int)$this->year == 2019 ) { echo "selected"; }?> >2018</option>
-                                        <option value="<?php echo "http://".$_SERVER[HTTP_HOST]."/painel/estado/".substr($_SERVER['REQUEST_URI'],15, 2)."/2017" ; ?>" <?php if( (int)$this->year == 2018) { echo "selected"; }?> >2017</option>
+                                        <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/estado/" . substr($_SERVER['REQUEST_URI'], 15, 2) . "/2018"; ?>" <?php if ((int)$this->year == 2019) {
+                                            echo "selected";
+                                        } ?> >2018
+                                        </option>
+                                        <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/estado/" . substr($_SERVER['REQUEST_URI'], 15, 2) . "/2017"; ?>" <?php if ((int)$this->year == 2018) {
+                                            echo "selected";
+                                        } ?> >2017
+                                        </option>
                                     </select>
                                 </label>
                             </form>
@@ -690,8 +764,14 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                             <form name="form-year" id="form-year" method="post">
                                 <label>Ano referência
                                     <select class="select-year" id="select-year" name="select-year">
-                                        <option value="<?php echo "http://".$_SERVER[HTTP_HOST]."/painel/municipio/".$this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI'])."/2018"; ?>" <?php if( (int)$this->year == 2019 ) { echo "selected"; }?> >2018</option>
-                                        <option value="<?php echo "http://".$_SERVER[HTTP_HOST]."/painel/municipio/".$this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI'])."/2017"; ?>" <?php if( (int)$this->year == 2018) { echo "selected"; }?> >2017</option>
+                                        <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/municipio/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2018"; ?>" <?php if ((int)$this->year == 2019) {
+                                            echo "selected";
+                                        } ?> >2018
+                                        </option>
+                                        <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/municipio/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2017"; ?>" <?php if ((int)$this->year == 2018) {
+                                            echo "selected";
+                                        } ?> >2017
+                                        </option>
                                     </select>
                                 </label>
                             </form>
@@ -703,8 +783,14 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                             <form name="form-year" id="form-year" method="post">
                                 <label>Ano referência
                                     <select class="select-year" id="select-year" name="select-year">
-                                        <option value="<?php echo "http://".$_SERVER[HTTP_HOST]."/painel/escola/".$this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI'])."/2018"; ?>" <?php if( (int)$this->year == 2019 ) { echo "selected"; }?> >2018</option>
-                                        <option value="<?php echo "http://".$_SERVER[HTTP_HOST]."/painel/escola/".$this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI'])."/2017"; ?>" <?php if( (int)$this->year == 2018) { echo "selected"; }?> >2017</option>
+                                        <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/escola/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2018"; ?>" <?php if ((int)$this->year == 2019) {
+                                            echo "selected";
+                                        } ?> >2018
+                                        </option>
+                                        <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/escola/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2017"; ?>" <?php if ((int)$this->year == 2018) {
+                                            echo "selected";
+                                        } ?> >2017
+                                        </option>
                                     </select>
                                 </label>
                             </form>
@@ -712,7 +798,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     <?php } ?>
 
                     <header>
-                        <h2>Redes de Ensino - <?php echo $this->year-1 ; ?></h2>
+                        <h2>Redes de Ensino - <?php echo $this->year - 1; ?></h2>
                     </header>
                     <section id="total-em-distorcao">
                         <header>
@@ -746,22 +832,22 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                         </div>
                     </section>
                     <?php
-                        if ($tipo !== 'escola') {
-                            foreach ($painel['tipo_rede'] as $rede => $ensinos) {
-                                echo '<section id="rede-', strtolower($rede), '">';
-                                echo '<header><h3>Rede ', $rede, '</h3></header>';
-                                foreach ($ensinos as $ensino => $anos) {
-                                    foreach ($anos as $ano => $v) {
-                                        echo self::gerarAmostra('Ensino ' . $ensino . '<span class="bold">' . (($ensino !== 'Médio') ? '<br/><span class="bold">Anos ' . $ano . '</span>' : '') . '</span>', $v['distorcao'], $v['distorcao'] + $v['sem_distorcao']);
-                                    }
+                    if ($tipo !== 'escola') {
+                        foreach ($painel['tipo_rede'] as $rede => $ensinos) {
+                            echo '<section id="rede-', strtolower($rede), '">';
+                            echo '<header><h3>Rede ', $rede, '</h3></header>';
+                            foreach ($ensinos as $ensino => $anos) {
+                                foreach ($anos as $ano => $v) {
+                                    echo self::gerarAmostra('Ensino ' . $ensino . '<span class="bold">' . (($ensino !== 'Médio') ? '<br/><span class="bold">Anos ' . $ano . '</span>' : '') . '</span>', $v['distorcao'], $v['distorcao'] + $v['sem_distorcao']);
                                 }
-                                if ($tipo === 'municipio') {
-                                    echo '<a class="situacao-das-escolas" data-municipio="', $id, '" data-rede="', sanitize_title($rede), '" href="#situacao-das-escolas-rede-', sanitize_title($rede), '">Situação das escolas</a>';
-                                    echo '<img style="display: none;" alt="Processando..." title="Processando..." src="', admin_url('images/loading.gif'), '"/>';
-                                }
-                                echo '</section>';
                             }
+                            if ($tipo === 'municipio') {
+                                echo '<a class="situacao-das-escolas" data-municipio="', $id, '" data-rede="', sanitize_title($rede), '" href="#situacao-das-escolas-rede-', sanitize_title($rede), '">Situação das escolas</a>';
+                                echo '<img style="display: none;" alt="Processando..." title="Processando..." src="', admin_url('images/loading.gif'), '"/>';
+                            }
+                            echo '</section>';
                         }
+                    }
                     ?>
                     <section id="graficos-por-tipo-ensino">
                         <?php
@@ -799,6 +885,11 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     </section>
                     <section id="grafico-por-redes">
                         <header><h2>Total de Matrículas</h2></header>
+                        <div class="valor">
+                            <?php
+                            echo number_format((int)$painel['total_geral'], 0, ',', '.')
+                            ?>
+                        </div><hr>
                         <div id="grafico_por_redes" class="grafico"></div>
                         <?php
                         $graficoPorRedes = array();
@@ -824,7 +915,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     <section class="genero">
                         <?php
                         foreach ($painel['genero'] as $k => $v) {
-                            echo self::gerarAmostra($k, $v['distorcao'],$v['distorcao'] + $v['sem_distorcao']);
+                            echo self::gerarAmostra($k, $v['distorcao'], $v['distorcao'] + $v['sem_distorcao']);
                         }
                         ?>
                     </section>
@@ -834,7 +925,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     <section class="cor-raca">
                         <?php
                         foreach ($painel['cor_raca'] as $k => $v) {
-                            echo self::gerarAmostra($k, $v['distorcao'],$v['distorcao'] + $v['sem_distorcao']);
+                            echo self::gerarAmostra($k, $v['distorcao'], $v['distorcao'] + $v['sem_distorcao']);
                         }
                         ?>
                     </section>
@@ -844,7 +935,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     <section class="localizacao">
                         <?php
                         foreach ($painel['localizacao'] as $k => $v) {
-                            echo self::gerarAmostra($k, $v['distorcao'],$v['distorcao'] + $v['sem_distorcao']);
+                            echo self::gerarAmostra($k, $v['distorcao'], $v['distorcao'] + $v['sem_distorcao']);
                         }
                         ?>
                     </section>
@@ -852,7 +943,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     if (!empty($painel['localizacao_diferenciada'])) {
                         echo '<section class="localizacao-diferenciada">';
                         foreach ($painel['localizacao_diferenciada'] as $k => $v) {
-                            echo self::gerarAmostra($k, $v['distorcao'],$v['distorcao'] + $v['sem_distorcao']);
+                            echo self::gerarAmostra($k, $v['distorcao'], $v['distorcao'] + $v['sem_distorcao']);
                         }
                         echo '</section>';
                     }
@@ -1008,7 +1099,8 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
     }
 
     //Function to return the number of municipio where painel is type cidade
-    public function getNumberMunicipioOrSchool($text){
+    public function getNumberMunicipioOrSchool($text)
+    {
         preg_match('/[0-9]+/', $text, $m);
         return isset($m[0]) ? $m[0] : false;
     }
