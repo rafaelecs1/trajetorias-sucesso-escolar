@@ -1462,15 +1462,38 @@ Faixa
 .faixa{
     background-color: #ffb400;
     padding: 22px 0;
-    margin: 2px 0 80px 0;
+    margin: 2px 0 0 0;
     float: left;
-    width: 100%;;
-
+    width: 100%;
+}
+.faixa-video{
+	background-color: #fff;
+	padding: 22px 0;
+	margin: 2px 0 80px 0;
+	float: left;
+	width: 100%;
+}
+.faixa-video p {
+	margin-top: 15px 0 0 0;
+	color: black;
+	font-size: 18px;
+	display:inline-block;
+}
+.faixa-video a {
+	border: 1px solid white;
+	padding: 20px 20px 15px 40px;
+	display: inline-block;
+	float:right;
+}
+.faixa-video a.bot1 {
+	float: left;
+	width: 47%;
+	background-repeat: no-repeat;
+	background-position: center left;
+	padding: 20px 20px 20px 40px;
 }
 .home .faixa{
     background-position: bottom;
-    margin-bottom: 110px
-    
 }
 .faixa p{
     margin-top: 15px 0 0 0;
