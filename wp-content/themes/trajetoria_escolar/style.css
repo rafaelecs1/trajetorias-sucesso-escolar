@@ -1274,7 +1274,8 @@ a.situacao-das-escolas:hover{
 #localizacao .localizacao{
     background-color: #045396;
     padding:3%;
-    min-height: 256px
+	padding-top: 4%;
+    min-height: 310px
 }
 #genero .genero,
 #cor-raca .cor-raca{
@@ -1324,7 +1325,7 @@ a.situacao-das-escolas:hover{
     width: 74%;
     padding: 4%;
     background-color: #eeeeee;
-    min-height: 256px
+    min-height: 310px
 }
 
 #genero .amostra:first-child,

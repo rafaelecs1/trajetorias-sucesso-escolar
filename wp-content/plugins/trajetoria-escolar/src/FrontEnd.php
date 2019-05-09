@@ -165,6 +165,8 @@ class FrontEnd
         ob_start();
         wp_enqueue_style('mapa-nacional', plugin_dir_url(dirname(__FILE__)) . 'css/mapa-nacional.css');
         wp_enqueue_script('mapa-nacional', plugin_dir_url(dirname(__FILE__)) . 'js/mapa-nacional.js', array('jquery'), false, true);
+        wp_enqueue_script('countup', '//cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js', array(), false, true);
+        wp_enqueue_script('countupjq', 'http://bfintal.github.io/Counter-Up/jquery.counterup.min.js', array(), false, true);
 
         ?>
 
@@ -186,7 +188,8 @@ class FrontEnd
 
                                         <div class="item iniciais">
                                             <h4>Anos iniciais</h4>
-                                            <div class="value value_fi"><?php echo number_format($distorcaoMapa->nacional['anos_iniciais'], 0, ',', '.'); ?></div>
+                                            <?php $totalAnosIniciais = number_format($distorcaoMapa->nacional['anos_iniciais'], 0, ',', '.'); ?>
+                                            <div class="value value_fi"><span class="counter"><?php echo $totalAnosIniciais; sleep(2)?></span></div>
                                             <div class="perc">[<span
                                                         class="perc_fi"><?php echo number_format(($distorcaoMapa->nacional['anos_iniciais'] * 100) / $distorcaoMapa->nacional['total_iniciais'], 2) ?></span>]%
                                             </div>
@@ -557,7 +560,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     $percDistorcao = ($distorcao['distorcao'] * 100) / $divisor;
                     ?>
                     <div class="total"><?php echo self::formatarNumero($distorcao['distorcao']); ?> <span
-                                class="perc">(<?php echo number_format($percDistorcao, 1, ',', '.'); ?>%)</span></div>
+                                class="perc">(<?php echo number_format($percDistorcao, 1, ',', '.'); ?>%)<sup class="arterico">*</sup></span></div>
                 </section>
                 <?php
                 if (true) {
@@ -617,7 +620,8 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                         <?php
                         echo number_format((int)$distorcao['total_geral'], 0, ',', '.')
                         ?>
-                    </div><hr>
+                    </div>
+                    <hr>
 
                     <div id="grafico_por_redes" class="grafico"></div>
                     <?php
@@ -679,6 +683,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                 ?>
             </section>
         </section>
+        <small>* Taxa de distorção idade-serie</small>
 
         <?php
         if ($tipo !== 'escola') {
@@ -828,7 +833,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                         }
                         $percDistorcao = ($painel['distorcao'] * 100) / $divisor;
                         ?>
-                        <div class="total"><?php echo self::formatarNumero($painel['distorcao']); ?> <span class="perc">(<?php echo number_format($percDistorcao, 1, ',', '.'); ?>%)</span>
+                        <div class="total"><?php echo self::formatarNumero($painel['distorcao']); ?> <span class="perc">(<?php echo number_format($percDistorcao, 1, ',', '.'); ?>%)<sup class="asterico">*</sup></span>
                         </div>
                     </section>
                     <?php
@@ -889,7 +894,8 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                             <?php
                             echo number_format((int)$painel['total_geral'], 0, ',', '.')
                             ?>
-                        </div><hr>
+                        </div>
+                        <hr>
                         <div id="grafico_por_redes" class="grafico"></div>
                         <?php
                         $graficoPorRedes = array();
@@ -950,6 +956,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     ?>
                 </section>
             </section>
+            <small>* Taxa de distorção idade-serie</small>
             <div class="remodal"
                  data-remodal-id="situacao-das-escolas" <?php echo ($tipo === 'escola') ? 'style="display:none"' : ''; ?>>
                 <button data-remodal-action="close" class="remodal-close"></button>
