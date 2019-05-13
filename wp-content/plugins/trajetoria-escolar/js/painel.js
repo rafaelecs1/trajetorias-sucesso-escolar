@@ -9,17 +9,17 @@ jQuery(document).ready(function ($) {
         if (total <= 0) {
             total = 1;
         }
-        return ' <span class="perc">(' + ((valor * 100) / total).toFixed(2).replace('.', ',') + '%)</span>';
+        return ' <span class="perc">(' + ((valor * 100) / total).toFixed(2).replace('.', ',') + '%)<sup class="astericos">*</sup></span>';
     }
     $('div.amostra').each(function () {
         $('div.valor', this).each(function () {
             $(this).html($(this).html() + perc($(this)));
         });
     });
-    $('#redes-de-ensino .perc').each(function (i, e) {
-        $(e).append(' <sup class="asterisco">*</sup>');
-    });
-    $('#total-em-distorcao, #rede-municipal, #rede-estadual').append('<span class="legenda">* Taxa de distorção idade-serie</span>');
+    // $('#redes-de-ensino .perc').each(function (i, e) {
+    //     $(e).append(' <sup class="asterisco">*</sup>');
+    // });
+    // $('#total-em-distorcao, #rede-municipal, #rede-estadual').append('<span class="legenda">* Taxa de distorção idade-serie</span>');
     $('h1:eq(1)').before('<span class="pre-h1">' + painel.especificacao + '</span>').after('<span>Perfil das crianças e adolescentes em distorção idade-série:</span>');
     $('.situacao-das-escolas').click(function (e) {
         e.preventDefault();

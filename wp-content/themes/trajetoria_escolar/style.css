@@ -1083,6 +1083,13 @@ article .entry-header{
     line-height: 1em;
     font-size:4em 
 }
+.entry-header-home{
+	margin: 0;
+	line-height: 1em;
+	color: #045396;
+	font-size: 3em;
+	text-transform: uppercase;
+}
 .entry-header span.pre-h1{
     color: #045396;
     font-size: 1.9em
@@ -1274,7 +1281,8 @@ a.situacao-das-escolas:hover{
 #localizacao .localizacao{
     background-color: #045396;
     padding:3%;
-    min-height: 256px
+	padding-top: 4%;
+    min-height: 310px
 }
 #genero .genero,
 #cor-raca .cor-raca{
@@ -1324,7 +1332,7 @@ a.situacao-das-escolas:hover{
     width: 74%;
     padding: 4%;
     background-color: #eeeeee;
-    min-height: 256px
+    min-height: 310px
 }
 
 #genero .amostra:first-child,
@@ -1463,13 +1471,37 @@ Faixa
     padding: 22px 0;
     margin: 2px 0 80px 0;
     float: left;
-    width: 100%;;
-
+    width: 100%;
+}
+.faixa-video{
+	background-color: #fff;
+	padding: 22px 0;
+	margin: 2px 0 80px 0;
+	float: left;
+	width: 100%;
+}
+.faixa-video p {
+	margin-top: 15px 0 0 0;
+	color: black;
+	font-size: 18px;
+	display:inline-block;
+}
+.faixa-video a {
+	border: 1px solid white;
+	padding: 20px 20px 15px 40px;
+	display: inline-block;
+	float:right;
+}
+.faixa-video a.bot1 {
+	float: left;
+	width: 47%;
+	background-repeat: no-repeat;
+	background-position: center left;
+	padding: 20px 20px 20px 40px;
 }
 .home .faixa{
     background-position: bottom;
-    margin-bottom: 110px
-    
+	margin-bottom: 50px;
 }
 .faixa p{
     margin-top: 15px 0 0 0;
@@ -2185,4 +2217,7 @@ span.wpcf7-not-valid-tip{
     footer .realizacao li img{
         max-width: 100%;
     }
+}
+.alignjustify {
+	text-align: justify;
 }
