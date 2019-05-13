@@ -189,7 +189,9 @@ class FrontEnd
                                         <div class="item iniciais">
                                             <h4>Anos iniciais</h4>
                                             <?php $totalAnosIniciais = number_format($distorcaoMapa->nacional['anos_iniciais'], 0, ',', '.'); ?>
-                                            <div class="value value_fi"><span class="counter"><?php echo $totalAnosIniciais; sleep(2)?></span></div>
+                                            <div class="value value_fi"><span
+                                                        class="counter"><?php echo $totalAnosIniciais;
+                                                    sleep(2) ?></span></div>
                                             <div class="perc">[<span
                                                         class="perc_fi"><?php echo number_format(($distorcaoMapa->nacional['anos_iniciais'] * 100) / $distorcaoMapa->nacional['total_iniciais'], 2) ?></span>]%
                                             </div>
@@ -560,13 +562,15 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     $percDistorcao = ($distorcao['distorcao'] * 100) / $divisor;
                     ?>
                     <div class="total"><?php echo self::formatarNumero($distorcao['distorcao']); ?> <span
-                                class="perc">(<?php echo number_format($percDistorcao, 1, ',', '.'); ?>%)<sup class="arterico">*</sup></span></div>
+                                class="perc">(<?php echo number_format($percDistorcao, 1, ',', '.'); ?>%)<sup
+                                    class="arterico">*</sup></span></div>
                 </section>
+
                 <?php
                 if (true) {
                     foreach ($distorcao['tipo_rede'] as $rede => $ensinos) {
                         echo '<section id="rede-', strtolower($rede), '">';
-                        echo '<header><h3>Rede ', $rede, '</h3></header>';
+                        echo '<header><h3>Redes ', ($rede == 'Municipal') ? 'Municipais' : 'Estaduais', '</h3></header>';
                         foreach ($ensinos as $ensino => $anos) {
                             foreach ($anos as $ano => $v) {
                                 echo self::gerarAmostra('Ensino ' . $ensino . '<span class="bold">' . (($ensino !== 'Médio') ? '<br/><span class="bold">Anos ' . $ano . '</span>' : '') . '</span>', $v['distorcao'], $v['distorcao'] + $v['sem_distorcao']);
@@ -580,6 +584,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     }
                 }
                 ?>
+                <span class="legenda">* Taxa de distorção idade-serie</span>
                 <section id="graficos-por-tipo-ensino">
                     <?php
                     $tiposAno = array(
@@ -663,6 +668,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     ?>
                 </section>
             </section>
+            <span class="legenda">* Taxa de distorção idade-serie</span>
             <section id="localizacao">
                 <header><h2>Localização</h2></header>
                 <section class="localizacao">
@@ -683,8 +689,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                 ?>
             </section>
         </section>
-        <small>* Taxa de distorção idade-serie</small>
-
+        <span class="legenda">* Taxa de distorção idade-serie</span>
         <?php
         if ($tipo !== 'escola') {
             wp_enqueue_style('remodal', plugin_dir_url(dirname(__FILE__)) . 'css/remodal.css');
@@ -826,6 +831,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                                 ?>:
                             </h3>
                         </header>
+
                         <?php
                         $divisor = $painel['sem_distorcao'] + $painel['distorcao'];
                         if ($divisor <= 0) {
@@ -833,7 +839,8 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                         }
                         $percDistorcao = ($painel['distorcao'] * 100) / $divisor;
                         ?>
-                        <div class="total"><?php echo self::formatarNumero($painel['distorcao']); ?> <span class="perc">(<?php echo number_format($percDistorcao, 1, ',', '.'); ?>%)<sup class="asterico">*</sup></span>
+                        <div class="total"><?php echo self::formatarNumero($painel['distorcao']); ?> <span class="perc">(<?php echo number_format($percDistorcao, 1, ',', '.'); ?>%)<sup
+                                        class="asterico">*</sup></span>
                         </div>
                     </section>
                     <?php
@@ -854,6 +861,8 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                         }
                     }
                     ?>
+                    <span class="legenda">* Taxa de distorção idade-serie</span>
+
                     <section id="graficos-por-tipo-ensino">
                         <?php
                         $tiposAno = array(
@@ -917,7 +926,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     </section>
                 </section>
                 <section id="genero">
-                    <header><h2>Gênero 1</h2></header>
+                    <header><h2>Gênero</h2></header>
                     <section class="genero">
                         <?php
                         foreach ($painel['genero'] as $k => $v) {
@@ -936,6 +945,8 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                         ?>
                     </section>
                 </section>
+                <span class="legenda">* Taxa de distorção idade-serie</span>
+
                 <section id="localizacao">
                     <header><h2>Localização</h2></header>
                     <section class="localizacao">
@@ -956,7 +967,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     ?>
                 </section>
             </section>
-            <small>* Taxa de distorção idade-serie</small>
+            <span class="legenda">* Taxa de distorção idade-serie</span>
             <div class="remodal"
                  data-remodal-id="situacao-das-escolas" <?php echo ($tipo === 'escola') ? 'style="display:none"' : ''; ?>>
                 <button data-remodal-action="close" class="remodal-close"></button>
