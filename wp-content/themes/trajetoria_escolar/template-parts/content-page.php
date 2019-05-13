@@ -12,26 +12,32 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <?php if (is_front_page()) : ?>
 
-    <div class="faixa-video">
-        <div class="center">
-            <a class="bot1">
-                <p>For one beautiful night I knew what it was like to be a grandmother. Subjugated, yet honored.
-                    When the lights go out, it's nobody's business what goes on between two consenting adults. Then we'll go with that data file! Alright, let's mafia things up a bit. Joey, burn down the ship. Clamps, burn down the crew.
-                    There's no part of that sentence I didn't like! I wish! It's a nickel. Oh God, what have I done? I'm sure those windmills will keep them cool.
-                    Daddy Bender, we're hungry.
-                    Goodbye, cruel world. Goodbye, cruel lamp. Goodbye, cruel velvet drapes, lined with what would appear to be some sort of cruel muslin and the cute little pom-pom curtain pull cords. Cruel though they may be… Ven ve voke up, ve had zese wodies.
-                    drug you can just rub onto your skin? You'd think it would be something you'd have to freebase.
-                </p>
-            </a>
-            <a class="bot12">
-                <p>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/RpJ9ndpz_sI" frameborder="0"
-                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                </p>
-            </a>
+        <div class="faixa-video">
+            <div class="center">
+                <a class="bot1">
+                    <h3 class="entry-header-home">Plataforma Trajetórias de Sucesso Escolar</h3>
+                    <p class="alignjustify">A distorção idade-série acontece quando um aluno está com dois ou mais anos de atraso escolar,
+                        considerando a idade esperada para cada ano. No Brasil, cada criança deve ingressar no 1º ano do
+                        Ensino Fundamental aos 6 anos e concluir o 9º ano aos 14. No Ensino Médio, o ingresso deve
+                        acontecer aos 15 anos e a conclusão aos 17. A taxa de distorção idade-série é calculada pelo
+                        Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (INEP) com base no Censo
+                        Escolar. Segundo os dados da edição 2018 do Censo, de cada 100 alunos brasileiros matriculados
+                        em escolas públicas municipais e estaduais, 22 estão em situação de distorção idade-série. São
+                        quase 6,5 milhões de crianças e adolescentes em atraso escolar sobretudo devido à reprovações
+                        repetidas. A estratégia <b>Trajetórias de Sucesso Escolar</b> é uma iniciativa do UNICEF, com apoio da
+                        Samsung e do Instituto NET Claro Embratel, para enfrentar a cultura de fracasso escolar que leva
+                        a essas múltiplas reprovações e, muitas vezes, à exclusão escolar.
+                    </p>
+                </a>
+                <a class="bot12">
+                    <p>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/6P3DmtgOjfk" frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                    </p>
+                </a>
+            </div>
         </div>
-    </div>
     <?php endif; ?>
 
 
