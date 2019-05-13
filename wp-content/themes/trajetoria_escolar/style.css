@@ -1086,7 +1086,7 @@ article .entry-header{
 .entry-header-home{
 	margin: 0;
 	line-height: 1em;
-	color: #045396;
+	color: #ffffff;
 	font-size: 3em;
 	text-transform: uppercase;
 }
@@ -1474,7 +1474,7 @@ Faixa
     width: 100%;
 }
 .faixa-video{
-	background-color: #fff;
+	background-color: #64C6E3;
 	padding: 22px 0;
 	margin: 2px 0 80px 0;
 	float: left;
@@ -1482,12 +1482,11 @@ Faixa
 }
 .faixa-video p {
 	margin-top: 15px 0 0 0;
-	color: black;
+	color: #fff;
 	font-size: 18px;
 	display:inline-block;
 }
 .faixa-video a {
-	border: 1px solid white;
 	padding: 20px 20px 15px 40px;
 	display: inline-block;
 	float:right;
@@ -1501,7 +1500,7 @@ Faixa
 }
 .home .faixa{
     background-position: bottom;
-	margin-bottom: 50px;
+	margin-bottom: 0px;
 }
 .faixa p{
     margin-top: 15px 0 0 0;

@@ -15,7 +15,7 @@
         <div class="faixa-video">
             <div class="center">
                 <a class="bot1">
-                    <h3 class="entry-header-home">Plataforma Trajetórias de Sucesso Escolar</h3>
+                    <h3 class="entry-header-home">Trajetórias de Sucesso Escolar</h3>
                     <p class="alignjustify">A distorção idade-série acontece quando um aluno está com dois ou mais anos de atraso escolar,
                         considerando a idade esperada para cada ano. No Brasil, cada criança deve ingressar no 1º ano do
                         Ensino Fundamental aos 6 anos e concluir o 9º ano aos 14. No Ensino Médio, o ingresso deve
