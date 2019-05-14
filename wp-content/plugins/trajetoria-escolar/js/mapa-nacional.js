@@ -1,14 +1,17 @@
 jQuery(document).ready(function ($) {
     $('.region').hover(
-        function() {
+        function () {
             var region = this.getAttribute("xlink:href");
-            region = region.replace("#","");
-            $('.'+region).css('background-color', '#eeeeee');
+            region = region.replace("#", "");
+            $('.' + region).css('background-color', '#eeeeee');
         },
-        function() {
+        function () {
             var region = this.getAttribute("xlink:href");
-            region = region.replace("#","");
-            $('.'+region).css('background-color', 'transparent');
+            region = region.replace("#", "");
+            $('.' + region).css('background-color', 'transparent');
         }
     );
 });
+
+
+
