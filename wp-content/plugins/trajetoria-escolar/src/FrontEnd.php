@@ -847,7 +847,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     if ($tipo !== 'escola') {
                         foreach ($painel['tipo_rede'] as $rede => $ensinos) {
                             echo '<section id="rede-', strtolower($rede), '">';
-                            echo '<header><h3>Rede ', $rede, '</h3></header>';
+                            echo '<header><h3>', (($rede == 'Municipal') && ($tipo != "municipio")) ? 'Redes Municipais' : 'Rede '.$rede, '</h3></header>';
                             foreach ($ensinos as $ensino => $anos) {
                                 foreach ($anos as $ano => $v) {
                                     echo self::gerarAmostra('Ensino ' . $ensino . '<span class="bold">' . (($ensino !== 'Médio') ? '<br/><span class="bold">Anos ' . $ano . '</span>' : '') . '</span>', $v['distorcao'], $v['distorcao'] + $v['sem_distorcao']);
