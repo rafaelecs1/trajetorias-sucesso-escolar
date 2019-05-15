@@ -210,7 +210,7 @@ class FrontEnd
 
                             <div class="mn_medio">
                                 <div class="conteudo">
-                                    <h4>Ensino Médio</h4>
+                                    <h3>Ensino Médio</h3>
 
                                     <div class="valores">
 
@@ -429,7 +429,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                                 <div class="conteudo">
 
                                     <div class="cabecalho">
-                                        <h4>Ensino Médio</h4>
+                                        <h3>Ensino Médio</h3>
                                     </div>
 
                                     <div class="valores">
