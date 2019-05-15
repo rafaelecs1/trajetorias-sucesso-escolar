@@ -18,7 +18,7 @@
                     <h3 class="entry-header-home">Trajetórias de Sucesso Escolar</h3>
                     <p class="alignjustify">A distorção idade-série acontece quando um aluno está com dois ou mais anos de atraso escolar,
                         considerando a idade esperada para cada ano. No Brasil, cada criança deve ingressar no 1º ano do
-                        Ensino Fundamental aos 6 anos e concluir o 9º ano aos 14. No <b>Ensino Médio</b>, o ingresso deve
+                        Ensino Fundamental aos 6 anos e concluir o 9º ano aos 14. No Ensino Médio, o ingresso deve
                         acontecer aos 15 anos e a conclusão aos 17. A taxa de distorção idade-série é calculada pelo
                         Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (INEP) com base no Censo
                         Escolar. Segundo os dados da edição 2018 do Censo, de cada 100 alunos brasileiros matriculados
