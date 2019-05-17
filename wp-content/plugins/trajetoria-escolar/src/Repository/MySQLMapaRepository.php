@@ -79,24 +79,32 @@ class MySQLMapaRepository implements IMapaRepository
         }
         $valores = $this->getTotalBrasil($anoReferencia);
 
-
         $mapa = new \stdClass();
         $mapa->nacional->anos_iniciais = 0;
         $mapa->nacional->anos_finais = 0;
         $mapa->nacional->medio = 0;
+
         // Gera informações nacionais
         foreach ($valores as $valor) {
-            if ($valor->tipo_ano == 'Iniciais')
+            if ($valor->tipo_ano == 'Iniciais') {
                 $mapa->nacional->anos_iniciais += $valor->total;
-            if ($valor->tipo_ano == 'Finais')
+                $mapa->nacional->total_iniciais += (int)$valor->total_geral;
+            }
+            if ($valor->tipo_ano == 'Finais') {
                 $mapa->nacional->anos_finais += $valor->total;
-            if ($valor->tipo_ano == 'Todos')
+                $mapa->nacional->total_finais += (int)$valor->total_geral;
+            }
+            if ($valor->tipo_ano == 'Todos') {
                 $mapa->nacional->medio += $valor->total;
+                $mapa->nacional->total_medio += (int)$valor->total_geral;
+            }
+
         }
         // Gera informações regionais
         $mapa->regiao = $valores;
-        $this->saveBrasil(2, $anoReferencia, (array)$mapa);
-        return $mapa;
+        $mapa = $this->saveBrasil(2, $anoReferencia, $mapa);
+
+        return (object)json_decode($mapa, true);
     }
 
     public function saveBrasil($origem, $anoReferencia = 0, $painel = array())
@@ -110,7 +118,7 @@ class MySQLMapaRepository implements IMapaRepository
             $tipo,
             json_encode($painel)
         ));
-        return $origem;
+        return json_encode($painel);
     }
 
     /**
@@ -213,14 +221,8 @@ class MySQLMapaRepository implements IMapaRepository
     public function getDistorcaoGeral($anoReferencia = 0)
     {
         $resul = array();
-        $query = $this->db->get_results(
-            'SELECT
-              ano_referencia,
-              COUNT(*) AS total
-            FROM te_distorcoes
-           WHERE ano_referencia = 2018;',
-            ARRAY_A
-        );
+        $sql = sprintf('SELECT ano_referencia, COUNT(*) AS total FROM te_distorcoes WHERE ano_referencia = %s', $anoReferencia);
+        $query = $this->db->get_results($sql,ARRAY_A);
         if (!empty($query)) {
             foreach ($query as $item) {
                 if (!isset($resul[$item['ano_referencia']])) {
@@ -230,17 +232,17 @@ class MySQLMapaRepository implements IMapaRepository
         }
         return $resul;
     }
+
     public function getTotalGeral($anoReferencia = 0)
     {
-        $resul = array();
-        $query = $this->db->get_results(
+        $sql = sprintf(
             'SELECT              
-              SUM(sem_distorcao + distorcao_1 + distorcao_2 + distorcao_3) AS total
+            SUM(sem_distorcao + distorcao_1 + distorcao_2 + distorcao_3) AS total
             FROM te_distorcoes d
             JOIN te_distorcoes_anos da ON d.id = da.distorcao_id
-            WHERE d.ano_referencia = 2018;',
-            ARRAY_A
-        );
+            WHERE d.ano_referencia = %s',
+            $anoReferencia);
+        $query = $this->db->get_results($sql,ARRAY_A);
 
         return (int)$query[0]['total'];
     }
@@ -248,12 +250,16 @@ class MySQLMapaRepository implements IMapaRepository
     public function getTotalBrasil($anoReferencia = 0)
     {
         $sql = sprintf(
-            'SELECT d.tipo_ano, es.regiao, SUM(da.distorcao_3 + da.distorcao_2) as total FROM te_distorcoes d
+            'SELECT 
+                        d.tipo_ano, es.regiao,
+                        SUM(da.distorcao_3 + da.distorcao_2) as total,
+                        SUM(da.sem_distorcao + da.distorcao_1 + da.distorcao_2 + da.distorcao_3) AS total_geral
+                    FROM te_distorcoes d
                     JOIN te_distorcoes_anos as da ON d.id = da.distorcao_id
                     JOIN te_escolas as e ON e.id = d.escola_id
                     JOIN te_municipios as m ON m.id = e.municipio_id
                     JOIN te_estados as es ON es.id = m.estado_id
-                    GROUP BY es.regiao, d.tipo_ano, d.ano_referencia HAVING d.ano_referencia = 2018',
+                    GROUP BY es.regiao, d.tipo_ano, d.ano_referencia HAVING d.ano_referencia = %s',
             $anoReferencia
         );
         return $this->db->get_results($sql);

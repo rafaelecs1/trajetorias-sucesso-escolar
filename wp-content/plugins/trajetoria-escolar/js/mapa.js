@@ -3,7 +3,13 @@ var map,
     label,
     infoWindow;
 jQuery(document).ready(function ($) {
-    $('h1:eq(1)').after('<p class="entry-header-description">Nas redes públicas municipais e estaduais (Censo Escolar 2017 - INEP/MEC)</p>');
+
+    $('h1:eq(1)').after('<p class="entry-header-description">Nas redes públicas municipais e estaduais (Censo Escolar - INEP/MEC)</p> ');
+
+    $('#select-year').change(function () {
+        $('#form-year').submit();
+    });
+
     $('#estados').change(function () {
         let me = $(this);
         id = parseInt($(me).val());
@@ -91,7 +97,7 @@ jQuery(document).ready(function ($) {
                                 let content = '<div class="iw">';
                                 content +='<h3 class="map-nome">' + this.nome + '</h3>';
                                 content += '<section class="map-section"><span class="map-total">' + this.distorcao.toLocaleString('pt-BR') + ' (' + ((pol.distorcao * 100) / (pol.distorcao + pol.semDistorcao)).toFixed(1).replace('.', ',') + '%)</span> crianças e adolescentes em distorção idade-série.</section>';
-                                content += '<a href="' + mapa.siteUrl + 'painel/municipio/' + this.id + '/" class="map-button">Ver os dados</a>';
+                                content += '<a href="' + mapa.siteUrl + 'painel/municipio/' + this.id + '/' + mapa.year + '/" class="map-button">Ver os dados</a>';
                                 content += '</div>';
                                 infoWindow.setContent(content);
                                 infoWindow.setPosition(this.center);
@@ -145,19 +151,22 @@ jQuery(document).ready(function ($) {
                         url = url.replace(mapa.siteUrl, '/');
                         ga('send', 'pageview', url);
                     }
-                    $('#mapa').prepend('<a id="link-ficha-estado" style="display:none;" href="' + mapa.siteUrl + '/painel/estado/' + id + '/">Ver dados do estado</a>');
+                    $('#mapa').prepend('<a id="link-ficha-estado" style="display:none;" href="' + mapa.siteUrl + '/painel/estado/' + id + '/' + mapa.year + '">Ver dados do estado</a>');
                     $('#link-ficha-estado').fadeIn(100);
                 }
             });
         }
     });
+
     $(document).on('change', '#cidades', function () {
         let id = parseInt($(this).val());
         if (id > 0) {
-            window.location.href = mapa.siteUrl + 'painel/municipio/' + id + '/';
+            window.location.href = mapa.siteUrl + 'painel/municipio/' + id + '/' + mapa.year;
         }
     });
+
     label = new InfoBox();
+
     infoWindow = new google.maps.InfoWindow();
 
     if (window.location.hash !== '') {

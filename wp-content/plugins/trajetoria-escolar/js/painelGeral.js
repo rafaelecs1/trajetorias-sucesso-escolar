@@ -2,25 +2,28 @@ jQuery(document).ready(function ($) {
     //Interface
     $('#voltar').attr('href', painel.siteUrl + painel.voltar);
 
-    function perc(ele)
-    {
+    function perc(ele) {
         let total = parseInt($(ele).data('total')),
             valor = parseInt($(ele).data('valor'));
         if (total <= 0) {
             total = 1;
         }
-        return ' <span class="perc">(' + ((valor * 100) / total).toFixed(1).replace('.', ',') + '%)</span>';
+        return ' <span class="perc">(' + ((valor * 100) / total).toFixed(1).replace('.', ',') + '%)<sup class="asterisco">*</sup> </span>';
     }
+
     $('div.amostra').each(function () {
         $('div.valor', this).each(function () {
             $(this).html($(this).html() + perc($(this)));
         });
     });
-    $('#redes-de-ensino .perc').each(function (i, e) {
-        $(e).append(' <sup class="asterisco">*</sup>');
-    });
-    $('#total-em-distorcao, #rede-municipal, #rede-estadual').append('<span class="legenda">* Taxa de distorção idade-serie</span>');
-    $('h1:eq(1)').before('<span class="pre-h1">' + painel.especificacao + '</span>').after('<span>Perfil das crianças e adolescentes em distorção idade-série:</span>');
+    // $('#redes-de-ensino .perc').each(function (i, e) {
+    //     $(e).append(' <sup class="asterisco">*</sup>');/
+    // });
+    // $('#total-em-distorcao, #rede-municipal, #rede-estadual').append('<span class="legenda">* Taxa de distorção idade-serie</span>');
+
+    var escopo = painel.especificacao == null ? "" : painel.especificacao;
+
+    $('h1:eq(1)').before('<span class="pre-h1">' + escopo + '</span>').after('<span>Perfil das crianças e adolescentes em distorção idade-série:</span>');
     $('.situacao-das-escolas').click(function (e) {
         e.preventDefault();
         let me = $(this),
@@ -77,8 +80,7 @@ jQuery(document).ready(function ($) {
     }
     painel.graficoPorRedes.unshift(legendaPorAtraso);
 
-    function charts()
-    {
+    function charts() {
         let options = {
             width: '100%',
             height: 400,
@@ -135,11 +137,11 @@ jQuery(document).ready(function ($) {
         }
     }
 
-    function drawChart(id, data, options)
-    {
+    function drawChart(id, data, options) {
         let chart = new google.charts.Bar(document.getElementById(id));
         chart.draw(data, google.charts.Bar.convertOptions(options));
     }
+
     $('section.aba:not(:eq(0))').hide();
     $('ul.abas>li:eq(0)').addClass('active');
     $('ul.abas>li>a').click(function (e) {
@@ -167,5 +169,10 @@ jQuery(document).ready(function ($) {
             url = url.replace('#', '');
             ga('send', 'pageview', url + $(this).attr('href'));
         }
+    });
+
+    $('#select-year').change(function () {
+        var value_link = $(this).val();
+        window.location.href = value_link;
     });
 });
