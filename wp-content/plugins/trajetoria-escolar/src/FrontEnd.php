@@ -618,7 +618,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                     ?>
                 </section>
                 <section id="grafico-por-redes">
-                    <header><h2>Total de Matrículas</h2></header>
+                    <header><h2>Total de Matrículas na Educação Básica</h2></header>
                     <div class="valor">
                         <?php
                         echo number_format((int)$distorcao['total_geral'], 0, ',', '.')
@@ -896,7 +896,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                         ?>
                     </section>
                     <section id="grafico-por-redes">
-                        <header><h2>Total de Matrículas</h2></header>
+                        <header><h2>Total de Matrículas na Educação Básica</h2></header>
                         <div class="valor">
                             <?php
                             echo number_format((int)$painel['total_geral'], 0, ',', '.')
@@ -988,7 +988,7 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                 $voltar = '#' . $origem->getEstado()->getId();
                 $especificacao = 'Município:';
             } elseif ($tipo === 'escola') {
-                $voltar = 'painel/municipio/' . $origem->getMunicipio()->getId() . '/';
+                $voltar = 'painel/municipio/' . $origem->getMunicipio()->getId() . '/'. (int)($this->year-1);
                 $especificacao = $origem->getMunicipio()->getNome() . ' - Rede ' . $origem->getDependencia();
             }
             wp_localize_script('painel', 'painel', array(

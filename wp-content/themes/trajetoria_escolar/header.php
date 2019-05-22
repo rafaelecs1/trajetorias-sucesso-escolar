@@ -79,8 +79,10 @@
         }
 
         if(strpos($_SERVER['REQUEST_URI'], '/painel/') !== false) {
-            $faixa = '<a href="#" class="button" id="voltar">
-                Voltar para o ' . ((strpos($_SERVER['REQUEST_URI'], '/municipio/') !== false || strpos($_SERVER['REQUEST_URI'], '/estado/') !== false) ? 'mapa' : 'município') . '</a>';
+            $faixa =
+                '<a href="#" class="button" id="voltar"> Voltar para o '
+                    .((strpos($_SERVER['REQUEST_URI'], '/municipio/') !== false || strpos($_SERVER['REQUEST_URI'], '/estado/') !== false) ? 'mapa' : 'município').
+                '</a>';
         }
 
         if(!empty($faixa)) {

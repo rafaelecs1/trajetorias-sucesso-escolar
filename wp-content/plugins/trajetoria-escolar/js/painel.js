@@ -2,6 +2,8 @@ jQuery(document).ready(function ($) {
     //Interface
     $('#voltar').attr('href', painel.siteUrl + painel.voltar);
 
+    console.log(painel.voltar);
+
     function perc(ele)
     {
         let total = parseInt($(ele).data('total')),
