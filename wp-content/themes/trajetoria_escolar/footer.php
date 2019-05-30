@@ -29,8 +29,8 @@
                 <?php
                 $realizacao = array(
                     'unicef' => array('url' => 'https://www.unicef.org/brazil/pt/', 'tipo' => 'Iniciativa'),
-                    'samsung' => array('url' => 'https://www.samsung.com/br/', 'tipo' => 'Parcerias Estratégicas'),
-                    'netclaroembratel' => array('url' => 'https://www.institutonetclaroembratel.org.br/', 'tipo' => ' '),
+//                    'samsung' => array('url' => 'https://www.samsung.com/br/', 'tipo' => 'Parcerias Estratégicas'),
+                    'netclaroembratel' => array('url' => 'https://www.institutonetclaroembratel.org.br/', 'tipo' => 'Parceiro Estratégico'),
                     'aprendiz' => array('url' => 'http://www.cidadeescolaaprendiz.org.br/', 'tipo' => 'Parceiro técnico'),
                     );
                 foreach($realizacao as $k => $v)

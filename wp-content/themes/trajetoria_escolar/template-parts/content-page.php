@@ -24,8 +24,7 @@
                         Escolar. Segundo os dados da edição 2018 do Censo, de cada 100 alunos brasileiros matriculados
                         em escolas públicas municipais e estaduais, 22 estão em situação de distorção idade-série. São
                         quase 6,5 milhões de crianças e adolescentes em atraso escolar sobretudo devido à reprovações
-                        sucessivas. A estratégia <b>Trajetórias de Sucesso Escolar</b> é uma iniciativa do UNICEF, com apoio da
-                        Samsung e do Instituto NET Claro Embratel, para enfrentar a cultura de fracasso escolar que leva
+                        sucessivas. A estratégia <b>Trajetórias de Sucesso Escolar</b> é uma iniciativa do UNICEF, com apoio do Instituto NET Claro Embratel e outros parceiros, para enfrentar a cultura de fracasso escolar que leva
                         a essas múltiplas reprovações e, muitas vezes, à exclusão escolar.
                     </p>
                 </a>
