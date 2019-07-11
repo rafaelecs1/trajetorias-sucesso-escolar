@@ -196,12 +196,12 @@ class FrontEnd
 
 
         <section id="slider-tabs">
-            <ul class="abas">
+            <ul class="abas" >
                 <li class="tablinks active" onclick="openCity(event, 'tab-1')"><a href="javascript:void(0);">Distorção Idade Série</a></li>
                 <li class="tablinks" onclick="openCity(event, 'tab-2')"><a  href="javascript:void(0);">Taxa de Desistência</a></li>
                 <li class="tablinks" onclick="openCity(event, 'tab-3')"><a href="javascript:void(0);">Taxa de Abandono</a></li>
             </ul>
-            <section id="tab-1" class="aba-home tabcontent">
+            <section id="tab-1" class="aba-home tabcontent active" style="display: block;">
 
                 <?php
 
@@ -210,14 +210,14 @@ class FrontEnd
                 ?>
 
             </section>
-            <section id="tab-2" class="aba-home tabcontent">
+            <section id="tab-2" class="aba-home tabcontent" style="display: none;">
                 <?php
 
                 include_once 'wp-includes/tabs_home/tab2-brasil.php'
 
                 ?>
             </section>
-            <section id="tab-3" class="aba-home tabcontent">
+            <section id="tab-3" class="aba-home tabcontent" style="display: none;">
                 <?php
 
                 include_once 'wp-includes/tabs_home/tab3-brasil.php'

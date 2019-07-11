@@ -18,3 +18,4 @@ function openCity(evt, cityName) {
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
 }
+// openCity(event, 'tab-1')
