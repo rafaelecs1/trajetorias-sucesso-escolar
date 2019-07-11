@@ -28,7 +28,7 @@
                         a essas múltiplas reprovações e, muitas vezes, à exclusão escolar.
                     </p>
                 </a>
-                <a class="bot12">
+                <a class="bot12 bot1">
                     <p>
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/6P3DmtgOjfk" frameborder="0"
                                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"

@@ -1480,6 +1480,12 @@ Faixa
 	float: left;
 	width: 100%;
 }
+@media screen and (max-width: 1000px) {
+	.faixa-video a.bot1  {
+		width: 100% !important;
+		text-align: center;
+	}
+}
 .faixa-video p {
 	margin-top: 15px 0 0 0;
 	color: #fff;
