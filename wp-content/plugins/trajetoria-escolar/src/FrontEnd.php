@@ -168,7 +168,7 @@ class FrontEnd
         wp_enqueue_script('waypoints', plugin_dir_url(dirname(__FILE__)) . 'js/waypoints.js', array('jquery'), false, true);
         wp_enqueue_script('counterup', plugin_dir_url(dirname(__FILE__)) . 'js/counterup.js', array('jquery'), false, true);
         wp_enqueue_script('counter', plugin_dir_url(dirname(__FILE__)) . 'js/counter.js', array('jquery'), false, true);
-        wp_enqueue_script('tabs', plugin_dir_url(dirname(__FILE__)) . 'js/tabs.js', array('jquery'), true, true);
+        wp_enqueue_script('tabs', plugin_dir_url(dirname(__FILE__)) . 'js/tabs.js', array('jquery'), false, true);
 
         ?>
         <!-- Tab links -->
@@ -194,39 +194,14 @@ class FrontEnd
 <!--            <p>Tokyo is the capital of Japan.</p>-->
 <!--        </div>-->
 
-        <div class="container">
 
-            <ul class="tabs">
-                <li class="tab-link current" data-tab="tab-1">Tab One</li>
-                <li class="tab-link" data-tab="tab-2">Tab Two</li>
-                <li class="tab-link" data-tab="tab-3">Tab Three</li>
-                <li class="tab-link" data-tab="tab-4">Tab Four</li>
-            </ul>
-
-            <div id="tab-1" class="tab-content current">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </div>
-            <div id="tab-2" class="tab-content">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
-            <div id="tab-3" class="tab-content">
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            </div>
-            <div id="tab-4" class="tab-content">
-                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </div>
-
-        </div><!-- container -->
         <section id="slider-tabs">
             <ul class="abas">
-<!--                <li class="tablinks"><a href="javascript:void(0);" onclick="openCity(eventData, 'tab-1')">Distorção Idade Série</a></li>-->
-<!--                <li class="tablinks"><a  href="javascript:void(0);" onclick="openCity(eventData, 'tab-2')">Taxa de Desistência</a></li>-->
-<!--                <li class="tablinks"><a href="javascript:void(0);" onclick="openCity(eventData, 'tab-3')">Taxa de Abandono</a></li>-->
-                <li class="tablinks active"><a href="javascript:void(0);" data-tab="tab-1">Distorção Idade Série</a></li>
-                <li class="tablinks"><a  href="javascript:void(0);" data-tab="tab-2">Taxa de Desistência</a></li>
-                <li class="tablinks"><a href="javascript:void(0);" data-tab="tab-3")">Taxa de Abandono</a></li>
+                <li class="tablinks active" onclick="openCity(event, 'tab-1')"><a href="javascript:void(0);">Distorção Idade Série</a></li>
+                <li class="tablinks" onclick="openCity(event, 'tab-2')"><a  href="javascript:void(0);">Taxa de Desistência</a></li>
+                <li class="tablinks" onclick="openCity(event, 'tab-3')"><a href="javascript:void(0);">Taxa de Abandono</a></li>
             </ul>
-            <section id="tab-1" class="aba-home tab-content active">
+            <section id="tab-1" class="aba-home tabcontent">
 
                 <?php
 
@@ -235,14 +210,14 @@ class FrontEnd
                 ?>
 
             </section>
-            <section id="tab-2" class="aba-home tab-content">
+            <section id="tab-2" class="aba-home tabcontent">
                 <?php
 
                 include_once 'wp-includes/tabs_home/tab2-brasil.php'
 
                 ?>
             </section>
-            <section id="tab-3" class="aba-home tab-content">
+            <section id="tab-3" class="aba-home tabcontent">
                 <?php
 
                 include_once 'wp-includes/tabs_home/tab3-brasil.php'

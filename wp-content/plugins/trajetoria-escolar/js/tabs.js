@@ -1,14 +1,20 @@
- jQuery(document).ready(function(){
+function openCity(evt, cityName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
 
-     jQuery('ul.abas li').click(function(){
-         alert()
-        var tab_id = jQuery(this).attr('data-tab');
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
 
-         jQuery('ul.abas li').removeClass('active');
-         jQuery('.tab-content').removeClass('active');
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
 
-         jQuery(this).addClass('active');
-         jQuery("#"+tab_id).addClass('active');
-    })
-
-})
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
