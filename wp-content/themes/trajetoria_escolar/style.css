@@ -1081,7 +1081,7 @@ article .entry-header{
 .entry-header h1{
     margin: 0;
     line-height: 1em;
-    font-size:4em 
+    font-size:4em
 }
 .entry-header-home{
 	margin: 0;
@@ -1137,7 +1137,7 @@ article .entry-header{
     background-color: #eeeeee;
     min-height: 300px;
     width: 36.5%;
-    min-height: 444px   
+    min-height: 444px
 }
 .escola #rede-estadual,
 .escola #rede-municipal{
@@ -1238,7 +1238,7 @@ a.situacao-das-escolas:hover{
 }
 #graficos-por-tipo-ensino ul.abas li{
     display: inline;
-    
+
 }
 #graficos-por-tipo-ensino ul.abas li a{
     padding: 3%;
@@ -1259,10 +1259,47 @@ a.situacao-das-escolas:hover{
     background: #e4e4e4
 }
 
+#slider-tabs{
+    margin-right: 1%;
+    margin-top: 1%;
+    width: 100%
+}
+#slider-tabs ul.abas{
+    margin: 0;
+    padding: 0
+}
+#slider-tabs ul.abas li{
+    display: inline;
+
+}
+#slider-tabs ul.abas li a{
+    padding: 3%;
+    text-decoration: none;
+    color: #3c3c3c;
+    font-size: 1.5em;
+    display: inline-block;
+    transition: ease 0.2s;
+    background-color: #eee;
+    border-right: 7px solid #fff;
+}
+
+#slider-tabs ul.abas li a:hover{
+    background-color: #ffb400
+}
+
+#slider-tabs ul.abas li.active a{
+    background: #e4e4e4
+}
+
 .aba{
     padding: 7%;
     width: 100%;
     background: #e4e4e4
+}
+
+.aba-home{
+    width: 100%;
+    background: #e4e4e4;
 }
 
 
@@ -1291,7 +1328,7 @@ a.situacao-das-escolas:hover{
 	padding-left: 10%;
 	padding-right: 10%;
     width: 100%;
-    
+
 }
 #cor-raca .cor-raca{
     padding:5%;
@@ -1323,7 +1360,7 @@ a.situacao-das-escolas:hover{
 #localizacao .localizacao-diferenciada .amostra{
     margin-right: 0;
     border-right: 0
-        
+
 }
 #localizacao{
     width: 100%
@@ -1350,7 +1387,7 @@ a.situacao-das-escolas:hover{
 }
 #localizacao .localizacao .amostra div:first-child{
     color: #fff;
-} 
+}
 
 #localizacao .localizacao .valor{
     color: #fff;
@@ -1388,7 +1425,7 @@ button.menu-toggle {
 }
 
 .center {
-	max-width: 1400px;
+	max-width: 1286px;
 	width: 100%;
 	padding: 0 60px;
 	margin: auto;
@@ -1514,7 +1551,7 @@ Faixa
     color: white;
     font-size: 18px;
     display:inline-block;
-  
+
 }
 .faixa a{
     color: white;
@@ -1557,7 +1594,7 @@ Faixa
     background-repeat: no-repeat;
     background-position: center left;
     padding: 20px 20px 20px 40px;
-    
+
 }
 .faixa a.bot2{
     float: right;
@@ -1584,7 +1621,7 @@ Faixa
     margin: 0;
     margin-left: 115px;
     max-width: 363px
-    
+
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -1654,7 +1691,7 @@ h1, h2, h3, h4, h5, h6{
     color: white;
     width: calc(100vw * 0.1991174848317705);
     height: calc(100vh * 0.060);
-    margin: 0;      
+    margin: 0;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -1716,22 +1753,22 @@ h1, h2, h3, h4, h5, h6{
     vertical-align: middle;
     margin-right: 10px;
 }
-#legenda>ul>li:nth-child(1)>span{    
+#legenda>ul>li:nth-child(1)>span{
     background-color: #3582A9;
 }
-#legenda>ul>li:nth-child(2)>span{    
+#legenda>ul>li:nth-child(2)>span{
     background-color: #7FA8AD;
 }
-#legenda>ul>li:nth-child(3)>span{    
+#legenda>ul>li:nth-child(3)>span{
     background-color: #CFD59C;
 }
-#legenda>ul>li:nth-child(4)>span{    
+#legenda>ul>li:nth-child(4)>span{
     background-color: #FEBE8A;
 }
-#legenda>ul>li:nth-child(5)>span{    
+#legenda>ul>li:nth-child(5)>span{
     background-color: #FD7E5E;
 }
-#legenda>ul>li:nth-child(6)>span{    
+#legenda>ul>li:nth-child(6)>span{
     background-color: #E73A3B;
 }
 
@@ -1883,7 +1920,7 @@ textarea{
     width: 100%;
     padding: 10px;
     border-radius: 0
-    
+
 }
 
 input[type="submit"]{
@@ -1943,7 +1980,7 @@ Situação das escolas
 }
 #lista-escolas input{
     margin-top: 30px;
-	border-radius: 32px;	
+	border-radius: 32px;
     background: #EEECEC url('./img/search.png') no-repeat;
     background-position: 90% 50%;
     float: right;
@@ -1994,7 +2031,7 @@ section .entry-excerpt{
 .left{
     width: 55.5%;
     float: left;
-    padding-right: 90px; 
+    padding-right: 90px;
 }
 .left>a{
     color: #559FC4;
@@ -2037,7 +2074,7 @@ section .entry-excerpt{
     transition: ease 0.2s;
 }
 #todos-os-cadernos a:hover, .left>a.button:hover{
-    border-color: #045396;  
+    border-color: #045396;
     background-color: #045396;
 }
 #todos-os-cadernos div{
@@ -2047,7 +2084,7 @@ section .entry-excerpt{
 #link-ficha-estado{
     z-index: 1;
     position: absolute;
-    padding: 10px 20px;  
+    padding: 10px 20px;
     margin: 25px;
     font-weight: bold;
     letter-spacing: 1px;
@@ -2086,15 +2123,15 @@ span.wpcf7-not-valid-tip{
     #localizacao .localizacao-diferenciada{
         width: 100%
     }
-    
+
     .filtros-e-legendas{
         position: relative
     }
     #total-em-distorcao .total{
         display: inline-block
     }
-    #total-em-distorcao, 
-    #rede-estadual, 
+    #total-em-distorcao,
+    #rede-estadual,
     #rede-municipal,
     .cor-raca,
     #localizacao .localizacao,
@@ -2102,7 +2139,7 @@ span.wpcf7-not-valid-tip{
         padding: 10%!important;
         margin-bottom: 10px
     }
-    
+
     a.situacao-das-escolas{
         margin-top: 0px
     }
@@ -2177,7 +2214,7 @@ span.wpcf7-not-valid-tip{
     .home .entry-header{
         margin-bottom: 17px
     }
-    
+
     footer .share{
         display: none
     }
@@ -2200,7 +2237,7 @@ span.wpcf7-not-valid-tip{
     .center {
         padding: 0 30px;
     }
-    .faixa #voltar, 
+    .faixa #voltar,
     .faixa .button {
         padding: 15px 40px 15px 40px;
         background-image: none;
