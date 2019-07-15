@@ -1,16 +1,12 @@
 
-<div class="center_mapa_inicial">
+<div class="center_mapa_inicial animated fadeIn">
 
     <div class="mn_mapa_nacional">
-        <header class="entry-header">
-            <h1 class="entry-title">Crianças e adolescentes em distorção idade-série</h1><p class="entry-header-description">Nas redes públicas municipais e estaduais (Censo Escolar - INEP/MEC)</p>
-
-        </header>
 
         <section class="mn_container mn_flex center">
 
             <div class="item item_1">
-                <h2>Distorção idade-série no Brasil - <?php echo $this->year - 1 ?></h2>
+                <h2 class="animated fadeInDown">Distorção idade-série no Brasil - <?php echo $this->year - 1 ?></h2>
                 <div class="mn_fundamental_e_medio">
 
                     <div class="mn_fundamental">

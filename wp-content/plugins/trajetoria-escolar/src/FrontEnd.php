@@ -164,6 +164,7 @@ class FrontEnd
 
         ob_start();
         wp_enqueue_style('mapa-nacional', plugin_dir_url(dirname(__FILE__)) . 'css/mapa-nacional.css');
+        wp_enqueue_style('animate', plugin_dir_url(dirname(__FILE__)) . 'css/animate.css');
         wp_enqueue_script('mapa-nacional', plugin_dir_url(dirname(__FILE__)) . 'js/mapa-nacional.js', array('jquery'), false, true);
         wp_enqueue_script('waypoints', plugin_dir_url(dirname(__FILE__)) . 'js/waypoints.js', array('jquery'), false, true);
         wp_enqueue_script('counterup', plugin_dir_url(dirname(__FILE__)) . 'js/counterup.js', array('jquery'), false, true);
@@ -171,35 +172,14 @@ class FrontEnd
         wp_enqueue_script('tabs', plugin_dir_url(dirname(__FILE__)) . 'js/tabs.js', array('jquery'), false, true);
 
         ?>
-        <!-- Tab links -->
-<!--        <div class="tab">-->
-<!--            <button class="tablinks" onclick="openCity(event, 'London')">London</button>-->
-<!--            <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>-->
-<!--            <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>-->
-<!--        </div>-->
-<!---->
-        <!-- Tab content -->
-<!--        <div id="London" class="tabcontent">-->
-<!--            <h3>London</h3>-->
-<!--            <p>London is the capital city of England.</p>-->
-<!--        </div>-->
-<!---->
-<!--        <div id="Paris" class="tabcontent">-->
-<!--            <h3>Paris</h3>-->
-<!--            <p>Paris is the capital of France.</p>-->
-<!--        </div>-->
-<!---->
-<!--        <div id="Tokyo" class="tabcontent">-->
-<!--            <h3>Tokyo</h3>-->
-<!--            <p>Tokyo is the capital of Japan.</p>-->
-<!--        </div>-->
+
 
 
         <section id="slider-tabs">
             <ul class="abas" >
-                <li class="tablinks active" onclick="openCity(event, 'tab-1')"><a href="javascript:void(0);">Distorção Idade Série</a></li>
-                <li class="tablinks" onclick="openCity(event, 'tab-2')"><a  href="javascript:void(0);">Taxa de Desistência</a></li>
-                <li class="tablinks" onclick="openCity(event, 'tab-3')"><a href="javascript:void(0);">Taxa de Abandono</a></li>
+                <li id="tab-link-1" class="tablinks active" onclick="openTab(1)"><a href="javascript:void(0);">Distorção Idade Série</a></li>
+                <li id="tab-link-2" class="tablinks" onclick="openTab(2)"><a  href="javascript:void(0);">Taxa de Desistência</a></li>
+                <li id="tab-link-3" class="tablinks" onclick="openTab(3)"><a href="javascript:void(0);">Taxa de Abandono</a></li>
             </ul>
             <section id="tab-1" class="aba-home tabcontent active" style="display: block;">
 

@@ -1,5 +1,5 @@
 
-<div class="center_mapa_inicial">
+<div class="center_mapa_inicial animated fadeIn">
 
     <div class="mn_mapa_nacional">
 

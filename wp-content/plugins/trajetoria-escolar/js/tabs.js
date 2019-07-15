@@ -1,4 +1,7 @@
-function openCity(evt, cityName) {
+var numbertab = 1;
+var intervalo = '';
+
+function openTab(numbertab, auto) {
     // Declare all variables
     var i, tabcontent, tablinks;
 
@@ -10,12 +13,27 @@ function openCity(evt, cityName) {
 
     // Get all elements with class="tablinks" and remove the class "active"
     tablinks = document.getElementsByClassName("tablinks");
+
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
 
-    // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
+    if (!auto) {
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById('tab-' + numbertab).style.display = "block";
+        document.getElementById('tab-link-' + numbertab).classList.add('active');
+        clearInterval(this.intervalo);
+    } else {
+        if (this.numbertab > 3) {
+            this.numbertab = 1
+        }
+        var ntab = this.numbertab++;
+        document.getElementById('tab-' + ntab).style.display = "block";
+        document.getElementById('tab-link-' + ntab).classList.add('active');
+    }
+
 }
-// openCity(event, 'tab-1')
+
+var intervalo = setInterval(function () {
+    openTab(this.numbertab, true)
+}, 7000);
