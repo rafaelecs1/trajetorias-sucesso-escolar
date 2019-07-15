@@ -7,6 +7,9 @@
 
 # track this file .gitignore (i.e. do NOT ignore it)
 !.gitignore
+!modelagem.mwb
+!modelagem.mwb.bak
+
 
 # track .editorconfig file (i.e. do NOT ignore it)
 !.editorconfig
