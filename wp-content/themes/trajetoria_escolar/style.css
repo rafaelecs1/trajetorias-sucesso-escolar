@@ -2263,3 +2263,6 @@ span.wpcf7-not-valid-tip{
 .alignjustify {
 	text-align: justify;
 }
+.tablinks {
+    font-weight: bold;
+}
