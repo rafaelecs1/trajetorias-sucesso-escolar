@@ -9,6 +9,7 @@
 !.gitignore
 !modelagem.mwb
 !modelagem.mwb.bak
+!.htaccess
 
 
 # track .editorconfig file (i.e. do NOT ignore it)
