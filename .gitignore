@@ -1,5 +1,6 @@
 /*
 !wp-content/
+!wp-includes/
 
 # ignore all files starting with .
 .*
