@@ -232,12 +232,28 @@ class FrontEnd
         ob_start();
 
         ?>
+        <div class="content-select-year-painel">
+            <form name="form-year" id="form-year" method="post">
+                <label>Ano referência
+                    <select class="select-year" id="select-year" name="select-year">
+                        <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel-brasil/2018/"; ?>" <?php if ((int)$this->year == 2019) {
+                            echo "selected";
+                        } ?> >2018
+                        </option>
+                        <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel-brasil/2017/"; ?>" <?php if ((int)$this->year == 2018) {
+                            echo "selected";
+                        } ?> >2017
+                        </option>
+                    </select>
+                </label>
+            </form>
+        </div>
 
         <section id="slider-tabs">
             <ul class="abas" >
                 <li id="tab-link-1" class="tablinks active" onclick="openTab(1)"><a href="javascript:void(0);">Distorção Idade Série</a></li>
-                <li id="tab-link-2" class="tablinks" onclick="openTab(2)"><a  href="javascript:void(0);">Taxa de Desistência</a></li>
-                <li id="tab-link-3" class="tablinks" onclick="openTab(3)"><a href="javascript:void(0);">Taxa de Abandono</a></li>
+                <li id="tab-link-2" class="tablinks" onclick="openTab(2)"><a  href="javascript:void(0);">Reprovação</a></li>
+                <li id="tab-link-3" class="tablinks" onclick="openTab(3)"><a href="javascript:void(0);">Abandono</a></li>
             </ul>
             <section id="tab-1" class="aba-panel tabcontent active" style="display: block;">
 
@@ -271,7 +287,7 @@ class FrontEnd
 //            wp_enqueue_style('animate', plugin_dir_url(dirname(__FILE__)) . 'css/animate.css');
             wp_enqueue_style('remodal_theme', plugin_dir_url(dirname(__FILE__)) . 'css/remodal-default-theme.css', array('remodal'));
             wp_enqueue_script('remodal', plugin_dir_url(dirname(__FILE__)) . 'js/remodal.js', array('jquery'), false, true);
-//            wp_enqueue_script('tabs', plugin_dir_url(dirname(__FILE__)) . 'js/tabs.js', array('jquery'), false, true);
+            wp_enqueue_script('tabs', plugin_dir_url(dirname(__FILE__)) . 'js/tabs.js', array('jquery'), false, true);
 
         }
 

@@ -1,23 +1,7 @@
 <section class="ficha municipio">
     <section id="redes-de-ensino">
-        <div class="content-select-year-painel">
-            <form name="form-year" id="form-year" method="post">
-                <label>Ano referência
-                    <select class="select-year" id="select-year" name="select-year">
-                        <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel-brasil/2018/"; ?>" <?php if ((int)$this->year == 2019) {
-                            echo "selected";
-                        } ?> >2018
-                        </option>
-                        <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel-brasil/2017/"; ?>" <?php if ((int)$this->year == 2018) {
-                            echo "selected";
-                        } ?> >2017
-                        </option>
-                    </select>
-                </label>
-            </form>
-        </div>
         <header>
-            <h2>Redes de Ensino - <?php echo $this->year - 1; ?></h2>
+            <h2 class="mt-0">Perfil das crianças e adolescentes em distorção idade-série: Redes de Ensino - <?php echo $this->year - 1; ?> </h2>
         </header>
         <section id="total-em-distorcao">
             <header>
