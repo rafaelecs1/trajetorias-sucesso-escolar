@@ -177,9 +177,9 @@ class FrontEnd
 
         <section id="slider-tabs">
             <ul class="abas" >
-                <li id="tab-link-1" class="tablinks active" onclick="openTab(1)"><a href="javascript:void(0);">Distorção Idade Série</a></li>
-                <li id="tab-link-2" class="tablinks" onclick="openTab(2)"><a  href="javascript:void(0);">Taxa de Desistência</a></li>
-                <li id="tab-link-3" class="tablinks" onclick="openTab(3)"><a href="javascript:void(0);">Taxa de Abandono</a></li>
+                <li id="tab-link-1" class="tablinks active" onclick="openTab(1)"><a href="javascript:void(0);">Distorção idade-série </a></li>
+                <li id="tab-link-2" class="tablinks" onclick="openTab(2)"><a  href="javascript:void(0);">Reprovação</a></li>
+                <li id="tab-link-3" class="tablinks" onclick="openTab(3)"><a href="javascript:void(0);">Abandono</a></li>
             </ul>
             <section id="tab-1" class="aba-home tabcontent active" style="display: block;">
 

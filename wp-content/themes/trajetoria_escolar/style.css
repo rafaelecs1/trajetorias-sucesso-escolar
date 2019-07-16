@@ -2268,3 +2268,6 @@ span.wpcf7-not-valid-tip{
 .mt-0 {
 	margin-top: 0px;
 }
+.tablinks {
+    font-weight: bold;
+}
