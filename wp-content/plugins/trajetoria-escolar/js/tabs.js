@@ -36,4 +36,4 @@ function openTab(numbertab, auto) {
 
 var intervalo = setInterval(function () {
     openTab(this.numbertab, true)
-}, 7000);
+}, 70000);
