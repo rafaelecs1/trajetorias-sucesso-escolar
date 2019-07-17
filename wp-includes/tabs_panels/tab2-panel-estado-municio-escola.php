@@ -1,7 +1,7 @@
 <section class="ficha <?php echo $tipo; ?>">
     <section id="redes-de-ensino">
         <header>
-            <h2 lass="mt-0">Redes de Ensino - <?php echo $this->year - 1; ?></h2>
+            <h2 class="mt-0">Redes de Ensino - <?php echo $this->year - 1; ?></h2>
         </header>
         <section id="total-em-distorcao">
             <header>
