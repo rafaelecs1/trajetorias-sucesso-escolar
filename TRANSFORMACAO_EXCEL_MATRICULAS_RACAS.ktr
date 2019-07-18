@@ -809,6 +809,18 @@
     </file>
     <fields>
       <field>
+        <name>Código da Escola</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
         <name>Não declarada</name>
         <type>Integer</type>
         <length>-1</length>
@@ -1748,7 +1760,7 @@
     <sheets>
       <sheet>
         <name>cor-raca</name>
-        <startrow>5</startrow>
+        <startrow>4</startrow>
         <startcol>0</startcol>
       </sheet>
     </sheets>
@@ -1803,23 +1815,18 @@
       </field>
       <field>
         <name>Branca</name>
-        <rename/>
       </field>
       <field>
         <name>Preta</name>
-        <rename/>
       </field>
       <field>
         <name>Parda</name>
-        <rename/>
       </field>
       <field>
         <name>Amarela</name>
-        <rename/>
       </field>
       <field>
         <name>Indígena</name>
-        <rename/>
       </field>
       <field>
         <name>Não declarada_1</name>
@@ -1827,23 +1834,18 @@
       </field>
       <field>
         <name>Branca_1</name>
-        <rename/>
       </field>
       <field>
         <name>Preta_1</name>
-        <rename/>
       </field>
       <field>
         <name>Parda_</name>
-        <rename/>
       </field>
       <field>
         <name>Amarela_1</name>
-        <rename/>
       </field>
       <field>
         <name>Indígena_1</name>
-        <rename/>
       </field>
       <field>
         <name>Não declarada_2</name>
@@ -1851,23 +1853,18 @@
       </field>
       <field>
         <name>Branca_2</name>
-        <rename/>
       </field>
       <field>
         <name>Preta_2</name>
-        <rename/>
       </field>
       <field>
         <name>Parda_2</name>
-        <rename/>
       </field>
       <field>
         <name>Amarela_2</name>
-        <rename/>
       </field>
       <field>
         <name>Indígena_2</name>
-        <rename/>
       </field>
       <field>
         <name>Não declarada_3</name>
@@ -1875,23 +1872,18 @@
       </field>
       <field>
         <name>Branca_3</name>
-        <rename/>
       </field>
       <field>
         <name>Preta_3</name>
-        <rename/>
       </field>
       <field>
         <name>Parda_3</name>
-        <rename/>
       </field>
       <field>
         <name>Amarela_3</name>
-        <rename/>
       </field>
       <field>
         <name>Indígena_3</name>
-        <rename/>
       </field>
       <field>
         <name>Não declarada_4</name>
@@ -1899,23 +1891,18 @@
       </field>
       <field>
         <name>Branca_4</name>
-        <rename/>
       </field>
       <field>
         <name>Preta_4</name>
-        <rename/>
       </field>
       <field>
         <name>Parda_4</name>
-        <rename/>
       </field>
       <field>
         <name>Amarela_4</name>
-        <rename/>
       </field>
       <field>
         <name>Indígena_4</name>
-        <rename/>
       </field>
       <field>
         <name>Não declarada_5</name>
@@ -1923,23 +1910,18 @@
       </field>
       <field>
         <name>Branca_5</name>
-        <rename/>
       </field>
       <field>
         <name>Preta_5</name>
-        <rename/>
       </field>
       <field>
         <name>Parda_5</name>
-        <rename/>
       </field>
       <field>
         <name>Amarela_5</name>
-        <rename/>
       </field>
       <field>
         <name>Indígena_5</name>
-        <rename/>
       </field>
       <field>
         <name>Não declarada_6</name>
@@ -1947,23 +1929,18 @@
       </field>
       <field>
         <name>Branca_6</name>
-        <rename/>
       </field>
       <field>
         <name>Preta_6</name>
-        <rename/>
       </field>
       <field>
         <name>Parda_6</name>
-        <rename/>
       </field>
       <field>
         <name>Amarela_6</name>
-        <rename/>
       </field>
       <field>
         <name>Indígena_6</name>
-        <rename/>
       </field>
       <field>
         <name>Não declarada_7</name>
@@ -1971,23 +1948,18 @@
       </field>
       <field>
         <name>Branca_7</name>
-        <rename/>
       </field>
       <field>
         <name>Preta_7</name>
-        <rename/>
       </field>
       <field>
         <name>Parda_7</name>
-        <rename/>
       </field>
       <field>
         <name>Amarela_7</name>
-        <rename/>
       </field>
       <field>
         <name>Indígena_7</name>
-        <rename/>
       </field>
       <field>
         <name>Não declarada_8</name>
@@ -1995,23 +1967,18 @@
       </field>
       <field>
         <name>Branca_8</name>
-        <rename/>
       </field>
       <field>
         <name>Preta_8</name>
-        <rename/>
       </field>
       <field>
         <name>Parda_8</name>
-        <rename/>
       </field>
       <field>
         <name>Amarela_8</name>
-        <rename/>
       </field>
       <field>
         <name>Indígena_8</name>
-        <rename/>
       </field>
       <field>
         <name>Não declarada_9</name>
@@ -2019,23 +1986,18 @@
       </field>
       <field>
         <name>Branca_9</name>
-        <rename/>
       </field>
       <field>
         <name>Preta_9</name>
-        <rename/>
       </field>
       <field>
         <name>Parda_9</name>
-        <rename/>
       </field>
       <field>
         <name>Amarela_9</name>
-        <rename/>
       </field>
       <field>
         <name>Indígena_9</name>
-        <rename/>
       </field>
       <field>
         <name>Não declarada_10</name>
@@ -2043,23 +2005,18 @@
       </field>
       <field>
         <name>Branca_10</name>
-        <rename/>
       </field>
       <field>
         <name>Preta_10</name>
-        <rename/>
       </field>
       <field>
         <name>Parda_10</name>
-        <rename/>
       </field>
       <field>
         <name>Amarela_10</name>
-        <rename/>
       </field>
       <field>
         <name>Indígena_10</name>
-        <rename/>
       </field>
       <field>
         <name>Não declarada_11</name>
@@ -2067,23 +2024,18 @@
       </field>
       <field>
         <name>Branca_11</name>
-        <rename/>
       </field>
       <field>
         <name>Preta_11</name>
-        <rename/>
       </field>
       <field>
         <name>Parda_11</name>
-        <rename/>
       </field>
       <field>
         <name>Amarela_11</name>
-        <rename/>
       </field>
       <field>
         <name>Indígena_11</name>
-        <rename/>
       </field>
       <field>
         <name>Não declarada_12</name>
@@ -2091,23 +2043,18 @@
       </field>
       <field>
         <name>Branca_12</name>
-        <rename/>
       </field>
       <field>
         <name>Preta_12</name>
-        <rename/>
       </field>
       <field>
         <name>Parda_12</name>
-        <rename/>
       </field>
       <field>
         <name>Amarela_12</name>
-        <rename/>
       </field>
       <field>
         <name>Indígena_12</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>

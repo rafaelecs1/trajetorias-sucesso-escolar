@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>TRANSFORMACAO_EXCEL_MATRICULAS</name>
+    <name>TRANSFORMACAO_EXCEL_MATRICULAS_QUANTIDADE</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -493,10 +494,131 @@
   <order>
     <hop>
       <from>Microsoft Excel input</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
       <to>Execute SQL script</to>
       <enabled>Y</enabled>
     </hop>
   </order>
+  <step>
+    <name>Execute SQL script</name>
+    <type>ExecSQL</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>trajetorias</connection>
+    <execute_each_row>Y</execute_each_row>
+    <single_statement>N</single_statement>
+    <replace_variables>Y</replace_variables>
+    <quoteString>N</quoteString>
+    <sql>SET FOREIGN_KEY_CHECKS = 0;
+TRUNCATE TABLE te_matriculas;
+TRUNCATE TABLE te_matriculas_anos;
+SET FOREIGN_KEY_CHECKS = 1;
+
+SET @escola_id = ?; 
+SET @ano_1 = ?;
+SET @ano_2 = ?; 
+SET @ano_3 = ?; 
+SET @ano_4 = ?; 
+SET @ano_5 = ?; 
+SET @ano_6 = ?; 
+SET @ano_7 = ?; 
+SET @ano_8 = ?; 
+SET @ano_9 = ?; 
+SET @serie_1 = ?; 
+SET @serie_2 = ?; 
+SET @serie_3 = ?; 
+SET @serie_4 = ?;  
+
+INSERT INTO te_matriculas (escola_id, ano_referencia, tipo_ensino, tipo_ano, criacao) VALUES (@escola_id, 2019, 'Fundamental', 'Iniciais', '2019-07-18 00:00:00');
+INSERT INTO te_matriculas (escola_id, ano_referencia, tipo_ensino, tipo_ano, criacao) VALUES (@escola_id, 2019, 'Fundamental', 'Finais', '2019-07-18 00:00:00');
+INSERT INTO te_matriculas (escola_id, ano_referencia, tipo_ensino, tipo_ano, criacao) VALUES (@escola_id, 2019, 'Médio', 'Todos', '2019-07-18 00:00:00');
+
+INSERT INTO te_matriculas_anos (matricula_id, ano, numero_matriculas, criacao) VALUES ( (SELECT id FROM te_matriculas WHERE tipo_ensino = 'Fundamental' AND tipo_ano = 'Iniciais'), 1, @ano_1, '2019-07-17 00:00:00');
+INSERT INTO te_matriculas_anos (matricula_id, ano, numero_matriculas, criacao) VALUES ( (SELECT id FROM te_matriculas WHERE tipo_ensino = 'Fundamental' AND tipo_ano = 'Iniciais'), 2, @ano_2, '2019-07-17 00:00:00');
+INSERT INTO te_matriculas_anos (matricula_id, ano, numero_matriculas, criacao) VALUES ( (SELECT id FROM te_matriculas WHERE tipo_ensino = 'Fundamental' AND tipo_ano = 'Iniciais'), 3, @ano_3, '2019-07-17 00:00:00');
+INSERT INTO te_matriculas_anos (matricula_id, ano, numero_matriculas, criacao) VALUES ( (SELECT id FROM te_matriculas WHERE tipo_ensino = 'Fundamental' AND tipo_ano = 'Iniciais'), 4, @ano_4, '2019-07-17 00:00:00');
+INSERT INTO te_matriculas_anos (matricula_id, ano, numero_matriculas, criacao) VALUES ( (SELECT id FROM te_matriculas WHERE tipo_ensino = 'Fundamental' AND tipo_ano = 'Iniciais'), 5, @ano_5, '2019-07-17 00:00:00');
+INSERT INTO te_matriculas_anos (matricula_id, ano, numero_matriculas, criacao) VALUES ( (SELECT id FROM te_matriculas WHERE tipo_ensino = 'Fundamental' AND tipo_ano = 'Finais'), 6, @ano_6, '2019-07-17 00:00:00');
+INSERT INTO te_matriculas_anos (matricula_id, ano, numero_matriculas, criacao) VALUES ( (SELECT id FROM te_matriculas WHERE tipo_ensino = 'Fundamental' AND tipo_ano = 'Finais'), 7, @ano_7, '2019-07-17 00:00:00');
+INSERT INTO te_matriculas_anos (matricula_id, ano, numero_matriculas, criacao) VALUES ( (SELECT id FROM te_matriculas WHERE tipo_ensino = 'Fundamental' AND tipo_ano = 'Finais'), 8, @ano_8, '2019-07-17 00:00:00');
+INSERT INTO te_matriculas_anos (matricula_id, ano, numero_matriculas, criacao) VALUES ( (SELECT id FROM te_matriculas WHERE tipo_ensino = 'Fundamental' AND tipo_ano = 'Finais'), 9, @ano_9, '2019-07-17 00:00:00');
+INSERT INTO te_matriculas_anos (matricula_id, ano, numero_matriculas, criacao) VALUES ( (SELECT id FROM te_matriculas WHERE tipo_ensino = 'Médio' AND tipo_ano = 'Todos'), 1, @serie_1, '2019-07-17 00:00:00');
+INSERT INTO te_matriculas_anos (matricula_id, ano, numero_matriculas, criacao) VALUES ( (SELECT id FROM te_matriculas WHERE tipo_ensino = 'Médio' AND tipo_ano = 'Todos'), 2, @serie_2, '2019-07-17 00:00:00');
+INSERT INTO te_matriculas_anos (matricula_id, ano, numero_matriculas, criacao) VALUES ( (SELECT id FROM te_matriculas WHERE tipo_ensino = 'Médio' AND tipo_ano = 'Todos'), 3, @serie_3, '2019-07-17 00:00:00');
+INSERT INTO te_matriculas_anos (matricula_id, ano, numero_matriculas, criacao) VALUES ( (SELECT id FROM te_matriculas WHERE tipo_ensino = 'Médio' AND tipo_ano = 'Todos'), 4, @serie_4, '2019-07-17 00:00:00');</sql>
+    <set_params>N</set_params>
+    <insert_field/>
+    <update_field/>
+    <delete_field/>
+    <read_field/>
+    <arguments>
+      <argument>
+        <name>escola_id</name>
+      </argument>
+      <argument>
+        <name>ano_1</name>
+      </argument>
+      <argument>
+        <name>ano_2</name>
+      </argument>
+      <argument>
+        <name>ano_3</name>
+      </argument>
+      <argument>
+        <name>ano_4</name>
+      </argument>
+      <argument>
+        <name>ano_5</name>
+      </argument>
+      <argument>
+        <name>ano_6</name>
+      </argument>
+      <argument>
+        <name>ano_7</name>
+      </argument>
+      <argument>
+        <name>ano_8</name>
+      </argument>
+      <argument>
+        <name>ano_9</name>
+      </argument>
+      <argument>
+        <name>serie_1</name>
+      </argument>
+      <argument>
+        <name>serie_2</name>
+      </argument>
+      <argument>
+        <name>serie_3</name>
+      </argument>
+      <argument>
+        <name>serie_4</name>
+      </argument>
+    </arguments>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>240</xloc>
+      <yloc>32</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step>
     <name>Microsoft Excel input</name>
     <type>ExcelInput</type>
@@ -639,6 +761,162 @@
         <decimal/>
         <group/>
       </field>
+      <field>
+        <name>1º ano </name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>2º ano</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>3º ano</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>4º ano</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>5º ano</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>6º ano</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>7º ano</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>8º ano</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>9º ano</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>1ª série</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>2ª série</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>3ª série</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>4ª série</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
     </fields>
     <sheets>
       <sheet>
@@ -676,13 +954,13 @@
     </remotesteps>
     <GUI>
       <xloc>48</xloc>
-      <yloc>16</yloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Execute SQL script</name>
-    <type>ExecSQL</type>
+    <name>Select values</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -691,24 +969,65 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetorias</connection>
-    <execute_each_row>Y</execute_each_row>
-    <single_statement>N</single_statement>
-    <replace_variables>Y</replace_variables>
-    <quoteString>N</quoteString>
-    <sql>INSERT INTO te_matriculas (escola_id, ano_referencia, tipo_ensino, tipo_ano, criacao) VALUES (?, 2019, 'Fundamental', 'Iniciais', '2019-07-18 00:00:00'); 
-INSERT INTO te_matriculas (escola_id, ano_referencia, tipo_ensino, tipo_ano, criacao) VALUES (?, 2019, 'Fundamental', 'Finais', '2019-07-18 00:00:00'); 
-INSERT INTO te_matriculas (escola_id, ano_referencia, tipo_ensino, tipo_ano, criacao) VALUES (?, 2019, 'Médio', 'Todos', '2019-07-18 00:00:00');</sql>
-    <set_params>Y</set_params>
-    <insert_field>escola_id</insert_field>
-    <update_field/>
-    <delete_field/>
-    <read_field/>
-    <arguments>
-      <argument>
+    <fields>
+      <field>
         <name>Código da Escola</name>
-      </argument>
-    </arguments>
+        <rename>escola_id</rename>
+      </field>
+      <field>
+        <name>1º ano </name>
+        <rename>ano_1</rename>
+      </field>
+      <field>
+        <name>2º ano</name>
+        <rename>ano_2</rename>
+      </field>
+      <field>
+        <name>3º ano</name>
+        <rename>ano_3</rename>
+      </field>
+      <field>
+        <name>4º ano</name>
+        <rename>ano_4</rename>
+      </field>
+      <field>
+        <name>5º ano</name>
+        <rename>ano_5</rename>
+      </field>
+      <field>
+        <name>6º ano</name>
+        <rename>ano_6</rename>
+      </field>
+      <field>
+        <name>7º ano</name>
+        <rename>ano_7</rename>
+      </field>
+      <field>
+        <name>8º ano</name>
+        <rename>ano_8</rename>
+      </field>
+      <field>
+        <name>9º ano</name>
+        <rename>ano_9</rename>
+      </field>
+      <field>
+        <name>1ª série</name>
+        <rename>serie_1</rename>
+      </field>
+      <field>
+        <name>2ª série</name>
+        <rename>serie_2</rename>
+      </field>
+      <field>
+        <name>3ª série</name>
+        <rename>serie_3</rename>
+      </field>
+      <field>
+        <name>4ª série</name>
+        <rename>serie_4</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -718,8 +1037,8 @@ INSERT INTO te_matriculas (escola_id, ano_referencia, tipo_ensino, tipo_ano, cri
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
-      <yloc>16</yloc>
+      <xloc>144</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
