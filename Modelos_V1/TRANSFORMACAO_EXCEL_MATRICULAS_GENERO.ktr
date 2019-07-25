@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>TRANSFORMACAO_EXCEL_MATRICULAS_QUANTIDADE</name>
+    <name>TRANSFORMACAO_EXCEL_MATRICULAS_GENERO</name>
     <description />
     <extended_description />
     <trans_version />
     <trans_type>Normal</trans_type>
-    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -428,23 +427,23 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2019/07/16 14:31:02.093</created_date>
+    <created_date>2019/07/18 21:56:34.650</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2019/07/16 14:31:02.093</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <modified_date>2019/07/18 21:56:34.650</modified_date>
+    <key_for_session_key />
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
   <connection>
     <name>trajetorias</name>
-    <server>localhost</server>
+    <server>127.0.0.1</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>trajetorias_novo</database>
-    <port>3306</port>
+    <database>trajetorias</database>
+    <port>3310</port>
     <username>root</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb79ce10bec3fd89</password>
+    <password>Encrypted 2be98afc86aa7f2e4cb79ce10cc9da0ce</password>
     <servername />
     <data_tablespace />
     <index_tablespace />
@@ -463,7 +462,7 @@
       </attribute>
       <attribute>
         <code>PORT_NUMBER</code>
-        <attribute>3306</attribute>
+        <attribute>3310</attribute>
       </attribute>
       <attribute>
         <code>PRESERVE_RESERVED_WORD_CASE</code>
@@ -493,423 +492,21 @@
   </connection>
   <order>
     <hop>
-      <from>Microsoft Excel input</from>
-      <to>Add constants</to>
+      <from>Microsoft Excel Input</from>
+      <to>Select values</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Add constants</from>
-      <to>1ano</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Add constants</from>
-      <to>2ano</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Add constants</from>
-      <to>3ano</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Add constants</from>
-      <to>4ano</to>
+      <from>Select values</from>
+      <to>Execute SQL script</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>1ano</name>
-    <type>TableOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>trajetorias</connection>
-    <schema />
-    <table>tse_qtd_matriculas</table>
-    <commit>1000</commit>
-    <truncate>Y</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field />
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field />
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field />
-    <fields>
-      <field>
-        <column_name>escolas_id</column_name>
-        <stream_name>Código da Escola</stream_name>
-      </field>
-      <field>
-        <column_name>ano_letivo_id</column_name>
-        <stream_name>id_ano_letivo1</stream_name>
-      </field>
-      <field>
-        <column_name>quantidade</column_name>
-        <stream_name>1º ano</stream_name>
-      </field>
-      <field>
-        <column_name>ano_referencia</column_name>
-        <stream_name>ano_referencia2019</stream_name>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>560</xloc>
-      <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>2ano</name>
-    <type>TableOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>trajetorias</connection>
-    <schema />
-    <table>tse_qtd_matriculas</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field />
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field />
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field />
-    <fields>
-      <field>
-        <column_name>escolas_id</column_name>
-        <stream_name>Código da Escola</stream_name>
-      </field>
-      <field>
-        <column_name>ano_letivo_id</column_name>
-        <stream_name>id_ano_letivo2</stream_name>
-      </field>
-      <field>
-        <column_name>quantidade</column_name>
-        <stream_name>2º ano</stream_name>
-      </field>
-      <field>
-        <column_name>ano_referencia</column_name>
-        <stream_name>ano_referencia2019</stream_name>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>560</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>3ano</name>
-    <type>TableOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>trajetorias</connection>
-    <schema />
-    <table>tse_qtd_matriculas</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field />
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field />
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field />
-    <fields>
-      <field>
-        <column_name>escolas_id</column_name>
-        <stream_name>Código da Escola</stream_name>
-      </field>
-      <field>
-        <column_name>ano_letivo_id</column_name>
-        <stream_name>id_ano_letivo3</stream_name>
-      </field>
-      <field>
-        <column_name>quantidade</column_name>
-        <stream_name>3º ano</stream_name>
-      </field>
-      <field>
-        <column_name>ano_referencia</column_name>
-        <stream_name>ano_referencia2019</stream_name>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>560</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Add constants</name>
-    <type>Constant</type>
-    <description>Add contants 1</description>
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>ano_referencia2018</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>2018</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>id_ano_letivo1</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>1</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>id_ano_letivo2</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>2</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>id_ano_letivo3</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>3</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>id_ano_letivo4</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>4</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>id_ano_letivo5</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>5</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>id_ano_letivo6</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>6</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>id_ano_letivo7</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>7</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>id_ano_letivo8</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>8</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>id_ano_letivo9</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>9</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>id_ano_letivo10</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>10</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>id_ano_letivo11</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>11</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>id_ano_letivo12</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>12</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>id_ano_letivo13</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>13</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>ano_referencia2019</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>2019</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>272</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Microsoft Excel input</name>
+    <name>Microsoft Excel Input</name>
     <type>ExcelInput</type>
     <description />
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -926,13 +523,13 @@
     <sheetfield />
     <filefield />
     <limit>0</limit>
-    <encoding>UTF-8</encoding>
+    <encoding />
     <add_to_result_filenames>Y</add_to_result_filenames>
     <accept_filenames>N</accept_filenames>
     <accept_field />
     <accept_stepname />
     <file>
-      <name>/home/sandy/Desktop/Manu/tabela1_padrao_matricula.xlsx</name>
+      <name>/Users/manoelfilho/Desktop/tabela1_padrao_matricula.xlsx</name>
       <filemask />
       <exclude_filemask />
       <file_required>N</file_required>
@@ -952,8 +549,9 @@
         <group />
       </field>
       <field>
-        <name>Região</name>
-        <type>String</type>
+        <name>Região
+</name>
+        <type>None</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -964,8 +562,9 @@
         <group />
       </field>
       <field>
-        <name>UF</name>
-        <type>String</type>
+        <name>UF
+</name>
+        <type>None</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -976,8 +575,9 @@
         <group />
       </field>
       <field>
-        <name>Código do Município</name>
-        <type>String</type>
+        <name>Código do Município
+</name>
+        <type>None</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -988,8 +588,9 @@
         <group />
       </field>
       <field>
-        <name>Município</name>
-        <type>String</type>
+        <name>Município
+</name>
+        <type>None</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -1000,8 +601,9 @@
         <group />
       </field>
       <field>
-        <name>Nome</name>
-        <type>String</type>
+        <name>Nome
+</name>
+        <type>None</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -1012,8 +614,9 @@
         <group />
       </field>
       <field>
-        <name>Localização</name>
-        <type>String</type>
+        <name>Localização
+</name>
+        <type>None</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -1024,8 +627,9 @@
         <group />
       </field>
       <field>
-        <name>Dependência Adminsitrativa</name>
-        <type>String</type>
+        <name>Dependência Adminsitrativa
+</name>
+        <type>None</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -1036,8 +640,9 @@
         <group />
       </field>
       <field>
-        <name>Localização Diferenciada</name>
-        <type>String</type>
+        <name>Localização Diferenciada
+</name>
+        <type>None</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -1048,8 +653,9 @@
         <group />
       </field>
       <field>
-        <name>1º ano</name>
-        <type>Number</type>
+        <name>Masculino
+</name>
+        <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -1060,8 +666,9 @@
         <group />
       </field>
       <field>
-        <name>2º ano</name>
-        <type>Number</type>
+        <name>Feminino
+</name>
+        <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -1072,8 +679,9 @@
         <group />
       </field>
       <field>
-        <name>3º ano</name>
-        <type>Number</type>
+        <name>Masculino_1
+</name>
+        <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -1084,8 +692,9 @@
         <group />
       </field>
       <field>
-        <name>4º ano</name>
-        <type>Number</type>
+        <name>Feminino_1
+</name>
+        <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -1096,8 +705,9 @@
         <group />
       </field>
       <field>
-        <name>5º ano</name>
-        <type>Number</type>
+        <name>Masculino_2
+</name>
+        <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -1108,8 +718,9 @@
         <group />
       </field>
       <field>
-        <name>6º ano</name>
-        <type>Number</type>
+        <name>Feminino_2
+</name>
+        <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -1120,8 +731,9 @@
         <group />
       </field>
       <field>
-        <name>7º ano</name>
-        <type>Number</type>
+        <name>Masculino_3
+</name>
+        <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -1132,8 +744,9 @@
         <group />
       </field>
       <field>
-        <name>8º ano</name>
-        <type>Number</type>
+        <name>Feminino_3
+</name>
+        <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -1144,8 +757,9 @@
         <group />
       </field>
       <field>
-        <name>9º ano</name>
-        <type>Number</type>
+        <name>Masculino_4
+</name>
+        <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -1156,8 +770,9 @@
         <group />
       </field>
       <field>
-        <name>1ª série</name>
-        <type>Number</type>
+        <name>Feminino_4
+</name>
+        <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -1168,8 +783,9 @@
         <group />
       </field>
       <field>
-        <name>2ª série</name>
-        <type>Number</type>
+        <name>Masculino_5
+</name>
+        <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -1180,8 +796,9 @@
         <group />
       </field>
       <field>
-        <name>3ª série</name>
-        <type>Number</type>
+        <name>Feminino_5
+</name>
+        <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -1192,8 +809,177 @@
         <group />
       </field>
       <field>
-        <name>4ª série</name>
-        <type>Number</type>
+        <name>Masculino_6
+</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Feminino_6
+</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Masculino_7
+</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Feminino_7
+</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Masculino_8
+</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Feminino_8
+</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Masculino_9
+</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Feminino_9
+</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Masculino_10
+</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Feminino_10
+</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Masculino_11
+</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Feminino_11
+</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Masculino_12
+</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Feminino_12</name>
+        <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -1206,8 +992,8 @@
     </fields>
     <sheets>
       <sheet>
-        <name>Matrículas-Total</name>
-        <startrow>3</startrow>
+        <name>Matrículas genero</name>
+        <startrow>4</startrow>
         <startcol>0</startcol>
       </sheet>
     </sheets>
@@ -1229,8 +1015,6 @@
     <extensionFieldName />
     <sizeFieldName />
     <spreadsheet_type>SAX_POI</spreadsheet_type>
-    <password>Encrypted </password>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1239,14 +1023,214 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>48</xloc>
-      <yloc>128</yloc>
+      <xloc>64</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>4ano</name>
-    <type>TableOutput</type>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>Código da Escola</name>
+        <rename>id_escola</rename>
+      </field>
+      <field>
+        <name>Região
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>UF
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Código do Município
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Município
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Nome
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Localização
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Dependência Adminsitrativa
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Localização Diferenciada
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Masculino
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Feminino
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Masculino_1
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Feminino_1
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Masculino_2
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Feminino_2
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Masculino_3
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Feminino_3
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Masculino_4
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Feminino_4
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Masculino_5
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Feminino_5
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Masculino_6
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Feminino_6
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Masculino_7
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Feminino_7
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Masculino_8
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Feminino_8
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Masculino_9
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Feminino_9
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Masculino_10
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Feminino_10
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Masculino_11
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Feminino_11
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Masculino_12
+</name>
+        <rename />
+      </field>
+      <field>
+        <name>Feminino_12</name>
+        <rename />
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>192</xloc>
+      <yloc>16</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Execute SQL script</name>
+    <type>ExecSQL</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1256,41 +1240,360 @@
       <schema_name />
     </partitioning>
     <connection>trajetorias</connection>
-    <schema />
-    <table>tse_qtd_matriculas</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field />
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field />
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field />
-    <fields>
-      <field>
-        <column_name>escolas_id</column_name>
-        <stream_name>Código da Escola</stream_name>
-      </field>
-      <field>
-        <column_name>ano_letivo_id</column_name>
-        <stream_name>id_ano_letivo4</stream_name>
-      </field>
-      <field>
-        <column_name>quantidade</column_name>
-        <stream_name>4º ano</stream_name>
-      </field>
-      <field>
-        <column_name>ano_referencia</column_name>
-        <stream_name>ano_referencia2019</stream_name>
-      </field>
-    </fields>
-    <attributes />
+    <execute_each_row>Y</execute_each_row>
+    <single_statement>N</single_statement>
+    <replace_variables>Y</replace_variables>
+    <quoteString>N</quoteString>
+    <sql>SET @escola_id = ?;
+SET @Masculino = ?;
+SET @Feminino = ?;
+SET @Masculino_1 = ?;
+SET @Feminino_1 = ?;
+SET @Masculino_2 = ?;
+SET @Feminino_2 = ?;
+SET @Masculino_3 = ?;
+SET @Feminino_3 = ?;
+SET @Masculino_4 = ?;
+SET @Feminino_4 = ?;
+SET @Masculino_5 = ?;
+SET @Feminino_5 = ?;
+SET @Masculino_6 = ?;
+SET @Feminino_6 = ?;
+SET @Masculino_7 = ?;
+SET @Feminino_7 = ?;
+SET @Masculino_8 = ?;
+SET @Feminino_8 = ?;
+SET @Masculino_9 = ?;
+SET @Feminino_9 = ?;
+SET @Masculino_10 = ?;
+SET @Feminino_10 = ?;
+SET @Masculino_11 = ?;
+SET @Feminino_11 = ?;
+SET @Masculino_12 = ?;
+SET @Feminino_12 = ?;
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '1º ano'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Masculino'), 
+	@Masculino, 
+	2019
+);
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '1º ano'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Feminino'), 
+	@Feminino, 
+	2019
+);
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '2º ano'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Masculino'), 
+	@Masculino_1, 
+	2019
+);
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '2º ano'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Feminino'), 
+	@Feminino_1, 
+	2019
+);
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '3º ano'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Masculino'), 
+	@Masculino_2, 
+	2019
+);
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '3º ano'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Feminino'), 
+	@Feminino_2, 
+	2019
+);
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '4º ano'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Masculino'), 
+	@Masculino_3, 
+	2019
+);
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '4º ano'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Feminino'), 
+	@Feminino_3, 
+	2019
+);
+
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '5º ano'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Masculino'), 
+	@Masculino_4, 
+	2019
+);
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '5º ano'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Feminino'), 
+	@Feminino_4, 
+	2019
+);
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '6º ano'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Masculino'), 
+	@Masculino_5, 
+	2019
+);
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '6º ano'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Feminino'), 
+	@Feminino_5, 
+	2019
+);
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '7º ano'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Masculino'), 
+	@Masculino_6, 
+	2019
+);
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '7º ano'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Feminino'), 
+	@Feminino_6, 
+	2019
+);
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '8º ano'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Masculino'), 
+	@Masculino_7, 
+	2019
+);
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '8º ano'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Feminino'), 
+	@Feminino_7, 
+	2019
+);
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '9º ano'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Masculino'), 
+	@Masculino_8, 
+	2019
+);
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '9º ano'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Feminino'), 
+	@Feminino_8, 
+	2019
+);
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '1ª série'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Masculino'), 
+	@Masculino_9, 
+	2019
+);
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '1ª série'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Feminino'), 
+	@Feminino_9, 
+	2019
+);
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '2ª série'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Masculino'), 
+	@Masculino_10, 
+	2019
+);
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '2ª série'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Feminino'), 
+	@Feminino_10, 
+	2019
+);
+
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '3ª série'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Masculino'), 
+	@Masculino_11, 
+	2019
+);
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '3ª série'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Feminino'), 
+	@Feminino_11, 
+	2019
+);
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '4ª série'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Masculino'), 
+	@Masculino_12, 
+	2019
+);
+
+INSERT INTO qtd_matriculas (escolas_id, ano_letivo_id, cor_raca_id, genero_id, quantidade, ano_referencia) VALUES ( @escola_id, 
+	(SELECT id FROM ano_letivo WHERE nome = '4ª série'), 
+	NULL,
+	(SELECT id FROM genero WHERE nome = 'Feminino'), 
+	@Feminino_12, 
+	2019
+);</sql>
+    <set_params>N</set_params>
+    <insert_field />
+    <update_field />
+    <delete_field />
+    <read_field />
+    <arguments>
+      <argument>
+        <name>id_escola</name>
+      </argument>
+      <argument>
+        <name>Masculino
+</name>
+      </argument>
+      <argument>
+        <name>Feminino
+</name>
+      </argument>
+      <argument>
+        <name>Masculino_1
+</name>
+      </argument>
+      <argument>
+        <name>Feminino_1
+</name>
+      </argument>
+      <argument>
+        <name>Masculino_2
+</name>
+      </argument>
+      <argument>
+        <name>Feminino_2
+</name>
+      </argument>
+      <argument>
+        <name>Masculino_3
+</name>
+      </argument>
+      <argument>
+        <name>Feminino_3
+</name>
+      </argument>
+      <argument>
+        <name>Masculino_4
+</name>
+      </argument>
+      <argument>
+        <name>Feminino_4
+</name>
+      </argument>
+      <argument>
+        <name>Masculino_5
+</name>
+      </argument>
+      <argument>
+        <name>Feminino_5
+</name>
+      </argument>
+      <argument>
+        <name>Masculino_6
+</name>
+      </argument>
+      <argument>
+        <name>Feminino_6
+</name>
+      </argument>
+      <argument>
+        <name>Masculino_7
+</name>
+      </argument>
+      <argument>
+        <name>Feminino_7
+</name>
+      </argument>
+      <argument>
+        <name>Masculino_8
+</name>
+      </argument>
+      <argument>
+        <name>Feminino_8
+</name>
+      </argument>
+      <argument>
+        <name>Masculino_9
+</name>
+      </argument>
+      <argument>
+        <name>Feminino_9
+</name>
+      </argument>
+      <argument>
+        <name>Masculino_10
+</name>
+      </argument>
+      <argument>
+        <name>Feminino_10
+</name>
+      </argument>
+      <argument>
+        <name>Masculino_11
+</name>
+      </argument>
+      <argument>
+        <name>Feminino_11
+</name>
+      </argument>
+      <argument>
+        <name>Masculino_12
+</name>
+      </argument>
+      <argument>
+        <name>Feminino_12</name>
+      </argument>
+    </arguments>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1299,8 +1602,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>560</xloc>
-      <yloc>320</yloc>
+      <xloc>320</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1309,5 +1612,4 @@
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
-  <attributes />
 </transformation>
