@@ -436,14 +436,14 @@
   <notepads>
   </notepads>
   <connection>
-    <name>trajetoria_novo</name>
+    <name>trajetorias</name>
     <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
     <database>trajetorias</database>
     <port>3306</port>
     <username>root</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb79ce10bec3fd89</password>
+    <password>Encrypted 2be98afc86aa7f2e4cb79ce10cc9da0ce</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -716,6 +716,56 @@
       <to>Add constants</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Add constants</from>
+      <to>1ano Amarela</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add constants</from>
+      <to>1ano Indígena</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add constants</from>
+      <to>2ano Indigina</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add constants</from>
+      <to>3ano Indigena</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add constants</from>
+      <to>4ano Indigena</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add constants</from>
+      <to>5ano Indigena</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add constants</from>
+      <to>6ano Indigena</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add constants</from>
+      <to>7ano Indígena</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add constants</from>
+      <to>8ano Indigena</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add constants</from>
+      <to>9ano Indigena</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>1ano Amarela</name>
@@ -728,7 +778,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -776,7 +826,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
+      <xloc>384</xloc>
       <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
@@ -792,7 +842,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -840,8 +890,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>256</xloc>
-      <yloc>144</yloc>
+      <xloc>320</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -856,7 +906,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -904,8 +954,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>160</xloc>
-      <yloc>112</yloc>
+      <xloc>224</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -920,7 +970,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -968,8 +1018,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>112</yloc>
+      <xloc>384</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -984,7 +1034,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -1032,8 +1082,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>256</xloc>
-      <yloc>64</yloc>
+      <xloc>304</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1048,7 +1098,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -1096,8 +1146,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>80</yloc>
+      <xloc>800</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1112,7 +1162,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -1160,8 +1210,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>560</xloc>
-      <yloc>0</yloc>
+      <xloc>672</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1176,7 +1226,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -1224,8 +1274,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>80</yloc>
+      <xloc>624</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1240,7 +1290,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -1288,8 +1338,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>656</xloc>
-      <yloc>0</yloc>
+      <xloc>768</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1304,7 +1354,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -1352,8 +1402,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
-      <yloc>64</yloc>
+      <xloc>720</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1368,7 +1418,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -1416,8 +1466,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1008</xloc>
-      <yloc>80</yloc>
+      <xloc>1136</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1432,7 +1482,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -1480,8 +1530,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>832</xloc>
-      <yloc>96</yloc>
+      <xloc>1008</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1496,7 +1546,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -1544,8 +1594,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>816</xloc>
-      <yloc>32</yloc>
+      <xloc>992</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1560,7 +1610,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -1608,8 +1658,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>912</xloc>
-      <yloc>112</yloc>
+      <xloc>1072</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1624,7 +1674,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -1672,8 +1722,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>912</xloc>
-      <yloc>48</yloc>
+      <xloc>1088</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1688,7 +1738,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -1736,8 +1786,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1152</xloc>
-      <yloc>336</yloc>
+      <xloc>1248</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1752,7 +1802,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -1800,8 +1850,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1168</xloc>
-      <yloc>208</yloc>
+      <xloc>1280</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1816,7 +1866,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -1864,8 +1914,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1072</xloc>
-      <yloc>192</yloc>
+      <xloc>1184</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1880,7 +1930,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -1928,8 +1978,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1200</xloc>
-      <yloc>288</yloc>
+      <xloc>1312</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1944,7 +1994,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -1992,8 +2042,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1088</xloc>
-      <yloc>272</yloc>
+      <xloc>1200</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2008,7 +2058,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -2056,8 +2106,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>576</yloc>
+      <xloc>160</xloc>
+      <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2072,7 +2122,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -2120,8 +2170,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>432</yloc>
+      <xloc>224</xloc>
+      <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2136,7 +2186,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -2184,8 +2234,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>368</yloc>
+      <xloc>176</xloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2200,7 +2250,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -2248,8 +2298,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>528</yloc>
+      <xloc>224</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2264,7 +2314,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -2312,8 +2362,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>496</yloc>
+      <xloc>160</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2328,7 +2378,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -2376,8 +2426,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
-      <yloc>784</yloc>
+      <xloc>336</xloc>
+      <yloc>864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2392,7 +2442,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -2440,8 +2490,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>160</xloc>
-      <yloc>784</yloc>
+      <xloc>208</xloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2456,7 +2506,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -2504,8 +2554,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>720</yloc>
+      <xloc>208</xloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2520,7 +2570,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -2568,8 +2618,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>240</xloc>
-      <yloc>816</yloc>
+      <xloc>256</xloc>
+      <yloc>896</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2584,7 +2634,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -2632,8 +2682,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>240</xloc>
-      <yloc>752</yloc>
+      <xloc>288</xloc>
+      <yloc>816</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2648,7 +2698,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -2696,8 +2746,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
-      <yloc>928</yloc>
+      <xloc>640</xloc>
+      <yloc>1072</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2712,7 +2762,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -2760,8 +2810,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
-      <yloc>880</yloc>
+      <xloc>512</xloc>
+      <yloc>1008</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2776,7 +2826,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -2824,8 +2874,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
-      <yloc>912</yloc>
+      <xloc>432</xloc>
+      <yloc>1040</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2840,7 +2890,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -2888,8 +2938,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>544</xloc>
-      <yloc>880</yloc>
+      <xloc>608</xloc>
+      <yloc>1008</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2904,7 +2954,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -2952,8 +3002,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
-      <yloc>944</yloc>
+      <xloc>544</xloc>
+      <yloc>1072</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2968,7 +3018,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -3016,8 +3066,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>912</xloc>
-      <yloc>912</yloc>
+      <xloc>992</xloc>
+      <yloc>1008</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3032,7 +3082,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -3080,8 +3130,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>768</xloc>
-      <yloc>896</yloc>
+      <xloc>848</xloc>
+      <yloc>992</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3096,7 +3146,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -3144,8 +3194,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
-      <yloc>960</yloc>
+      <xloc>816</xloc>
+      <yloc>1056</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3160,7 +3210,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -3208,8 +3258,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>832</xloc>
-      <yloc>848</yloc>
+      <xloc>912</xloc>
+      <yloc>944</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3224,7 +3274,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -3272,8 +3322,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>816</xloc>
-      <yloc>928</yloc>
+      <xloc>896</xloc>
+      <yloc>1024</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3288,7 +3338,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -3336,8 +3386,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1072</xloc>
-      <yloc>560</yloc>
+      <xloc>1216</xloc>
+      <yloc>672</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3352,7 +3402,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -3400,8 +3450,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1040</xloc>
-      <yloc>736</yloc>
+      <xloc>1200</xloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3416,7 +3466,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -3464,8 +3514,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
-      <yloc>768</yloc>
+      <xloc>1120</xloc>
+      <yloc>864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3480,7 +3530,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -3528,8 +3578,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1104</xloc>
-      <yloc>656</yloc>
+      <xloc>1264</xloc>
+      <yloc>752</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3544,7 +3594,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>trajetoria_novo</connection>
+    <connection>trajetorias</connection>
     <schema/>
     <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
@@ -3592,8 +3642,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1024</xloc>
-      <yloc>656</yloc>
+      <xloc>1184</xloc>
+      <yloc>752</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3871,8 +3921,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
-      <yloc>480</yloc>
+      <xloc>720</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4990,8 +5040,584 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>128</xloc>
-      <yloc>240</yloc>
+      <xloc>240</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>1ano Indígena</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>trajetorias</connection>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>cor_raca_id</column_name>
+        <stream_name>id_raca_indigena</stream_name>
+      </field>
+      <field>
+        <column_name>ano_letivo_id</column_name>
+        <stream_name>id_ano_letivo1</stream_name>
+      </field>
+      <field>
+        <column_name>ano_referencia</column_name>
+        <stream_name>ano_referencia2019</stream_name>
+      </field>
+      <field>
+        <column_name>quantidade</column_name>
+        <stream_name>Indígena</stream_name>
+      </field>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>464</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>2ano Indigina</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>trajetorias</connection>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>cor_raca_id</column_name>
+        <stream_name>id_raca_indigena</stream_name>
+      </field>
+      <field>
+        <column_name>ano_letivo_id</column_name>
+        <stream_name>id_ano_letivo2</stream_name>
+      </field>
+      <field>
+        <column_name>ano_referencia</column_name>
+        <stream_name>ano_referencia2019</stream_name>
+      </field>
+      <field>
+        <column_name>quantidade</column_name>
+        <stream_name>Indígena_1</stream_name>
+      </field>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>848</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>3ano Indigena</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>trajetorias</connection>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>cor_raca_id</column_name>
+        <stream_name>id_raca_indigena</stream_name>
+      </field>
+      <field>
+        <column_name>ano_letivo_id</column_name>
+        <stream_name>id_ano_letivo3</stream_name>
+      </field>
+      <field>
+        <column_name>ano_referencia</column_name>
+        <stream_name>ano_referencia2019</stream_name>
+      </field>
+      <field>
+        <column_name>quantidade</column_name>
+        <stream_name>Indígena_2</stream_name>
+      </field>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1120</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>4ano Indigena</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>trajetorias</connection>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>cor_raca_id</column_name>
+        <stream_name>id_raca_indigena</stream_name>
+      </field>
+      <field>
+        <column_name>ano_letivo_id</column_name>
+        <stream_name>id_ano_letivo4</stream_name>
+      </field>
+      <field>
+        <column_name>ano_referencia</column_name>
+        <stream_name>ano_referencia2019</stream_name>
+      </field>
+      <field>
+        <column_name>quantidade</column_name>
+        <stream_name>Indígena_3</stream_name>
+      </field>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1312</xloc>
+      <yloc>448</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>5ano Indigena</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>trajetorias</connection>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>cor_raca_id</column_name>
+        <stream_name>id_raca_indigena</stream_name>
+      </field>
+      <field>
+        <column_name>ano_letivo_id</column_name>
+        <stream_name>id_ano_letivo5</stream_name>
+      </field>
+      <field>
+        <column_name>ano_referencia</column_name>
+        <stream_name>ano_referencia2019</stream_name>
+      </field>
+      <field>
+        <column_name>quantidade</column_name>
+        <stream_name>Indígena_4</stream_name>
+      </field>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>224</xloc>
+      <yloc>640</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>6ano Indigena</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>trajetorias</connection>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>cor_raca_id</column_name>
+        <stream_name>id_raca_indigena</stream_name>
+      </field>
+      <field>
+        <column_name>ano_letivo_id</column_name>
+        <stream_name>id_ano_letivo6</stream_name>
+      </field>
+      <field>
+        <column_name>ano_referencia</column_name>
+        <stream_name>ano_referencia2019</stream_name>
+      </field>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
+      <field>
+        <column_name>quantidade</column_name>
+        <stream_name>Indígena_5</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>352</xloc>
+      <yloc>928</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>7ano Indígena</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>trajetorias</connection>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>cor_raca_id</column_name>
+        <stream_name>id_raca_indigena</stream_name>
+      </field>
+      <field>
+        <column_name>ano_letivo_id</column_name>
+        <stream_name>id_ano_letivo7</stream_name>
+      </field>
+      <field>
+        <column_name>ano_referencia</column_name>
+        <stream_name>ano_referencia2019</stream_name>
+      </field>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
+      <field>
+        <column_name>quantidade</column_name>
+        <stream_name>Indígena_6</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>1008</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>8ano Indigena</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>trajetorias</connection>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>cor_raca_id</column_name>
+        <stream_name>id_raca_indigena</stream_name>
+      </field>
+      <field>
+        <column_name>ano_letivo_id</column_name>
+        <stream_name>id_ano_letivo8</stream_name>
+      </field>
+      <field>
+        <column_name>ano_referencia</column_name>
+        <stream_name>ano_referencia2019</stream_name>
+      </field>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
+      <field>
+        <column_name>quantidade</column_name>
+        <stream_name>Indígena_7</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1008</xloc>
+      <yloc>928</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>9ano Indigena</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>trajetorias</connection>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>cor_raca_id</column_name>
+        <stream_name>id_raca_indigena</stream_name>
+      </field>
+      <field>
+        <column_name>ano_letivo_id</column_name>
+        <stream_name>id_ano_letivo9</stream_name>
+      </field>
+      <field>
+        <column_name>ano_referencia</column_name>
+        <stream_name>ano_referencia2019</stream_name>
+      </field>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
+      <field>
+        <column_name>quantidade</column_name>
+        <stream_name>Indígena_8</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1296</xloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
