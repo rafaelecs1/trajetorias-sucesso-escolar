@@ -1,7 +1,7 @@
 <section class="ficha municipio">
     <section id="redes-de-ensino">
         <header>
-            <h2 class="mt-0">Perfil das crianças e adolescentes com reprovação escolar: Redes de Ensino - <?php echo $this->year - 1; ?> </h2>
+            <h2 class="mt-0">Perfil das crianças e adolescentes - <?php echo $this->year - 1; ?> </h2>
         </header>
         <section id="total-em-distorcao">
             <header>
