@@ -1,0 +1,23 @@
+INSERT INTO tse_ano_letivo (nome) VALUES ('1º ano');
+INSERT INTO tse_ano_letivo (nome) VALUES ('2º ano');
+INSERT INTO tse_ano_letivo (nome) VALUES ('3º ano');
+INSERT INTO tse_ano_letivo (nome) VALUES ('4º ano');
+INSERT INTO tse_ano_letivo (nome) VALUES ('5º ano');
+INSERT INTO tse_ano_letivo (nome) VALUES ('6º ano');
+INSERT INTO tse_ano_letivo (nome) VALUES ('7º ano');
+INSERT INTO tse_ano_letivo (nome) VALUES ('8º ano');
+INSERT INTO tse_ano_letivo (nome) VALUES ('9º ano');
+INSERT INTO tse_ano_letivo (nome) VALUES ('1ª série');
+INSERT INTO tse_ano_letivo (nome) VALUES ('2ª série');
+INSERT INTO tse_ano_letivo (nome) VALUES ('3ª série');
+INSERT INTO tse_ano_letivo (nome) VALUES ('4ª série');
+
+INSERT INTO tse_cor_raca (nome) VALUES ('Não declarada');
+INSERT INTO tse_cor_raca (nome) VALUES ('Branca');
+INSERT INTO tse_cor_raca (nome) VALUES ('Preta');
+INSERT INTO tse_cor_raca (nome) VALUES ('Parda');
+INSERT INTO tse_cor_raca (nome) VALUES ('Amarela');
+INSERT INTO tse_cor_raca (nome) VALUES ('Indígena');
+
+INSERT INTO tse_genero (nome) VALUES ('Feminino');
+INSERT INTO tse_genero (nome) VALUES ('Masculino');

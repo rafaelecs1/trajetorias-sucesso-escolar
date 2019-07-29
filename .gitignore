@@ -1,6 +1,9 @@
 /*
 !wp-content/
 !wp-includes/
+!Modelos/
+!Modelos_V1/
+!Modelos_V2/
 
 # ignore all files starting with .
 .*
@@ -9,8 +12,10 @@
 !.gitignore
 !modelagem.mwb
 !modelagem.mwb.bak
+!modelagem_nova.mwb
+!modelagem_nova.mwb.bak
 !.htaccess
-
+!*.ktr
 
 # track .editorconfig file (i.e. do NOT ignore it)
 !.editorconfig
