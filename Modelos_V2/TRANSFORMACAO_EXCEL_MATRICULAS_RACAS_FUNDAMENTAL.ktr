@@ -896,6 +896,70 @@
     </GUI>
   </step>
   <step>
+    <name>1ano Indígena</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>trajetorias</connection>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>cor_raca_id</column_name>
+        <stream_name>id_raca_indigena</stream_name>
+      </field>
+      <field>
+        <column_name>ano_letivo_id</column_name>
+        <stream_name>id_ano_letivo1</stream_name>
+      </field>
+      <field>
+        <column_name>ano_referencia</column_name>
+        <stream_name>ano_referencia2019</stream_name>
+      </field>
+      <field>
+        <column_name>quantidade</column_name>
+        <stream_name>Indígena</stream_name>
+      </field>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>464</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>1ano NaoDeclarada</name>
     <type>TableOutput</type>
     <description/>
@@ -1211,6 +1275,70 @@
     </remotesteps>
     <GUI>
       <xloc>672</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>2ano Indigina</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>trajetorias</connection>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>cor_raca_id</column_name>
+        <stream_name>id_raca_indigena</stream_name>
+      </field>
+      <field>
+        <column_name>ano_letivo_id</column_name>
+        <stream_name>id_ano_letivo2</stream_name>
+      </field>
+      <field>
+        <column_name>ano_referencia</column_name>
+        <stream_name>ano_referencia2019</stream_name>
+      </field>
+      <field>
+        <column_name>quantidade</column_name>
+        <stream_name>Indígena_1</stream_name>
+      </field>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>848</xloc>
       <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1536,6 +1664,70 @@
     </GUI>
   </step>
   <step>
+    <name>3ano Indigena</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>trajetorias</connection>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>cor_raca_id</column_name>
+        <stream_name>id_raca_indigena</stream_name>
+      </field>
+      <field>
+        <column_name>ano_letivo_id</column_name>
+        <stream_name>id_ano_letivo3</stream_name>
+      </field>
+      <field>
+        <column_name>ano_referencia</column_name>
+        <stream_name>ano_referencia2019</stream_name>
+      </field>
+      <field>
+        <column_name>quantidade</column_name>
+        <stream_name>Indígena_2</stream_name>
+      </field>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1120</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>3ano NaoDeclarada</name>
     <type>TableOutput</type>
     <description/>
@@ -1852,6 +2044,70 @@
     <GUI>
       <xloc>1280</xloc>
       <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>4ano Indigena</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>trajetorias</connection>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>cor_raca_id</column_name>
+        <stream_name>id_raca_indigena</stream_name>
+      </field>
+      <field>
+        <column_name>ano_letivo_id</column_name>
+        <stream_name>id_ano_letivo4</stream_name>
+      </field>
+      <field>
+        <column_name>ano_referencia</column_name>
+        <stream_name>ano_referencia2019</stream_name>
+      </field>
+      <field>
+        <column_name>quantidade</column_name>
+        <stream_name>Indígena_3</stream_name>
+      </field>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1312</xloc>
+      <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2176,6 +2432,70 @@
     </GUI>
   </step>
   <step>
+    <name>5ano Indigena</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>trajetorias</connection>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>cor_raca_id</column_name>
+        <stream_name>id_raca_indigena</stream_name>
+      </field>
+      <field>
+        <column_name>ano_letivo_id</column_name>
+        <stream_name>id_ano_letivo5</stream_name>
+      </field>
+      <field>
+        <column_name>ano_referencia</column_name>
+        <stream_name>ano_referencia2019</stream_name>
+      </field>
+      <field>
+        <column_name>quantidade</column_name>
+        <stream_name>Indígena_4</stream_name>
+      </field>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>224</xloc>
+      <yloc>640</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>5ano NaoDeclarada</name>
     <type>TableOutput</type>
     <description/>
@@ -2496,6 +2816,70 @@
     </GUI>
   </step>
   <step>
+    <name>6ano Indigena</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>trajetorias</connection>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>cor_raca_id</column_name>
+        <stream_name>id_raca_indigena</stream_name>
+      </field>
+      <field>
+        <column_name>ano_letivo_id</column_name>
+        <stream_name>id_ano_letivo6</stream_name>
+      </field>
+      <field>
+        <column_name>ano_referencia</column_name>
+        <stream_name>ano_referencia2019</stream_name>
+      </field>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
+      <field>
+        <column_name>quantidade</column_name>
+        <stream_name>Indígena_5</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>352</xloc>
+      <yloc>928</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>6ano NaoDeclarada</name>
     <type>TableOutput</type>
     <description/>
@@ -2811,6 +3195,70 @@
     </remotesteps>
     <GUI>
       <xloc>512</xloc>
+      <yloc>1008</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>7ano Indígena</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>trajetorias</connection>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>cor_raca_id</column_name>
+        <stream_name>id_raca_indigena</stream_name>
+      </field>
+      <field>
+        <column_name>ano_letivo_id</column_name>
+        <stream_name>id_ano_letivo7</stream_name>
+      </field>
+      <field>
+        <column_name>ano_referencia</column_name>
+        <stream_name>ano_referencia2019</stream_name>
+      </field>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
+      <field>
+        <column_name>quantidade</column_name>
+        <stream_name>Indígena_6</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
       <yloc>1008</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3136,6 +3584,70 @@
     </GUI>
   </step>
   <step>
+    <name>8ano Indigena</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>trajetorias</connection>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>cor_raca_id</column_name>
+        <stream_name>id_raca_indigena</stream_name>
+      </field>
+      <field>
+        <column_name>ano_letivo_id</column_name>
+        <stream_name>id_ano_letivo8</stream_name>
+      </field>
+      <field>
+        <column_name>ano_referencia</column_name>
+        <stream_name>ano_referencia2019</stream_name>
+      </field>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
+      <field>
+        <column_name>quantidade</column_name>
+        <stream_name>Indígena_7</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1008</xloc>
+      <yloc>928</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>8ano NaoDeclarada</name>
     <type>TableOutput</type>
     <description/>
@@ -3456,6 +3968,70 @@
     </GUI>
   </step>
   <step>
+    <name>9ano Indigena</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>trajetorias</connection>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>cor_raca_id</column_name>
+        <stream_name>id_raca_indigena</stream_name>
+      </field>
+      <field>
+        <column_name>ano_letivo_id</column_name>
+        <stream_name>id_ano_letivo9</stream_name>
+      </field>
+      <field>
+        <column_name>ano_referencia</column_name>
+        <stream_name>ano_referencia2019</stream_name>
+      </field>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
+      <field>
+        <column_name>quantidade</column_name>
+        <stream_name>Indígena_8</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1296</xloc>
+      <yloc>640</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>9ano NaoDeclarada</name>
     <type>TableOutput</type>
     <description/>
@@ -3672,6 +4248,18 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
+        <name>ano_referencia2019</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>2019</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
         <name>id_ano_letivo1</name>
         <type>Integer</type>
         <format/>
@@ -3679,6 +4267,54 @@
         <decimal/>
         <group/>
         <nullif>1</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>id_ano_letivo10</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>10</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>id_ano_letivo11</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>11</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>id_ano_letivo12</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>12</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>id_ano_letivo13</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>13</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3780,73 +4416,13 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>id_ano_letivo10</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>10</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>id_ano_letivo11</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>11</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>id_ano_letivo12</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>12</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>id_ano_letivo13</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>13</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>ano_referencia2019</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>2019</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>id_raca_nao_declarada</name>
+        <name>id_raca_amarela</name>
         <type>Number</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
-        <nullif>1</nullif>
+        <nullif>5</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3864,13 +4440,25 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>id_raca_preta</name>
+        <name>id_raca_indigena</name>
         <type>Number</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
-        <nullif>3</nullif>
+        <nullif>6</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>id_raca_nao_declarada</name>
+        <type>Number</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>1</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3888,25 +4476,13 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>id_raca_amarela</name>
+        <name>id_raca_preta</name>
         <type>Number</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
-        <nullif>5</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>id_raca_indigena</name>
-        <type>Number</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>6</nullif>
+        <nullif>3</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -5042,582 +5618,6 @@
     <GUI>
       <xloc>240</xloc>
       <yloc>320</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>1ano Indígena</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>trajetorias</connection>
-    <schema/>
-    <table>tse_qtd_matriculas</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>cor_raca_id</column_name>
-        <stream_name>id_raca_indigena</stream_name>
-      </field>
-      <field>
-        <column_name>ano_letivo_id</column_name>
-        <stream_name>id_ano_letivo1</stream_name>
-      </field>
-      <field>
-        <column_name>ano_referencia</column_name>
-        <stream_name>ano_referencia2019</stream_name>
-      </field>
-      <field>
-        <column_name>quantidade</column_name>
-        <stream_name>Indígena</stream_name>
-      </field>
-      <field>
-        <column_name>escolas_id</column_name>
-        <stream_name>Código da Escola</stream_name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>464</xloc>
-      <yloc>64</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>2ano Indigina</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>trajetorias</connection>
-    <schema/>
-    <table>tse_qtd_matriculas</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>cor_raca_id</column_name>
-        <stream_name>id_raca_indigena</stream_name>
-      </field>
-      <field>
-        <column_name>ano_letivo_id</column_name>
-        <stream_name>id_ano_letivo2</stream_name>
-      </field>
-      <field>
-        <column_name>ano_referencia</column_name>
-        <stream_name>ano_referencia2019</stream_name>
-      </field>
-      <field>
-        <column_name>quantidade</column_name>
-        <stream_name>Indígena_1</stream_name>
-      </field>
-      <field>
-        <column_name>escolas_id</column_name>
-        <stream_name>Código da Escola</stream_name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>848</xloc>
-      <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>3ano Indigena</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>trajetorias</connection>
-    <schema/>
-    <table>tse_qtd_matriculas</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>cor_raca_id</column_name>
-        <stream_name>id_raca_indigena</stream_name>
-      </field>
-      <field>
-        <column_name>ano_letivo_id</column_name>
-        <stream_name>id_ano_letivo3</stream_name>
-      </field>
-      <field>
-        <column_name>ano_referencia</column_name>
-        <stream_name>ano_referencia2019</stream_name>
-      </field>
-      <field>
-        <column_name>quantidade</column_name>
-        <stream_name>Indígena_2</stream_name>
-      </field>
-      <field>
-        <column_name>escolas_id</column_name>
-        <stream_name>Código da Escola</stream_name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1120</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>4ano Indigena</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>trajetorias</connection>
-    <schema/>
-    <table>tse_qtd_matriculas</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>cor_raca_id</column_name>
-        <stream_name>id_raca_indigena</stream_name>
-      </field>
-      <field>
-        <column_name>ano_letivo_id</column_name>
-        <stream_name>id_ano_letivo4</stream_name>
-      </field>
-      <field>
-        <column_name>ano_referencia</column_name>
-        <stream_name>ano_referencia2019</stream_name>
-      </field>
-      <field>
-        <column_name>quantidade</column_name>
-        <stream_name>Indígena_3</stream_name>
-      </field>
-      <field>
-        <column_name>escolas_id</column_name>
-        <stream_name>Código da Escola</stream_name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1312</xloc>
-      <yloc>448</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>5ano Indigena</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>trajetorias</connection>
-    <schema/>
-    <table>tse_qtd_matriculas</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>cor_raca_id</column_name>
-        <stream_name>id_raca_indigena</stream_name>
-      </field>
-      <field>
-        <column_name>ano_letivo_id</column_name>
-        <stream_name>id_ano_letivo5</stream_name>
-      </field>
-      <field>
-        <column_name>ano_referencia</column_name>
-        <stream_name>ano_referencia2019</stream_name>
-      </field>
-      <field>
-        <column_name>quantidade</column_name>
-        <stream_name>Indígena_4</stream_name>
-      </field>
-      <field>
-        <column_name>escolas_id</column_name>
-        <stream_name>Código da Escola</stream_name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>224</xloc>
-      <yloc>640</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>6ano Indigena</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>trajetorias</connection>
-    <schema/>
-    <table>tse_qtd_matriculas</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>cor_raca_id</column_name>
-        <stream_name>id_raca_indigena</stream_name>
-      </field>
-      <field>
-        <column_name>ano_letivo_id</column_name>
-        <stream_name>id_ano_letivo6</stream_name>
-      </field>
-      <field>
-        <column_name>ano_referencia</column_name>
-        <stream_name>ano_referencia2019</stream_name>
-      </field>
-      <field>
-        <column_name>escolas_id</column_name>
-        <stream_name>Código da Escola</stream_name>
-      </field>
-      <field>
-        <column_name>quantidade</column_name>
-        <stream_name>Indígena_5</stream_name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>352</xloc>
-      <yloc>928</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>7ano Indígena</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>trajetorias</connection>
-    <schema/>
-    <table>tse_qtd_matriculas</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>cor_raca_id</column_name>
-        <stream_name>id_raca_indigena</stream_name>
-      </field>
-      <field>
-        <column_name>ano_letivo_id</column_name>
-        <stream_name>id_ano_letivo7</stream_name>
-      </field>
-      <field>
-        <column_name>ano_referencia</column_name>
-        <stream_name>ano_referencia2019</stream_name>
-      </field>
-      <field>
-        <column_name>escolas_id</column_name>
-        <stream_name>Código da Escola</stream_name>
-      </field>
-      <field>
-        <column_name>quantidade</column_name>
-        <stream_name>Indígena_6</stream_name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>1008</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>8ano Indigena</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>trajetorias</connection>
-    <schema/>
-    <table>tse_qtd_matriculas</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>cor_raca_id</column_name>
-        <stream_name>id_raca_indigena</stream_name>
-      </field>
-      <field>
-        <column_name>ano_letivo_id</column_name>
-        <stream_name>id_ano_letivo8</stream_name>
-      </field>
-      <field>
-        <column_name>ano_referencia</column_name>
-        <stream_name>ano_referencia2019</stream_name>
-      </field>
-      <field>
-        <column_name>escolas_id</column_name>
-        <stream_name>Código da Escola</stream_name>
-      </field>
-      <field>
-        <column_name>quantidade</column_name>
-        <stream_name>Indígena_7</stream_name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1008</xloc>
-      <yloc>928</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>9ano Indigena</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>trajetorias</connection>
-    <schema/>
-    <table>tse_qtd_matriculas</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>cor_raca_id</column_name>
-        <stream_name>id_raca_indigena</stream_name>
-      </field>
-      <field>
-        <column_name>ano_letivo_id</column_name>
-        <stream_name>id_ano_letivo9</stream_name>
-      </field>
-      <field>
-        <column_name>ano_referencia</column_name>
-        <stream_name>ano_referencia2019</stream_name>
-      </field>
-      <field>
-        <column_name>escolas_id</column_name>
-        <stream_name>Código da Escola</stream_name>
-      </field>
-      <field>
-        <column_name>quantidade</column_name>
-        <stream_name>Indígena_8</stream_name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1296</xloc>
-      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
