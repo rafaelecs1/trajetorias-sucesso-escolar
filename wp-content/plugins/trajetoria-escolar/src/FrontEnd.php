@@ -11,6 +11,7 @@ use Unicef\TrajetoriaEscolar\Model\Municipio;
 
 use Unicef\TrajetoriaEscolar\Repository\MySQLDistorcaoRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLEstadoRepository;
+use Unicef\TrajetoriaEscolar\Repository\MySQLMatriculaRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLMunicipioRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLEscolaRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLMapaRepository;
@@ -160,7 +161,11 @@ class FrontEnd
     {
 
         $rDistorcaoMapa = new MySQLMapaRepository();
+        $valor = new MySQLMatriculaRepository();
+
         $distorcaoMapa = $rDistorcaoMapa->getBrasil($this->year);
+
+        var_dump($valor->get());exit;
 
         ob_start();
         wp_enqueue_style('mapa-nacional', plugin_dir_url(dirname(__FILE__)) . 'css/mapa-nacional.css');
