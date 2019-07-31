@@ -81,6 +81,7 @@ abstract class AbstractRepository implements IRestFull
             $sql .= $dataBaseName . ' where ano_referencia = %d AND genero_id = %d';
             $resul = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $generoId), ARRAY_A);
         }
+        // TODO SEPARA AS RACAS E GENEROS
     }
 
     protected function getTotalPorRegiao($anoReferencia = null, $regiao = null)
