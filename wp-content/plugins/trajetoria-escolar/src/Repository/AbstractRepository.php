@@ -41,8 +41,8 @@ abstract class AbstractRepository implements IRestFull
 
     public function getById($id)
     {
-        $dataBaseName = $this::getTableName($this);
-        $sql = 'SELECT * FROM ' . $dataBaseName . ' WHERE id = %d';
+        $this->tableName = $this::getTableName($this);
+        $sql = 'SELECT * FROM ' . $this->tableName . ' WHERE id = %d';
         $resul = $this->db->get_row($this->db->prepare($sql, $id), ARRAY_A);
         return $resul;
     }
@@ -64,21 +64,21 @@ abstract class AbstractRepository implements IRestFull
 
     protected function getTotal($anoReferencia = null, $corRacaId = null, $generoId = null)
     {
-        $dataBaseName = $this::getTableName($this);
+        $this->tableName = $this::getTableName($this);
 
         $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ';
 
         if (empty($corRacaId) && empty($generoId)) {
-            $sql .= $dataBaseName . ' where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d';
+            $sql .= $this->tableName . ' where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d';
             return $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
         }
         if (!empty($corRacaId)) {
-            $sql .= $dataBaseName . ' where ano_referencia = %d AND cor_raca_id = %d';
+            $sql .= $this->tableName . ' where ano_referencia = %d AND cor_raca_id = %d';
             return $this->db->get_row($this->db->prepare($sql, $anoReferencia, $corRacaId), ARRAY_A);
         }
 
         if (!empty($generoId)) {
-            $sql .= $dataBaseName . ' where ano_referencia = %d AND genero_id = %d';
+            $sql .= $this->tableName . ' where ano_referencia = %d AND genero_id = %d';
             $resul = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $generoId), ARRAY_A);
         }
         // TODO SEPARA AS RACAS E GENEROS
@@ -86,49 +86,44 @@ abstract class AbstractRepository implements IRestFull
 
     protected function getTotalPorRegiao($anoReferencia = null, $regiao = null)
     {
-        $dataBaseName = $this::getTableName($this);
 
         $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ';
 
-        $sql .= $dataBaseName . ' join te_escolas te on te.id = '.$dataBaseName.'.escolas_id
+        $sql .= $this->tableName . ' join te_escolas te on te.id = '.$this->tableName.'.escolas_id
                                       join te_municipios tm on tm.id = te.municipio_id
                                       join te_estados tes on tes.id = tm.estado_id  
-                                      where '.$dataBaseName.'.ano_referencia = %d AND '.$dataBaseName.'.cor_raca_id IS NULL AND '.$dataBaseName.'.genero_id IS NULL AND tes.regiao = %s';
+                                      where '.$this->tableName.'.ano_referencia = %d AND '.$this->tableName.'.cor_raca_id IS NULL AND '.$this->tableName.'.genero_id IS NULL AND tes.regiao = %s';
 
         return $this->db->get_row($this->db->prepare($sql, $anoReferencia, $regiao), ARRAY_A);
     }
 //        if (!empty($corRacaId)) {
-//            $sql .= $dataBaseName . ' where ano_referencia = %d AND cor_raca_id = %d';
+//            $sql .= $this->tableName . ' where ano_referencia = %d AND cor_raca_id = %d';
 //            return $this->db->get_row($this->db->prepare($sql, $anoReferencia, $corRacaId), ARRAY_A);
 //        }
 //
 //        if (!empty($generoId)) {
-//            $sql .= $dataBaseName . ' where ano_referencia = %d AND genero_id = %d';
+//            $sql .= $this->tableName . ' where ano_referencia = %d AND genero_id = %d';
 //            $resul = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $generoId), ARRAY_A);
 //        }
 
 
     protected function getAnosIniciais($anoReferencia = null, $corRacaId = null, $generoId = null)
     {
-        $dataBaseName = $this::getTableName($this);
-
         $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5) as qtd FROM ';
 
         if (empty($corRacaId) && empty($generoId)) {
-            $sql .= $dataBaseName . ' where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d';
+            $sql .= $this->tableName . ' where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d';
             return $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
         }
     }
 
     protected function getAnosFinais($anoReferencia = null, $corRacaId = null, $generoId = null)
     {
-        $dataBaseName = $this::getTableName($this);
-
         $sql = 'SELECT SUM(ano6 + ano7 + ano8 + ano9) as qtd FROM ';
 
 
         if (empty($corRacaId) && empty($generoId)) {
-            $sql .= $dataBaseName . ' where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d';
+            $sql .= $this->tableName . ' where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d';
             return $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
         }
 
@@ -136,12 +131,10 @@ abstract class AbstractRepository implements IRestFull
 
     protected function getlMedio($anoReferencia = null, $corRacaId = null, $generoId = null)
     {
-        $dataBaseName = $this::getTableName($this);
-
         $sql = 'SELECT SUM(ano10 + ano11 + ano12 + ano13) as qtd FROM ';
 
         if (empty($corRacaId) && empty($generoId)) {
-            $sql .= $dataBaseName . ' where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d';
+            $sql .= $this->tableName . ' where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d';
             return $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
         }
 
