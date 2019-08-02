@@ -17,6 +17,8 @@ use Unicef\TrajetoriaEscolar\Repository\MySQLEscolaRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLMapaRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLPainelRepository;
 
+use Unicef\TrajetoriaEscolar\Repository\MySQLAbandonoRepository;
+
 /**
  * Classe que implementa os requisitos para o front-end (páginas)
  *
@@ -211,6 +213,14 @@ class FrontEnd
                 ?>
             </section>
         </section>
+
+
+        <?php
+
+            $rAbandonoRepository = new MySQLAbandonoRepository();
+            $rAbandonoRepository->getDataBrasil(2019);
+
+        ?>
 
 
         <?php
