@@ -149,14 +149,12 @@ abstract class AbstractRepository implements IRestFull
             case self::MATRICULA:
                 return "tse_qtd_matriculas";
                 break;
-            case 1:
-                echo "i equals 1";
+            case self::ABANDONO:
+                return "tse_qtd_abandonos";
                 break;
-            case 2:
-                echo "i equals 2";
+            case self::REPROVACAO:
+                return "tse_qtd_reprovacoes";
                 break;
-            default:
-                echo "i is not equal to 0, 1 or 2";
         }
     }
 
