@@ -62,6 +62,13 @@ abstract class AbstractRepository implements IRestFull
         // TODO: Implement delete() method.
     }
 
+    /**
+     * @param null $anoReferencia
+     * @param null $corRacaId: 1-Não declarada; 2-Branca; 3-Preta; 4-Parda; 5-Amarela; 6-Indígena
+     * @param null $generoId: 1-Feminino; 2-Masculino
+     * @return array|object|void|null
+     */
+
     protected function getTotal($anoReferencia = null, $corRacaId = null, $generoId = null)
     {
         $this->tableName = $this::getTableName($this);
