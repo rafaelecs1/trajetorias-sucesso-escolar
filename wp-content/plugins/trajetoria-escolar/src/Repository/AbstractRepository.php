@@ -16,8 +16,8 @@ abstract class AbstractRepository implements IRestFull
     /**
      * Objeto responsável pelas operações de banco de dados
      */
-    private $db;
-    private $tableName;
+    protected $db;
+    protected $tableName;
 
     /**
      * Construtor da classe

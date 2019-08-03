@@ -28,9 +28,6 @@ class MySQLMatriculaRepository extends AbstractRepository
         $data->regiao->sul = parent::getTotalPorRegiao($anoReferencia, 'Sul');
         $data->regiao->centro_oeste = parent::getTotalPorRegiao($anoReferencia, 'Centro-Oeste');
         $data->regiao->sudeste = parent::getTotalPorRegiao($anoReferencia, 'Sudeste');
-        echo "<pre>";
-        var_dump($data);exit;
-        echo "</pre>";
         return $data;
     }
 }

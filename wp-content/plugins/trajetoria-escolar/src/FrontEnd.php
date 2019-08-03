@@ -11,13 +11,12 @@ use Unicef\TrajetoriaEscolar\Model\Municipio;
 
 use Unicef\TrajetoriaEscolar\Repository\MySQLDistorcaoRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLEstadoRepository;
+use Unicef\TrajetoriaEscolar\Repository\MySQLAbandonoRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLMatriculaRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLMunicipioRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLEscolaRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLMapaRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLPainelRepository;
-
-use Unicef\TrajetoriaEscolar\Repository\MySQLAbandonoRepository;
 
 /**
  * Classe que implementa os requisitos para o front-end (páginas)
@@ -163,9 +162,14 @@ class FrontEnd
     {
 
         $rDistorcaoMapa = new MySQLMapaRepository();
-        $matriculas = new MySQLMatriculaRepository();
-        $matriculas->getDataBrasil($this->year);
         $distorcaoMapa = $rDistorcaoMapa->getBrasil($this->year);
+
+        $matriculasObj = new MySQLMatriculaRepository();
+        $matriculas = $matriculasObj->getDataBrasil($this->year);
+
+        $abandonosObj = new MySQLAbandonoRepository();
+        $abandonos = $abandonosObj->getDataBrasil($this->year);
+
         ob_start();
         wp_enqueue_style('mapa-nacional', plugin_dir_url(dirname(__FILE__)) . 'css/mapa-nacional.css');
         wp_enqueue_style('animate', plugin_dir_url(dirname(__FILE__)) . 'css/animate.css');
@@ -176,8 +180,6 @@ class FrontEnd
         wp_enqueue_script('tabs', plugin_dir_url(dirname(__FILE__)) . 'js/tabs.js', array('jquery'), false, true);
 
         ?>
-
-
 
         <section id="slider-tabs">
             <ul class="abas" >
@@ -209,15 +211,6 @@ class FrontEnd
                 ?>
             </section>
         </section>
-
-
-        <?php
-
-            $rAbandonoRepository = new MySQLAbandonoRepository();
-            $rAbandonoRepository->getDataBrasil(2019);
-
-        ?>
-
 
         <?php
 
