@@ -1,19 +1,11 @@
 <?php
-/**
- * Unicef\TrajetoriaEscolar\Repository\MySQLMatriculaRepository | MySQLMatriculaRepository.php
- *
- * @author André Keher
- * @copyright 2018
- */
+
 namespace Unicef\TrajetoriaEscolar\Repository;
 
-use Unicef\TrajetoriaEscolar\Contract\IDistorcaoRepository;
-use Unicef\TrajetoriaEscolar\Contract\IRestFull;
-use Unicef\TrajetoriaEscolar\Model\Distorcao;
-use Unicef\TrajetoriaEscolar\Contract\IDistorcao;
+use Unicef\TrajetoriaEscolar\Repository\AbstractRepository;
 
-class MySQLMatriculaRepository extends AbstractRepository
-{
+class MySQLReprovacaoRepository extends AbstractRepository{
+
     public function getDataBrasil($anoReferencia)
     {
         $data = new \stdClass();
@@ -54,4 +46,5 @@ class MySQLMatriculaRepository extends AbstractRepository
 
         return $data;
     }
+
 }

@@ -17,9 +17,6 @@ class MySQLAbandonoRepository extends AbstractRepository{
         $data->regiao_sul = parent::getTotalPorRegiao($anoReferencia, 'Sul');
         $data->regiao_centro_oeste = parent::getTotalPorRegiao($anoReferencia, 'Centro-Oeste');
         $data->regiao_sudeste = parent::getTotalPorRegiao($anoReferencia, 'Sudeste');
-        echo "<pre>";
-        var_dump($data);exit;
-        echo "</pre>";
         return $data;
     }
 

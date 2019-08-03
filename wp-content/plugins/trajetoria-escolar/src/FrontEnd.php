@@ -17,7 +17,7 @@ use Unicef\TrajetoriaEscolar\Repository\MySQLEscolaRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLMapaRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLPainelRepository;
 
-use Unicef\TrajetoriaEscolar\Repository\MySQLAbandonoRepository;
+use Unicef\TrajetoriaEscolar\Repository\MySQLAbandonoRepository;use Unicef\TrajetoriaEscolar\Repository\MySQLReprovacaoRepository;
 
 /**
  * Classe que implementa os requisitos para o front-end (páginas)
@@ -163,9 +163,13 @@ class FrontEnd
     {
 
         $rDistorcaoMapa = new MySQLMapaRepository();
-        $matriculas = new MySQLMatriculaRepository();
-        $matriculas->getDataBrasil($this->year);
+        $dataMatriculas = new MySQLMatriculaRepository();
+        $dataReprovacao = new MySQLReprovacaoRepository();
+
+        $matriculas = $dataMatriculas->getDataBrasil($this->year);
+        $reprovacoes = $dataReprovacao->getDataBrasil($this->year);
         $distorcaoMapa = $rDistorcaoMapa->getBrasil($this->year);
+
         ob_start();
         wp_enqueue_style('mapa-nacional', plugin_dir_url(dirname(__FILE__)) . 'css/mapa-nacional.css');
         wp_enqueue_style('animate', plugin_dir_url(dirname(__FILE__)) . 'css/animate.css');
