@@ -1,10 +1,7 @@
 /*
 !wp-content/
 !wp-includes/
-!Modelos/
-!Modelos_V1/
-!Modelos_V2/
-!Modelos_V3
+!mapas/
 
 # ignore all files starting with .
 .*
