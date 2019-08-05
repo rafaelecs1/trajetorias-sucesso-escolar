@@ -1,3 +1,4 @@
+
 <div class="center_mapa_inicial animated fadeIn">
 
     <div class="mn_mapa_nacional">
@@ -5,7 +6,7 @@
         <section class="mn_container mn_flex center">
 
             <div class="item item_1">
-                <h2>Abandono no Brasil - <?php echo $this->year - 1 ?></h2>
+                <h2>Abandonos no Brasil - <?php echo $this->year - 1 ?></h2>
                 <div class="mn_fundamental_e_medio">
 
                     <div class="mn_fundamental">
@@ -16,17 +17,17 @@
 
                                 <div class="item iniciais">
                                     <h4>Anos iniciais</h4>
-                                    <div class="value value_fi counter"><?php echo number_format($abandonos->nacional['anos_iniciais'], 0, ',', '.'); ?></div>
+                                    <div class="value value_fi counter"><?php echo number_format($abandonos->anos_iniciais['qtd'], 0, ',', '.'); ?></div>
                                     <div class="perc">[<span
-                                                class="perc_fi"><?php echo number_format(($abandonos->nacional['anos_iniciais'] * 100) / $abandonos->nacional['total_iniciais'], 2) ?></span>]%
+                                                class="perc_fi"><?php echo number_format(($abandonos->anos_iniciais['qtd'] * 100) / $matriculas->anos_iniciais['qtd'], 2) ?></span>]%
                                     </div>
                                 </div>
 
                                 <div class="item finais">
                                     <h4>Anos finais</h4>
-                                    <div class="value value_ff counter"><?php echo number_format($abandonos->nacional['anos_finais'], 0, ',', '.'); ?></div>
+                                    <div class="value value_ff counter"><?php echo number_format($abandonos->anos_finais['qtd'], 0, ',', '.'); ?></div>
                                     <div class="perc">
-                                        [<span><?php echo number_format(($abandonos->nacional['anos_finais'] * 100) / $abandonos->nacional['total_finais'], 2) ?></span>]%
+                                        [<span><?php echo number_format(($abandonos->anos_finais['qtd'] * 100) / $matriculas->anos_finais['qtd'], 2) ?></span>]%
                                     </div>
                                 </div>
 
@@ -42,9 +43,9 @@
                             <div class="valores">
 
                                 <div class="item unico">
-                                    <div class="value value_mi counter"><?php echo number_format($abandonos->nacional['medio'], 0, ',', '.'); ?></div>
+                                    <div class="value value_mi counter"><?php echo number_format($abandonos->medio['qtd'], 0, ',', '.'); ?></div>
                                     <div class="perc">[<span
-                                                class="perc_mi"><?php echo number_format(($abandonos->nacional['medio'] * 100) / $abandonos->nacional['total_medio'], 2) ?></span>]%
+                                                class="perc_mi"><?php echo number_format(($abandonos->medio['qtd'] * 100) / $matriculas->medio['qtd'], 2) ?></span>]%
                                     </div>
                                 </div>
 
@@ -181,36 +182,35 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                             </div>
 
                             <div class="valores">
-
                                 <div class="item iniciais">
                                     <div class="cabecalho">
                                         <h4>Anos iniciais</h4>
                                     </div>
                                     <ul>
                                         <li class="norte">
-                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao[6]['total'], 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_norte->anos_iniciais['qtd'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$abandonos->regiao[6]['total'] * 100) / (int)$abandonos->regiao[6]['total_geral'], 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_norte->anos_iniciais['qtd'] * 100) / (int)$matriculas->regiao_norte->anos_iniciais['qtd'], 2) ?></span>%]</span>
                                         </li>
                                         <li class="nordeste">
-                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao[3]['total'], 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_nordeste->anos_iniciais['qtd'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$abandonos->regiao[3]['total'] * 100) / (int)$abandonos->regiao[3]['total_geral'], 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_nordeste->anos_iniciais['qtd'] * 100) / (int)$matriculas->regiao_nordeste->anos_iniciais['qtd'], 2) ?></span>%]</span>
                                         </li>
                                         <li class="sudeste">
-                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao[9]['total'], 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_sudeste->anos_iniciais['qtd'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$abandonos->regiao[9]['total'] * 100) / (int)$abandonos->regiao[9]['total_geral'], 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_sudeste->anos_iniciais['qtd'] * 100) / (int)$matriculas->regiao_sudeste->anos_iniciais['qtd'], 2) ?></span>%]</span>
                                         </li>
                                         <li class="sul">
-                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao[12]['total'], 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_sul->anos_iniciais['qtd'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$abandonos->regiao[12]['total'] * 100) / (int)$abandonos->regiao[12]['total_geral'], 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_sul->anos_iniciais['qtd'] * 100) / (int)$matriculas->regiao_sul->anos_iniciais['qtd'], 2) ?></span>%]</span>
                                         </li>
                                         <li class="centro_oeste">
-                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao[0]['total'], 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_centro_oeste->anos_iniciais['qtd'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$abandonos->regiao[0]['total'] * 100) / (int)$abandonos->regiao[0]['total_geral'], 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_centro_oeste->anos_iniciais['qtd'] * 100) / (int)$matriculas->regiao_centro_oeste->anos_iniciais['qtd'], 2) ?></span>%]</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -219,29 +219,29 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                                     <h4>Anos finais</h4>
                                     <ul>
                                         <li class="norte">
-                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao[7]['total'], 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_norte->medio['qtd'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$abandonos->regiao[7]['total'] * 100) / (int)$abandonos->regiao[7]['total_geral'], 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_norte->medio['qtd'] * 100) / (int)$matriculas->regiao_norte->medio['qtd'], 2) ?></span>%]</span>
                                         </li>
                                         <li class="nordeste">
-                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao[4]['total'], 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_nordeste->medio['qtd'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$abandonos->regiao[4]['total'] * 100) / (int)$abandonos->regiao[4]['total_geral'], 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_nordeste->medio['qtd'] * 100) / (int)$matriculas->regiao_nordeste->medio['qtd'], 2) ?></span>%]</span>
                                         </li>
                                         <li class="sudeste">
-                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao[10]['total'], 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_sudeste->medio['qtd'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$abandonos->regiao[10]['total'] * 100) / (int)$abandonos->regiao[10]['total_geral'], 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_sudeste->medio['qtd'] * 100) / (int)$matriculas->regiao_sudeste->medio['qtd'], 2) ?></span>%]</span>
                                         </li>
                                         <li class="sul">
-                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao[13]['total'], 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_sul->medio['qtd'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$abandonos->regiao[13]['total'] * 100) / (int)$abandonos->regiao[13]['total_geral'], 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_sul->medio['qtd'] * 100) / (int)$matriculas->regiao_sul->medio['qtd'], 2) ?></span>%]</span>
                                         </li>
                                         <li class="centro_oeste">
-                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao[1]['total'], 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_centro_oeste->medio['qtd'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$abandonos->regiao[1]['total'] * 100) / (int)$abandonos->regiao[1]['total_geral'], 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_centro_oeste->medio['qtd'] * 100) / (int)$matriculas->regiao_centro_oeste->medio['qtd'], 2) ?></span>%]</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -264,29 +264,29 @@ c0,0-2.9,2.1-3.1,2.5s-1.1,1.6-1.6,1.9s-2.6,1.5-2.6,1.5L92.8,209.4z"/>
                                 <div class="item unico">
                                     <ul>
                                         <li class="norte">
-                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao[8]['total'], 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_norte->anos_finais['qtd'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$abandonos->regiao[8]['total'] * 100) / (int)$abandonos->regiao[8]['total_geral'], 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_norte->anos_finais['qtd'] * 100) / (int)$matriculas->regiao_norte->anos_finais['qtd'], 2) ?></span>%]</span>
                                         </li>
                                         <li class="nordeste">
-                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao[5]['total'], 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_nordeste->anos_finais['qtd'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$abandonos->regiao[5]['total'] * 100) / (int)$abandonos->regiao[5]['total_geral'], 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_nordeste->anos_finais['qtd'] * 100) / (int)$matriculas->regiao_nordeste->anos_finais['qtd'], 2) ?></span>%]</span>
                                         </li>
                                         <li class="sudeste">
-                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao[11]['total'], 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_sudeste->anos_finais['qtd'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$abandonos->regiao[11]['total'] * 100) / (int)$abandonos->regiao[11]['total_geral'], 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_sudeste->anos_finais['qtd'] * 100) / (int)$matriculas->regiao_sudeste->anos_finais['qtd'], 2) ?></span>%]</span>
                                         </li>
                                         <li class="sul">
-                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao[14]['total'], 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_sul->anos_finais['qtd'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$abandonos->regiao[14]['total'] * 100) / (int)$abandonos->regiao[14]['total_geral'], 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_sul->anos_finais['qtd'] * 100) / (int)$matriculas->regiao_sul->anos_finais['qtd'], 2) ?></span>%]</span>
                                         </li>
                                         <li class="centro_oeste">
-                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao[2]['total'], 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_centro_oeste->anos_finais['qtd'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$abandonos->regiao[2]['total'] * 100) / (int)$abandonos->regiao[2]['total_geral'], 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_centro_oeste->anos_finais['qtd'] * 100) / (int)$matriculas->regiao_centro_oeste->anos_finais['qtd'], 2) ?></span>%]</span>
                                         </li>
                                     </ul>
                                 </div>
