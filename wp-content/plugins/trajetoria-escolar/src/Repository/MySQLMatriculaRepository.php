@@ -14,43 +14,28 @@ use Unicef\TrajetoriaEscolar\Contract\IDistorcao;
 
 class MySQLMatriculaRepository extends AbstractRepository
 {
+
+
     public function getDataBrasil($anoReferencia)
     {
+        $mapa = $this->getCacheBrasil(2, $anoReferencia);
+
+        if (!empty($mapa)) {
+            return (object)json_decode($mapa, true);
+        }
+
         $data = new \stdClass();
         $data->total = parent::getTotal($anoReferencia);
         $data->anos_iniciais = parent::getAnosIniciais($anoReferencia);
-        $data->anos_finais = parent::getAnosFinais($anoReferencia);
+        $data->anos_anos_finais = parent::getAnosFinais($anoReferencia);
         $data->medio = parent::getlMedio($anoReferencia);
+        $data->regiao = new \stdClass();
+        $data->regiao->norte = parent::getTotalPorRegiao($anoReferencia, 'Norte');
+        $data->regiao->sul = parent::getTotalPorRegiao($anoReferencia, 'Sul');
+        $data->regiao->centro_oeste = parent::getTotalPorRegiao($anoReferencia, 'Centro-Oeste');
+        $data->regiao->sudeste = parent::getTotalPorRegiao($anoReferencia, 'Sudeste');
 
-        $data->regiao_norte = new \stdClass();
-        $data->regiao_norte->total = parent::getTotalPorRegiao($anoReferencia, 'Norte');
-        $data->regiao_norte->anos_iniciais = parent::getTotalPorRegiao($anoReferencia, 'Norte', 'iniciais');
-        $data->regiao_norte->anos_finais = parent::getTotalPorRegiao($anoReferencia, 'Norte', 'finais');
-        $data->regiao_norte->medio = parent::getTotalPorRegiao($anoReferencia, 'Norte', 'medio');
-
-        $data->regiao_nordeste = new \stdClass();
-        $data->regiao_nordeste->total = parent::getTotalPorRegiao($anoReferencia, 'Nordeste');
-        $data->regiao_nordeste->anos_iniciais = parent::getTotalPorRegiao($anoReferencia, 'Nordeste', 'iniciais');
-        $data->regiao_nordeste->anos_finais = parent::getTotalPorRegiao($anoReferencia, 'Nordeste', 'finais');
-        $data->regiao_nordeste->medio = parent::getTotalPorRegiao($anoReferencia, 'Nordeste', 'medio');
-
-        $data->regiao_sul = new \stdClass();
-        $data->regiao_sul->total = parent::getTotalPorRegiao($anoReferencia, 'Sul');
-        $data->regiao_sul->anos_iniciais = parent::getTotalPorRegiao($anoReferencia, 'Sul', 'iniciais');
-        $data->regiao_sul->anos_finais = parent::getTotalPorRegiao($anoReferencia, 'Sul', 'finais');
-        $data->regiao_sul->medio = parent::getTotalPorRegiao($anoReferencia, 'Sul', 'medio');
-
-        $data->regiao_centro_oeste = new \stdClass();
-        $data->regiao_centro_oeste->total = parent::getTotalPorRegiao($anoReferencia, 'Centro-Oeste');
-        $data->regiao_centro_oeste->anos_iniciais = parent::getTotalPorRegiao($anoReferencia, 'Centro-Oeste', 'iniciais');
-        $data->regiao_centro_oeste->anos_finais = parent::getTotalPorRegiao($anoReferencia, 'Centro-Oeste', 'finais');
-        $data->regiao_centro_oeste->medio = parent::getTotalPorRegiao($anoReferencia, 'Centro-Oeste', 'medio');
-
-        $data->regiao_sudeste = new \stdClass();
-        $data->regiao_sudeste->total = parent::getTotalPorRegiao($anoReferencia, 'Sudeste');
-        $data->regiao_sudeste->anos_iniciais = parent::getTotalPorRegiao($anoReferencia, 'Sudeste', 'iniciais');
-        $data->regiao_sudeste->anos_finais = parent::getTotalPorRegiao($anoReferencia, 'Sudeste', 'finais');
-        $data->regiao_sudeste->medio = parent::getTotalPorRegiao($anoReferencia, 'Sudeste', 'medio');
+        $this->saveBrasil(2, $anoReferencia, $data);
 
         return $data;
     }
