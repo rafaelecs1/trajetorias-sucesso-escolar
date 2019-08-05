@@ -165,5 +165,102 @@ abstract class AbstractRepository implements IRestFull
         }
     }
 
+    public function getDataBrasil($anoReferencia)
+    {
+
+        $mapa = $this->getCacheBrasil(2, $anoReferencia);
+
+        if (!empty($mapa)) {
+            return (object)json_decode($mapa, true);
+        }
+
+        $data = new \stdClass();
+        $data->total = $this->getTotal($anoReferencia);
+        $data->anos_iniciais = $this->getAnosIniciais($anoReferencia);
+        $data->anos_finais = $this->getAnosFinais($anoReferencia);
+        $data->medio = $this->getlMedio($anoReferencia);
+
+        $data->regiao_norte = new \stdClass();
+        $data->regiao_norte->total = $this->getTotalPorRegiao($anoReferencia, 'Norte');
+        $data->regiao_norte->anos_iniciais = $this->getTotalPorRegiao($anoReferencia, 'Norte', 'iniciais');
+        $data->regiao_norte->anos_finais = $this->getTotalPorRegiao($anoReferencia, 'Norte', 'finais');
+        $data->regiao_norte->medio = $this->getTotalPorRegiao($anoReferencia, 'Norte', 'medio');
+
+        $data->regiao_nordeste = new \stdClass();
+        $data->regiao_nordeste->total = $this->getTotalPorRegiao($anoReferencia, 'Nordeste');
+        $data->regiao_nordeste->anos_iniciais = $this->getTotalPorRegiao($anoReferencia, 'Nordeste', 'iniciais');
+        $data->regiao_nordeste->anos_finais = $this->getTotalPorRegiao($anoReferencia, 'Nordeste', 'finais');
+        $data->regiao_nordeste->medio = $this->getTotalPorRegiao($anoReferencia, 'Nordeste', 'medio');
+
+        $data->regiao_sul = new \stdClass();
+        $data->regiao_sul->total = $this->getTotalPorRegiao($anoReferencia, 'Sul');
+        $data->regiao_sul->anos_iniciais = $this->getTotalPorRegiao($anoReferencia, 'Sul', 'iniciais');
+        $data->regiao_sul->anos_finais = $this->getTotalPorRegiao($anoReferencia, 'Sul', 'finais');
+        $data->regiao_sul->medio = $this->getTotalPorRegiao($anoReferencia, 'Sul', 'medio');
+
+        $data->regiao_centro_oeste = new \stdClass();
+        $data->regiao_centro_oeste->total = $this->getTotalPorRegiao($anoReferencia, 'Centro-Oeste');
+        $data->regiao_centro_oeste->anos_iniciais = $this->getTotalPorRegiao($anoReferencia, 'Centro-Oeste', 'iniciais');
+        $data->regiao_centro_oeste->anos_finais = $this->getTotalPorRegiao($anoReferencia, 'Centro-Oeste', 'finais');
+        $data->regiao_centro_oeste->medio = $this->getTotalPorRegiao($anoReferencia, 'Centro-Oeste', 'medio');
+
+        $data->regiao_sudeste = new \stdClass();
+        $data->regiao_sudeste->total = $this->getTotalPorRegiao($anoReferencia, 'Sudeste');
+        $data->regiao_sudeste->anos_iniciais = $this->getTotalPorRegiao($anoReferencia, 'Sudeste', 'iniciais');
+        $data->regiao_sudeste->anos_finais = $this->getTotalPorRegiao($anoReferencia, 'Sudeste', 'finais');
+        $data->regiao_sudeste->medio = $this->getTotalPorRegiao($anoReferencia, 'Sudeste', 'medio');
+
+        $this->saveBrasil(2, $anoReferencia, $data);
+
+        return $data;
+    }
+
+    public function saveBrasil($origem, $anoReferencia = 0, $painel = array())
+    {
+        $tipo = $this->getTipoPainel($this);
+        $this->db->query($this->db->prepare(
+            'INSERT INTO te_paineis (ano_referencia, referencia_id, tipo, painel) 
+                VALUES (%d, %d, "%s", "%s");',
+            $anoReferencia,
+            $origem,
+            $tipo,
+            json_encode($painel)
+        ));
+        return json_encode($painel);
+    }
+
+    public function getCacheBrasil($referencia, $anoReferencia = 0)
+    {
+        $tipo = $this->getTipoPainel($this);
+        return $this->db->get_var($this->db->prepare(
+            'SELECT 
+                painel 
+            FROM te_paineis 
+            WHERE ano_referencia = %d
+            AND referencia_id = %d
+            AND tipo = "%s";',
+            $anoReferencia,
+            $referencia,
+            $tipo
+        ));
+    }
+
+    private function getTipoPainel($name){
+        $nome = get_class($name);
+        $estrutura = explode('\\', $nome);
+        $nameClass = $estrutura[count($estrutura) - 1];
+        switch ($nameClass) {
+            case self::MATRICULA:
+                return "NacionalMatricula";
+                break;
+            case self::ABANDONO:
+                return "NacionalAbandono";
+                break;
+            case self::REPROVACAO:
+                return "NacionalReprovacao";
+                break;
+        }
+    }
+
 
 }
