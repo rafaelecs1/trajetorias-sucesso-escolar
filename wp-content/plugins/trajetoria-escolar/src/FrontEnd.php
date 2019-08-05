@@ -173,6 +173,7 @@ class FrontEnd
         $reprovacoesObj = new MySQLReprovacaoRepository();
         $reprovacoes = $abandonosObj->getDataBrasil($this->year);
 
+
         ob_start();
         wp_enqueue_style('mapa-nacional', plugin_dir_url(dirname(__FILE__)) . 'css/mapa-nacional.css');
         wp_enqueue_style('animate', plugin_dir_url(dirname(__FILE__)) . 'css/animate.css');

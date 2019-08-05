@@ -75,23 +75,26 @@ abstract class AbstractRepository implements IRestFull
 
         if (empty($corRacaId) && empty($generoId)) {
             $sql .= $this->tableName . ' where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d';
-            return $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
+            $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
+            return $response['qtd'];
         }
         if (!empty($corRacaId)) {
             $sql .= $this->tableName . ' where ano_referencia = %d AND cor_raca_id = %d';
-            return $this->db->get_row($this->db->prepare($sql, $anoReferencia, $corRacaId), ARRAY_A);
+            $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
+            return $response['qtd'];
         }
 
         if (!empty($generoId)) {
             $sql .= $this->tableName . ' where ano_referencia = %d AND genero_id = %d';
-            $resul = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $generoId), ARRAY_A);
+            $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
+            return $response['qtd'];
         }
         // TODO SEPARA AS RACAS E GENEROS
     }
 
     protected function getTotalPorRegiao($anoReferencia = null, $regiao = null, $tipoAno = null)
     {
-        if($tipoAno == null){
+        if ($tipoAno == null) {
             $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ';
         }
         if ($tipoAno == 'iniciais') {
@@ -110,7 +113,8 @@ abstract class AbstractRepository implements IRestFull
                                       join te_estados tes on tes.id = tm.estado_id  
                                       where ' . $this->tableName . '.ano_referencia = %d AND ' . $this->tableName . '.cor_raca_id IS NULL AND ' . $this->tableName . '.genero_id IS NULL AND tes.regiao = %s';
 
-        return $this->db->get_row($this->db->prepare($sql, $anoReferencia, $regiao), ARRAY_A);
+        $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $regiao), ARRAY_A);
+        return $response['qtd'];
     }
 
 
@@ -120,7 +124,8 @@ abstract class AbstractRepository implements IRestFull
 
         if (empty($corRacaId) && empty($generoId)) {
             $sql .= $this->tableName . ' where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d';
-            return $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
+            $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
+            return $response['qtd'];
         }
     }
 
@@ -131,7 +136,8 @@ abstract class AbstractRepository implements IRestFull
 
         if (empty($corRacaId) && empty($generoId)) {
             $sql .= $this->tableName . ' where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d';
-            return $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
+            $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
+            return $response['qtd'];
         }
 
     }
@@ -142,7 +148,8 @@ abstract class AbstractRepository implements IRestFull
 
         if (empty($corRacaId) && empty($generoId)) {
             $sql .= $this->tableName . ' where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d';
-            return $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
+            $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
+            return $response['qtd'];
         }
 
     }
@@ -168,11 +175,11 @@ abstract class AbstractRepository implements IRestFull
     public function getDataBrasil($anoReferencia)
     {
 
-        $mapa = $this->getCacheBrasil(2, $anoReferencia);
-
-        if (!empty($mapa)) {
-            return (object)json_decode($mapa, true);
-        }
+//        $mapa = $this->getCacheBrasil(2, $anoReferencia);
+//
+//        if (!empty($mapa)) {
+//            return (object)json_decode($mapa, true);
+//        }
 
         $data = new \stdClass();
         $data->total = $this->getTotal($anoReferencia);
@@ -210,7 +217,7 @@ abstract class AbstractRepository implements IRestFull
         $data->regiao_sudeste->anos_finais = $this->getTotalPorRegiao($anoReferencia, 'Sudeste', 'finais');
         $data->regiao_sudeste->medio = $this->getTotalPorRegiao($anoReferencia, 'Sudeste', 'medio');
 
-        $this->saveBrasil(2, $anoReferencia, $data);
+//        $this->saveBrasil(2, $anoReferencia, $data);
 
         return $data;
     }
@@ -245,7 +252,8 @@ abstract class AbstractRepository implements IRestFull
         ));
     }
 
-    private function getTipoPainel($name){
+    private function getTipoPainel($name)
+    {
         $nome = get_class($name);
         $estrutura = explode('\\', $nome);
         $nameClass = $estrutura[count($estrutura) - 1];
