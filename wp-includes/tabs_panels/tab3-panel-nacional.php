@@ -1,4 +1,4 @@
-<section class="ficha municipio">
+<section class="ficha municipio animated fadeIn">
     <section id="redes-de-ensino">
         <header>
             <h2 class="mt-0">Perfil das crianças e adolescentes - <?php echo $this->year - 1; ?> </h2>
