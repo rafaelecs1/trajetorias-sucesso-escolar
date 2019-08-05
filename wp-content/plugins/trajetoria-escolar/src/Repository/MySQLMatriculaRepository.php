@@ -18,6 +18,12 @@ class MySQLMatriculaRepository extends AbstractRepository
 
     public function getDataBrasil($anoReferencia)
     {
+        $mapa = $this->getCacheBrasil(2, $anoReferencia);
+
+        if (!empty($mapa)) {
+            return (object)json_decode($mapa, true);
+        }
+
         $data = new \stdClass();
         $data->total = parent::getTotal($anoReferencia);
         $data->anos_iniciais = parent::getAnosIniciais($anoReferencia);
@@ -28,6 +34,9 @@ class MySQLMatriculaRepository extends AbstractRepository
         $data->regiao->sul = parent::getTotalPorRegiao($anoReferencia, 'Sul');
         $data->regiao->centro_oeste = parent::getTotalPorRegiao($anoReferencia, 'Centro-Oeste');
         $data->regiao->sudeste = parent::getTotalPorRegiao($anoReferencia, 'Sudeste');
+
+        $this->saveBrasil(2, $anoReferencia, $data);
+
         return $data;
     }
 }

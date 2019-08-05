@@ -164,13 +164,11 @@ class FrontEnd
         $rDistorcaoMapa = new MySQLMapaRepository();
         $distorcaoMapa = $rDistorcaoMapa->getBrasil($this->year);
 
-//        $matriculasObj = new MySQLMatriculaRepository();
-//        $matriculas = $matriculasObj->getDataBrasil($this->year);
+        $matriculasObj = new MySQLMatriculaRepository();
+        $matriculas = $matriculasObj->getDataBrasil($this->year);
 
         $abandonosObj = new MySQLAbandonoRepository();
         $abandonos = $abandonosObj->getDataBrasil($this->year);
-
-        var_dump($abandonos);
 
         ob_start();
         wp_enqueue_style('mapa-nacional', plugin_dir_url(dirname(__FILE__)) . 'css/mapa-nacional.css');
