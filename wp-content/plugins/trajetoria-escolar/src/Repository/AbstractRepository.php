@@ -89,7 +89,6 @@ abstract class AbstractRepository implements IRestFull
             $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
             return $response['qtd'];
         }
-        // TODO SEPARA AS RACAS E GENEROS
     }
 
     protected function getTotalPainel($anoReferencia = null, $dependencia = null, $tipoAno = null, $localizacao = null, $localizacao_diferenciada = null)
@@ -114,6 +113,41 @@ abstract class AbstractRepository implements IRestFull
         return $response['qtd'];
     }
 
+    protected function getTotalPainelLocalizacao($anoReferencia = null, $tipo = null)
+    {
+        $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ' . $this->tableName . ' join te_escolas te on te.id = ' . $this->tableName . '.escolas_id                                                                                   
+                                      where ' . $this->tableName . '.ano_referencia = %d AND ' . $this->tableName . '.cor_raca_id IS NULL AND ' . $this->tableName . '.genero_id IS NULL AND te.localizacao = %s';
+
+        $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $tipo), ARRAY_A);
+        return $response['qtd'];
+    }
+
+    protected function getTotalPainelLocalizacaoDiferenciada($anoReferencia = null, $tipo = null)
+    {
+        $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ' . $this->tableName . ' join te_escolas te on te.id = ' . $this->tableName . '.escolas_id                                                                                   
+                                      where ' . $this->tableName . '.ano_referencia = %d AND ' . $this->tableName . '.cor_raca_id IS NULL AND ' . $this->tableName . '.genero_id IS NULL AND te.localizacao_diferenciada = %s';
+
+        $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $tipo), ARRAY_A);
+        return $response['qtd'];
+    }
+
+    protected function getTotalPainelCorRaca($anoReferencia = null, $corRacaId = null)
+    {
+        $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ' . $this->tableName . ' join te_escolas te on te.id = ' . $this->tableName . '.escolas_id                                                                                   
+                                      where ' . $this->tableName . '.ano_referencia = %d AND ' . $this->tableName . '.cor_raca_id = %s';
+
+        $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $corRacaId), ARRAY_A);
+        return $response['qtd'];
+    }
+
+    protected function getTotalPainelGenero($anoReferencia = null, $generoId = null)
+    {
+        $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ' . $this->tableName . ' join te_escolas te on te.id = ' . $this->tableName . '.escolas_id                                                                                   
+                                      where ' . $this->tableName . '.ano_referencia = %d AND ' . $this->tableName . '.genero_id = %s';
+        $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $generoId), ARRAY_A);
+        return $response['qtd'];
+    }
+
     protected function getTotalPorRegiao($anoReferencia = null, $regiao = null, $tipoAno = null)
     {
         if ($tipoAno == null) {
@@ -128,7 +162,6 @@ abstract class AbstractRepository implements IRestFull
         if ($tipoAno == 'medio') {
             $sql = 'SELECT SUM(ano10 + ano11 + ano12 + ano13) as qtd FROM ';
         }
-
 
         $sql .= $this->tableName . ' join te_escolas te on te.id = ' . $this->tableName . '.escolas_id
                                       join te_municipios tm on tm.id = te.municipio_id
@@ -197,12 +230,6 @@ abstract class AbstractRepository implements IRestFull
     protected function getDataMapaBrasil($anoReferencia)
     {
 
-        $mapa = $this->getCacheBrasil(2, $anoReferencia);
-
-        if (!empty($mapa)) {
-            return json_decode($mapa);
-        }
-
         $data = new \stdClass();
         $data->total = $this->getTotalMapa($anoReferencia);
         $data->anos_iniciais = $this->getAnosIniciais($anoReferencia);
@@ -239,8 +266,6 @@ abstract class AbstractRepository implements IRestFull
         $data->regiao_sudeste->anos_finais = $this->getTotalPorRegiao($anoReferencia, 'Sudeste', 'finais');
         $data->regiao_sudeste->medio = $this->getTotalPorRegiao($anoReferencia, 'Sudeste', 'medio');
 
-        $this->saveBrasil(2, $anoReferencia, $data);
-
         return $data;
     }
 
@@ -251,12 +276,6 @@ abstract class AbstractRepository implements IRestFull
 
     protected function getDataPainelBrasil($anoReferencia)
     {
-//
-//        $mapa = $this->getCacheBrasil(2, $anoReferencia);
-//
-//        if (!empty($mapa)) {
-//            return json_decode($mapa);
-//        }
 
         $data = new \stdClass();
         $data->total = $this->getTotalMapa($anoReferencia);
@@ -265,13 +284,13 @@ abstract class AbstractRepository implements IRestFull
         $data->medio = $this->getlMedio($anoReferencia);
 
         $data->municipal = new \stdClass();
-        $data->municipal->total = $this->getTotalPainel($anoReferencia);
+        $data->municipal->total = $this->getTotalPainel($anoReferencia, 'Municipal');
         $data->municipal->anos_iniciais = $this->getTotalPainel($anoReferencia, 'Municipal', 'iniciais');
         $data->municipal->anos_finais = $this->getTotalPainel($anoReferencia, 'Municipal', 'finais');
         $data->municipal->medio = $this->getTotalPainel($anoReferencia, 'Municipal', 'medio');
         
         $data->estadual = new \stdClass();
-        $data->estadual->total = $this->getTotalPainel($anoReferencia);
+        $data->estadual->total = $this->getTotalPainel($anoReferencia, 'Estadual');
         $data->estadual->anos_iniciais = $this->getTotalPainel($anoReferencia, 'Estadual', 'iniciais');
         $data->estadual->anos_finais = $this->getTotalPainel($anoReferencia, 'Estadual', 'finais');
         $data->estadual->medio = $this->getTotalPainel($anoReferencia, 'Estadual', 'medio');
@@ -282,42 +301,35 @@ abstract class AbstractRepository implements IRestFull
         $data->anos->medio = new \stdClass();
 
         $data->localizacao = new \stdClass();
-        $data->localizacao->rural = new \stdClass();
-        $data->localizacao->urbano = new \stdClass();
+        $data->localizacao->rural = $this->getTotalPainelLocalizacao($anoReferencia, 'Rural');
+        $data->localizacao->urbano = $this->getTotalPainelLocalizacao($anoReferencia, 'Urbana');
 
         $data->localizacao_diferenciada = new \stdClass();
-        $data->localizacao_diferenciada->area_de_assentamento = new \stdClass();
-        $data->localizacao_diferenciada->area_remanecente_quilombola = new \stdClass();
-        $data->localizacao_diferenciada->terra_inidigena = new \stdClass();
-        $data->localizacao_diferenciada->unidade_uso_sustentavel = new \stdClass();
-        $data->localizacao_diferenciada->unidade_uso_sustentavel_em_area_remancente_de_quilombo = new \stdClass();
-        $data->localizacao_diferenciada->unidade_de_uso_sustentavel_em_terra_indigena = new \stdClass();
+        $data->localizacao_diferenciada->area_de_assentamento = $this->getTotalPainelLocalizacaoDiferenciada($anoReferencia, 'Área de assentamento');
+        $data->localizacao_diferenciada->area_remanecente_quilombola = $this->getTotalPainelLocalizacaoDiferenciada($anoReferencia, 'Área remanescente de quilombos');
+        $data->localizacao_diferenciada->terra_inidigena = $this->getTotalPainelLocalizacaoDiferenciada($anoReferencia, 'Terra indígena');
+        $data->localizacao_diferenciada->unidade_uso_sustentavel = $this->getTotalPainelLocalizacaoDiferenciada($anoReferencia, 'Unidade de uso sustentável');
+        $data->localizacao_diferenciada->unidade_uso_sustentavel_em_area_remancente_de_quilombo = $this->getTotalPainelLocalizacaoDiferenciada($anoReferencia, 'ÁUnidade de uso sustentável em área remanescente de quilombos');
+        $data->localizacao_diferenciada->unidade_de_uso_sustentavel_em_terra_indigena = $this->getTotalPainelLocalizacaoDiferenciada($anoReferencia, 'Unidade de uso sustentável em terra indígena');
 
         $data->cor_raca = new \stdClass();
-        $data->cor_raca->nao_declarada = new \stdClass();
-        $data->cor_raca->branca = new \stdClass();
-        $data->cor_raca->preta = new \stdClass();
-        $data->cor_raca->parda = new \stdClass();
-        $data->cor_raca->amarela = new \stdClass();
-        $data->cor_raca->indigena = new \stdClass();
+        $data->cor_raca->nao_declarada = $this->getTotalPainelCorRaca($anoReferencia, 1);
+        $data->cor_raca->branca = $this->getTotalPainelCorRaca($anoReferencia, 2);
+        $data->cor_raca->preta = $this->getTotalPainelCorRaca($anoReferencia, 3);
+        $data->cor_raca->parda = $this->getTotalPainelCorRaca($anoReferencia, 4);
+        $data->cor_raca->amarela = $this->getTotalPainelCorRaca($anoReferencia, 5);
+        $data->cor_raca->indigena = $this->getTotalPainelCorRaca($anoReferencia, 6);
 
         $data->genero = new \stdClass();
-        $data->genero->masculino = new \stdClass();
-        $data->genero->feminismo = new \stdClass();
-
-        echo '<pre>';
-        var_dump($data);exit;
-
-
-//        $this->saveBrasil(2, $anoReferencia, $data);
+        $data->genero->masculino = $this->getTotalPainelGenero($anoReferencia, 1);
+        $data->genero->feminismo = $this->getTotalPainelGenero($anoReferencia, 2);
 
         return $data;
     }
 
 
-    public function saveBrasil($origem, $anoReferencia = 0, $painel = array())
+    public function saveBrasil($origem, $tipo, $anoReferencia = 0, $painel = array())
     {
-        $tipo = $this->getTipoPainel($this);
         return $this->db->query($this->db->prepare(
             'INSERT INTO te_paineis (ano_referencia, referencia_id, tipo, painel) 
                 VALUES (%d, %d, "%s", "%s");',
