@@ -345,8 +345,16 @@ class FrontEnd
 
         if (!empty($id) && in_array($tipo, array('estado', 'municipio', 'escola'))) {
             if ($tipo === 'estado') {
+
                 $rEst = new MySQLEstadoRepository();
                 $origem = $rEst->get($id);
+
+//                $matriculasObj = new MySQLMatriculaRepository();
+//                $matriculas = $matriculasObj->getDataMapaBrasil($this->year);
+//
+//                $abandonosObj = new MySQLAbandonoRepository();
+//                $abandonos = $abandonosObj->getDataPainelBrasil($this->year);
+
             } elseif ($tipo === 'municipio') {
                 $rMun = new MySQLMunicipioRepository();
                 $origem = $rMun->get($id);
@@ -354,130 +362,140 @@ class FrontEnd
                 $rEsc = new MySQLEscolaRepository();
                 $origem = $rEsc->get($id);
             }
+
             if (empty($origem)) {
                 return false;
             }
+
             $rPainel = new MySQLPainelRepository();
             $painel = $rPainel->get($origem, $this->year);
+
+            echo "<pre>";
+                var_dump($painel);
+            echo "<pre>";
+
             ob_start();
+
             ?>
-                <?php if ($tipo === "estado") { ?>
-            <div class="content-select-year-painel">
-                <form name="form-year" id="form-year" method="post">
-                    <label>Ano referência
-                        <select class="select-year" id="select-year" name="select-year">
-                            <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/estado/" . substr($_SERVER['REQUEST_URI'], 15, 2) . "/2018"; ?>" <?php if ((int)$this->year == 2019) {
-                                echo "selected";
-                            } ?> >2018
-                            </option>
-                            <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/estado/" . substr($_SERVER['REQUEST_URI'], 15, 2) . "/2017"; ?>" <?php if ((int)$this->year == 2018) {
-                                echo "selected";
-                            } ?> >2017
-                            </option>
-                        </select>
-                    </label>
-                </form>
-            </div>
-        <?php } ?>
 
-        <?php if ($tipo === "municipio") { ?>
-            <div class="content-select-year-painel">
-                <form name="form-year" id="form-year" method="post">
-                    <label>Ano referência
-                        <select class="select-year" id="select-year" name="select-year">
-                            <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/municipio/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2018"; ?>" <?php if ((int)$this->year == 2019) {
-                                echo "selected";
-                            } ?> >2018
-                            </option>
-                            <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/municipio/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2017"; ?>" <?php if ((int)$this->year == 2018) {
-                                echo "selected";
-                            } ?> >2017
-                            </option>
-                        </select>
-                    </label>
-                </form>
-            </div>
-        <?php } ?>
+            <?php if ($tipo === "estado") { ?>
+                <div class="content-select-year-painel">
+                    <form name="form-year" id="form-year" method="post">
+                        <label>Ano referência
+                            <select class="select-year" id="select-year" name="select-year">
+                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/estado/" . substr($_SERVER['REQUEST_URI'], 15, 2) . "/2018"; ?>" <?php if ((int)$this->year == 2019) {
+                                    echo "selected";
+                                } ?> >2018
+                                </option>
+                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/estado/" . substr($_SERVER['REQUEST_URI'], 15, 2) . "/2017"; ?>" <?php if ((int)$this->year == 2018) {
+                                    echo "selected";
+                                } ?> >2017
+                                </option>
+                            </select>
+                        </label>
+                    </form>
+                </div>
+            <?php } ?>
 
-        <?php if ($tipo === "escola") { ?>
-            <div class="content-select-year-painel">
-                <form name="form-year" id="form-year" method="post">
-                    <label>Ano referência
-                        <select class="select-year" id="select-year" name="select-year">
-                            <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/escola/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2018"; ?>" <?php if ((int)$this->year == 2019) {
-                                echo "selected";
-                            } ?> >2018
-                            </option>
-                            <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/escola/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2017"; ?>" <?php if ((int)$this->year == 2018) {
-                                echo "selected";
-                            } ?> >2017
-                            </option>
-                        </select>
-                    </label>
-                </form>
-            </div>
-        <?php } ?>
-                  <section id="slider-tabs">
-            <ul class="abas" >
-                <li id="tab-link-1" class="tablinks active" onclick="openTab(1)"><a href="javascript:void(0);">Distorção Idade Série</a></li>
-                <li id="tab-link-2" class="tablinks" onclick="openTab(2)"><a  href="javascript:void(0);">Reprovação</a></li>
-                <li id="tab-link-3" class="tablinks" onclick="openTab(3)"><a href="javascript:void(0);">Abandono</a></li>
-            </ul>
-            <section id="tab-1" class="aba-panel tabcontent active" style="display: block;">
+            <?php if ($tipo === "municipio") { ?>
+                <div class="content-select-year-painel">
+                    <form name="form-year" id="form-year" method="post">
+                        <label>Ano referência
+                            <select class="select-year" id="select-year" name="select-year">
+                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/municipio/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2018"; ?>" <?php if ((int)$this->year == 2019) {
+                                    echo "selected";
+                                } ?> >2018
+                                </option>
+                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/municipio/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2017"; ?>" <?php if ((int)$this->year == 2018) {
+                                    echo "selected";
+                                } ?> >2017
+                                </option>
+                            </select>
+                        </label>
+                    </form>
+                </div>
+            <?php } ?>
 
-                <?php
+            <?php if ($tipo === "escola") { ?>
+                <div class="content-select-year-painel">
+                    <form name="form-year" id="form-year" method="post">
+                        <label>Ano referência
+                            <select class="select-year" id="select-year" name="select-year">
+                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/escola/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2018"; ?>" <?php if ((int)$this->year == 2019) {
+                                    echo "selected";
+                                } ?> >2018
+                                </option>
+                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/escola/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2017"; ?>" <?php if ((int)$this->year == 2018) {
+                                    echo "selected";
+                                } ?> >2017
+                                </option>
+                            </select>
+                        </label>
+                    </form>
+                </div>
+            <?php } ?>
 
-                include_once 'wp-includes/tabs_panels/tab1-panel-estado-municio-escola.php'
+            <section id="slider-tabs">
 
-                ?>
+                <ul class="abas" >
+                    <li id="tab-link-1" class="tablinks active" onclick="openTab(1)"><a href="javascript:void(0);">Distorção Idade Série</a></li>
+                    <li id="tab-link-2" class="tablinks" onclick="openTab(2)"><a  href="javascript:void(0);">Reprovação</a></li>
+                    <li id="tab-link-3" class="tablinks" onclick="openTab(3)"><a href="javascript:void(0);">Abandono</a></li>
+                </ul>
 
-            </section>
-            <section id="tab-2" class="aba-panel tabcontent" style="display: none;">
-                <?php
+                <section id="tab-1" class="aba-panel tabcontent active" style="display: block;">
+                    <?php
+                        include_once 'wp-includes/tabs_panels/tab1-panel-estado-municio-escola.php'
+                    ?>
+                </section>
 
-                include_once 'wp-includes/tabs_panels/tab2-panel-estado-municio-escola.php'
+                <section id="tab-2" class="aba-panel tabcontent" style="display: none;">
+                    <?php
+                        include_once 'wp-includes/tabs_panels/tab2-panel-estado-municio-escola.php'
+                    ?>
+                </section>
 
-                ?>
-            </section>
-            <section id="tab-3" class="aba-panel tabcontent" style="display: none;">
-                <?php
-
-                include_once 'wp-includes/tabs_panels/tab3-panel-estado-municio-escola.php'
-
-                ?>
-            </section>
+                <section id="tab-3" class="aba-panel tabcontent" style="display: none;">
+                    <?php
+                        include_once 'wp-includes/tabs_panels/tab3-panel-estado-municio-escola.php'
+                    ?>
+                </section>
 
             <?php
-            if ($tipo !== 'escola') {
-                wp_enqueue_style('remodal', plugin_dir_url(dirname(__FILE__)) . 'css/remodal.css');
-                wp_enqueue_style('remodal_theme', plugin_dir_url(dirname(__FILE__)) . 'css/remodal-default-theme.css', array('remodal'));
-                wp_enqueue_script('remodal', plugin_dir_url(dirname(__FILE__)) . 'js/remodal.js', array('jquery'), false, true);
-            }
+                if ($tipo !== 'escola') {
+                    wp_enqueue_style('remodal', plugin_dir_url(dirname(__FILE__)) . 'css/remodal.css');
+                    wp_enqueue_style('remodal_theme', plugin_dir_url(dirname(__FILE__)) . 'css/remodal-default-theme.css', array('remodal'));
+                    wp_enqueue_script('remodal', plugin_dir_url(dirname(__FILE__)) . 'js/remodal.js', array('jquery'), false, true);
+                }
 
-            wp_enqueue_script('tabs', plugin_dir_url(dirname(__FILE__)) . 'js/tabs.js', array('jquery'), false, true);
-            wp_enqueue_script('painel', plugin_dir_url(dirname(__FILE__)) . 'js/painel.js', array('jquery'), false, true);
-            $voltar = $especificacao = null;
-            if ($tipo === 'estado') {
-                $voltar = '#' . $origem->getId();
-                $especificacao = 'Estado:';
-            } elseif ($tipo === 'municipio') {
-                $voltar = '#' . $origem->getEstado()->getId();
-                $especificacao = 'Município:';
-            } elseif ($tipo === 'escola') {
-                $voltar = 'painel/municipio/' . $origem->getMunicipio()->getId() . '/'. (int)($this->year-1);
-                $especificacao = $origem->getMunicipio()->getNome() . ' - Rede ' . $origem->getDependencia();
-            }
-            wp_localize_script('painel', 'painel', array(
-                'siteUrl' => site_url('/'),
-                'ajaxUrl' => admin_url('admin-ajax.php'),
-                'voltar' => $voltar,
-                'especificacao' => $especificacao,
-                'graficosPorTipoAno' => $graficosPorTipoAno,
-                'graficoPorRedes' => $graficoPorRedes,
-                'year' => $this->year
-            ));
-            wp_enqueue_script('google_charts', 'https://www.gstatic.com/charts/loader.js', null, false, true);
-            return ob_get_clean();
+                wp_enqueue_script('tabs', plugin_dir_url(dirname(__FILE__)) . 'js/tabs.js', array('jquery'), false, true);
+                wp_enqueue_script('painel', plugin_dir_url(dirname(__FILE__)) . 'js/painel.js', array('jquery'), false, true);
+
+                $voltar = $especificacao = null;
+                if ($tipo === 'estado') {
+                    $voltar = '#' . $origem->getId();
+                    $especificacao = 'Estado:';
+                } elseif ($tipo === 'municipio') {
+                    $voltar = '#' . $origem->getEstado()->getId();
+                    $especificacao = 'Município:';
+                } elseif ($tipo === 'escola') {
+                    $voltar = 'painel/municipio/' . $origem->getMunicipio()->getId() . '/'. (int)($this->year-1);
+                    $especificacao = $origem->getMunicipio()->getNome() . ' - Rede ' . $origem->getDependencia();
+                }
+
+                wp_localize_script('painel', 'painel', array(
+                    'siteUrl' => site_url('/'),
+                    'ajaxUrl' => admin_url('admin-ajax.php'),
+                    'voltar' => $voltar,
+                    'especificacao' => $especificacao,
+                    'graficosPorTipoAno' => $graficosPorTipoAno,
+                    'graficoPorRedes' => $graficoPorRedes,
+                    'year' => $this->year
+                ));
+
+                wp_enqueue_script('google_charts', 'https://www.gstatic.com/charts/loader.js', null, false, true);
+
+                return ob_get_clean();
         }
     }
 
