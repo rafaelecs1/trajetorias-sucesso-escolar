@@ -13,13 +13,40 @@ namespace Unicef\TrajetoriaEscolar\Contract;
  * @package Unicef\TrajetoriaEscolar
  * @subpackage Contract
  * @author Sandy Santos
- * @copyright 2018
+ * @copyright 2019
  */
 interface IRestFull
 {
+    /**
+     * Nome dos objetos instanciados
+     */
     const MATRICULA = 'MySQLMatriculaRepository';
     const ABANDONO = 'MySQLAbandonoRepository';
     const REPROVACAO = 'MySQLReprovacaoRepository';
+    /**
+     * Nome do cache
+     */
+    const NACIONAL = 'Nacional';
+    const NACIONAL_MATRICULA = 'NacionalMatricula';
+    const NACIONAL_ABANDONO = 'NacionalAbandono';
+    const NACIONAL_REPROVACAO = 'NacionalReprovacao';
+
+    const ESTADO = 'Estado';
+    const ESTADO_MATRICULA = 'EstadoMatricula';
+    const ESTADO_ABANDONO = 'EstadoAbandono';
+    const ESTADO_REPROVACAO = 'EstadoReprovacao';
+
+    const MUNICIPIO = 'Municipio';
+    const MUNICIPIO_MATRICULA = 'MunicipioMatricula';
+    const MUNICIPIO_ABANDONO = 'MunicipioAbandono';
+    const MUNICIPIO_REPROVACAO = 'MunicipioReprovacao';
+
+    const ESCOLA = 'Escola';
+    const ESCOLA_MATRICULA = 'EscolaMatricula';
+    const ESCOLA_ABANDONO = 'EscolaAbandono';
+    const ESCOLA_REPROVACAO = 'EscolaReprovacao';
+
+
 
     /**
      * @param $param
