@@ -16,8 +16,8 @@ class MySQLMatriculaRepository extends AbstractRepository
 {
 
 
-    public function getDataBrasil($anoReferencia)
+    public function getDataMapaBrasil($anoReferencia)
     {
-        return parent::getDataBrasil($anoReferencia);
+        return parent::getDataMapaBrasil($anoReferencia);
     }
 }

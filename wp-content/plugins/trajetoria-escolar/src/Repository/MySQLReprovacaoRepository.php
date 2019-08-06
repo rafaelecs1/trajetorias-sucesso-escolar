@@ -6,10 +6,17 @@ use Unicef\TrajetoriaEscolar\Repository\AbstractRepository;
 
 class MySQLReprovacaoRepository extends AbstractRepository{
 
-    public function getDataBrasil($anoReferencia)
+    public function getDataMapaBrasil($anoReferencia)
     {
-        return parent::getDataBrasil($anoReferencia);
+        return parent::getDataMapaBrasil($anoReferencia);
 
     }
+
+    public function getDataPainelBrasil($anoReferencia)
+    {
+        return parent::getDataPainelBrasil($anoReferencia);
+
+    }
+
 
 }

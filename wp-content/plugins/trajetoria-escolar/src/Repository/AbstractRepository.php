@@ -69,7 +69,7 @@ abstract class AbstractRepository implements IRestFull
      * @return array|object|void|null
      */
 
-    protected function getTotal($anoReferencia = null, $corRacaId = null, $generoId = null)
+    protected function getTotalMapa($anoReferencia = null, $corRacaId = null, $generoId = null)
     {
         $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ';
 
@@ -90,6 +90,28 @@ abstract class AbstractRepository implements IRestFull
             return $response['qtd'];
         }
         // TODO SEPARA AS RACAS E GENEROS
+    }
+
+    protected function getTotalPainel($anoReferencia = null, $dependencia = null, $tipoAno = null, $localizacao = null, $localizacao_diferenciada = null)
+    {
+        if ($tipoAno == null) {
+            $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ';
+        }
+        if ($tipoAno == 'iniciais') {
+            $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5) as qtd FROM ';
+        }
+        if ($tipoAno == 'finais') {
+            $sql = 'SELECT SUM(ano6 + ano7 + ano8 + ano9) as qtd FROM ';
+        }
+        if ($tipoAno == 'medio') {
+            $sql = 'SELECT SUM(ano10 + ano11 + ano12 + ano13) as qtd FROM ';
+        }
+
+        $sql .= $this->tableName . ' join te_escolas te on te.id = ' . $this->tableName . '.escolas_id                                                                                   
+                                      where ' . $this->tableName . '.ano_referencia = %d AND ' . $this->tableName . '.cor_raca_id IS NULL AND ' . $this->tableName . '.genero_id IS NULL AND te.dependencia = %s';
+
+        $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $dependencia), ARRAY_A);
+        return $response['qtd'];
     }
 
     protected function getTotalPorRegiao($anoReferencia = null, $regiao = null, $tipoAno = null)
@@ -172,7 +194,7 @@ abstract class AbstractRepository implements IRestFull
         }
     }
 
-    public function getDataBrasil($anoReferencia)
+    protected function getDataMapaBrasil($anoReferencia)
     {
 
         $mapa = $this->getCacheBrasil(2, $anoReferencia);
@@ -182,7 +204,7 @@ abstract class AbstractRepository implements IRestFull
         }
 
         $data = new \stdClass();
-        $data->total = $this->getTotal($anoReferencia);
+        $data->total = $this->getTotalMapa($anoReferencia);
         $data->anos_iniciais = $this->getAnosIniciais($anoReferencia);
         $data->anos_finais = $this->getAnosFinais($anoReferencia);
         $data->medio = $this->getlMedio($anoReferencia);
@@ -222,10 +244,81 @@ abstract class AbstractRepository implements IRestFull
         return $data;
     }
 
+    /**
+     * @param $anoReferencia
+     * @return array|mixed|object|\stdClass
+     */
+
+    protected function getDataPainelBrasil($anoReferencia)
+    {
+//
+//        $mapa = $this->getCacheBrasil(2, $anoReferencia);
+//
+//        if (!empty($mapa)) {
+//            return json_decode($mapa);
+//        }
+
+        $data = new \stdClass();
+        $data->total = $this->getTotalMapa($anoReferencia);
+        $data->anos_iniciais = $this->getAnosIniciais($anoReferencia);
+        $data->anos_finais = $this->getAnosFinais($anoReferencia);
+        $data->medio = $this->getlMedio($anoReferencia);
+
+        $data->municipal = new \stdClass();
+        $data->municipal->total = $this->getTotalPainel($anoReferencia);
+        $data->municipal->anos_iniciais = $this->getTotalPainel($anoReferencia, 'Municipal', 'iniciais');
+        $data->municipal->anos_finais = $this->getTotalPainel($anoReferencia, 'Municipal', 'finais');
+        $data->municipal->medio = $this->getTotalPainel($anoReferencia, 'Municipal', 'medio');
+        
+        $data->estadual = new \stdClass();
+        $data->estadual->total = $this->getTotalPainel($anoReferencia);
+        $data->estadual->anos_iniciais = $this->getTotalPainel($anoReferencia, 'Estadual', 'iniciais');
+        $data->estadual->anos_finais = $this->getTotalPainel($anoReferencia, 'Estadual', 'finais');
+        $data->estadual->medio = $this->getTotalPainel($anoReferencia, 'Estadual', 'medio');
+
+        $data->anos = new \stdClass();
+        $data->anos->anos_iniciais = new \stdClass();
+        $data->anos->anos_finais = new \stdClass();
+        $data->anos->medio = new \stdClass();
+
+        $data->localizacao = new \stdClass();
+        $data->localizacao->rural = new \stdClass();
+        $data->localizacao->urbano = new \stdClass();
+
+        $data->localizacao_diferenciada = new \stdClass();
+        $data->localizacao_diferenciada->area_de_assentamento = new \stdClass();
+        $data->localizacao_diferenciada->area_remanecente_quilombola = new \stdClass();
+        $data->localizacao_diferenciada->terra_inidigena = new \stdClass();
+        $data->localizacao_diferenciada->unidade_uso_sustentavel = new \stdClass();
+        $data->localizacao_diferenciada->unidade_uso_sustentavel_em_area_remancente_de_quilombo = new \stdClass();
+        $data->localizacao_diferenciada->unidade_de_uso_sustentavel_em_terra_indigena = new \stdClass();
+
+        $data->cor_raca = new \stdClass();
+        $data->cor_raca->nao_declarada = new \stdClass();
+        $data->cor_raca->branca = new \stdClass();
+        $data->cor_raca->preta = new \stdClass();
+        $data->cor_raca->parda = new \stdClass();
+        $data->cor_raca->amarela = new \stdClass();
+        $data->cor_raca->indigena = new \stdClass();
+
+        $data->genero = new \stdClass();
+        $data->genero->masculino = new \stdClass();
+        $data->genero->feminismo = new \stdClass();
+
+        echo '<pre>';
+        var_dump($data);exit;
+
+
+//        $this->saveBrasil(2, $anoReferencia, $data);
+
+        return $data;
+    }
+
+
     public function saveBrasil($origem, $anoReferencia = 0, $painel = array())
     {
         $tipo = $this->getTipoPainel($this);
-        $this->db->query($this->db->prepare(
+        return $this->db->query($this->db->prepare(
             'INSERT INTO te_paineis (ano_referencia, referencia_id, tipo, painel) 
                 VALUES (%d, %d, "%s", "%s");',
             $anoReferencia,
@@ -233,7 +326,6 @@ abstract class AbstractRepository implements IRestFull
             $tipo,
             json_encode($painel)
         ));
-        return json_encode($painel);
     }
 
     public function getCacheBrasil($referencia, $anoReferencia = 0)

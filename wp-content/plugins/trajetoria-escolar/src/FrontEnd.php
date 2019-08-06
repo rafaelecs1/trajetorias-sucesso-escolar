@@ -16,8 +16,7 @@ use Unicef\TrajetoriaEscolar\Repository\MySQLMatriculaRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLMunicipioRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLEscolaRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLMapaRepository;
-use Unicef\TrajetoriaEscolar\Repository\MySQLPainelRepository;
-use Unicef\TrajetoriaEscolar\Repository\MySQLReprovacaoRepository;
+use Unicef\TrajetoriaEscolar\Repository\MySQLPainelRepository;use Unicef\TrajetoriaEscolar\Repository\MySQLReprovacaoRepository;
 
 /**
  * Classe que implementa os requisitos para o front-end (páginas)
@@ -166,13 +165,13 @@ class FrontEnd
         $distorcaoMapa = $rDistorcaoMapa->getBrasil($this->year);
 
         $matriculasObj = new MySQLMatriculaRepository();
-        $matriculas = $matriculasObj->getDataBrasil($this->year);
+        $matriculas = $matriculasObj->getDataMapaBrasil($this->year);
 
         $abandonosObj = new MySQLAbandonoRepository();
-        $abandonos = $abandonosObj->getDataBrasil($this->year);
+        $abandonos = $abandonosObj->getDataMapaBrasil($this->year);
 
         $reprovacoesObj = new MySQLReprovacaoRepository();
-        $reprovacoes = $reprovacoesObj->getDataBrasil($this->year);
+        $reprovacoes = $reprovacoesObj->getDataMapaBrasil($this->year);
 
 
         ob_start();
@@ -239,6 +238,16 @@ class FrontEnd
 
         $rDistorcaoPainel = new MySQLPainelRepository();
         $distorcao = $rDistorcaoPainel->getBrasil($this->year);
+
+        $matriculasObj = new MySQLMatriculaRepository();
+        $matriculas = $matriculasObj->getDataMapaBrasil($this->year);
+
+//        $abandonosObj = new MySQLAbandonoRepository();
+//        $abandonos = $abandonosObj->getDataPainelBrasil($this->year);
+
+        $reprovacoesObj = new MySQLReprovacaoRepository();
+        $reprovacoes = $reprovacoesObj->getDataPainelBrasil($this->year);
+
         ob_start();
 
         ?>
@@ -294,13 +303,15 @@ class FrontEnd
         <?php
         if ($tipo !== 'escola') {
             wp_enqueue_style('remodal', plugin_dir_url(dirname(__FILE__)) . 'css/remodal.css');
-//            wp_enqueue_style('animate', plugin_dir_url(dirname(__FILE__)) . 'css/animate.css');
+            wp_enqueue_style('animate', plugin_dir_url(dirname(__FILE__)) . 'css/animate.css');
             wp_enqueue_style('remodal_theme', plugin_dir_url(dirname(__FILE__)) . 'css/remodal-default-theme.css', array('remodal'));
             wp_enqueue_script('remodal', plugin_dir_url(dirname(__FILE__)) . 'js/remodal.js', array('jquery'), false, true);
 
         }
 
         wp_enqueue_script('painel', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral.js', array('jquery'), false, true);
+        wp_enqueue_script('tabs', plugin_dir_url(dirname(__FILE__)) . 'js/tabs.js', array('jquery'), false, true);
+
         $voltar = $especificacao = null;
 
         wp_localize_script('painel', 'painel', array(

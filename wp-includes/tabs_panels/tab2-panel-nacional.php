@@ -1,7 +1,7 @@
-<section class="ficha municipio">
+<section class="ficha municipio animated fadeIn">
     <section id="redes-de-ensino">
         <header>
-            <h2 class="mt-0">Perfil das crianças e adolescentes - <?php echo $this->year - 1; ?> </h2>
+            <h2 class="mt-0">Perfil das crianças e adolescentes 2- <?php echo $this->year - 1; ?> </h2>
         </header>
         <section id="total-em-distorcao">
             <header>
@@ -12,7 +12,7 @@
                         echo 'das redes municipal e estadual ';
                     }
                     ?>
-                    em distorção idade-série
+                    com reprovação
                     <?php
                     if ($tipo === 'estado') {
                         echo 'no estado';
@@ -25,13 +25,13 @@
                 </h3>
             </header>
             <?php
-            $divisor = $distorcao['sem_distorcao'] + $distorcao['distorcao'];
+            $divisor = $reprovacoes->total;
             if ($divisor <= 0) {
                 $divisor = 1;
             }
-            $percDistorcao = ($distorcao['distorcao'] * 100) / $divisor;
+            $percDistorcao = ($reprovacoes->total * 100) / $divisor;
             ?>
-            <div class="total"><?php echo self::formatarNumero($distorcao['distorcao']); ?> <span
+            <div class="total"><?php echo self::formatarNumero($reprovacoes->total); ?> <span
                         class="perc">(<?php echo number_format($percDistorcao, 1, ',', '.'); ?>%)<sup
                             class="arterico">*</sup></span></div>
         </section>
