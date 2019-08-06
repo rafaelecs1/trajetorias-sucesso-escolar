@@ -19,7 +19,7 @@
                                     <h4>Anos iniciais</h4>
                                     <div class="value value_fi counter"><?php echo number_format($reprovacoes->anos_iniciais, 0, ',', '.'); ?></div>
                                     <div class="perc">[<span
-                                                class="perc_fi"><?php echo number_format(($reprovacoes->anos_iniciais['qtd'] * 100) / $matriculas->anos_iniciais, 2) ?></span>]%
+                                                class="perc_fi"><?php echo number_format(($reprovacoes->anos_iniciais * 100) / $matriculas->anos_iniciais, 2) ?></span>]%
                                     </div>
                                 </div>
 
