@@ -175,11 +175,11 @@ abstract class AbstractRepository implements IRestFull
     public function getDataBrasil($anoReferencia)
     {
 
-//        $mapa = $this->getCacheBrasil(2, $anoReferencia);
-//
-//        if (!empty($mapa)) {
-//            return (object)json_decode($mapa, true);
-//        }
+        $mapa = $this->getCacheBrasil(2, $anoReferencia);
+
+        if (!empty($mapa)) {
+            return json_decode($mapa);
+        }
 
         $data = new \stdClass();
         $data->total = $this->getTotal($anoReferencia);
@@ -217,7 +217,7 @@ abstract class AbstractRepository implements IRestFull
         $data->regiao_sudeste->anos_finais = $this->getTotalPorRegiao($anoReferencia, 'Sudeste', 'finais');
         $data->regiao_sudeste->medio = $this->getTotalPorRegiao($anoReferencia, 'Sudeste', 'medio');
 
-//        $this->saveBrasil(2, $anoReferencia, $data);
+        $this->saveBrasil(2, $anoReferencia, $data);
 
         return $data;
     }

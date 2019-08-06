@@ -16,7 +16,8 @@ use Unicef\TrajetoriaEscolar\Repository\MySQLMatriculaRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLMunicipioRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLEscolaRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLMapaRepository;
-use Unicef\TrajetoriaEscolar\Repository\MySQLPainelRepository;use Unicef\TrajetoriaEscolar\Repository\MySQLReprovacaoRepository;
+use Unicef\TrajetoriaEscolar\Repository\MySQLPainelRepository;
+use Unicef\TrajetoriaEscolar\Repository\MySQLReprovacaoRepository;
 
 /**
  * Classe que implementa os requisitos para o front-end (páginas)
@@ -171,7 +172,7 @@ class FrontEnd
         $abandonos = $abandonosObj->getDataBrasil($this->year);
 
         $reprovacoesObj = new MySQLReprovacaoRepository();
-        $reprovacoes = $abandonosObj->getDataBrasil($this->year);
+        $reprovacoes = $reprovacoesObj->getDataBrasil($this->year);
 
 
         ob_start();
