@@ -69,14 +69,17 @@ abstract class AbstractRepository implements IRestFull
      * @return array|object|void|null
      */
 
-    protected function getTotalMapa($anoReferencia = null, $corRacaId = null, $generoId = null)
+    protected function getTotalMapa($anoReferencia = null, $corRacaId = null, $generoId = null, $estadoId = null, $municipioId = null, $escolaId = null)
     {
         $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ';
 
         if (empty($corRacaId) && empty($generoId)) {
+
             $sql .= $this->tableName . ' where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d';
+
             $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
             return $response['qtd'];
+
         }
         if (!empty($corRacaId)) {
             $sql .= $this->tableName . ' where ano_referencia = %d AND cor_raca_id = %d';
@@ -194,10 +197,10 @@ abstract class AbstractRepository implements IRestFull
         }
     }
 
-    protected function getDataMapaBrasil($anoReferencia)
+    protected function getDataMapaBrasil($anoReferencia, $tipo)
     {
 
-        $mapa = $this->getCacheBrasil(2, $anoReferencia);
+        $mapa = $this->getCacheBrasil(2, $anoReferencia, $tipo);
 
         if (!empty($mapa)) {
             return json_decode($mapa);
@@ -239,7 +242,7 @@ abstract class AbstractRepository implements IRestFull
         $data->regiao_sudeste->anos_finais = $this->getTotalPorRegiao($anoReferencia, 'Sudeste', 'finais');
         $data->regiao_sudeste->medio = $this->getTotalPorRegiao($anoReferencia, 'Sudeste', 'medio');
 
-        $this->saveBrasil(2, $anoReferencia, $data);
+        $this->saveBrasil(2, $anoReferencia, $data, $tipo);
 
         return $data;
     }
@@ -249,14 +252,14 @@ abstract class AbstractRepository implements IRestFull
      * @return array|mixed|object|\stdClass
      */
 
-    protected function getDataPainelBrasil($anoReferencia)
+    protected function getDataPainelBrasil($anoReferencia, $tipo)
     {
-//
-//        $mapa = $this->getCacheBrasil(2, $anoReferencia);
-//
-//        if (!empty($mapa)) {
-//            return json_decode($mapa);
-//        }
+
+        $mapa = $this->getCacheBrasil(2, $anoReferencia, $tipo);
+
+        if (!empty($mapa)) {
+            return json_decode($mapa);
+        }
 
         $data = new \stdClass();
         $data->total = $this->getTotalMapa($anoReferencia);
@@ -309,15 +312,32 @@ abstract class AbstractRepository implements IRestFull
         var_dump($data);exit;
 
 
-//        $this->saveBrasil(2, $anoReferencia, $data);
+        $this->saveBrasil(2, $anoReferencia, $data, $tipo);
 
         return $data;
     }
 
+    public function getDataMatriculaEstado($estadoId, $anoReferencia, $tipo){
 
-    public function saveBrasil($origem, $anoReferencia = 0, $painel = array())
+        $mapa = $this->getCacheBrasil($estadoId, $anoReferencia, $tipo);
+
+        if (!empty($mapa)) {
+            return json_decode($mapa);
+        }
+
+        $data = new \stdClass();
+        $data->total = $this->getTotalMatriculasEstado($anoReferencia, $estadoId);
+        $data->anos_iniciais = $this->getAnosIniciaisEstado($anoReferencia, $estadoId);
+        $data->anos_finais = $this->getAnosFinaisEstado($anoReferencia, $estadoId);
+        $data->medio = $this->getAnosMedioEstado($anoReferencia, $estadoId);
+
+        $this->saveBrasil($estadoId, $anoReferencia, $data, $tipo);
+
+        return $data;
+    }
+
+    public function saveBrasil($origem, $anoReferencia = 0, $painel = array(), $tipo)
     {
-        $tipo = $this->getTipoPainel($this);
         return $this->db->query($this->db->prepare(
             'INSERT INTO te_paineis (ano_referencia, referencia_id, tipo, painel) 
                 VALUES (%d, %d, "%s", "%s");',
@@ -328,9 +348,8 @@ abstract class AbstractRepository implements IRestFull
         ));
     }
 
-    public function getCacheBrasil($referencia, $anoReferencia = 0)
+    public function getCacheBrasil($referencia, $anoReferencia = 0, $tipo)
     {
-        $tipo = $this->getTipoPainel($this);
         return $this->db->get_var($this->db->prepare(
             'SELECT 
                 painel 
@@ -344,23 +363,97 @@ abstract class AbstractRepository implements IRestFull
         ));
     }
 
-    private function getTipoPainel($name)
+    protected function getTotalMatriculasEstado($anoReferencia, $estadoId, $corRacaId = null, $generoId = null)
     {
-        $nome = get_class($name);
-        $estrutura = explode('\\', $nome);
-        $nameClass = $estrutura[count($estrutura) - 1];
-        switch ($nameClass) {
-            case self::MATRICULA:
-                return "NacionalMatricula";
-                break;
-            case self::ABANDONO:
-                return "NacionalAbandono";
-                break;
-            case self::REPROVACAO:
-                return "NacionalReprovacao";
-                break;
+        $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ';
+
+        if (empty($corRacaId) && empty($generoId)) {
+            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d AND te_municipios.estado_id = %d';
+            $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $estadoId), ARRAY_A);
+            return $response['qtd'];
+        }
+
+        if (!empty($corRacaId)) {
+            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id = %d AND genero_id IS NULL AND ano_referencia = %d AND te_municipios.estado_id = %d';
+            $response = $this->db->get_row($this->db->prepare($sql, $corRacaId, $anoReferencia, $estadoId), ARRAY_A);
+            return $response['qtd'];
+        }
+
+        if (!empty($generoId)) {
+            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id IS NULL AND genero_id %d AND ano_referencia = %d AND te_municipios.estado_id = %d';
+            $response = $this->db->get_row($this->db->prepare($sql, $generoId, $anoReferencia, $estadoId), ARRAY_A);
+            return $response['qtd'];
+        }
+
+    }
+
+    protected function getAnosIniciaisEstado($anoReferencia, $estadoId, $corRacaId = null, $generoId = null)
+    {
+        $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5) as qtd FROM ';
+
+        if (empty($corRacaId) && empty($generoId)) {
+            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d AND te_municipios.estado_id = %d';
+            $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $estadoId), ARRAY_A);
+            return $response['qtd'];
+        }
+
+        if (!empty($corRacaId)) {
+            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id = %d AND genero_id IS NULL AND ano_referencia = %d AND te_municipios.estado_id = %d';
+            $response = $this->db->get_row($this->db->prepare($sql, $corRacaId, $anoReferencia, $estadoId), ARRAY_A);
+            return $response['qtd'];
+        }
+
+        if (!empty($generoId)) {
+            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id IS NULL AND genero_id %d AND ano_referencia = %d AND te_municipios.estado_id = %d';
+            $response = $this->db->get_row($this->db->prepare($sql, $generoId, $anoReferencia, $estadoId), ARRAY_A);
+            return $response['qtd'];
         }
     }
 
+    protected function getAnosFinaisEstado($anoReferencia, $estadoId, $corRacaId = null, $generoId = null)
+    {
+        $sql = 'SELECT SUM(ano6 + ano7 + ano8 + ano9) as qtd FROM ';
+
+        if (empty($corRacaId) && empty($generoId)) {
+            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d AND te_municipios.estado_id = %d';
+            $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $estadoId), ARRAY_A);
+            return $response['qtd'];
+        }
+
+        if (!empty($corRacaId)) {
+            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id = %d AND genero_id IS NULL AND ano_referencia = %d AND te_municipios.estado_id = %d';
+            $response = $this->db->get_row($this->db->prepare($sql, $corRacaId, $anoReferencia, $estadoId), ARRAY_A);
+            return $response['qtd'];
+        }
+
+        if (!empty($generoId)) {
+            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id IS NULL AND genero_id %d AND ano_referencia = %d AND te_municipios.estado_id = %d';
+            $response = $this->db->get_row($this->db->prepare($sql, $generoId, $anoReferencia, $estadoId), ARRAY_A);
+            return $response['qtd'];
+        }
+    }
+
+    protected function getAnosMedioEstado($anoReferencia, $estadoId, $corRacaId = null, $generoId = null)
+    {
+        $sql = 'SELECT SUM(ano10 + ano11 + ano12 + ano13) as qtd FROM ';
+
+        if (empty($corRacaId) && empty($generoId)) {
+            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d AND te_municipios.estado_id = %d';
+            $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $estadoId), ARRAY_A);
+            return $response['qtd'];
+        }
+
+        if (!empty($corRacaId)) {
+            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id = %d AND genero_id IS NULL AND ano_referencia = %d AND te_municipios.estado_id = %d';
+            $response = $this->db->get_row($this->db->prepare($sql, $corRacaId, $anoReferencia, $estadoId), ARRAY_A);
+            return $response['qtd'];
+        }
+
+        if (!empty($generoId)) {
+            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id IS NULL AND genero_id %d AND ano_referencia = %d AND te_municipios.estado_id = %d';
+            $response = $this->db->get_row($this->db->prepare($sql, $generoId, $anoReferencia, $estadoId), ARRAY_A);
+            return $response['qtd'];
+        }
+    }
 
 }

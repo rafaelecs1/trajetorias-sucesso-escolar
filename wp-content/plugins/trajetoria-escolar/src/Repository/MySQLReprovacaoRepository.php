@@ -14,7 +14,7 @@ class MySQLReprovacaoRepository extends AbstractRepository{
 
     public function getDataPainelBrasil($anoReferencia)
     {
-        return parent::getDataPainelBrasil($anoReferencia);
+        return parent::getDataPainelBrasil($anoReferencia, self::NACIONAL_REPROVACAO);
 
     }
 

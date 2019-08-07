@@ -349,8 +349,9 @@ class FrontEnd
                 $rEst = new MySQLEstadoRepository();
                 $origem = $rEst->get($id);
 
-//                $matriculasObj = new MySQLMatriculaRepository();
-//                $matriculas = $matriculasObj->getDataMapaBrasil($this->year);
+                $matriculasObj = new MySQLMatriculaRepository();
+                $matriculas = $matriculasObj->getDataMatriculaEstado($id, $this->year);
+
 //
 //                $abandonosObj = new MySQLAbandonoRepository();
 //                $abandonos = $abandonosObj->getDataPainelBrasil($this->year);
@@ -371,7 +372,7 @@ class FrontEnd
             $painel = $rPainel->get($origem, $this->year);
 
             echo "<pre>";
-                var_dump($painel);
+                var_dump($matriculas);
             echo "<pre>";
 
             ob_start();
