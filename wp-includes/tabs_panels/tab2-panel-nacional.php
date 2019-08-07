@@ -25,43 +25,48 @@
                 </h3>
             </header>
             <?php
-            $divisor = $reprovacoes->total;
+            $divisor = $matriculas->total;
             if ($divisor <= 0) {
                 $divisor = 1;
             }
             $percDistorcao = ($reprovacoes->total * 100) / $divisor;
             ?>
-            <div class="total"><?php echo self::formatarNumero($reprovacoes->total); ?> <span
+            <div class="total"><?php echo self::formatarNumero($matriculas->total); ?> <span
                         class="perc">(<?php echo number_format($percDistorcao, 1, ',', '.'); ?>%)<sup
                             class="arterico">*</sup></span></div>
         </section>
 
         <?php
+
+        $tiposAno = array(
+            'Iniciais' => 'Anos Iniciais - Ensino Fundamental',
+            'Finais' => 'Anos Finais - Ensino Fundamental',
+            'Todos' => 'Ensino Médio',
+        );
+
+
         if (true) {
-            foreach ($distorcao['tipo_rede'] as $rede => $ensinos) {
-                echo '<section id="rede-', strtolower($rede), '">';
-                echo '<header><h3>Redes ', ($rede == 'Municipal') ? 'Municipais' : 'Estaduais', '</h3></header>';
-                foreach ($ensinos as $ensino => $anos) {
-                    foreach ($anos as $ano => $v) {
-                        echo self::gerarAmostra((($ensino === 'Médio') ? '<span class="bold">Ensino ' . $ensino . '</span>' : 'Ensino ' . $ensino) . '<span class="bold">' . (($ensino !== 'Médio') ? '<br/><span class="bold">Anos ' . $ano . '</span>' : '') . '</span>', $v['distorcao'], $v['distorcao'] + $v['sem_distorcao']);
+            foreach ($reprovacoes as $key => $item) {
+                if ($key == 'municipal' || $key == 'estadual') {
+                    echo '<section id="rede-', strtolower($key), '">';
+                    echo '<header><h3>Redes ', ($key == 'municipal') ? 'Municipais' : 'Estaduais', '</h3></header>';
+                    echo self::gerarAmostra('<span class="">Ensino Fundamental</span> <br/><span class="bold">Anos Iniciais </span>' , $item->anos_iniciais, $matriculas->total);
+                    echo self::gerarAmostra('<span class="">Ensino Fundamental</span> <br/><span class="bold">Anos Finais </span>' , $item->anos_finais, $matriculas->total);
+                    echo self::gerarAmostra('<span class=""></span><br/><span class="bold">Anos Médio </span>' , $item->medio, $matriculas->total);
+
+                    if ($tipo === 'municipio') {
+                        echo '<a class="situacao-das-escolas" data-municipio="', $id, '" data-rede="', sanitize_title($rede), '" href="#situacao-das-escolas-rede-', sanitize_title($rede), '">Situação das escolas</a>';
+                        echo '<img style="display: none;" alt="Processando..." title="Processando..." src="', admin_url('images/loading.gif'), '"/>';
                     }
+                    echo '</section>';
                 }
-                if ($tipo === 'municipio') {
-                    echo '<a class="situacao-das-escolas" data-municipio="', $id, '" data-rede="', sanitize_title($rede), '" href="#situacao-das-escolas-rede-', sanitize_title($rede), '">Situação das escolas</a>';
-                    echo '<img style="display: none;" alt="Processando..." title="Processando..." src="', admin_url('images/loading.gif'), '"/>';
-                }
-                echo '</section>';
             }
         }
         ?>
+
         <span class="legenda">* Taxa de distorção idade-serie</span>
         <section id="graficos-por-tipo-ensino">
             <?php
-            $tiposAno = array(
-                'Iniciais' => 'Anos Iniciais - Ensino Fundamental',
-                'Finais' => 'Anos Finais - Ensino Fundamental',
-                'Todos' => 'Ensino Médio',
-            );
             $graficosPorTipoAno = array();
             $lis = $sections = '';
             foreach ($tiposAno as $tipoAno => $label) {
@@ -122,8 +127,9 @@
         <header><h2>Gênero</h2></header>
         <section class="genero">
             <?php
-            foreach ($distorcao['genero'] as $k => $v) {
-                echo self::gerarAmostra($k, $v['distorcao'], $v['distorcao'] + $v['sem_distorcao']);
+            foreach ($reprovacoes->genero as $k => $v) {
+                if($k != 'total')
+                echo self::gerarAmostra($k, $v, $reprovacoes->total);
             }
             ?>
         </section>

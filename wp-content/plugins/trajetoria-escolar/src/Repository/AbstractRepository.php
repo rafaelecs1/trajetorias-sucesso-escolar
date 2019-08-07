@@ -209,6 +209,18 @@ abstract class AbstractRepository implements IRestFull
 
     }
 
+    protected function getTotalAnosIniciaisPorAno() {
+
+    }
+
+    protected function getTotalAnosFinaisPorAno() {
+
+    }
+
+    protected function getTotalMedioPorAno() {
+
+    }
+
     private static function getTableName($origem)
     {
         $nome = get_class($origem);
@@ -296,9 +308,9 @@ abstract class AbstractRepository implements IRestFull
         $data->estadual->medio = $this->getTotalPainel($anoReferencia, 'Estadual', 'medio');
 
         $data->anos = new \stdClass();
-        $data->anos->anos_iniciais = new \stdClass();
-        $data->anos->anos_finais = new \stdClass();
-        $data->anos->medio = new \stdClass();
+        $data->anos->anos_iniciais = [10, 20, 30, 40, 50];
+        $data->anos->anos_finais = [20, 30, 40, 50];
+        $data->anos->anos_medio = [10, 20, 30, 40];
 
         $data->localizacao = new \stdClass();
         $data->localizacao->rural = $this->getTotalPainelLocalizacao($anoReferencia, 'Rural');
@@ -321,6 +333,7 @@ abstract class AbstractRepository implements IRestFull
         $data->cor_raca->indigena = $this->getTotalPainelCorRaca($anoReferencia, 6);
 
         $data->genero = new \stdClass();
+        $data->genero->total = '100';
         $data->genero->masculino = $this->getTotalPainelGenero($anoReferencia, 1);
         $data->genero->feminismo = $this->getTotalPainelGenero($anoReferencia, 2);
 
@@ -340,9 +353,8 @@ abstract class AbstractRepository implements IRestFull
         ));
     }
 
-    public function getCacheBrasil($referencia, $anoReferencia = 0)
+    public function getCacheBrasil($referencia, $tipo, $anoReferencia = 0)
     {
-        $tipo = $this->getTipoPainel($this);
         return $this->db->get_var($this->db->prepare(
             'SELECT 
                 painel 

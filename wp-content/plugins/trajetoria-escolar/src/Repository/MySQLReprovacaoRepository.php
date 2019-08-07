@@ -9,7 +9,7 @@ class MySQLReprovacaoRepository extends AbstractRepository
 
     public function getDataMapaBrasil($anoReferencia)
     {
-        $mapa = $this->getCacheBrasil(2, $anoReferencia);
+        $mapa = $this->getCacheBrasil(2, self::NACIONAL_REPROVACAO, $anoReferencia);
 
         if (!empty($mapa)) {
             return json_decode($mapa);
@@ -24,7 +24,7 @@ class MySQLReprovacaoRepository extends AbstractRepository
 
     public function getDataPainelBrasil($anoReferencia)
     {
-        $panel = $this->getCacheBrasil(2, $anoReferencia);
+        $panel = $this->getCacheBrasil(1, self::NACIONAL_REPROVACAO, $anoReferencia);
 
         if (!empty($panel)) {
             return json_decode($panel);

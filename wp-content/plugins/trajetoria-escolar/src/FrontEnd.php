@@ -517,7 +517,7 @@ class FrontEnd
      */
     private static function gerarAmostra($termo = '', $valor = 0, $total = 0)
     {
-        return '<div class="amostra"><div>' . $termo . '</div><div class="valor" data-valor="' . $valor . '" data-total="' . $total . '">' . number_format((int)$valor, 0, ',', '.') . '</div></div>';
+        return '<div class="amostra"><div style="text-transform: capitalize;">' . $termo . '</div><div class="valor" data-valor="' . $valor . '" data-total="' . $total . '">' . number_format((int)$valor, 0, ',', '.') . '</div></div>';
     }
 
     /**
