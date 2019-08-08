@@ -240,7 +240,7 @@ class FrontEnd
         $distorcao = $rDistorcaoPainel->getBrasil($this->year);
 
         $matriculasObj = new MySQLMatriculaRepository();
-        $matriculas = $matriculasObj->getDataMapaBrasil($this->year);
+        $matriculas = $matriculasObj->getDataPainelBrasil($this->year);
 
         $abandonosObj = new MySQLAbandonoRepository();
         $abandonos = $abandonosObj->getDataPainelBrasil($this->year);
