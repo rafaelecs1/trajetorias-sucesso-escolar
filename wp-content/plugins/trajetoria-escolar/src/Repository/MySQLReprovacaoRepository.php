@@ -4,18 +4,17 @@ namespace Unicef\TrajetoriaEscolar\Repository;
 
 use Unicef\TrajetoriaEscolar\Repository\AbstractRepository;
 
-class MySQLReprovacaoRepository extends AbstractRepository{
+class MySQLReprovacaoRepository extends AbstractRepository
+{
 
     public function getDataMapaBrasil($anoReferencia)
     {
         return parent::getDataMapaBrasil($anoReferencia, self::NACIONAL_REPROVACAO);
-
     }
 
     public function getDataPainelBrasil($anoReferencia)
     {
         return parent::getDataPainelBrasil($anoReferencia, self::NACIONAL_REPROVACAO);
-
     }
 
     public function getDataReprovacaoEstado($estadoId, $anoReferencia)
@@ -74,9 +73,10 @@ class MySQLReprovacaoRepository extends AbstractRepository{
         $data->genero->masculino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 1, $estadoId, null, null);
         $data->genero->feminismo = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 2, $estadoId, null, null);
 
-        $this->saveBrasil($estadoId, $anoReferencia, $data, self::ESTADO_REPROVACAO);
+        $this->saveBrasil($estadoId, self::ESTADO_REPROVACAO, $anoReferencia, $data);
 
         return $data;
+
     }
 
 }

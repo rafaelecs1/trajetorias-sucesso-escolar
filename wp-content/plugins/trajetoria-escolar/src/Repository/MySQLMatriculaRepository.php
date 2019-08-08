@@ -20,8 +20,14 @@ class MySQLMatriculaRepository extends AbstractRepository
         return parent::getDataMapaBrasil($anoReferencia, self::NACIONAL_MATRICULA);
     }
 
+    public function getDataPainelBrasil($anoReferencia)
+    {
+        return parent::getDataPainelBrasil($anoReferencia, self::NACIONAL_MATRICULA);
+    }
+
     public function getDataMatriculaEstado($estadoId, $anoReferencia)
     {
+
         $mapa = $this->getCacheBrasil($estadoId, $anoReferencia, self::ESTADO_MATRICULA);
 
         if (!empty($mapa)) {
@@ -75,9 +81,10 @@ class MySQLMatriculaRepository extends AbstractRepository
         $data->genero->masculino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 1, $estadoId, null, null);
         $data->genero->feminismo = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 2, $estadoId, null, null);
 
-        $this->saveBrasil($estadoId, $anoReferencia, $data, self::ESTADO_MATRICULA);
+        $this->saveBrasil($estadoId, self::ESTADO_MATRICULA, $anoReferencia, $data);
 
         return $data;
+
     }
 
 }

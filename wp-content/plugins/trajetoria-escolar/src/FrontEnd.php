@@ -240,10 +240,10 @@ class FrontEnd
         $distorcao = $rDistorcaoPainel->getBrasil($this->year);
 
         $matriculasObj = new MySQLMatriculaRepository();
-        $matriculas = $matriculasObj->getDataMapaBrasil($this->year);
+        $matriculas = $matriculasObj->getDataPainelBrasil($this->year);
 
-//        $abandonosObj = new MySQLAbandonoRepository();
-//        $abandonos = $abandonosObj->getDataPainelBrasil($this->year);
+        $abandonosObj = new MySQLAbandonoRepository();
+        $abandonos = $abandonosObj->getDataPainelBrasil($this->year);
 
         $reprovacoesObj = new MySQLReprovacaoRepository();
         $reprovacoes = $reprovacoesObj->getDataPainelBrasil($this->year);
@@ -278,7 +278,7 @@ class FrontEnd
 
                 <?php
 
-                include_once 'wp-includes/tabs_panels/tab1-panel-nacional.php'
+                include 'wp-includes/tabs_panels/tab1-panel-nacional.php'
 
                 ?>
 
@@ -286,14 +286,14 @@ class FrontEnd
             <section id="tab-2" class="aba-panel tabcontent" style="display: none;">
                 <?php
 
-                include_once 'wp-includes/tabs_panels/tab2-panel-nacional.php'
+                include 'wp-includes/tabs_panels/tab2-panel-nacional.php'
 
                 ?>
             </section>
             <section id="tab-3" class="aba-panel tabcontent" style="display: none;">
                 <?php
 
-                include_once 'wp-includes/tabs_panels/tab3-panel-nacional.php'
+                include 'wp-includes/tabs_panels/tab3-panel-nacional.php'
 
                 ?>
             </section>
@@ -550,7 +550,7 @@ class FrontEnd
      */
     private static function gerarAmostra($termo = '', $valor = 0, $total = 0)
     {
-        return '<div class="amostra"><div>' . $termo . '</div><div class="valor" data-valor="' . $valor . '" data-total="' . $total . '">' . number_format((int)$valor, 0, ',', '.') . '</div></div>';
+        return '<div class="amostra"><div style="text-transform: capitalize;">' . $termo . '</div><div class="valor" data-valor="' . $valor . '" data-total="' . $total . '">' . number_format((int)$valor, 0, ',', '.') . '</div></div>';
     }
 
     /**

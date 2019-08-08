@@ -11,6 +11,11 @@ class MySQLAbandonoRepository extends AbstractRepository{
         return parent::getDataMapaBrasil($anoReferencia, self::NACIONAL_ABANDONO);
     }
 
+    public function getDataPainelBrasil($anoReferencia)
+    {
+        return parent::getDataPainelBrasil($anoReferencia, self::NACIONAL_ABANDONO);
+    }
+
     public function getDataAbandonoEstado($estadoId, $anoReferencia)
     {
 
@@ -67,9 +72,10 @@ class MySQLAbandonoRepository extends AbstractRepository{
         $data->genero->masculino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 1, $estadoId, null, null);
         $data->genero->feminismo = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 2, $estadoId, null, null);
 
-        $this->saveBrasil($estadoId, $anoReferencia, $data, self::ESTADO_ABANDONO);
+        $this->saveBrasil($estadoId, self::ESTADO_ABANDONO, $anoReferencia, $data);
 
         return $data;
+
     }
 
 }
