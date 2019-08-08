@@ -352,9 +352,23 @@ class FrontEnd
                 $matriculasObj = new MySQLMatriculaRepository();
                 $matriculas = $matriculasObj->getDataMatriculaEstado($id, $this->year);
 
-//
-//                $abandonosObj = new MySQLAbandonoRepository();
-//                $abandonos = $abandonosObj->getDataPainelBrasil($this->year);
+                $abandonosObj = new MySQLAbandonoRepository();
+                $abandonos = $abandonosObj->getDataAbandonoEstado($id, $this->year);
+
+                $reprovacoesObj = new MySQLReprovacaoRepository();
+                $reprovacoes = $reprovacoesObj->getDataReprovacaoEstado($id, $this->year);
+
+                echo "<pre>";
+                var_dump($matriculas);
+                echo "</pre>";
+
+                echo "<pre>";
+                var_dump($abandonos);
+                echo "</pre>";
+
+                echo "<pre>";
+                var_dump($reprovacoes);
+                echo "</pre>";
 
             } elseif ($tipo === 'municipio') {
                 $rMun = new MySQLMunicipioRepository();

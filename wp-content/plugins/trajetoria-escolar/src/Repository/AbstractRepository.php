@@ -69,7 +69,7 @@ abstract class AbstractRepository implements IRestFull
      * @return array|object|void|null
      */
 
-    protected function getTotalMapa($anoReferencia = null, $corRacaId = null, $generoId = null, $estadoId = null, $municipioId = null, $escolaId = null)
+    protected function getTotalMapa($anoReferencia = null, $corRacaId = null, $generoId = null)
     {
         $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ';
 
@@ -247,11 +247,6 @@ abstract class AbstractRepository implements IRestFull
         return $data;
     }
 
-    /**
-     * @param $anoReferencia
-     * @return array|mixed|object|\stdClass
-     */
-
     protected function getDataPainelBrasil($anoReferencia, $tipo)
     {
 
@@ -308,71 +303,7 @@ abstract class AbstractRepository implements IRestFull
         $data->genero->masculino = new \stdClass();
         $data->genero->feminismo = new \stdClass();
 
-        echo '<pre>';
-        var_dump($data);exit;
-
-
         $this->saveBrasil(2, $anoReferencia, $data, $tipo);
-
-        return $data;
-    }
-
-    public function getDataMatriculaEstado($estadoId, $anoReferencia, $tipo){
-
-        $mapa = $this->getCacheBrasil($estadoId, $anoReferencia, $tipo);
-
-        if (!empty($mapa)) {
-            return json_decode($mapa);
-        }
-
-        $data = new \stdClass();
-        $data->total = $this->getTotalMatriculasEstado($anoReferencia, $estadoId);
-        $data->anos_iniciais = $this->getAnosIniciaisEstado($anoReferencia, $estadoId);
-        $data->anos_finais = $this->getAnosFinaisEstado($anoReferencia, $estadoId);
-        $data->medio = $this->getAnosMedioEstado($anoReferencia, $estadoId);
-
-//        $data->municipal = new \stdClass();
-//        $data->municipal->total = $this->getTotalPainel($anoReferencia, 'Municipal');
-//        $data->municipal->anos_iniciais = $this->getTotalPainel($anoReferencia, 'Municipal', 'iniciais');
-//        $data->municipal->anos_finais = $this->getTotalPainel($anoReferencia, 'Municipal', 'finais');
-//        $data->municipal->medio = $this->getTotalPainel($anoReferencia, 'Municipal', 'medio');
-//
-//        $data->estadual = new \stdClass();
-//        $data->estadual->total = $this->getTotalPainel($anoReferencia, 'Estadual');
-//        $data->estadual->anos_iniciais = $this->getTotalPainel($anoReferencia, 'Estadual', 'iniciais');
-//        $data->estadual->anos_finais = $this->getTotalPainel($anoReferencia, 'Estadual', 'finais');
-//        $data->estadual->medio = $this->getTotalPainel($anoReferencia, 'Estadual', 'medio');
-//
-//        $data->anos = new \stdClass();
-//        $data->anos->anos_iniciais = new \stdClass();
-//        $data->anos->anos_finais = new \stdClass();
-//        $data->anos->medio = new \stdClass();
-//
-//        $data->localizacao = new \stdClass();
-//        $data->localizacao->rural = $this->getTotalPainelLocalizacao($anoReferencia, 'Rural');
-//        $data->localizacao->urbano = $this->getTotalPainelLocalizacao($anoReferencia, 'Urbana');
-//
-//        $data->localizacao_diferenciada = new \stdClass();
-//        $data->localizacao_diferenciada->area_de_assentamento = $this->getTotalPainelLocalizacaoDiferenciada($anoReferencia, 'Área de assentamento');
-//        $data->localizacao_diferenciada->area_remanecente_quilombola = $this->getTotalPainelLocalizacaoDiferenciada($anoReferencia, 'Área remanescente de quilombos');
-//        $data->localizacao_diferenciada->terra_inidigena = $this->getTotalPainelLocalizacaoDiferenciada($anoReferencia, 'Terra indígena');
-//        $data->localizacao_diferenciada->unidade_uso_sustentavel = $this->getTotalPainelLocalizacaoDiferenciada($anoReferencia, 'Unidade de uso sustentável');
-//        $data->localizacao_diferenciada->unidade_uso_sustentavel_em_area_remancente_de_quilombo = $this->getTotalPainelLocalizacaoDiferenciada($anoReferencia, 'ÁUnidade de uso sustentável em área remanescente de quilombos');
-//        $data->localizacao_diferenciada->unidade_de_uso_sustentavel_em_terra_indigena = $this->getTotalPainelLocalizacaoDiferenciada($anoReferencia, 'Unidade de uso sustentável em terra indígena');
-//
-//        $data->cor_raca = new \stdClass();
-//        $data->cor_raca->nao_declarada = $this->getTotalPainelCorRaca($anoReferencia, 1);
-//        $data->cor_raca->branca = $this->getTotalPainelCorRaca($anoReferencia, 2);
-//        $data->cor_raca->preta = $this->getTotalPainelCorRaca($anoReferencia, 3);
-//        $data->cor_raca->parda = $this->getTotalPainelCorRaca($anoReferencia, 4);
-//        $data->cor_raca->amarela = $this->getTotalPainelCorRaca($anoReferencia, 5);
-//        $data->cor_raca->indigena = $this->getTotalPainelCorRaca($anoReferencia, 6);
-//
-//        $data->genero = new \stdClass();
-//        $data->genero->masculino = $this->getTotalPainelGenero($anoReferencia, 1);
-//        $data->genero->feminismo = $this->getTotalPainelGenero($anoReferencia, 2);
-
-        $this->saveBrasil($estadoId, $anoReferencia, $data, $tipo);
 
         return $data;
     }
@@ -404,97 +335,354 @@ abstract class AbstractRepository implements IRestFull
         ));
     }
 
-    protected function getTotalMatriculasEstado($anoReferencia, $estadoId, $corRacaId = null, $generoId = null)
+
+    protected function getTotalMatriculasEstadoMunicipioEscola($anoReferencia = null, $corRacaId = null, $generoId = null, $estadoId = null, $municipioId = null, $escolaId = null)
     {
-        $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ';
+        //TODO Colocar um redirect aqui
+        //TODO Validar numeros!
+        if($anoReferencia == null){ return false; }
 
-        if (empty($corRacaId) && empty($generoId)) {
-            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d AND te_municipios.estado_id = %d';
-            $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $estadoId), ARRAY_A);
-            return $response['qtd'];
-        }
+        $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM '.$this->tableName;
+        $join = '';
+        $where = ' WHERE '.$this->tableName.'.ano_referencia = %d';
 
-        if (!empty($corRacaId)) {
-            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id = %d AND genero_id IS NULL AND ano_referencia = %d AND te_municipios.estado_id = %d';
-            $response = $this->db->get_row($this->db->prepare($sql, $corRacaId, $anoReferencia, $estadoId), ARRAY_A);
-            return $response['qtd'];
-        }
+        $join .= $estadoId == null
+            ? ''
+            : ' INNER JOIN te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
 
-        if (!empty($generoId)) {
-            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id IS NULL AND genero_id %d AND ano_referencia = %d AND te_municipios.estado_id = %d';
-            $response = $this->db->get_row($this->db->prepare($sql, $generoId, $anoReferencia, $estadoId), ARRAY_A);
-            return $response['qtd'];
-        }
+        $where .= $estadoId == null
+            ? ''
+            : ' AND te_municipios.estado_id = '.$estadoId;
+
+        $join .= $municipioId == null
+            ? ''
+            : ' INNER JOIN te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
+
+        $where .= $municipioId == null
+            ? ''
+            : ' AND te_municipios.id = '.$municipioId;
+
+        $where .= $escolaId == null
+            ? ''
+            : ' AND '.$this->tableName.'.escolas_id ='.$escolaId;
+
+        $where .= $corRacaId == null
+            ? ''
+            : ' AND '.$this->tableName.'.cor_raca_id ='.$corRacaId;
+
+        $where .= $generoId == null
+            ? ''
+            : ' AND '.$this->tableName.'.genero_id ='.$generoId;
+
+        $sql .= $join . $where;
+
+        $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
+
+        return $response['qtd'];
+    }
+
+    protected function getTotalAnosIniciaisEstadoMunicipioEscola($anoReferencia = null, $corRacaId = null, $generoId = null, $estadoId = null, $municipioId = null, $escolaId = null)
+    {
+        //TODO Colocar um redirect aqui
+        //TODO Validar numeros!
+        if($anoReferencia == null){ return false; }
+
+        $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5) as qtd FROM '.$this->tableName;
+        $join = '';
+        $where = ' WHERE '.$this->tableName.'.ano_referencia = %d';
+
+        $join .= $estadoId == null
+            ? ''
+            : ' INNER JOIN te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
+
+        $where .= $estadoId == null
+            ? ''
+            : ' AND te_municipios.estado_id = '.$estadoId;
+
+        $join .= $municipioId == null
+            ? ''
+            : ' INNER JOIN te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
+
+        $where .= $municipioId == null
+            ? ''
+            : ' AND te_municipios.id = '.$municipioId;
+
+        $where .= $escolaId == null
+            ? ''
+            : ' AND '.$this->tableName.'.escolas_id ='.$escolaId;
+
+        $where .= $corRacaId == null
+            ? ''
+            : ' AND '.$this->tableName.'.cor_raca_id ='.$corRacaId;
+
+        $where .= $generoId == null
+            ? ''
+            : ' AND '.$this->tableName.'.genero_id ='.$generoId;
+
+        $sql .= $join . $where;
+
+        $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
+
+        return $response['qtd'];
+    }
+
+    protected function getTotalAnosFinaisEstadoMunicipioEscola($anoReferencia = null, $corRacaId = null, $generoId = null, $estadoId = null, $municipioId = null, $escolaId = null)
+    {
+        //TODO Colocar um redirect aqui
+        //TODO Validar numeros!
+        if($anoReferencia == null){ return false; }
+
+        $sql = 'SELECT SUM(ano6 + ano7 + ano8 + ano9) as qtd FROM '.$this->tableName;
+        $join = '';
+        $where = ' WHERE '.$this->tableName.'.ano_referencia = %d';
+
+        $join .= $estadoId == null
+            ? ''
+            : ' INNER JOIN te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
+
+        $where .= $estadoId == null
+            ? ''
+            : ' AND te_municipios.estado_id = '.$estadoId;
+
+        $join .= $municipioId == null
+            ? ''
+            : ' INNER JOIN te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
+
+        $where .= $municipioId == null
+            ? ''
+            : ' AND te_municipios.id = '.$municipioId;
+
+        $where .= $escolaId == null
+            ? ''
+            : ' AND '.$this->tableName.'.escolas_id ='.$escolaId;
+
+        $where .= $corRacaId == null
+            ? ''
+            : ' AND '.$this->tableName.'.cor_raca_id ='.$corRacaId;
+
+        $where .= $generoId == null
+            ? ''
+            : ' AND '.$this->tableName.'.genero_id ='.$generoId;
+
+        $sql .= $join . $where;
+
+        $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
+
+        return $response['qtd'];
 
     }
 
-    protected function getAnosIniciaisEstado($anoReferencia, $estadoId, $corRacaId = null, $generoId = null)
+    protected function getTotalAnosMedioEstadoMunicipioEscola($anoReferencia = null, $corRacaId = null, $generoId = null, $estadoId = null, $municipioId = null, $escolaId = null)
     {
-        $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5) as qtd FROM ';
+        //TODO Colocar um redirect aqui
+        //TODO Validar numeros!
+        if($anoReferencia == null){ return false; }
 
-        if (empty($corRacaId) && empty($generoId)) {
-            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d AND te_municipios.estado_id = %d';
-            $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $estadoId), ARRAY_A);
-            return $response['qtd'];
-        }
+        $sql = 'SELECT SUM(ano10 + ano11 + ano12 + ano13) as qtd FROM '.$this->tableName;
+        $join = '';
+        $where = ' WHERE '.$this->tableName.'.ano_referencia = %d';
 
-        if (!empty($corRacaId)) {
-            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id = %d AND genero_id IS NULL AND ano_referencia = %d AND te_municipios.estado_id = %d';
-            $response = $this->db->get_row($this->db->prepare($sql, $corRacaId, $anoReferencia, $estadoId), ARRAY_A);
-            return $response['qtd'];
-        }
+        $join .= $estadoId == null
+            ? ''
+            : ' INNER JOIN te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
 
-        if (!empty($generoId)) {
-            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id IS NULL AND genero_id %d AND ano_referencia = %d AND te_municipios.estado_id = %d';
-            $response = $this->db->get_row($this->db->prepare($sql, $generoId, $anoReferencia, $estadoId), ARRAY_A);
-            return $response['qtd'];
-        }
+        $where .= $estadoId == null
+            ? ''
+            : ' AND te_municipios.estado_id = '.$estadoId;
+
+        $join .= $municipioId == null
+            ? ''
+            : ' INNER JOIN te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
+
+        $where .= $municipioId == null
+            ? ''
+            : ' AND te_municipios.id = '.$municipioId;
+
+        $where .= $escolaId == null
+            ? ''
+            : ' AND '.$this->tableName.'.escolas_id ='.$escolaId;
+
+        $where .= $corRacaId == null
+            ? ''
+            : ' AND '.$this->tableName.'.cor_raca_id ='.$corRacaId;
+
+        $where .= $generoId == null
+            ? ''
+            : ' AND '.$this->tableName.'.genero_id ='.$generoId;
+
+        $sql .= $join . $where;
+
+        $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
+
+        return $response['qtd'];
     }
 
-    protected function getAnosFinaisEstado($anoReferencia, $estadoId, $corRacaId = null, $generoId = null)
-    {
-        $sql = 'SELECT SUM(ano6 + ano7 + ano8 + ano9) as qtd FROM ';
+    protected function getTotalDependenciaEstadoMunicipioEscola($anoReferencia = null, $dependencia = null, $tipoAno = null, $estadoId = null, $municipioId = null, $escolaId = null){
 
-        if (empty($corRacaId) && empty($generoId)) {
-            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d AND te_municipios.estado_id = %d';
-            $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $estadoId), ARRAY_A);
-            return $response['qtd'];
+        //TODO Colocar um redirect aqui
+        //TODO Validar numeros!
+        if($anoReferencia == null){ return false; }
+        if($dependencia == null){ return false; }
+
+        if ($tipoAno == null) {
+            $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM '.$this->tableName;
         }
 
-        if (!empty($corRacaId)) {
-            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id = %d AND genero_id IS NULL AND ano_referencia = %d AND te_municipios.estado_id = %d';
-            $response = $this->db->get_row($this->db->prepare($sql, $corRacaId, $anoReferencia, $estadoId), ARRAY_A);
-            return $response['qtd'];
+        if ($tipoAno == 'iniciais') {
+            $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5) as qtd FROM '.$this->tableName;
         }
 
-        if (!empty($generoId)) {
-            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id IS NULL AND genero_id %d AND ano_referencia = %d AND te_municipios.estado_id = %d';
-            $response = $this->db->get_row($this->db->prepare($sql, $generoId, $anoReferencia, $estadoId), ARRAY_A);
-            return $response['qtd'];
+        if ($tipoAno == 'finais') {
+            $sql = 'SELECT SUM(ano6 + ano7 + ano8 + ano9) as qtd FROM '.$this->tableName;
         }
+
+        if ($tipoAno == 'medio') {
+            $sql = 'SELECT SUM(ano10 + ano11 + ano12 + ano13) as qtd FROM '.$this->tableName;
+        }
+
+        $join = ' INNER JOIN te_escolas on te_escolas.id ='.$this->tableName.'.escolas_id';
+
+        $where = ' WHERE '.$this->tableName.'.ano_referencia = %d';
+
+        $where .= ' AND te_escolas.dependencia = %s';
+
+        $join .= $estadoId == null
+            ? ''
+            : ' INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
+
+        $where .= $estadoId == null
+            ? ''
+            : ' AND te_municipios.estado_id = '.$estadoId;
+
+        $join .= $municipioId == null
+            ? ''
+            : ' INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
+
+        $where .= $municipioId == null
+            ? ''
+            : ' AND te_municipios.id = '.$municipioId;
+
+        $where .= $escolaId == null
+            ? ''
+            : ' AND '.$this->tableName.'.escolas_id ='.$escolaId;
+
+        $sql .= $join . $where;
+
+        $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $dependencia), ARRAY_A);
+
+        return $response['qtd'];
     }
 
-    protected function getAnosMedioEstado($anoReferencia, $estadoId, $corRacaId = null, $generoId = null)
-    {
-        $sql = 'SELECT SUM(ano10 + ano11 + ano12 + ano13) as qtd FROM ';
+    protected function getTotalLocalizacaoEstadoMunicipioEscola($anoReferencia = null, $localizacao = null, $tipoAno = null, $estadoId = null, $municipioId = null, $escolaId = null){
 
-        if (empty($corRacaId) && empty($generoId)) {
-            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d AND te_municipios.estado_id = %d';
-            $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $estadoId), ARRAY_A);
-            return $response['qtd'];
+        //TODO Colocar um redirect aqui
+        //TODO Validar numeros!
+        if($anoReferencia == null){ return false; }
+        if($localizacao == null){ return false; }
+
+        if ($tipoAno == null) {
+            $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM '.$this->tableName;
         }
 
-        if (!empty($corRacaId)) {
-            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id = %d AND genero_id IS NULL AND ano_referencia = %d AND te_municipios.estado_id = %d';
-            $response = $this->db->get_row($this->db->prepare($sql, $corRacaId, $anoReferencia, $estadoId), ARRAY_A);
-            return $response['qtd'];
+        if ($tipoAno == 'iniciais') {
+            $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5) as qtd FROM '.$this->tableName;
         }
 
-        if (!empty($generoId)) {
-            $sql .= $this->tableName . ' inner join te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id inner join te_municipios on te_municipios.id = te_escolas.municipio_id where cor_raca_id IS NULL AND genero_id %d AND ano_referencia = %d AND te_municipios.estado_id = %d';
-            $response = $this->db->get_row($this->db->prepare($sql, $generoId, $anoReferencia, $estadoId), ARRAY_A);
-            return $response['qtd'];
+        if ($tipoAno == 'finais') {
+            $sql = 'SELECT SUM(ano6 + ano7 + ano8 + ano9) as qtd FROM '.$this->tableName;
         }
+
+        if ($tipoAno == 'medio') {
+            $sql = 'SELECT SUM(ano10 + ano11 + ano12 + ano13) as qtd FROM '.$this->tableName;
+        }
+
+        $join = ' INNER JOIN te_escolas on te_escolas.id ='.$this->tableName.'.escolas_id';
+
+        $where = ' WHERE '.$this->tableName.'.ano_referencia = %d';
+
+        $where .= ' AND te_escolas.localizacao = %s';
+
+        $join .= $estadoId == null
+            ? ''
+            : ' INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
+
+        $where .= $estadoId == null
+            ? ''
+            : ' AND te_municipios.estado_id = '.$estadoId;
+
+        $join .= $municipioId == null
+            ? ''
+            : ' INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
+
+        $where .= $municipioId == null
+            ? ''
+            : ' AND te_municipios.id = '.$municipioId;
+
+        $where .= $escolaId == null
+            ? ''
+            : ' AND '.$this->tableName.'.escolas_id ='.$escolaId;
+
+        $sql .= $join . $where;
+
+        $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $localizacao), ARRAY_A);
+
+        return $response['qtd'];
+    }
+
+    protected function getTotalLocalizacaoDiferenciadaEstadoMunicipioEscola($anoReferencia = null, $localizacaoDiferenciada = null, $tipoAno = null, $estadoId = null, $municipioId = null, $escolaId = null){
+
+        //TODO Colocar um redirect aqui
+        //TODO Validar numeros!
+        if($anoReferencia == null){ return false; }
+        if($localizacaoDiferenciada == null){ return false; }
+
+        if ($tipoAno == null) {
+            $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM '.$this->tableName;
+        }
+
+        if ($tipoAno == 'iniciais') {
+            $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5) as qtd FROM '.$this->tableName;
+        }
+
+        if ($tipoAno == 'finais') {
+            $sql = 'SELECT SUM(ano6 + ano7 + ano8 + ano9) as qtd FROM '.$this->tableName;
+        }
+
+        if ($tipoAno == 'medio') {
+            $sql = 'SELECT SUM(ano10 + ano11 + ano12 + ano13) as qtd FROM '.$this->tableName;
+        }
+
+        $join = ' INNER JOIN te_escolas on te_escolas.id ='.$this->tableName.'.escolas_id';
+
+        $where = ' WHERE '.$this->tableName.'.ano_referencia = %d';
+
+        $where .= ' AND te_escolas.localizacao_diferenciada = %s';
+
+        $join .= $estadoId == null
+            ? ''
+            : ' INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
+
+        $where .= $estadoId == null
+            ? ''
+            : ' AND te_municipios.estado_id = '.$estadoId;
+
+        $join .= $municipioId == null
+            ? ''
+            : ' INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
+
+        $where .= $municipioId == null
+            ? ''
+            : ' AND te_municipios.id = '.$municipioId;
+
+        $where .= $escolaId == null
+            ? ''
+            : ' AND '.$this->tableName.'.escolas_id ='.$escolaId;
+
+        $sql .= $join . $where;
+
+        $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $localizacaoDiferenciada), ARRAY_A);
+
+        return $response['qtd'];
     }
 
 }
