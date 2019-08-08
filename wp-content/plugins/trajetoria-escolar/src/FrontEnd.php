@@ -242,8 +242,8 @@ class FrontEnd
         $matriculasObj = new MySQLMatriculaRepository();
         $matriculas = $matriculasObj->getDataMapaBrasil($this->year);
 
-//        $abandonosObj = new MySQLAbandonoRepository();
-//        $abandonos = $abandonosObj->getDataPainelBrasil($this->year);
+        $abandonosObj = new MySQLAbandonoRepository();
+        $abandonos = $abandonosObj->getDataPainelBrasil($this->year);
 
         $reprovacoesObj = new MySQLReprovacaoRepository();
         $reprovacoes = $reprovacoesObj->getDataPainelBrasil($this->year);
