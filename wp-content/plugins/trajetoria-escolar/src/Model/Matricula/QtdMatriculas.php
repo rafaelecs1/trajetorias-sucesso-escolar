@@ -1,41 +1,88 @@
 <?php
 
 /**
- * Unicef\TrajetoriaEscolar\Model\Abandono\Abandono | Abandono.php
+ * Unicef\TrajetoriaEscolar\Model\QtdMatriculas\QtdMatriculas | QtdMatriculas.php
  *
  * @author Manoel Filho
  */
-namespace Unicef\TrajetoriaEscolar\Model\Abandono;
-
-use Unicef\TrajetoriaEscolar\Model\Escola;
-
+namespace Unicef\TrajetoriaEscolar\Model\QtdMatriculas;
 /**
- * Classe abstrata que define as informações de um Abandono
+ * Classe abstrata que define as informações de um QtdMatriculas
  *
  * @package Unicef\TrajetoriaEscolar
- * @subpackage Model\Abandono
+ * @subpackage Model\QtdMatriculas
  * @author Manoel Filho
  */
-abstract class Abandono
+abstract class QtdMatriculas
 {
+    /**
+     * @var $id
+     */
     private $id;
-    private $te_escolas_id;
-    private $genero_id;
-    private $cor_raca_id;
-    private $ano_referencia;
+    /**
+     * @var $escolaId
+     */
+    private $escolaId;
+    /**
+     * @var $corRacaId
+     */
+    private $corRacaId;
+    /**
+     * @var $generoId
+     */
+    private $generoId;
+    /**
+     * @var $anoReferencia
+     */
+    private $anoReferencia;
+    /**
+     * @var $ano1
+     */
     private $ano1;
+    /**
+     * @var $ano2
+     */
     private $ano2;
+    /**
+     * @var $ano3
+     */
     private $ano3;
+    /**
+     * @var $ano4
+     */
     private $ano4;
+    /**
+     * @var $ano5
+     */
     private $ano5;
+    /**
+     * @var $ano6
+     */
     private $ano6;
+    /**
+     * @var $ano7
+     */
     private $ano7;
+    /**
+     * @var $ano8
+     */
     private $ano8;
+    /**
+     * @var $ano9
+     */
     private $ano9;
+    /**
+     * @var $ano10
+     */
     private $ano10;
+    /**
+     * @var $ano11
+     */
     private $ano11;
+    /**
+     * @var $ano12
+     */
     private $ano12;
-    private $ano13;
 
     /**
      * @return mixed
@@ -56,33 +103,17 @@ abstract class Abandono
     /**
      * @return mixed
      */
-    public function getTeEscolasId()
+    public function getEscolaId()
     {
-        return $this->te_escolas_id;
+        return $this->escolaId;
     }
 
     /**
-     * @param mixed $te_escolas_id
+     * @param mixed $escolaId
      */
-    public function setTeEscolasId($te_escolas_id)
+    public function setEscolaId($escolaId)
     {
-        $this->te_escolas_id = $te_escolas_id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getGeneroId()
-    {
-        return $this->genero_id;
-    }
-
-    /**
-     * @param mixed $genero_id
-     */
-    public function setGeneroId($genero_id)
-    {
-        $this->genero_id = $genero_id;
+        $this->escolaId = $escolaId;
     }
 
     /**
@@ -90,15 +121,31 @@ abstract class Abandono
      */
     public function getCorRacaId()
     {
-        return $this->cor_raca_id;
+        return $this->corRacaId;
     }
 
     /**
-     * @param mixed $cor_raca_id
+     * @param mixed $corRacaId
      */
-    public function setCorRacaId($cor_raca_id)
+    public function setCorRacaId($corRacaId)
     {
-        $this->cor_raca_id = $cor_raca_id;
+        $this->corRacaId = $corRacaId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGeneroId()
+    {
+        return $this->generoId;
+    }
+
+    /**
+     * @param mixed $generoId
+     */
+    public function setGeneroId($generoId)
+    {
+        $this->generoId = $generoId;
     }
 
     /**
@@ -106,15 +153,15 @@ abstract class Abandono
      */
     public function getAnoReferencia()
     {
-        return $this->ano_referencia;
+        return $this->anoReferencia;
     }
 
     /**
-     * @param mixed $ano_referencia
+     * @param mixed $anoReferencia
      */
-    public function setAnoReferencia($ano_referencia)
+    public function setAnoReferencia($anoReferencia)
     {
-        $this->ano_referencia = $ano_referencia;
+        $this->anoReferencia = $anoReferencia;
     }
 
     /**
@@ -324,5 +371,9 @@ abstract class Abandono
     {
         $this->ano13 = $ano13;
     }
+    /**
+     * @var $ano13
+     */
+    private $ano13;
 
 }

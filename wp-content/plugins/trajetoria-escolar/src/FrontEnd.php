@@ -11,10 +11,12 @@ use Unicef\TrajetoriaEscolar\Model\Municipio;
 
 use Unicef\TrajetoriaEscolar\Repository\MySQLDistorcaoRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLEstadoRepository;
+use Unicef\TrajetoriaEscolar\Repository\MySQLAbandonoRepository;
+use Unicef\TrajetoriaEscolar\Repository\MySQLMatriculaRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLMunicipioRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLEscolaRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLMapaRepository;
-use Unicef\TrajetoriaEscolar\Repository\MySQLPainelRepository;
+use Unicef\TrajetoriaEscolar\Repository\MySQLPainelRepository;use Unicef\TrajetoriaEscolar\Repository\MySQLReprovacaoRepository;
 
 /**
  * Classe que implementa os requisitos para o front-end (páginas)
@@ -162,6 +164,16 @@ class FrontEnd
         $rDistorcaoMapa = new MySQLMapaRepository();
         $distorcaoMapa = $rDistorcaoMapa->getBrasil($this->year);
 
+        $matriculasObj = new MySQLMatriculaRepository();
+        $matriculas = $matriculasObj->getDataMapaBrasil($this->year);
+
+        $abandonosObj = new MySQLAbandonoRepository();
+        $abandonos = $abandonosObj->getDataMapaBrasil($this->year);
+
+        $reprovacoesObj = new MySQLReprovacaoRepository();
+        $reprovacoes = $reprovacoesObj->getDataMapaBrasil($this->year);
+
+
         ob_start();
         wp_enqueue_style('mapa-nacional', plugin_dir_url(dirname(__FILE__)) . 'css/mapa-nacional.css');
         wp_enqueue_style('animate', plugin_dir_url(dirname(__FILE__)) . 'css/animate.css');
@@ -172,8 +184,6 @@ class FrontEnd
         wp_enqueue_script('tabs', plugin_dir_url(dirname(__FILE__)) . 'js/tabs.js', array('jquery'), false, true);
 
         ?>
-
-
 
         <section id="slider-tabs">
             <ul class="abas" >
@@ -206,7 +216,6 @@ class FrontEnd
             </section>
         </section>
 
-
         <?php
 
         return ob_get_clean();
@@ -229,6 +238,16 @@ class FrontEnd
 
         $rDistorcaoPainel = new MySQLPainelRepository();
         $distorcao = $rDistorcaoPainel->getBrasil($this->year);
+
+        $matriculasObj = new MySQLMatriculaRepository();
+        $matriculas = $matriculasObj->getDataMapaBrasil($this->year);
+
+//        $abandonosObj = new MySQLAbandonoRepository();
+//        $abandonos = $abandonosObj->getDataPainelBrasil($this->year);
+
+        $reprovacoesObj = new MySQLReprovacaoRepository();
+        $reprovacoes = $reprovacoesObj->getDataPainelBrasil($this->year);
+
         ob_start();
 
         ?>
@@ -259,7 +278,7 @@ class FrontEnd
 
                 <?php
 
-                include_once 'wp-includes/tabs_panels/tab1-panel-nacional.php'
+                include 'wp-includes/tabs_panels/tab1-panel-nacional.php'
 
                 ?>
 
@@ -267,14 +286,14 @@ class FrontEnd
             <section id="tab-2" class="aba-panel tabcontent" style="display: none;">
                 <?php
 
-                include_once 'wp-includes/tabs_panels/tab2-panel-nacional.php'
+                include 'wp-includes/tabs_panels/tab2-panel-nacional.php'
 
                 ?>
             </section>
             <section id="tab-3" class="aba-panel tabcontent" style="display: none;">
                 <?php
 
-                include_once 'wp-includes/tabs_panels/tab3-panel-nacional.php'
+                include 'wp-includes/tabs_panels/tab3-panel-nacional.php'
 
                 ?>
             </section>
@@ -284,13 +303,15 @@ class FrontEnd
         <?php
         if ($tipo !== 'escola') {
             wp_enqueue_style('remodal', plugin_dir_url(dirname(__FILE__)) . 'css/remodal.css');
-//            wp_enqueue_style('animate', plugin_dir_url(dirname(__FILE__)) . 'css/animate.css');
+            wp_enqueue_style('animate', plugin_dir_url(dirname(__FILE__)) . 'css/animate.css');
             wp_enqueue_style('remodal_theme', plugin_dir_url(dirname(__FILE__)) . 'css/remodal-default-theme.css', array('remodal'));
             wp_enqueue_script('remodal', plugin_dir_url(dirname(__FILE__)) . 'js/remodal.js', array('jquery'), false, true);
 
         }
 
         wp_enqueue_script('painel', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral.js', array('jquery'), false, true);
+        wp_enqueue_script('tabs', plugin_dir_url(dirname(__FILE__)) . 'js/tabs.js', array('jquery'), false, true);
+
         $voltar = $especificacao = null;
 
         wp_localize_script('painel', 'painel', array(
@@ -496,7 +517,7 @@ class FrontEnd
      */
     private static function gerarAmostra($termo = '', $valor = 0, $total = 0)
     {
-        return '<div class="amostra"><div>' . $termo . '</div><div class="valor" data-valor="' . $valor . '" data-total="' . $total . '">' . number_format((int)$valor, 0, ',', '.') . '</div></div>';
+        return '<div class="amostra"><div style="text-transform: capitalize;">' . $termo . '</div><div class="valor" data-valor="' . $valor . '" data-total="' . $total . '">' . number_format((int)$valor, 0, ',', '.') . '</div></div>';
     }
 
     /**
