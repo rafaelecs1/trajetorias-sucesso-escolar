@@ -49,9 +49,9 @@
                 if ($key == 'municipal' || $key == 'estadual') {
                     echo '<section id="rede-', strtolower($key), '">';
                     echo '<header><h3>Redes ', ($key == 'municipal') ? 'Municipais' : 'Estaduais', '</h3></header>';
-                    echo self::gerarAmostra('<span class="">Ensino Fundamental</span> <br/><span class="bold">Anos Iniciais </span>' , $item->anos_iniciais, $matriculas->total);
-                    echo self::gerarAmostra('<span class="">Ensino Fundamental</span> <br/><span class="bold">Anos Finais </span>' , $item->anos_finais, $matriculas->total);
-                    echo self::gerarAmostra('<span class=""></span><br/><span class="bold">Anos Médio </span>' , $item->medio, $matriculas->total);
+                    echo self::gerarAmostra('<span class="">Ensino Fundamental</span> <br/><span class="bold">Anos Iniciais </span>', $item->anos_iniciais, $matriculas->total);
+                    echo self::gerarAmostra('<span class="">Ensino Fundamental</span> <br/><span class="bold">Anos Finais </span>', $item->anos_finais, $matriculas->total);
+                    echo self::gerarAmostra('<span class=""></span><br/><span class="bold">Anos Médio </span>', $item->medio, $matriculas->total);
 
                     if ($tipo === 'municipio') {
                         echo '<a class="situacao-das-escolas" data-municipio="', $id, '" data-rede="', sanitize_title($rede), '" href="#situacao-das-escolas-rede-', sanitize_title($rede), '">Situação das escolas</a>';
@@ -66,33 +66,33 @@
         <span class="legenda">* Taxa de distorção idade-serie</span>
         <section id="graficos-por-tipo-ensino">
             <img src="<?php echo plugins_url('trajetoria-escolar/img/panel/porano.png') ?>">
-<!--            --><?php
-//            $graficosPorTipoAno = array();
-//            $lis = $sections = '';
-//            foreach ($tiposAno as $tipoAno => $label) {
-//                if (array_key_exists($tipoAno, $distorcao['anos'])) {
-//                    $slug = 'grafico-' . sanitize_title($label);
-//                    $id = str_replace('-', '_', $slug);
-//                    $lis .= '<li><a href="#' . $slug . '">' . $label . '</a></li>';
-//                    $sections .= '<section id="' . $slug . '" class="aba"><span>Número de estudantes em atraso escolar por ano</span><div id="' . $id . '" class="grafico"></div></section>';
-//
-//                    foreach ($distorcao['anos'][$tipoAno] as $ano => $distorcoes) {
-//                        $arAux = array();
-//                        $arAux[] = $ano . '° ano';
-//                        foreach ($distorcoes as $dist) {
-//                            $arAux[] = $dist;
-//                        }
-//                        $graficosPorTipoAno[$id][] = $arAux;
-//                    }
-//                }
-//            }
-//            if (!empty($lis)) {
-//                echo '<ul class="abas">';
-//                echo $lis;
-//                echo '</ul>';
-//                echo $sections;
-//            }
-//            ?>
+            <!--            --><?php
+            //            $graficosPorTipoAno = array();
+            //            $lis = $sections = '';
+            //            foreach ($tiposAno as $tipoAno => $label) {
+            //                if (array_key_exists($tipoAno, $distorcao['anos'])) {
+            //                    $slug = 'grafico-' . sanitize_title($label);
+            //                    $id = str_replace('-', '_', $slug);
+            //                    $lis .= '<li><a href="#' . $slug . '">' . $label . '</a></li>';
+            //                    $sections .= '<section id="' . $slug . '" class="aba"><span>Número de estudantes em atraso escolar por ano</span><div id="' . $id . '" class="grafico"></div></section>';
+            //
+            //                    foreach ($distorcao['anos'][$tipoAno] as $ano => $distorcoes) {
+            //                        $arAux = array();
+            //                        $arAux[] = $ano . '° ano';
+            //                        foreach ($distorcoes as $dist) {
+            //                            $arAux[] = $dist;
+            //                        }
+            //                        $graficosPorTipoAno[$id][] = $arAux;
+            //                    }
+            //                }
+            //            }
+            //            if (!empty($lis)) {
+            //                echo '<ul class="abas">';
+            //                echo $lis;
+            //                echo '</ul>';
+            //                echo $sections;
+            //            }
+            //            ?>
         </section>
         <section id="grafico-por-redes">
             <header><h2>Total de Matrículas na Educação Básica</h2></header>
@@ -107,22 +107,22 @@
             <img src="<?php echo plugins_url('trajetoria-escolar/img/panel/educacaobasica.png') ?>">
 
             <!--            --><?php
-//            $graficoPorRedes = array();
-//            foreach ($distorcao['tipo_rede'] as $rede => $ensinos) {
-//                $arAux = array();
-//                $arAux[] = $rede;
-//                $semDistorcao = $distorcaoValor = 0;
-//                foreach ($ensinos as $anos) {
-//                    foreach ($anos as $ano) {
-//                        $semDistorcao += $ano['sem_distorcao'];
-//                        $distorcaoValor += $ano['distorcao'];
-//                    }
-//                }
-//                $arAux[] = $semDistorcao;
-//                $arAux[] = $distorcaoValor;
-//                $graficoPorRedes[] = $arAux;
-//            }
-//            ?>
+            //            $graficoPorRedes = array();
+            //            foreach ($distorcao['tipo_rede'] as $rede => $ensinos) {
+            //                $arAux = array();
+            //                $arAux[] = $rede;
+            //                $semDistorcao = $distorcaoValor = 0;
+            //                foreach ($ensinos as $anos) {
+            //                    foreach ($anos as $ano) {
+            //                        $semDistorcao += $ano['sem_distorcao'];
+            //                        $distorcaoValor += $ano['distorcao'];
+            //                    }
+            //                }
+            //                $arAux[] = $semDistorcao;
+            //                $arAux[] = $distorcaoValor;
+            //                $graficoPorRedes[] = $arAux;
+            //            }
+            //            ?>
         </section>
     </section>
     <section id="genero">
@@ -130,8 +130,8 @@
         <section class="genero">
             <?php
             foreach ($reprovacoes->genero as $k => $v) {
-                if($k != 'total')
-                echo self::gerarAmostra($k, $v, $reprovacoes->total);
+                if ($k != 'total')
+                    echo self::gerarAmostra($k, $v, $reprovacoes->total);
             }
             ?>
         </section>
@@ -140,9 +140,12 @@
         <header><h2>Cor/Raça</h2></header>
         <section class="cor-raca">
             <?php
-            foreach ($reprovacoes->cor_raca as $k => $v) {
-                if($k != 'total')
-                    echo self::gerarAmostra($k, $v, $reprovacoes->total);
+            $labelsCorRaca = ['Não declarada', 'Branca', 'Preta', 'Parda', 'Amarela', 'Indígena'];
+            $countCorRaca = 0;
+            foreach ($abandonos->cor_raca as $k => $v) {
+                if ($k != 'total')
+                    echo self::gerarAmostra($labelsCorRaca[$countCorRaca], $v, $abandonos->total);
+                $countCorRaca++;
             }
             ?>
         </section>
@@ -153,20 +156,20 @@
         <section class="localizacao">
             <?php
             foreach ($reprovacoes->localizacao as $k => $v) {
-                if($k != 'total')
+                if ($k != 'total')
                     echo self::gerarAmostra($k, $v, $reprovacoes->total);
             }
             ?>
         </section>
         <?php
-        $labels = ['Área De Assentamento', 'Área Remanescente De Quilombos', 'Terra Indígena', 'Unidade De Uso Sustentável', 'Unidade De Uso Sustentável Em Área Remanescente De Quilombos', 'Unidade De Uso Sustentável Em Terra Indígena'];
+        $labelsLocalizacao = ['Área De Assentamento', 'Área Remanescente De Quilombos', 'Terra Indígena', 'Unidade De Uso Sustentável', 'Unidade De Uso Sustentável Em Área Remanescente De Quilombos', 'Unidade De Uso Sustentável Em Terra Indígena'];
         if (!empty($reprovacoes->localizacao_diferenciada)) {
             echo '<section class="localizacao-diferenciada">';
-            $count = 0;
+            $countLoc = 0;
             foreach ($reprovacoes->localizacao_diferenciada as $k => $v) {
-                if($k != 'total')
-                    echo self::gerarAmostra($labels[$count], $v, $reprovacoes->total);
-                $count++;
+                if ($k != 'total')
+                    echo self::gerarAmostra($labelsLocalizacao[$countLoc], $v, $reprovacoes->total);
+                $countLoc++;
             }
             echo '</section>';
         }
