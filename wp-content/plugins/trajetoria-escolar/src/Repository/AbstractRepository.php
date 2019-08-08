@@ -134,16 +134,17 @@ abstract class AbstractRepository implements IRestFull
     protected function getTotalPainelCorRaca($anoReferencia = null, $corRacaId = null)
     {
         $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ' . $this->tableName . ' join te_escolas te on te.id = ' . $this->tableName . '.escolas_id                                                                                   
-                                      where ' . $this->tableName . '.ano_referencia = %d AND ' . $this->tableName . '.cor_raca_id = %s';
+                                      where ' . $this->tableName . '.ano_referencia = %d AND '. $this->tableName . '.genero_id IS NULL AND ' . $this->tableName . '.cor_raca_id = %d';
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $corRacaId), ARRAY_A);
+
         return $response['qtd'];
     }
 
     protected function getTotalPainelGenero($anoReferencia = null, $generoId = null)
     {
         $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ' . $this->tableName . ' join te_escolas te on te.id = ' . $this->tableName . '.escolas_id                                                                                   
-                                      where ' . $this->tableName . '.ano_referencia = %d AND ' . $this->tableName . '.genero_id = %s';
+                                      where ' . $this->tableName . '.ano_referencia = %d AND ' . $this->tableName . '.cor_raca_id IS NULL AND ' . $this->tableName . '.genero_id = %d';
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $generoId), ARRAY_A);
         return $response['qtd'];
     }
@@ -300,7 +301,7 @@ abstract class AbstractRepository implements IRestFull
         $data->municipal->anos_iniciais = $this->getTotalPainel($anoReferencia, 'Municipal', 'iniciais');
         $data->municipal->anos_finais = $this->getTotalPainel($anoReferencia, 'Municipal', 'finais');
         $data->municipal->medio = $this->getTotalPainel($anoReferencia, 'Municipal', 'medio');
-        
+
         $data->estadual = new \stdClass();
         $data->estadual->total = $this->getTotalPainel($anoReferencia, 'Estadual');
         $data->estadual->anos_iniciais = $this->getTotalPainel($anoReferencia, 'Estadual', 'iniciais');
