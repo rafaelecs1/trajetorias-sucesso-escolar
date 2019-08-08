@@ -18,6 +18,31 @@ class MySQLMatriculaRepository extends AbstractRepository
 
     public function getDataMapaBrasil($anoReferencia)
     {
-        return parent::getDataMapaBrasil($anoReferencia);
+        $mapa = $this->getCacheBrasil(2, self::NACIONAL_MATRICULA, $anoReferencia);
+
+        if (!empty($mapa)) {
+            return json_decode($mapa);
+        }
+
+        $data = parent::getDataMapaBrasil($anoReferencia);
+
+        $this->saveBrasil(2, self::NACIONAL_MATRICULA, $anoReferencia, $data);
+
+        return $data;
+    }
+
+    public function getDataPainelBrasil($anoReferencia)
+    {
+        $mapa = $this->getCacheBrasil(1, self::NACIONAL_MATRICULA, $anoReferencia);
+
+        if (!empty($mapa)) {
+            return json_decode($mapa);
+        }
+
+        $data = parent::getDataPainelBrasil($anoReferencia);
+
+        $this->saveBrasil(1, self::NACIONAL_MATRICULA, $anoReferencia, $data);
+
+        return $data;
     }
 }
