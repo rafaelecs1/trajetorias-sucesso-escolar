@@ -269,7 +269,7 @@ class FrontEnd
         </div>
 
         <section id="slider-tabs">
-            <ul class="abas" >
+            <ul class="abas-paineis" >
                 <li id="tab-link-1" class="tablinks active" onclick="openTab(1)"><a href="javascript:void(0);">Distorção Idade-série</a></li>
                 <li id="tab-link-2" class="tablinks" onclick="openTab(2)"><a  href="javascript:void(0);">Reprovação</a></li>
                 <li id="tab-link-3" class="tablinks" onclick="openTab(3)"><a href="javascript:void(0);">Abandono</a></li>

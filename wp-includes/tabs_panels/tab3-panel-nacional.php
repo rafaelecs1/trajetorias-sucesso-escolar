@@ -65,34 +65,34 @@
 
         <span class="legenda">* Taxa de distorção idade-serie</span>
         <section id="graficos-por-tipo-ensino">
-            <img src="<?php echo plugins_url('trajetoria-escolar/img/panel/porano.png') ?>">
-            <!--            --><?php
-            //            $graficosPorTipoAno = array();
-            //            $lis = $sections = '';
-            //            foreach ($tiposAno as $tipoAno => $label) {
-            //                if (array_key_exists($tipoAno, $distorcao['anos'])) {
-            //                    $slug = 'grafico-' . sanitize_title($label);
-            //                    $id = str_replace('-', '_', $slug);
-            //                    $lis .= '<li><a href="#' . $slug . '">' . $label . '</a></li>';
-            //                    $sections .= '<section id="' . $slug . '" class="aba"><span>Número de estudantes em atraso escolar por ano</span><div id="' . $id . '" class="grafico"></div></section>';
-            //
-            //                    foreach ($distorcao['anos'][$tipoAno] as $ano => $distorcoes) {
-            //                        $arAux = array();
-            //                        $arAux[] = $ano . '° ano';
-            //                        foreach ($distorcoes as $dist) {
-            //                            $arAux[] = $dist;
-            //                        }
-            //                        $graficosPorTipoAno[$id][] = $arAux;
-            //                    }
-            //                }
-            //            }
-            //            if (!empty($lis)) {
-            //                echo '<ul class="abas">';
-            //                echo $lis;
-            //                echo '</ul>';
-            //                echo $sections;
-            //            }
-            //            ?>
+<!--            <img src="--><?php //echo plugins_url('trajetoria-escolar/img/panel/porano.png') ?><!--">-->
+            <?php
+            $graficosPorTipoAno = array();
+            $lis = $sections = '';
+            foreach ($tiposAno as $tipoAno => $label) {
+                if (array_key_exists($tipoAno, $distorcao['anos'])) {
+                    $slug = 'grafico-' . sanitize_title($label);
+                    $id = str_replace('-', '_', $slug);
+                    $lis .= '<li><a href="#' . $slug . '">' . $label . '</a></li>';
+                    $sections .= '<section id="' . $slug . '" class="aba"><span>Número de estudantes em atraso escolar por ano</span><div id="' . $id . '" class="grafico"></div></section>';
+
+                    foreach ($distorcao['anos'][$tipoAno] as $ano => $distorcoes) {
+                        $arAux = array();
+                        $arAux[] = $ano . '° ano';
+                        foreach ($distorcoes as $dist) {
+                            $arAux[] = $dist;
+                        }
+                        $graficosPorTipoAno[$id][] = $arAux;
+                    }
+                }
+            }
+            if (!empty($lis)) {
+                echo '<ul class="abas">';
+                echo $lis;
+                echo '</ul>';
+                echo $sections;
+            }
+            ?>
         </section>
         <section id="grafico-por-redes">
             <header><h2>Total de Matrículas na Educação Básica</h2></header>
