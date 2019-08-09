@@ -24,6 +24,7 @@ jQuery(document).ready(function ($) {
     var escopo = painel.especificacao == null ? "" : painel.especificacao;
 
     // $('h1:eq(1)').before('<span class="pre-h1">' + escopo + '</span>').after('<span>Perfil das crianças e adolescentes em distorção idade-série:</span>');
+    console.log(painel.ajaxUrl)
     $('.situacao-das-escolas').click(function (e) {
         e.preventDefault();
         let me = $(this),

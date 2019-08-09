@@ -308,10 +308,26 @@ abstract class AbstractRepository implements IRestFull
         $data->estadual->anos_finais = $this->getTotalPainel($anoReferencia, 'Estadual', 'finais');
         $data->estadual->medio = $this->getTotalPainel($anoReferencia, 'Estadual', 'medio');
 
-        $data->anos = new \stdClass();
-        $data->anos->anos_iniciais = [10, 20, 30, 40, 50];
-        $data->anos->anos_finais = [20, 30, 40, 50];
-        $data->anos->anos_medio = [10, 20, 30, 40];
+        $data->anos = array();
+        $data->anos['Iniciais'] = array(
+            '1' => [10, 20, 30, 40],
+            '2' => [10, 20, 30, 40],
+            '3' => [10, 20, 30, 40],
+            '4' => [10, 20, 30, 40],
+            '5' => [10, 20, 30, 40]
+        );
+        $data->anos['Finais'] = array(
+            '6' => [10, 20, 30, 40],
+            '7' => [10, 20, 30, 40],
+            '8' => [10, 20, 30, 40],
+            '9' => [10, 20, 30, 40]
+        );
+        $data->anos['Medio'] = array(
+            '10' => [10, 20, 30, 40],
+            '11' => [10, 20, 30, 40],
+            '12' => [10, 20, 30, 40],
+            '13' => [10, 20, 30, 40]
+        );
 
         $data->localizacao = new \stdClass();
         $data->localizacao->rural = $this->getTotalPainelLocalizacao($anoReferencia, 'Rural');

@@ -76,14 +76,14 @@
                     $lis .= '<li><a href="#' . $slug . '">' . $label . '</a></li>';
                     $sections .= '<section id="' . $slug . '" class="aba"><span>Número de estudantes em atraso escolar por ano</span><div id="' . $id . '" class="grafico"></div></section>';
 
-                    foreach ($distorcao['anos'][$tipoAno] as $ano => $distorcoes) {
-                        $arAux = array();
-                        $arAux[] = $ano . '° ano';
-                        foreach ($distorcoes as $dist) {
-                            $arAux[] = $dist;
-                        }
-                        $graficosPorTipoAno[$id][] = $arAux;
-                    }
+//                    foreach ($distorcao['anos'][$tipoAno] as $ano => $distorcoes) {
+//                        $arAux = array();
+//                        $arAux[] = $ano . '° ano';
+//                        foreach ($distorcoes as $dist) {
+//                            $arAux[] = $dist;
+//                        }
+//                        $graficosPorTipoAno[$id][] = $arAux;
+//                    }
                 }
             }
             if (!empty($lis)) {

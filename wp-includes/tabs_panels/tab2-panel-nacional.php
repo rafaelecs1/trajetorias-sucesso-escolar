@@ -67,25 +67,30 @@
         <section id="graficos-por-tipo-ensino">
             <!--            <img src="--><?php //echo plugins_url('trajetoria-escolar/img/panel/porano.png') ?><!--">-->
             <?php
-            $graficosPorTipoAno = array();
+//            $graficosPorTipoAno = array();
             $lis = $sections = '';
+            $countReprovacao = 1;
             foreach ($tiposAno as $tipoAno => $label) {
-                if (array_key_exists($tipoAno, $distorcao['anos'])) {
-                    $slug = 'grafico-' . sanitize_title($label) . '-2';
+//                if (array_key_exists($tipoAno, $reprovacoes['anos'])) {
+                    $slug = 'grafico-' . sanitize_title($label);
                     $id = str_replace('-', '_', $slug);
                     $lis .= '<li><a href="#' . $slug . '">' . $label . '</a></li>';
                     $sections .= '<section id="' . $slug . '" class="aba"><span>Número de estudantes em atraso escolar por ano 2</span><div id="' . $id . '" class="grafico"></div></section>';
 
-                    foreach ($distorcao['anos'][$tipoAno] as $ano => $distorcoes) {
+                    foreach ((array)$reprovacoes->anos[$tiposAno] as $ano => $item) {
                         $arAux = array();
                         $arAux[] = $ano . '° ano';
-                        foreach ($distorcoes as $dist) {
+                        foreach ($item as $dist) {
                             $arAux[] = $dist;
                         }
                         $graficosPorTipoAno[$id][] = $arAux;
+                        $countReprovacao++;
                     }
-                }
+//                }
             }
+            echo '<pre>';
+            var_dump($graficosPorTipoAno);
+            echo '</pre>';
             if (!empty($lis)) {
                 echo '<ul class="abas">';
                 echo $lis;

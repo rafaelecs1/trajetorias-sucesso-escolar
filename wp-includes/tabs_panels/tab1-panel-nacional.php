@@ -63,7 +63,7 @@
                 'Todos' => 'Ensino Médio',
             );
 
-            $graficosPorTipoAno = array();
+//            $graficosPorTipoAno = array();
             $lis = $sections = '';
             foreach ($tiposAno as $tipoAno => $label) {
                 if (array_key_exists($tipoAno, $distorcao['anos'])) {
@@ -82,6 +82,9 @@
                     }
                 }
             }
+//            echo '<pre>';
+//            var_dump($graficosPorTipoAno);
+//            echo '</pre>';
             if (!empty($lis)) {
                 echo '<ul class="abas">';
                 echo $lis;
