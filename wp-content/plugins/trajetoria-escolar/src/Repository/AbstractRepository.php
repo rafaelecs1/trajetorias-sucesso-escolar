@@ -225,6 +225,7 @@ abstract class AbstractRepository implements IRestFull
 
     }
 
+
     private static function getTableName($origem)
     {
         $nome = get_class($origem);
@@ -242,6 +243,7 @@ abstract class AbstractRepository implements IRestFull
                 break;
         }
     }
+
 
     protected function getDataMapaBrasil($anoReferencia, $tipo)
     {
@@ -355,6 +357,7 @@ abstract class AbstractRepository implements IRestFull
 
         return $data;
     }
+
 
     public function saveBrasil($origem, $tipo, $anoReferencia = 0, $painel = array())
     {
