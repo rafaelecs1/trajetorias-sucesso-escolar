@@ -28,8 +28,6 @@ use Unicef\TrajetoriaEscolar\Repository\MySQLPainelRepository;use Unicef\Trajeto
 class FrontEnd
 {
 
-
-
     private $year = null;
     private $default_year = 2019;
     private $years = [2018, 2019];
@@ -354,11 +352,11 @@ class FrontEnd
                 $matriculasObj = new MySQLMatriculaRepository();
                 $matriculas = $matriculasObj->getDataMatriculaEstado($id, $this->year);
 
-                $abandonosObj = new MySQLAbandonoRepository();
-                $abandonos = $abandonosObj->getDataAbandonoEstado($id, $this->year);
-
                 $reprovacoesObj = new MySQLReprovacaoRepository();
                 $reprovacoes = $reprovacoesObj->getDataReprovacaoEstado($id, $this->year);
+
+                $abandonosObj = new MySQLAbandonoRepository();
+                $abandonos = $abandonosObj->getDataAbandonoEstado($id, $this->year);
 
 
             } elseif ($tipo === 'municipio') {
@@ -366,28 +364,31 @@ class FrontEnd
                 $rMun = new MySQLMunicipioRepository();
                 $origem = $rMun->get($id);
 
-//                $matriculasObj = new MySQLMatriculaRepository();
-//                $matriculas = $matriculasObj->getDataMatriculaMunicipio($id, $this->year);
-//
-//                $abandonosObj = new MySQLAbandonoRepository();
-//                $abandonos = $abandonosObj->getDataAbandonoMunicipio($id, $this->year);
-//
-//                $reprovacoesObj = new MySQLReprovacaoRepository();
-//                $reprovacoes = $reprovacoesObj->getDataReprovacaoMunicipio($id, $this->year);
+                $matriculasObj = new MySQLMatriculaRepository();
+                $matriculas = $matriculasObj->getDataMatriculaMunicipio($id, $this->year);
+
+                $reprovacoesObj = new MySQLReprovacaoRepository();
+                $reprovacoes = $reprovacoesObj->getDataReprovacaoMunicipio($id, $this->year);
+
+                $abandonosObj = new MySQLAbandonoRepository();
+                $abandonos = $abandonosObj->getDataAbandonoMunicipio($id, $this->year);
+
+                $idMunicipio = $id;
+
 
             } elseif ($tipo === 'escola') {
 
                 $rEsc = new MySQLEscolaRepository();
                 $origem = $rEsc->get($id);
 
-//                $matriculasObj = new MySQLMatriculaRepository();
-//                $matriculas = $matriculasObj->getDataMatriculaEscola($id, $this->year);
-//
-//                $abandonosObj = new MySQLAbandonoRepository();
-//                $abandonos = $abandonosObj->getDataAbandonoEscola($id, $this->year);
-//
-//                $reprovacoesObj = new MySQLReprovacaoRepository();
-//                $reprovacoes = $reprovacoesObj->getDataReprovacaoEscola($id, $this->year);
+                $matriculasObj = new MySQLMatriculaRepository();
+                $matriculas = $matriculasObj->getDataMatriculaEscola($id, $this->year);
+
+                $reprovacoesObj = new MySQLReprovacaoRepository();
+                $reprovacoes = $reprovacoesObj->getDataReprovacaoEscola($id, $this->year);
+
+                $abandonosObj = new MySQLAbandonoRepository();
+                $abandonos = $abandonosObj->getDataAbandonoEscola($id, $this->year);
 
             }
 
@@ -484,6 +485,12 @@ class FrontEnd
                         include_once 'wp-includes/tabs_panels/tab3-panel-estado-municio-escola.php'
                     ?>
                 </section>
+
+                <div class="remodal" data-remodal-id="situacao-das-escolas" <?php echo ($tipo === 'escola') ? 'style="display:none"' : ''; ?>>
+                    <button data-remodal-action="close" class="remodal-close"></button>
+                    <div id="lista-escolas">
+                    </div>
+                </div>
 
             <?php
                 if ($tipo !== 'escola') {

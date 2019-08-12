@@ -330,7 +330,7 @@ abstract class AbstractRepository implements IRestFull
 
         $data->localizacao = new \stdClass();
         $data->localizacao->rural = $this->getTotalPainelLocalizacao($anoReferencia, 'Rural');
-        $data->localizacao->urbano = $this->getTotalPainelLocalizacao($anoReferencia, 'Urbana');
+        $data->localizacao->urbana = $this->getTotalPainelLocalizacao($anoReferencia, 'Urbana');
 
         $data->localizacao_diferenciada = new \stdClass();
         $data->localizacao_diferenciada->area_de_assentamento = $this->getTotalPainelLocalizacaoDiferenciada($anoReferencia, 'Área de assentamento');
@@ -351,7 +351,7 @@ abstract class AbstractRepository implements IRestFull
         $data->genero = new \stdClass();
         $data->genero->total = '100';
         $data->genero->masculino = $this->getTotalPainelGenero($anoReferencia, 1);
-        $data->genero->feminismo = $this->getTotalPainelGenero($anoReferencia, 2);
+        $data->genero->feminino = $this->getTotalPainelGenero($anoReferencia, 2);
 
         $this->saveBrasil(1, $tipo, $anoReferencia, $data);
 
@@ -419,11 +419,11 @@ abstract class AbstractRepository implements IRestFull
             : ' AND '.$this->tableName.'.escolas_id ='.$escolaId;
 
         $where .= $corRacaId == null
-            ? ''
+            ? ' AND '.$this->tableName.'.cor_raca_id IS NULL'
             : ' AND '.$this->tableName.'.cor_raca_id ='.$corRacaId;
 
         $where .= $generoId == null
-            ? ''
+            ? ' AND '.$this->tableName.'.genero_id IS NULL'
             : ' AND '.$this->tableName.'.genero_id ='.$generoId;
 
         $sql .= $join . $where;
@@ -464,11 +464,11 @@ abstract class AbstractRepository implements IRestFull
             : ' AND '.$this->tableName.'.escolas_id ='.$escolaId;
 
         $where .= $corRacaId == null
-            ? ''
+            ? ' AND '.$this->tableName.'.cor_raca_id IS NULL'
             : ' AND '.$this->tableName.'.cor_raca_id ='.$corRacaId;
 
         $where .= $generoId == null
-            ? ''
+            ? ' AND '.$this->tableName.'.genero_id IS NULL'
             : ' AND '.$this->tableName.'.genero_id ='.$generoId;
 
         $sql .= $join . $where;
@@ -509,11 +509,11 @@ abstract class AbstractRepository implements IRestFull
             : ' AND '.$this->tableName.'.escolas_id ='.$escolaId;
 
         $where .= $corRacaId == null
-            ? ''
+            ? ' AND '.$this->tableName.'.cor_raca_id IS NULL'
             : ' AND '.$this->tableName.'.cor_raca_id ='.$corRacaId;
 
         $where .= $generoId == null
-            ? ''
+            ? ' AND '.$this->tableName.'.genero_id IS NULL'
             : ' AND '.$this->tableName.'.genero_id ='.$generoId;
 
         $sql .= $join . $where;
@@ -555,11 +555,11 @@ abstract class AbstractRepository implements IRestFull
             : ' AND '.$this->tableName.'.escolas_id ='.$escolaId;
 
         $where .= $corRacaId == null
-            ? ''
+            ? ' AND '.$this->tableName.'.cor_raca_id IS NULL'
             : ' AND '.$this->tableName.'.cor_raca_id ='.$corRacaId;
 
         $where .= $generoId == null
-            ? ''
+            ? ' AND '.$this->tableName.'.genero_id IS NULL'
             : ' AND '.$this->tableName.'.genero_id ='.$generoId;
 
         $sql .= $join . $where;
@@ -618,6 +618,8 @@ abstract class AbstractRepository implements IRestFull
             ? ''
             : ' AND '.$this->tableName.'.escolas_id ='.$escolaId;
 
+        $where .= ' AND '.$this->tableName.'.cor_raca_id IS NULL AND '.$this->tableName.'.genero_id IS NULL';
+
         $sql .= $join . $where;
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $dependencia), ARRAY_A);
@@ -674,6 +676,8 @@ abstract class AbstractRepository implements IRestFull
             ? ''
             : ' AND '.$this->tableName.'.escolas_id ='.$escolaId;
 
+        $where .= ' AND '.$this->tableName.'.cor_raca_id IS NULL AND '.$this->tableName.'.genero_id IS NULL';
+
         $sql .= $join . $where;
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $localizacao), ARRAY_A);
@@ -729,6 +733,8 @@ abstract class AbstractRepository implements IRestFull
         $where .= $escolaId == null
             ? ''
             : ' AND '.$this->tableName.'.escolas_id ='.$escolaId;
+
+        $where .= ' AND '.$this->tableName.'.cor_raca_id IS NULL AND '.$this->tableName.'.genero_id IS NULL';
 
         $sql .= $join . $where;
 

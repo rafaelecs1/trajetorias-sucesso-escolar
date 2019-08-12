@@ -59,7 +59,7 @@ class MySQLMatriculaRepository extends AbstractRepository
 
         $data->localizacao = new \stdClass();
         $data->localizacao->rural = $this->getTotalLocalizacaoEstadoMunicipioEscola($anoReferencia, 'Rural', null, $estadoId, null, null);
-        $data->localizacao->urbano = $this->getTotalLocalizacaoEstadoMunicipioEscola($anoReferencia, 'Urbana', null, $estadoId, null, null);
+        $data->localizacao->urbana = $this->getTotalLocalizacaoEstadoMunicipioEscola($anoReferencia, 'Urbana', null, $estadoId, null, null);
 
         $data->localizacao_diferenciada = new \stdClass();
         $data->localizacao_diferenciada->area_de_assentamento = $this->getTotalLocalizacaoDiferenciadaEstadoMunicipioEscola($anoReferencia, 'Área de assentamento', null, $estadoId, null, null);
@@ -79,7 +79,7 @@ class MySQLMatriculaRepository extends AbstractRepository
 
         $data->genero = new \stdClass();
         $data->genero->masculino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 1, $estadoId, null, null);
-        $data->genero->feminismo = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 2, $estadoId, null, null);
+        $data->genero->feminino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 2, $estadoId, null, null);
 
         $this->saveBrasil($estadoId, self::ESTADO_MATRICULA, $anoReferencia, $data);
 
@@ -121,7 +121,7 @@ class MySQLMatriculaRepository extends AbstractRepository
 
         $data->localizacao = new \stdClass();
         $data->localizacao->rural = $this->getTotalLocalizacaoEstadoMunicipioEscola($anoReferencia, 'Rural', null, null, $municipioId, null);
-        $data->localizacao->urbano = $this->getTotalLocalizacaoEstadoMunicipioEscola($anoReferencia, 'Urbana', null, null, $municipioId, null);
+        $data->localizacao->urbana = $this->getTotalLocalizacaoEstadoMunicipioEscola($anoReferencia, 'Urbana', null, null, $municipioId, null);
 
         $data->localizacao_diferenciada = new \stdClass();
         $data->localizacao_diferenciada->area_de_assentamento = $this->getTotalLocalizacaoDiferenciadaEstadoMunicipioEscola($anoReferencia, 'Área de assentamento', null, null, $municipioId, null);
@@ -141,7 +141,7 @@ class MySQLMatriculaRepository extends AbstractRepository
 
         $data->genero = new \stdClass();
         $data->genero->masculino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 1, null, $municipioId, null);
-        $data->genero->feminismo = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 2, null, $municipioId, null);
+        $data->genero->feminino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 2, null, $municipioId, null);
 
         $this->saveBrasil($municipioId, self::MUNICIPIO_MATRICULA, $anoReferencia, $data);
 
@@ -183,7 +183,7 @@ class MySQLMatriculaRepository extends AbstractRepository
 
         $data->localizacao = new \stdClass();
         $data->localizacao->rural = $this->getTotalLocalizacaoEstadoMunicipioEscola($anoReferencia, 'Rural', null, null, null, $escolaId);
-        $data->localizacao->urbano = $this->getTotalLocalizacaoEstadoMunicipioEscola($anoReferencia, 'Urbana', null, null, null, $escolaId);
+        $data->localizacao->urbana = $this->getTotalLocalizacaoEstadoMunicipioEscola($anoReferencia, 'Urbana', null, null, null, $escolaId);
 
         $data->localizacao_diferenciada = new \stdClass();
         $data->localizacao_diferenciada->area_de_assentamento = $this->getTotalLocalizacaoDiferenciadaEstadoMunicipioEscola($anoReferencia, 'Área de assentamento', null, null, null, $escolaId);
@@ -203,7 +203,7 @@ class MySQLMatriculaRepository extends AbstractRepository
 
         $data->genero = new \stdClass();
         $data->genero->masculino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 1, null, null, $escolaId);
-        $data->genero->feminismo = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 2, null, null, $escolaId);
+        $data->genero->feminino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 2, null, null, $escolaId);
 
         $this->saveBrasil($escolaId, self::ESCOLA_MATRICULA, $anoReferencia, $data);
 

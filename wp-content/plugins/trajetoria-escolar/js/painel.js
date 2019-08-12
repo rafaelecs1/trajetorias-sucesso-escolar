@@ -1,9 +1,6 @@
 jQuery(document).ready(function ($) {
     //Interface
     $('#voltar').attr('href', painel.siteUrl + painel.voltar);
-
-    console.log(painel.voltar);
-
     function perc(ele)
     {
         let total = parseInt($(ele).data('total')),
@@ -22,14 +19,19 @@ jQuery(document).ready(function ($) {
     //     $(e).append(' <sup class="asterisco">*</sup>');
     // });
     // $('#total-em-distorcao, #rede-municipal, #rede-estadual').append('<span class="legenda">* Taxa de distorção idade-serie</span>');
-    $('h1:eq(1)').before('<span class="pre-h1">' + painel.especificacao + '</span>').after('<span>Perfil das crianças e adolescentes em distorção idade-série:</span>');
-    $('.situacao-das-escolas').click(function (e) {
+    //$('h1:eq(1)').before('<span class="pre-h1">' + painel.especificacao + '</span>').after('<span>Perfil das crianças e adolescentes em distorção idade-série:</span>');
+
+    $(document).on('click', '.situacao-das-escolas', function (e) {
         e.preventDefault();
         let me = $(this),
             id = parseInt($(me).data('municipio')),
             rede = $(me).data('rede'),
             modal = $('[data-remodal-id=situacao-das-escolas]').remodal();
+
+        console.log($(me).data('municipio'));
+
         if (id > 0) {
+
             $('.ver-escolas').hide();
             $(me).next().show();
             $.ajax({
@@ -55,7 +57,9 @@ jQuery(document).ready(function ($) {
             });
         }
 
+
     });
+
     $(document).on('keyup', '#filtrar-escolas', function () {
         let search = $(this).val().toUpperCase();
         $('#lista-escolas .escola a').each(function (i, o) {

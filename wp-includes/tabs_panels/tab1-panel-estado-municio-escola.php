@@ -38,6 +38,7 @@
         </section>
         <?php
         if ($tipo !== 'escola') {
+
             foreach ($painel['tipo_rede'] as $rede => $ensinos) {
                 echo '<section id="rede-', strtolower($rede), '">';
                 echo '<header><h3>', (($rede == 'Municipal') && ($tipo != "municipio")) ? 'Redes Municipais' : 'Rede '.$rede, '</h3></header>';
@@ -161,9 +162,3 @@
     </section>
 </section>
 <span class="legenda">* Taxa de distorção idade-serie</span>
-<div class="remodal"
-     data-remodal-id="situacao-das-escolas" <?php echo ($tipo === 'escola') ? 'style="display:none"' : ''; ?>>
-    <button data-remodal-action="close" class="remodal-close"></button>
-    <div id="lista-escolas">
-    </div>
-</div>
