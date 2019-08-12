@@ -351,14 +351,14 @@ class FrontEnd
                 $rEst = new MySQLEstadoRepository();
                 $origem = $rEst->get($id);
 
-//                $matriculasObj = new MySQLMatriculaRepository();
-//                $matriculas = $matriculasObj->getDataMatriculaEstado($id, $this->year);
-//
-//                $abandonosObj = new MySQLAbandonoRepository();
-//                $abandonos = $abandonosObj->getDataAbandonoEstado($id, $this->year);
-//
-//                $reprovacoesObj = new MySQLReprovacaoRepository();
-//                $reprovacoes = $reprovacoesObj->getDataReprovacaoEstado($id, $this->year);
+                $matriculasObj = new MySQLMatriculaRepository();
+                $matriculas = $matriculasObj->getDataMatriculaEstado($id, $this->year);
+
+                $abandonosObj = new MySQLAbandonoRepository();
+                $abandonos = $abandonosObj->getDataAbandonoEstado($id, $this->year);
+
+                $reprovacoesObj = new MySQLReprovacaoRepository();
+                $reprovacoes = $reprovacoesObj->getDataReprovacaoEstado($id, $this->year);
 
 
             } elseif ($tipo === 'municipio') {
@@ -376,11 +376,9 @@ class FrontEnd
 //                $reprovacoes = $reprovacoesObj->getDataReprovacaoMunicipio($id, $this->year);
 
             } elseif ($tipo === 'escola') {
+
                 $rEsc = new MySQLEscolaRepository();
                 $origem = $rEsc->get($id);
-
-                $rMun = new MySQLMunicipioRepository();
-                $origem = $rMun->get($id);
 
 //                $matriculasObj = new MySQLMatriculaRepository();
 //                $matriculas = $matriculasObj->getDataMatriculaEscola($id, $this->year);
@@ -390,6 +388,7 @@ class FrontEnd
 //
 //                $reprovacoesObj = new MySQLReprovacaoRepository();
 //                $reprovacoes = $reprovacoesObj->getDataReprovacaoEscola($id, $this->year);
+
             }
 
             if (empty($origem)) {
