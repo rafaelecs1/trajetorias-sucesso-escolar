@@ -43,10 +43,7 @@ class MySQLAbandonoRepository extends AbstractRepository{
         $data->estadual->anos_finais = $this->getTotalDependenciaEstadoMunicipioEscola($anoReferencia, 'Estadual', 'finais', $estadoId, null, null);
         $data->estadual->medio = $this->getTotalDependenciaEstadoMunicipioEscola($anoReferencia, 'Estadual', 'medio', $estadoId, null, null);
 
-        $data->anos = new \stdClass();
-        $data->anos->anos_iniciais = new \stdClass();
-        $data->anos->anos_finais = new \stdClass();
-        $data->anos->medio = new \stdClass();
+        $data->anos = $this->getArrayReprovacoesAprovacoesAbandonosEstado();
 
         $data->localizacao = new \stdClass();
         $data->localizacao->rural = $this->getTotalLocalizacaoEstadoMunicipioEscola($anoReferencia, 'Rural', null, $estadoId, null, null);
@@ -199,6 +196,54 @@ class MySQLAbandonoRepository extends AbstractRepository{
         $this->saveBrasil($escolaId, self::ESCOLA_ABANDONO, $anoReferencia, $data);
 
         return $data;
+
+    }
+
+    public function getArrayReprovacoesAprovacoesAbandonosEstado($anoReferencia = null, $estadoId = null, $municipioId = null, $escolaId = null){
+
+        $data = new \stdClass();
+        $data->iniciais = new \stdClass();
+        $data->finais = new \stdClass();
+        $data->medio = new \stdClass();
+
+        $data->iniciais->ano1  = new \stdClass();
+        $data->iniciais->ano1->aprovados = 1;
+        $data->iniciais->ano1->reprovados = $this->getTotalReprovacoesPorAnoEstadoMunicipioEscola($anoReferencia, $estadoId, null, null, 'ano1');
+
+        $data->iniciais->ano2  = new \stdClass();
+        $data->iniciais->ano2->aprovados = 1;
+        $data->iniciais->ano2->reprovados = 2;
+
+        return $data;
+
+    }
+
+    private function getTotalReprovacoesPorAnoEstadoMunicipioEscola($anoReferencia = null, $estadoId = null, $municipioId = null, $escolaId = null, $ano = null){
+
+        //TODO Colocar um redirect aqui
+        //TODO Validar numeros!
+        if($anoReferencia == null){ return false; }
+        if($ano == null){ return false; }
+
+        $sql = 'SELECT SUM('.$ano.') as qtd FROM tse_qtd_reprovacoes';
+
+        $join = ' INNER JOIN te_escolas ON te_escolas.id = tse_qtd_reprovacoes.escolas_id';
+
+        $where = ' WHERE tse_qtd_reprovacoes.ano_referencia = %d';
+
+        $join .= $estadoId == null
+            ? ''
+            : ' INNER JOIN te_municipios ON te_municipios.id = te_escolas.municipio_id';
+
+        $where .= $estadoId == null
+            ? ''
+            : ' AND te_municipios.estado_id = '.$estadoId;
+
+        $sql .= $join . $where;
+
+        $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
+
+        return $response['qtd'];
 
     }
 
