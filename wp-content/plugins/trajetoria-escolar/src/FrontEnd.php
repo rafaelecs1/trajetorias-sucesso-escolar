@@ -270,15 +270,15 @@ class FrontEnd
 
         <section id="slider-tabs">
             <ul class="abas-paineis" >
-                <li id="tab-link-1" class="tablinks active" onclick="openTab(1)"><a href="javascript:void(0);">Distorção Idade-série</a></li>
-                <li id="tab-link-2" class="tablinks" onclick="openTab(2)"><a  href="javascript:void(0);">Reprovação</a></li>
-                <li id="tab-link-3" class="tablinks" onclick="openTab(3)"><a href="javascript:void(0);">Abandono</a></li>
+                <li id="tab-link-1" class="tablinks active"><a href="#">Distorção Idade-série</a></li>
+                <li id="tab-link-2" class="tablinks"><a  href="#">Reprovação</a></li>
+                <li id="tab-link-3" class="tablinks"><a href="#">Abandono</a></li>
             </ul>
             <section id="tab-1" class="aba-panel tabcontent active" style="display: block;">
 
                 <?php
 
-//                include 'wp-includes/tabs_panels/tab1-panel-nacional.php'
+                include 'wp-includes/tabs_panels/tab1-panel-nacional.php'
 
                 ?>
 
@@ -310,6 +310,8 @@ class FrontEnd
         }
 
         wp_enqueue_script('painel', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral.js', array('jquery'), false, true);
+        wp_enqueue_script('painel2', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral2.js', array('jquery'), false, true);
+//        wp_enqueue_script('painel3', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral3.js', array('jquery'), false, true);
         wp_enqueue_script('tabs', plugin_dir_url(dirname(__FILE__)) . 'js/tabs.js', array('jquery'), false, true);
 
         $voltar = $especificacao = null;
@@ -322,8 +324,27 @@ class FrontEnd
             'graficosPorTipoAno' => $graficosPorTipoAno,
             'graficoPorRedes' => $graficoPorRedes,
         ));
+
+            wp_localize_script('painel2', 'painel2', array(
+            'siteUrl' => site_url('/'),
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'voltar' => $voltar,
+            'especificacao' => $especificacao,
+            'graficosPorTipoAnoReprovacao' => $graficosPorTipoAnoReprovacao,
+            'graficoPorRedesReprovacao' => $graficoPorRedes,
+        ));
+
+//                  wp_localize_script('painel3', 'painel3', array(
+//            'siteUrl' => site_url('/'),
+//            'ajaxUrl' => admin_url('admin-ajax.php'),
+//            'voltar' => $voltar,
+//            'especificacao' => $especificacao,
+//            'graficosPorTipoAnoReprovacao' => $graficosPorTipoAnoReprovacao,
+////            'graficoPorRedesReprovacao' => $graficoPorRedes,
+//        ));
+
         wp_enqueue_script('google_charts', 'https://www.gstatic.com/charts/loader.js', null, false, true);
-        return ob_get_clean();
+//        return ob_get_clean();
     }
 
     /**

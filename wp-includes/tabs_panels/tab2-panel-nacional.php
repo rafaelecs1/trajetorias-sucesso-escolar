@@ -41,7 +41,7 @@
         $tiposAno = array(
             'Iniciais' => 'Anos Iniciais - Ensino Fundamental',
             'Finais' => 'Anos Finais - Ensino Fundamental',
-            'Todos' => 'Ensino Médio',
+            'Medio' => 'Ensino Médio',
         );
 
         if (true) {
@@ -67,39 +67,34 @@
         <section id="graficos-por-tipo-ensino">
             <!--            <img src="--><?php //echo plugins_url('trajetoria-escolar/img/panel/porano.png') ?><!--">-->
             <?php
-//            $graficosPorTipoAno = array();
+            $graficosPorTipoAnoReprovacao = array();
             $lis = $sections = '';
-            $countReprovacao = 1;
+
             foreach ($tiposAno as $tipoAno => $label) {
 //                if (array_key_exists($tipoAno, $reprovacoes['anos'])) {
-                    $slug = 'grafico-' . sanitize_title($label);
+                    $slug = 'grafico-' . sanitize_title($label). '_reprovacao';
                     $id = str_replace('-', '_', $slug);
-                    $lis .= '<li><a href="#' . $slug . '">' . $label . '</a></li>';
-                    $sections .= '<section id="' . $slug . '" class="aba"><span>Número de estudantes em atraso escolar por ano 2</span><div id="' . $id . '" class="grafico"></div></section>';
+                    $lis .= '<li class="reprovacao"><a href="#' . $slug . '">' . $label . '</a></li>';
+                    $sections .= '<section id="' . $slug . '" class="aba reprovacao"><span>Número de estudantes em atraso escolar por ano (Reprovação)</span><div id="' . $id . '" class="grafico"></div></section>';
 
-                    foreach ((array)$reprovacoes->anos[$tiposAno] as $ano => $item) {
+                    foreach ($reprovacoes->anos->$tipoAno as $ano => $item) {
                         $arAux = array();
                         $arAux[] = $ano . '° ano';
                         foreach ($item as $dist) {
                             $arAux[] = $dist;
                         }
-                        $graficosPorTipoAno[$id][] = $arAux;
-                        $countReprovacao++;
+                        $graficosPorTipoAnoReprovacao[$id][] = $arAux;
                     }
-//                }
             }
-            echo '<pre>';
-            var_dump($graficosPorTipoAno);
-            echo '</pre>';
             if (!empty($lis)) {
-                echo '<ul class="abas">';
+                echo '<ul class="abas reprovacao">';
                 echo $lis;
                 echo '</ul>';
                 echo $sections;
             }
             //            ?>
         </section>
-        <section id="grafico-por-redes">
+        <section id="grafico-por-redes-reprovacao">
             <header><h2>Total de Matrículas na Educação Básica</h2></header>
             <div class="valor">
                 <?php
@@ -108,26 +103,25 @@
             </div>
             <hr>
 
-            <div id="grafico_por_redes" class="grafico"></div>
-            <img src="<?php echo plugins_url('trajetoria-escolar/img/panel/educacaobasica.png') ?>">
+            <div id="grafico_por_redes_reprovacao" class="grafico"></div>
 
-            <!--            --><?php
-            //            $graficoPorRedes = array();
-            //            foreach ($distorcao['tipo_rede'] as $rede => $ensinos) {
-            //                $arAux = array();
-            //                $arAux[] = $rede;
-            //                $semDistorcao = $distorcaoValor = 0;
-            //                foreach ($ensinos as $anos) {
-            //                    foreach ($anos as $ano) {
-            //                        $semDistorcao += $ano['sem_distorcao'];
-            //                        $distorcaoValor += $ano['distorcao'];
-            //                    }
-            //                }
-            //                $arAux[] = $semDistorcao;
-            //                $arAux[] = $distorcaoValor;
-            //                $graficoPorRedes[] = $arAux;
-            //            }
-            //            ?>
+                        <?php
+                        $graficoPorRedes = array();
+                        foreach ($distorcao['tipo_rede'] as $rede => $ensinos) {
+                            $arAux = array();
+                            $arAux[] = $rede;
+                            $semDistorcao = $distorcaoValor = 0;
+                            foreach ($ensinos as $anos) {
+                                foreach ($anos as $ano) {
+                                    $semDistorcao += $ano['sem_distorcao'];
+                                    $distorcaoValor += $ano['distorcao'];
+                                }
+                            }
+                            $arAux[] = $semDistorcao;
+                            $arAux[] = $distorcaoValor;
+                            $graficoPorRedes[] = $arAux;
+                        }
+                        ?>
         </section>
     </section>
     <section id="genero">

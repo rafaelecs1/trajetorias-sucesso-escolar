@@ -69,8 +69,8 @@
                 if (array_key_exists($tipoAno, $distorcao['anos'])) {
                     $slug = 'grafico-' . sanitize_title($label);
                     $id = str_replace('-', '_', $slug);
-                    $lis .= '<li><a href="#' . $slug . '">' . $label . '</a></li>';
-                    $sections .= '<section id="' . $slug . '" class="aba"><span>Número de estudantes em atraso escolar por ano</span><div id="' . $id . '" class="grafico"></div></section>';
+                    $lis .= '<li class="distorcao"><a href="#' . $slug . '">' . $label . '</a></li>';
+                    $sections .= '<section id="' . $slug . '" class="aba distorcao"><span>Número de estudantes em atraso escolar por ano</span><div id="' . $id . '" class="grafico"></div></section>';
 
                     foreach ($distorcao['anos'][$tipoAno] as $ano => $distorcoes) {
                         $arAux = array();
@@ -86,7 +86,7 @@
 //            var_dump($graficosPorTipoAno);
 //            echo '</pre>';
             if (!empty($lis)) {
-                echo '<ul class="abas">';
+                echo '<ul class="abas distorcao">';
                 echo $lis;
                 echo '</ul>';
                 echo $sections;
