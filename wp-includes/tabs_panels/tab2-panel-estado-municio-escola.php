@@ -1,4 +1,5 @@
 <section class="ficha <?php echo $tipo; ?>">
+
     <section id="redes-de-ensino">
 
         <header>
@@ -14,7 +15,7 @@
                         echo 'das redes municipal e estadual ';
                     }
                     ?>
-                    reprovados
+                    com reprovação
                     <?php
                     if ($tipo === 'estado') {
                         echo 'no estado';
@@ -175,4 +176,5 @@
     </section>
 
     <span class="legenda">* Taxa de reprovação</span>
+
 </section>

@@ -1,8 +1,11 @@
 <section class="ficha <?php echo $tipo; ?>">
+
     <section id="redes-de-ensino">
+
         <header>
             <h2 class="mt-0">Redes de Ensino - <?php echo $this->year - 1; ?></h2>
         </header>
+
         <section id="total-em-distorcao">
             <header>
                 <h3>
@@ -36,6 +39,7 @@
                             class="asterico">*</sup></span>
             </div>
         </section>
+
         <?php
         if ($tipo !== 'escola') {
 
@@ -55,6 +59,7 @@
             }
         }
         ?>
+
         <span class="legenda">* Taxa de distorção idade-serie 1</span>
 
         <section id="graficos-por-tipo-ensino">
@@ -91,6 +96,7 @@
             }
             ?>
         </section>
+
         <section id="grafico-por-redes">
             <header><h2>Total de Matrículas na Educação Básica</h2></header>
             <div class="valor">
@@ -118,7 +124,9 @@
             }
             ?>
         </section>
+
     </section>
+
     <section id="genero">
         <header><h2>Gênero</h2></header>
         <section class="genero">
@@ -129,6 +137,7 @@
             ?>
         </section>
     </section>
+
     <section id="cor-raca">
         <header><h2>Cor/Raça</h2></header>
         <section class="cor-raca">
@@ -139,6 +148,7 @@
             ?>
         </section>
     </section>
+
     <span class="legenda">* Taxa de distorção idade-serie</span>
 
     <section id="localizacao">
@@ -160,5 +170,7 @@
         }
         ?>
     </section>
+
+    <span class="legenda">* Taxa de distorção idade-serie</span>
+
 </section>
-<span class="legenda">* Taxa de distorção idade-serie</span>

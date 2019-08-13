@@ -98,7 +98,6 @@
         </section>
     </section>
 
-
     <section id="cor-raca">
         <header><h2>Cor/Raça</h2></header>
         <section class="cor-raca">
@@ -179,4 +178,5 @@
     </section>
 
     <span class="legenda">* Taxa de abandono</span>
+
 </section>

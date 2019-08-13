@@ -1,4 +1,5 @@
 <section class="ficha municipio animated fadeIn">
+
     <section id="redes-de-ensino">
         <header>
             <h2 class="mt-0">Perfil das crianças e adolescentes - <?php echo $this->year - 1; ?> </h2>
@@ -119,6 +120,7 @@
             ?>
         </section>
     </section>
+
     <section id="genero">
         <header><h2>Gênero</h2></header>
         <section class="genero">
@@ -129,6 +131,7 @@
             ?>
         </section>
     </section>
+
     <section id="cor-raca">
         <header><h2>Cor/Raça</h2></header>
         <section class="cor-raca">
@@ -139,7 +142,9 @@
             ?>
         </section>
     </section>
+
     <span class="legenda">* Taxa de distorção idade-serie</span>
+
     <section id="localizacao">
         <header><h2>Localização</h2></header>
         <section class="localizacao">
@@ -159,5 +164,8 @@
         }
         ?>
     </section>
+
+    <span class="legenda">* Taxa de distorção idade-serie</span>
+
 </section>
-<span class="legenda">* Taxa de distorção idade-serie</span>
+
