@@ -124,9 +124,12 @@ jQuery(document).ready(function ($) {
             drawChart(g, data, options);
         }
         if (document.getElementById('grafico_por_redes').innerHTML === '') {
+
             let data = google.visualization.arrayToDataTable(
                 painel.graficoPorRedes
             );
+
+
             options.series = {
                 0: {
                     color: '#ffda80'
@@ -146,16 +149,16 @@ jQuery(document).ready(function ($) {
 
     $('section.distorcao:not(:eq(0))').hide();
 
-    $('ul.distorcao>li:eq(0)').addClass('active');
+    $('ul.distorcoes>li:eq(0)').addClass('active');
 
-    $('ul>li.distorcao>a').click(function (e) {
+    $('ul>li.distorcoes>a').click(function (e) {
         alert('distorcao')
         e.preventDefault();
         let me = $(this),
             id = $(me).attr('href'),
             par = $(me).parent();
         vel = 'fast';
-        $('section.aba').fadeOut(vel, function () {
+        $('section.distorcao').fadeOut(vel, function () {
             $('div.grafico', id).empty();
         });
         $(par).addClass('active').siblings('li').not(par).removeClass('active');

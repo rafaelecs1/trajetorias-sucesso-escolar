@@ -331,7 +331,7 @@ class FrontEnd
             'voltar' => $voltar,
             'especificacao' => $especificacao,
             'graficosPorTipoAnoReprovacao' => $graficosPorTipoAnoReprovacao,
-            'graficoPorRedesReprovacao' => $graficoPorRedes,
+            'graficoPorRedesReprovacao' => $graficoPorRedesReprovacao,
         ));
 
 //                  wp_localize_script('painel3', 'painel3', array(

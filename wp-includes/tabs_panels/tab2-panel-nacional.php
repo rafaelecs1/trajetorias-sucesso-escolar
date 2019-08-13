@@ -72,22 +72,26 @@
 
             foreach ($tiposAno as $tipoAno => $label) {
 //                if (array_key_exists($tipoAno, $reprovacoes['anos'])) {
-                    $slug = 'grafico-' . sanitize_title($label). '_reprovacao';
-                    $id = str_replace('-', '_', $slug);
-                    $lis .= '<li class="reprovacao"><a href="#' . $slug . '">' . $label . '</a></li>';
-                    $sections .= '<section id="' . $slug . '" class="aba reprovacao"><span>Número de estudantes em atraso escolar por ano (Reprovação)</span><div id="' . $id . '" class="grafico"></div></section>';
+                $slug = 'grafico-' . sanitize_title($label) . '_reprovacao';
+                $id = str_replace('-', '_', $slug);
+                $lis .= '<li class="reprovacoes"><a href="#' . $slug . '">' . $label . '</a></li>';
+                $sections .= '<section id="' . $slug . '" class="aba reprovacao"><span>Número de estudantes em atraso escolar por ano (Reprovação)</span><div id="' . $id . '" class="grafico-reprovacao"></div></section>';
 
-                    foreach ($reprovacoes->anos->$tipoAno as $ano => $item) {
-                        $arAux = array();
+                foreach ($reprovacoes->anos->$tipoAno as $ano => $item) {
+                    $arAux = array();
+                    if($ano > 9){
+                        $arAux[] = substr($ano, 1,1) + 1 . '° ano';
+                    }else{
                         $arAux[] = $ano . '° ano';
-                        foreach ($item as $dist) {
-                            $arAux[] = $dist;
-                        }
-                        $graficosPorTipoAnoReprovacao[$id][] = $arAux;
                     }
+                    foreach ($item as $dist) {
+                        $arAux[] = $dist;
+                    }
+                    $graficosPorTipoAnoReprovacao[$id][] = $arAux;
+                }
             }
             if (!empty($lis)) {
-                echo '<ul class="abas reprovacao">';
+                echo '<ul class="abas reprovacoes">';
                 echo $lis;
                 echo '</ul>';
                 echo $sections;
@@ -103,25 +107,26 @@
             </div>
             <hr>
 
-            <div id="grafico_por_redes_reprovacao" class="grafico"></div>
+            <div id="grafico_por_redes_reprovacao" class="grafico-reprovacao"></div>
 
-                        <?php
-                        $graficoPorRedes = array();
-                        foreach ($distorcao['tipo_rede'] as $rede => $ensinos) {
-                            $arAux = array();
-                            $arAux[] = $rede;
-                            $semDistorcao = $distorcaoValor = 0;
-                            foreach ($ensinos as $anos) {
-                                foreach ($anos as $ano) {
-                                    $semDistorcao += $ano['sem_distorcao'];
-                                    $distorcaoValor += $ano['distorcao'];
-                                }
-                            }
-                            $arAux[] = $semDistorcao;
-                            $arAux[] = $distorcaoValor;
-                            $graficoPorRedes[] = $arAux;
-                        }
-                        ?>
+            <?php
+            $graficoPorRedesReprovacao = array();
+            foreach ($distorcao['tipo_rede'] as $rede => $ensinos) {
+                $arAux = array();
+                $arAux[] = $rede;
+                $semDistorcao = $distorcaoValor = 0;
+                foreach ($ensinos as $anos) {
+                    foreach ($anos as $ano) {
+                        $semDistorcao += $ano['sem_distorcao'];
+                        $distorcaoValor += $ano['distorcao'];
+                    }
+                }
+                $arAux[] = $semDistorcao;
+                $arAux[] = $distorcaoValor;
+                $graficoPorRedesReprovacao[] = $arAux;
+            }
+            //                        var_dump($graficoPorRedesReprovacao)
+            ?>
         </section>
     </section>
     <section id="genero">

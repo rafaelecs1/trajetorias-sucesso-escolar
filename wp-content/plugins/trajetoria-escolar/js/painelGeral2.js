@@ -12,11 +12,11 @@ jQuery(document).ready(function ($) {
         return ' <span class="perc">(' + ((valor * 100) / total).toFixed(1).replace('.', ',') + '%)<sup class="asterisco">*</sup> </span>';
     }
 
-    $('div.amostra').each(function () {
-        $('div.valor', this).each(function () {
-            $(this).html($(this).html() + perc($(this)));
-        });
-    });
+    // $('div.amostra').each(function () {
+    //     $('div.valor', this).each(function () {
+    //         $(this).html($(this).html() + perc($(this)));
+    //     });
+    // });
     // $('#redes-de-ensino .perc').each(function (i, e) {
     //     $(e).append(' <sup class="asterisco">*</sup>');/
     // });
@@ -75,14 +75,16 @@ jQuery(document).ready(function ($) {
     });
     google.charts.setOnLoadCallback(charts);
     let legendaTipoDistorcao = ['', 'Reprovados', 'Aprovados'],
-        legendaPorAtraso = ['Redes', 'Estudantes sem distorção idade-série', 'Estudantes em distorção idade-série'];
+        legendaPorAtraso = ['Redes', 'Reprovados', 'Aprovados'];
+
     for (var g in painel2.graficosPorTipoAnoReprovacao) {
         painel2.graficosPorTipoAnoReprovacao[g].unshift(legendaTipoDistorcao);
     }
 
-    // painel2.graficoPorRedesReprovacao.unshift(legendaPorAtraso);
+    painel2.graficoPorRedesReprovacao.unshift(legendaPorAtraso);
 
     function charts() {
+
         let options = {
             width: '100%',
             height: 400,
@@ -117,6 +119,7 @@ jQuery(document).ready(function ($) {
             },
             backgroundColor: 'none',
         };
+
         for (var g in painel2.graficosPorTipoAnoReprovacao) {
             let data = google.visualization.arrayToDataTable(
                 painel2.graficosPorTipoAnoReprovacao[g]
@@ -124,18 +127,18 @@ jQuery(document).ready(function ($) {
             drawChart(g, data, options);
         }
         // if (document.getElementById('grafico_por_redes_reprovacao').innerHTML === '') {
-        //     let data = google.visualization.arrayToDataTable(
-        //         painel2.graficoPorRedesReprovacao
-        //     );
-        //     options.series = {
-        //         0: {
-        //             color: '#ffda80'
-        //         },
-        //         1: {
-        //             color: '#ffb400'
-        //         },
-        //     };
-        //     drawChart('grafico_por_redes', data, options);
+            let data = google.visualization.arrayToDataTable(
+                painel2.graficoPorRedesReprovacao
+            );
+            options.series = {
+                0: {
+                    color: '#ffda80'
+                },
+                1: {
+                    color: '#ffb400'
+                },
+            };
+            drawChart('grafico_por_redes_reprovacao', data, options);
         // }
     }
 
@@ -144,28 +147,40 @@ jQuery(document).ready(function ($) {
         chart.draw(data, google.charts.Bar.convertOptions(options));
     }
 
+
+
+    $('ul>li.tablinks').click(function (e) {
+        var TabId = $(this).attr('id');
+        e.preventDefault();
+        charts();
+    })
+
+
     $('section.reprovacao:not(:eq(0))').hide();
 
-    $('ul.reprovacao>li:eq(0)').addClass('active');
 
-    $('ul>li.reprovacao>a').click(function (e) {
+    $('ul>li.reprovacoes:eq(0)').addClass('active');
+
+    $('ul>li.reprovacoes>a').click(function (e) {
         e.preventDefault();
         let me = $(this),
             id = $(me).attr('href'),
             par = $(me).parent();
         vel = 'fast';
-        $('section.aba').fadeOut(vel, function () {
-            $('div.grafico', id).empty();
+        $('section.reprovacao').fadeOut(vel, function () {
+            $('div.grafico-reprovacao', id).empty();
         });
         $(par).addClass('active').siblings('li').not(par).removeClass('active');
+
         $(id).fadeIn(vel, function () {
             charts();
         });
     });
-    $(window).resize(function () {
-        $('div.grafico').empty();
-        charts();
-    });
+
+    // $(window).resize(function () {
+    //     $('div.grafico-reprovacao').empty();
+    //     charts();
+    // });
     $('a[href^=#]').click(function () {
         if (typeof ga == 'function') {
             let url = window.location.href;
