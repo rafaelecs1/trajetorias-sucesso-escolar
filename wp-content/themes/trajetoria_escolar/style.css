@@ -1324,6 +1324,42 @@ a.situacao-das-escolas:hover {
     background: #e4e4e4
 }
 
+/*
+    abas distorcao, abandono e  reprovacao do painel de estado, cidade e escola
+ */
+#slider-tabs ul.abas_estado_cidade_escola {
+    margin: 0;
+    padding: 0
+}
+
+#slider-tabs ul.abas_estado_cidade_escola li {
+    display: inline;
+
+}
+
+#slider-tabs ul.abas_estado_cidade_escola li a {
+    padding: 1.5%;
+    text-decoration: none;
+    color: #3c3c3c;
+    font-size: 1.5em;
+    display: inline-block;
+    transition: ease 0.2s;
+    background-color: #eee;
+    border-right: 7px solid #fff;
+}
+
+#slider-tabs ul.abas_estado_cidade_escola li a:hover {
+    background-color: #ffb400
+}
+
+#slider-tabs ul.abas_estado_cidade_escola li.active a {
+    background: #e4e4e4
+}
+
+/*
+    ----------------------------------------------------
+ */
+
 .aba {
     padding: 7%;
     width: 100%;

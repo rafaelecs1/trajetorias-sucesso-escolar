@@ -63,6 +63,7 @@
         <span class="legenda">* Taxa de distorção idade-serie 1</span>
 
         <section id="graficos-por-tipo-ensino">
+
             <?php
             $tiposAno = array(
                 'Iniciais' => 'Anos Iniciais - Ensino Fundamental',
@@ -72,6 +73,7 @@
             $graficosPorTipoAno = array();
             $lis = $sections = '';
             foreach ($tiposAno as $tipoAno => $label) {
+
                 if (array_key_exists($tipoAno, $painel['anos'])) {
                     $slug = 'grafico-' . sanitize_title($label);
                     $id = str_replace('-', '_', $slug);
@@ -87,6 +89,7 @@
                         $graficosPorTipoAno[$id][] = $arAux;
                     }
                 }
+
             }
             if (!empty($lis)) {
                 echo '<ul class="abas">';

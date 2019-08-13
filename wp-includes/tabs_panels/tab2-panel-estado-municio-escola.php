@@ -69,13 +69,22 @@
 
         <?php } ?>
 
-        <!-- antigo php para loop das redes municipais e estaduais -->
+        <section id="graficos-por-tipo-ensino">
 
-        <!-- antigo php os graficos por tipo de ensino -->
+        </section>
 
-        <!-- antigo php os graficos por redes -->
+        <section id="grafico-por-redes">
+            <header><h2>Total de reprovações</h2></header>
+            <div class="valor">
+                <?php echo number_format((int)$reprovacoes->total, 0, ',', '.') ?>
+            </div>
+            <hr>
+            <div id="grafico_por_redes" class="grafico"></div>
+        </section>
 
     </section>
+
+
 
     <section id="genero">
         <header><h2>Gênero</h2></header>
