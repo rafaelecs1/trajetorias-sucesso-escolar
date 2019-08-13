@@ -323,10 +323,7 @@ abstract class AbstractRepository implements IRestFull
         $data->estadual->anos_finais = $this->getTotalPainel($anoReferencia, 'Estadual', 'finais');
         $data->estadual->medio = $this->getTotalPainel($anoReferencia, 'Estadual', 'medio');
 
-        $data->anos = new \stdClass();
-        $data->anos->anos_iniciais = [10, 20, 30, 40, 50];
-        $data->anos->anos_finais = [20, 30, 40, 50];
-        $data->anos->anos_medio = [10, 20, 30, 40];
+        $data->anos = $this->getArrayMatriculasReprovacoesAbandonos( $anoReferencia, null, null, null);
 
         $data->localizacao = new \stdClass();
         $data->localizacao->rural = $this->getTotalPainelLocalizacao($anoReferencia, 'Rural');
@@ -889,6 +886,18 @@ abstract class AbstractRepository implements IRestFull
         $where .= $estadoId == null
             ? ''
             : ' AND te_municipios.estado_id = '.$estadoId;
+
+        $join .= $municipioId == null
+            ? ''
+            : ' INNER JOIN te_municipios ON te_municipios.id = te_escolas.municipio_id';
+
+        $where .= $municipioId == null
+            ? ''
+            : ' AND te_municipios.id = '.$municipioId;
+
+        $where .= $escolaId == null
+            ? ''
+            : ' AND te_escolas.id = '.$escolaId;
 
         $where .= ' AND '.$tabela.'.cor_raca_id IS NULL AND '.$tabela.'.genero_id IS NULL';
 
