@@ -43,10 +43,7 @@ class MySQLAbandonoRepository extends AbstractRepository{
         $data->estadual->anos_finais = $this->getTotalDependenciaEstadoMunicipioEscola($anoReferencia, 'Estadual', 'finais', $estadoId, null, null);
         $data->estadual->medio = $this->getTotalDependenciaEstadoMunicipioEscola($anoReferencia, 'Estadual', 'medio', $estadoId, null, null);
 
-        $data->anos = new \stdClass();
-        $data->anos->anos_iniciais = new \stdClass();
-        $data->anos->anos_finais = new \stdClass();
-        $data->anos->medio = new \stdClass();
+        $data->anos = $this->getArrayMatriculasReprovacoesAbandonos( $anoReferencia, $estadoId, null, null);
 
         $data->localizacao = new \stdClass();
         $data->localizacao->rural = $this->getTotalLocalizacaoEstadoMunicipioEscola($anoReferencia, 'Rural', null, $estadoId, null, null);
@@ -105,10 +102,7 @@ class MySQLAbandonoRepository extends AbstractRepository{
         $data->estadual->anos_finais = $this->getTotalDependenciaEstadoMunicipioEscola($anoReferencia, 'Estadual', 'finais', null, $municipioId, null);
         $data->estadual->medio = $this->getTotalDependenciaEstadoMunicipioEscola($anoReferencia, 'Estadual', 'medio', null, $municipioId, null);
 
-        $data->anos = new \stdClass();
-        $data->anos->anos_iniciais = new \stdClass();
-        $data->anos->anos_finais = new \stdClass();
-        $data->anos->medio = new \stdClass();
+        $data->anos = $this->getArrayMatriculasReprovacoesAbandonos( $anoReferencia, null, $municipioId, null);
 
         $data->localizacao = new \stdClass();
         $data->localizacao->rural = $this->getTotalLocalizacaoEstadoMunicipioEscola($anoReferencia, 'Rural', null, null, $municipioId, null);
@@ -167,10 +161,7 @@ class MySQLAbandonoRepository extends AbstractRepository{
         $data->estadual->anos_finais = $this->getTotalDependenciaEstadoMunicipioEscola($anoReferencia, 'Estadual', 'finais', null, null, $escolaId);
         $data->estadual->medio = $this->getTotalDependenciaEstadoMunicipioEscola($anoReferencia, 'Estadual', 'medio', null, null, $escolaId);
 
-        $data->anos = new \stdClass();
-        $data->anos->anos_iniciais = new \stdClass();
-        $data->anos->anos_finais = new \stdClass();
-        $data->anos->medio = new \stdClass();
+        $data->anos = $this->getArrayMatriculasReprovacoesAbandonos( $anoReferencia, null, null, $escolaId);
 
         $data->localizacao = new \stdClass();
         $data->localizacao->rural = $this->getTotalLocalizacaoEstadoMunicipioEscola($anoReferencia, 'Rural', null, null, null, $escolaId);

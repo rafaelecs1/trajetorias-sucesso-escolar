@@ -323,10 +323,7 @@ abstract class AbstractRepository implements IRestFull
         $data->estadual->anos_finais = $this->getTotalPainel($anoReferencia, 'Estadual', 'finais');
         $data->estadual->medio = $this->getTotalPainel($anoReferencia, 'Estadual', 'medio');
 
-        $data->anos = new \stdClass();
-        $data->anos->anos_iniciais = [10, 20, 30, 40, 50];
-        $data->anos->anos_finais = [20, 30, 40, 50];
-        $data->anos->anos_medio = [10, 20, 30, 40];
+        $data->anos = $this->getArrayMatriculasReprovacoesAbandonos( $anoReferencia, null, null, null);
 
         $data->localizacao = new \stdClass();
         $data->localizacao->rural = $this->getTotalPainelLocalizacao($anoReferencia, 'Rural');
@@ -741,6 +738,175 @@ abstract class AbstractRepository implements IRestFull
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $localizacaoDiferenciada), ARRAY_A);
 
         return $response['qtd'];
+    }
+
+
+    public function getArrayMatriculasReprovacoesAbandonos($anoReferencia = null, $estadoId = null, $municipioId = null, $escolaId = null){
+
+        $data = new \stdClass();
+
+        $data->anos = array();
+
+        $data->anos['Iniciais'] = array(
+            '1' =>
+                [
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'reprovacoes'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'abandonos')
+                ],
+
+            '2' =>
+                [
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano2', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano2', 'reprovacoes'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano2', 'abandonos')
+                ],
+
+            '3' =>
+                [
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano3', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano3', 'reprovacoes'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano3', 'abandonos')
+                ],
+
+            '4' =>
+                [
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano4', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano4', 'reprovacoes'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano4', 'abandonos')
+                ],
+
+            '5' =>
+                [
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano5', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano5', 'reprovacoes'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano5', 'abandonos')
+                ],
+
+        );
+
+        $data->anos['finais'] = array(
+            '6' =>
+                [
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano6', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano6', 'reprovacoes'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano6', 'abandonos')
+                ],
+
+            '7' =>
+                [
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano7', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano7', 'reprovacoes'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano7', 'abandonos')
+                ],
+
+            '8' =>
+                [
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano8', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano8', 'reprovacoes'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano8', 'abandonos')
+                ],
+
+            '9' =>
+                [
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano9', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano9', 'reprovacoes'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano9', 'abandonos')
+                ],
+
+        );
+
+        $data->anos['medio'] = array(
+            '10' =>
+                [
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'reprovacoes'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'abandonos')
+                ],
+
+            '11' =>
+                [
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'reprovacoes'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'abandonos')
+                ],
+
+            '12' =>
+                [
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'reprovacoes'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'abandonos')
+                ],
+
+            '13' =>
+                [
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'reprovacoes'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'abandonos')
+                ],
+
+        );
+
+        return $data;
+
+    }
+
+    private function getTotalPorAno($anoReferencia = null, $estadoId = null, $municipioId = null, $escolaId = null, $ano = null, $tipoSoma){
+
+        //TODO Colocar um redirect aqui
+        //TODO Validar numeros!
+        if($anoReferencia == null){ return false; }
+        if($ano == null){ return false; }
+
+        switch ($tipoSoma) {
+            case "matriculas";
+                $tabela = "tse_qtd_matriculas";
+                break;
+
+            case "abandonos";
+                $tabela = "tse_qtd_abandonos";
+                break;
+
+            case "reprovacoes";
+                $tabela = "tse_qtd_reprovacoes";
+                break;
+
+        }
+
+        $sql = 'SELECT SUM('.$ano.') as qtd FROM '.$tabela;
+
+        $join = ' INNER JOIN te_escolas ON te_escolas.id = '.$tabela.'.escolas_id';
+
+        $where = ' WHERE '.$tabela.'.ano_referencia = %d';
+
+        $join .= $estadoId == null
+            ? ''
+            : ' INNER JOIN te_municipios ON te_municipios.id = te_escolas.municipio_id';
+
+        $where .= $estadoId == null
+            ? ''
+            : ' AND te_municipios.estado_id = '.$estadoId;
+
+        $join .= $municipioId == null
+            ? ''
+            : ' INNER JOIN te_municipios ON te_municipios.id = te_escolas.municipio_id';
+
+        $where .= $municipioId == null
+            ? ''
+            : ' AND te_municipios.id = '.$municipioId;
+
+        $where .= $escolaId == null
+            ? ''
+            : ' AND te_escolas.id = '.$escolaId;
+
+        $where .= ' AND '.$tabela.'.cor_raca_id IS NULL AND '.$tabela.'.genero_id IS NULL';
+
+        $sql .= $join . $where;
+
+        $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
+
+        return $response['qtd'];
+
     }
 
 }
