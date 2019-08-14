@@ -65,39 +65,39 @@
         <section id="graficos-por-tipo-ensino">
 
             <?php
-            $tiposAno = array(
-                'Iniciais' => 'Anos Iniciais - Ensino Fundamental',
-                'Finais' => 'Anos Finais - Ensino Fundamental',
-                'Todos' => 'Ensino Médio',
-            );
-            $graficosPorTipoAno = array();
-            $lis = $sections = '';
-            foreach ($tiposAno as $tipoAno => $label) {
+                $tiposAno = array(
+                    'Iniciais' => 'Anos Iniciais - Ensino Fundamental',
+                    'Finais' => 'Anos Finais - Ensino Fundamental',
+                    'Todos' => 'Ensino Médio',
+                );
+                $graficosPorTipoAno = array();
+                $lis = $sections = '';
+                foreach ($tiposAno as $tipoAno => $label) {
 
-                if (array_key_exists($tipoAno, $painel['anos'])) {
-                    $slug = 'grafico-' . sanitize_title($label);
-                    $id = str_replace('-', '_', $slug);
-                    $lis .= '<li><a href="#' . $slug . '">' . $label . '</a></li>';
-                    $sections .= '<section id="' . $slug . '" class="aba"><span>Número de estudantes em atraso escolar por ano</span><div id="' . $id . '" class="grafico"></div></section>';
-
-                    foreach ($painel['anos'][$tipoAno] as $ano => $distorcoes) {
-                        $arAux = array();
-                        $arAux[] = $ano . '° ano';
-                        foreach ($distorcoes as $dist) {
-                            $arAux[] = $dist;
+                    if (array_key_exists($tipoAno, $painel['anos'])) {
+                        $slug = 'grafico-distorcao-' . sanitize_title($label);
+                        $id = str_replace('-', '_', $slug);
+                        $lis .= '<li><a href="#' . $slug . '">' . $label . '</a></li>';
+                        $sections .= '<section id="' . $slug . '" class="aba"><span>Número de estudantes em atraso escolar por ano</span><div id="' . $id . '" class="grafico"></div></section>';
+                        foreach ($painel['anos'][$tipoAno] as $ano => $distorcoes) {
+                            $arAux = array();
+                            $arAux[] = $ano . '° ano';
+                            foreach ($distorcoes as $dist) {
+                                $arAux[] = $dist;
+                            }
+                            $graficosPorTipoAno[$id][] = $arAux;
                         }
-                        $graficosPorTipoAno[$id][] = $arAux;
                     }
-                }
 
-            }
-            if (!empty($lis)) {
-                echo '<ul class="abas">';
-                echo $lis;
-                echo '</ul>';
-                echo $sections;
-            }
+                }
+                if (!empty($lis)) {
+                    echo '<ul class="abas">';
+                    echo $lis;
+                    echo '</ul>';
+                    echo $sections;
+                }
             ?>
+
         </section>
 
         <section id="grafico-por-redes">

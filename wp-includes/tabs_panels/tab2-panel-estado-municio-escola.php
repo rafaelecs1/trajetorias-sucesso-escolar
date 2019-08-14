@@ -71,6 +71,45 @@
 
         <section id="graficos-por-tipo-ensino">
 
+            <?php
+
+                $arrayAnos = json_decode(json_encode($reprovacoes->anos), True);
+
+                $tiposAnosAbandonos = array(
+                    'iniciais' => 'Anos Iniciais - Ensino Fundamental',
+                    'finais' => 'Anos Finais - Ensino Fundamental',
+                    'medio' => 'Ensino Médio',
+                );
+                $graficosPorTipoAnoAbandono = array();
+                $lisAbandonos = $sectionsGraphAbandonos = '';
+
+                foreach ($tiposAnosAbandonos as $tipoAno => $label) {
+
+                    if (array_key_exists($tipoAno, $arrayAnos['anos'])) {
+                        $slugReprovacao = 'grafico-reprovacao-' . sanitize_title($label);
+                        $idReprovacao = str_replace('-', '_', $slugReprovacao);
+                        $lisReprovacoes .= '<li><a href="#' . $slugReprovacao . '">' . $label . '</a></li>';
+                        $sectionsReprovacoes .= '<section id="' . $slugReprovacao . '" class="aba_reprovacao"><span>Número de estudantes reprovados por ano '.$slugReprovacao.' </span><div id="'.$idReprovacao.'" class="grafico"></div></section>';
+                        foreach ($arrayAnos['anos'][$tipoAno] as $ano => $reprovacoes) {
+                            $arAux = array();
+                            $arAux[] = $ano . '° ano';
+                            foreach ($reprovacoes as $dist) {
+                                $arAux[] = $dist;
+                            }
+                            $graficosReprovacaoPorTipoAno[$id][] = $arAux;
+                        }
+                    }
+
+                }
+                if (!empty($lisReprovacoes)) {
+                    echo '<ul class="abas_reprovacoes">';
+                    echo $lisReprovacoes;
+                    echo '</ul>';
+                    echo $sectionsReprovacoes;
+                }
+
+            ?>
+
         </section>
 
         <section id="grafico-por-redes">
@@ -83,8 +122,6 @@
         </section>
 
     </section>
-
-
 
     <section id="genero">
         <header><h2>Gênero</h2></header>

@@ -1064,6 +1064,7 @@ Ficha Município
 a.situacao-das-escolas,
 #total-em-distorcao .total,
 #graficos-por-tipo-ensino ul.abas li,
+#graficos-por-tipo-ensino ul.abas_reprovacoes li,
 .entry-header span.pre-h1 {
     font-family: 'steelfish';
 }
@@ -1260,17 +1261,20 @@ a.situacao-das-escolas:hover {
     width: 62.5%
 }
 
-#graficos-por-tipo-ensino ul.abas {
+#graficos-por-tipo-ensino ul.abas,
+#graficos-por-tipo-ensino ul.abas_reprovacoes {
     margin: 0;
     padding: 0
 }
 
-#graficos-por-tipo-ensino ul.abas li {
+#graficos-por-tipo-ensino ul.abas li,
+#graficos-por-tipo-ensino ul.abas_reprovacoes li{
     display: inline;
 
 }
 
-#graficos-por-tipo-ensino ul.abas li a {
+#graficos-por-tipo-ensino ul.abas li a,
+#graficos-por-tipo-ensino ul.abas_reprovacoes li a {
     padding: 3%;
     text-decoration: none;
     color: #3c3c3c;
@@ -1281,11 +1285,13 @@ a.situacao-das-escolas:hover {
     border-right: 7px solid #fff;
 }
 
-#graficos-por-tipo-ensino ul.abas li a:hover {
+#graficos-por-tipo-ensino ul.abas li a:hover,
+#graficos-por-tipo-ensino ul.abas_reprovacoes li a:hover{
     background-color: #ffb400
 }
 
-#graficos-por-tipo-ensino ul.abas li.active a {
+#graficos-por-tipo-ensino ul.abas li.active a,
+#graficos-por-tipo-ensino ul.abas_reprovacoes li.active a {
     background: #e4e4e4
 }
 
@@ -1305,7 +1311,8 @@ a.situacao-das-escolas:hover {
 
 }
 
-#slider-tabs ul.abas li a {
+#slider-tabs ul.abas li a,
+#slider-tabs ul.abas_reprovacoes li a {
     padding: 1.5%;
     text-decoration: none;
     color: #3c3c3c;
@@ -1316,11 +1323,14 @@ a.situacao-das-escolas:hover {
     border-right: 7px solid #fff;
 }
 
-#slider-tabs ul.abas li a:hover {
+#slider-tabs ul.abas li a:hover,
+#slider-tabs ul.abas_reprovacoes li a:hover {
     background-color: #ffb400
 }
 
-#slider-tabs ul.abas li.active a {
+#slider-tabs ul.abas li.active a,
+#slider-tabs ul.abas_reprovacoes li.active a
+{
     background: #e4e4e4
 }
 
@@ -1360,7 +1370,8 @@ a.situacao-das-escolas:hover {
     ----------------------------------------------------
  */
 
-.aba {
+.aba,
+.aba_reprovacao {
     padding: 7%;
     width: 100%;
     background: #e4e4e4
@@ -1499,7 +1510,8 @@ a.situacao-das-escolas:hover {
     float: right;
 }
 
-.aba span {
+.aba span,
+.aba_reprovacao span{
     margin-bottom: 40px;
     font-family: 'raleway-bold';
     display: block

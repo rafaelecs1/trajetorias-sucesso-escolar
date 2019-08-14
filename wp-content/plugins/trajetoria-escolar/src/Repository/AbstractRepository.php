@@ -747,7 +747,7 @@ abstract class AbstractRepository implements IRestFull
 
         $data->anos = array();
 
-        $data->anos['Iniciais'] = array(
+        $data->anos['iniciais'] = array(
             '1' =>
                 [
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'matriculas'),

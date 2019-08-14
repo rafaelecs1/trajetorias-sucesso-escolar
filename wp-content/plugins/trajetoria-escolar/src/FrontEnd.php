@@ -519,8 +519,9 @@ class FrontEnd
                     'ajaxUrl' => admin_url('admin-ajax.php'),
                     'voltar' => $voltar,
                     'especificacao' => $especificacao,
-                    'graficosPorTipoAno' => $graficosPorTipoAno,
-                    'graficoPorRedes' => $graficoPorRedes,
+                    'graficosDistorcaoPorTipoAno' => $graficosPorTipoAno,
+                    'graficoDistorcaoPorRedes' => $graficoPorRedes,
+                    'graficosReprovacaoPorTipoAno' => $graficosReprovacaoPorTipoAno,
                     'year' => $this->year
                 ));
 
