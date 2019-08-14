@@ -278,7 +278,7 @@ class FrontEnd
 
                 <?php
 
-                include 'wp-includes/tabs_panels/tab1-panel-nacional.php'
+                    include 'wp-includes/tabs_panels/tab1-panel-nacional.php'
 
                 ?>
 
@@ -286,14 +286,14 @@ class FrontEnd
             <section id="tab-2" class="aba-panel tabcontent" style="display: none;">
                 <?php
 
-                include 'wp-includes/tabs_panels/tab2-panel-nacional.php'
+                    include 'wp-includes/tabs_panels/tab2-panel-nacional.php'
 
                 ?>
             </section>
             <section id="tab-3" class="aba-panel tabcontent" style="display: none;">
                 <?php
 
-                include 'wp-includes/tabs_panels/tab3-panel-nacional.php'
+                    include 'wp-includes/tabs_panels/tab3-panel-nacional.php'
 
                 ?>
             </section>
@@ -301,29 +301,30 @@ class FrontEnd
 
 
         <?php
-        if ($tipo !== 'escola') {
-            wp_enqueue_style('remodal', plugin_dir_url(dirname(__FILE__)) . 'css/remodal.css');
-            wp_enqueue_style('animate', plugin_dir_url(dirname(__FILE__)) . 'css/animate.css');
-            wp_enqueue_style('remodal_theme', plugin_dir_url(dirname(__FILE__)) . 'css/remodal-default-theme.css', array('remodal'));
-            wp_enqueue_script('remodal', plugin_dir_url(dirname(__FILE__)) . 'js/remodal.js', array('jquery'), false, true);
 
-        }
+            if ($tipo !== 'escola') {
+                wp_enqueue_style('remodal', plugin_dir_url(dirname(__FILE__)) . 'css/remodal.css');
+                wp_enqueue_style('animate', plugin_dir_url(dirname(__FILE__)) . 'css/animate.css');
+                wp_enqueue_style('remodal_theme', plugin_dir_url(dirname(__FILE__)) . 'css/remodal-default-theme.css', array('remodal'));
+                wp_enqueue_script('remodal', plugin_dir_url(dirname(__FILE__)) . 'js/remodal.js', array('jquery'), false, true);
 
-        wp_enqueue_script('painel', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral.js', array('jquery'), false, true);
-        wp_enqueue_script('tabs', plugin_dir_url(dirname(__FILE__)) . 'js/tabs.js', array('jquery'), false, true);
+            }
 
-        $voltar = $especificacao = null;
+            wp_enqueue_script('painel', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral.js', array('jquery'), false, true);
+            wp_enqueue_script('tabs', plugin_dir_url(dirname(__FILE__)) . 'js/tabs.js', array('jquery'), false, true);
 
-        wp_localize_script('painel', 'painel', array(
-            'siteUrl' => site_url('/'),
-            'ajaxUrl' => admin_url('admin-ajax.php'),
-            'voltar' => $voltar,
-            'especificacao' => $especificacao,
-            'graficosPorTipoAno' => $graficosPorTipoAno,
-            'graficoPorRedes' => $graficoPorRedes,
-        ));
-        wp_enqueue_script('google_charts', 'https://www.gstatic.com/charts/loader.js', null, false, true);
-        return ob_get_clean();
+            $voltar = $especificacao = null;
+
+            wp_localize_script('painel', 'painel', array(
+                'siteUrl' => site_url('/'),
+                'ajaxUrl' => admin_url('admin-ajax.php'),
+                'voltar' => $voltar,
+                'especificacao' => $especificacao,
+                'graficosPorTipoAno' => $graficosPorTipoAno,
+                'graficoPorRedes' => $graficoPorRedes,
+            ));
+            wp_enqueue_script('google_charts', 'https://www.gstatic.com/charts/loader.js', null, false, true);
+            return ob_get_clean();
     }
 
     /**
@@ -519,9 +520,16 @@ class FrontEnd
                     'ajaxUrl' => admin_url('admin-ajax.php'),
                     'voltar' => $voltar,
                     'especificacao' => $especificacao,
+
                     'graficosDistorcaoPorTipoAno' => $graficosPorTipoAno,
                     'graficoDistorcaoPorRedes' => $graficoPorRedes,
+
                     'graficosReprovacaoPorTipoAno' => $graficosReprovacaoPorTipoAno,
+                    'graficoReprovacaoPorRedes' => $graficoReprovacaoPorRedes,
+
+                    'graficosAbandonoPorTipoAno' => $graficosAbandonoPorTipoAno,
+                    'graficoAbandonoPorRedes' => $graficoAbandonoPorRedes,
+
                     'year' => $this->year
                 ));
 

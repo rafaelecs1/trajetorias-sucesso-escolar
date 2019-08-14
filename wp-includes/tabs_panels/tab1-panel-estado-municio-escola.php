@@ -75,10 +75,11 @@
                 foreach ($tiposAno as $tipoAno => $label) {
 
                     if (array_key_exists($tipoAno, $painel['anos'])) {
-                        $slug = 'grafico-distorcao-' . sanitize_title($label);
+                        $slug = 'grafico-' . sanitize_title($label);
                         $id = str_replace('-', '_', $slug);
                         $lis .= '<li><a href="#' . $slug . '">' . $label . '</a></li>';
                         $sections .= '<section id="' . $slug . '" class="aba"><span>Número de estudantes em atraso escolar por ano</span><div id="' . $id . '" class="grafico"></div></section>';
+
                         foreach ($painel['anos'][$tipoAno] as $ano => $distorcoes) {
                             $arAux = array();
                             $arAux[] = $ano . '° ano';
@@ -90,6 +91,7 @@
                     }
 
                 }
+
                 if (!empty($lis)) {
                     echo '<ul class="abas">';
                     echo $lis;
@@ -110,20 +112,20 @@
             <hr>
             <div id="grafico_por_redes" class="grafico"></div>
             <?php
-            $graficoPorRedes = array();
-            foreach ($painel['tipo_rede'] as $rede => $ensinos) {
-                $arAux = array();
-                $arAux[] = $rede;
-                $semDistorcao = $distorcao = 0;
-                foreach ($ensinos as $anos) {
-                    foreach ($anos as $ano) {
-                        $semDistorcao += $ano['sem_distorcao'];
-                        $distorcao += $ano['distorcao'];
+                $graficoPorRedes = array();
+                foreach ($painel['tipo_rede'] as $rede => $ensinos) {
+                    $arAux = array();
+                    $arAux[] = $rede;
+                    $semDistorcao = $distorcao = 0;
+                    foreach ($ensinos as $anos) {
+                        foreach ($anos as $ano) {
+                            $semDistorcao += $ano['sem_distorcao'];
+                            $distorcao += $ano['distorcao'];
+                        }
                     }
-                }
-                $arAux[] = $semDistorcao;
-                $arAux[] = $distorcao;
-                $graficoPorRedes[] = $arAux;
+                    $arAux[] = $semDistorcao;
+                    $arAux[] = $distorcao;
+                    $graficoPorRedes[] = $arAux;
             }
             ?>
         </section>

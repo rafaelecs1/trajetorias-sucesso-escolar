@@ -73,35 +73,43 @@
 
             <?php
 
-                $arrayAnos = json_decode(json_encode($reprovacoes->anos), True);
+                $anosReprovacoes = $reprovacoes->anos;
+                $arrayAnos = json_decode(json_encode($anosReprovacoes), True);
 
-                $tiposAnosAbandonos = array(
+                $tiposAnosReprovacoes = array(
                     'iniciais' => 'Anos Iniciais - Ensino Fundamental',
                     'finais' => 'Anos Finais - Ensino Fundamental',
                     'medio' => 'Ensino Médio',
                 );
-                $graficosPorTipoAnoAbandono = array();
-                $lisAbandonos = $sectionsGraphAbandonos = '';
-
-                foreach ($tiposAnosAbandonos as $tipoAno => $label) {
 
 
-                    if (array_key_exists($tipoAno, $arrayAnos['anos'])) {
+                $graficosReprovacaoPorTipoAno = array();
+                $lisReprovacoes = $sectionsReprovacoes = '';
+
+                foreach ($tiposAnosReprovacoes as $tipoAno => $label) {
+
+
+                    if ( array_key_exists( $tipoAno, $arrayAnos['anos'] ) ) {
 
                         $slugReprovacao = 'grafico-reprovacao-' . sanitize_title($label);
                         $idReprovacao = str_replace('-', '_', $slugReprovacao);
 
                         $lisReprovacoes .= '<li><a href="#' . $slugReprovacao . '">' . $label . '</a></li>';
-                        $sectionsReprovacoes .= '<section id="' . $slugReprovacao . '" class="aba_reprovacao"><span>Número de estudantes reprovados por ano '.$slugReprovacao.' </span><div id="'.$idReprovacao.'" class="grafico"></div></section>';
+                        $sectionsReprovacoes .= '<section id="' . $slugReprovacao . '" class="aba_reprovacao"><span>Número de estudantes reprovados por ano </span><div id="'.$idReprovacao.'" class="grafico-reprovacao"></div></section>';
 
-                        foreach ($arrayAnos['anos'][$tipoAno] as $ano => $reprovacoes) {
-                            $nomeAno = $ano . '° ano';
-                            $graficosReprovacaoPorTipoAno[''.$nomeAno.''] = $reprovacoes;
+                        foreach ( $arrayAnos['anos'][$tipoAno] as $ano => $anoReprovacoes ) {
+                            $arAux = array();
+                            $arAux[] = $ano . '° ano';
+                            foreach ($anoReprovacoes as $dist) {
+                                $arAux[] = $dist;
+                            }
+                            $graficosReprovacaoPorTipoAno[$idReprovacao][] = $arAux;
                         }
 
                     }
 
                 }
+
                 if (!empty($lisReprovacoes)) {
                     echo '<ul class="abas_reprovacoes">';
                     echo $lisReprovacoes;
@@ -119,7 +127,13 @@
                 <?php echo number_format((int)$reprovacoes->total, 0, ',', '.') ?>
             </div>
             <hr>
-            <div id="grafico_por_redes" class="grafico"></div>
+            <div id="grafico_por_redes_reprovacao" class="grafico"></div>
+            <?php
+
+                $graficoReprovacaoPorRedes = array();
+
+
+            ?>
         </section>
 
     </section>
@@ -195,6 +209,7 @@
 
         <section class="localizacao-diferenciada">
             <?php
+
                 if($reprovacoes->localizacao_diferenciada->area_de_assentamento != null) {
                     echo self::gerarAmostra('Áre de assentamento', $reprovacoes->localizacao_diferenciada->area_de_assentamento, $matriculas->localizacao_diferenciada->area_de_assentamento);
                 }

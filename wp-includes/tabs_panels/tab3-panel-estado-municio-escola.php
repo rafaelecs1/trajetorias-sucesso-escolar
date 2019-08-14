@@ -72,6 +72,53 @@
 
         <section id="graficos-por-tipo-ensino">
 
+            <?php
+
+                $anosAbandonos = $abandonos->anos;
+                $arrayAnosAbandonos = json_decode(json_encode($anosAbandonos), True);
+
+                $tiposAnosAbandonos = array(
+                    'iniciais' => 'Anos Iniciais - Ensino Fundamental',
+                    'finais' => 'Anos Finais - Ensino Fundamental',
+                    'medio' => 'Ensino Médio',
+                );
+
+                $graficosAbandonoPorTipoAno = array();
+                $lisAbandonos = $sectionsAbandonos = '';
+
+                foreach ($tiposAnosAbandonos as $tipoAno => $label) {
+
+
+                    if ( array_key_exists( $tipoAno, $arrayAnosAbandonos['anos'] ) ) {
+
+                        $slugAbandono = 'grafico-abandono-' . sanitize_title($label);
+                        $idAbandono = str_replace('-', '_', $slugAbandono);
+
+                        $lisAbandonos .= '<li><a href="#' . $slugAbandono . '">' . $label . '</a></li>';
+                        $sectionsAbandonos .= '<section id="' . $slugAbandono . '" class="aba_abandono"><span>Número de estudantes que abandonaram a escola por ano </span><div id="'.$idAbandono.'" class="grafico-abandono"></div></section>';
+
+                        foreach ( $arrayAnosAbandonos['anos'][$tipoAno] as $ano => $anoReprovacoes ) {
+                            $arAux = array();
+                            $arAux[] = $ano . '° ano';
+                            foreach ($anoReprovacoes as $dist) {
+                                $arAux[] = $dist;
+                            }
+                            $graficosAbandonoPorTipoAno[$idAbandono][] = $arAux;
+                        }
+
+                    }
+
+                }
+
+                if (!empty($lisAbandonos)) {
+                    echo '<ul class="abas_abandonos">';
+                    echo $lisAbandonos;
+                    echo '</ul>';
+                    echo $sectionsAbandonos;
+                }
+
+            ?>
+
         </section>
 
         <section id="grafico-por-redes">
@@ -79,6 +126,13 @@
             <div class="valor">
                 <?php echo number_format((int)$abandonos->total, 0, ',', '.') ?>
             </div>
+            <hr>
+            <div id="grafico_por_redes_abandono" class="grafico"></div>
+            <?php
+
+                $graficoAbandonoPorRedes = array();
+
+            ?>
         </section>
 
     </section>

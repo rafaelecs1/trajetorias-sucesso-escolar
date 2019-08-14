@@ -19,6 +19,16 @@ jQuery(document).ready(function ($) {
         });
     });
 
+    $('a[href^=#]').click(function ()
+    {
+        if (typeof ga == 'function') {
+            let url = window.location.href;
+            url = url.replace(painel.siteUrl, '/');
+            url = url.replace('#', '');
+            ga('send', 'pageview', url + $(this).attr('href'));
+        }
+    });
+
     $(document).on('click', '.situacao-das-escolas', function (e)
     {
         e.preventDefault();
@@ -73,14 +83,6 @@ jQuery(document).ready(function ($) {
 
     function iniciaGraficosDistorcao()
     {
-
-        google.charts.load('current', {
-            'packages': ['corechart', 'bar'],
-            'language': 'pt_br'
-        });
-
-        google.charts.setOnLoadCallback(charts);
-
         let legendaTipoDistorcao = ['', 'Sem atraso escolar', '1 ano de atraso escolar', '2 anos de atraso escolar', '3 anos ou mais de atraso escolar'],
             legendaPorAtraso = ['Redes', 'Estudantes sem distorção idade-série', 'Estudantes em distorção idade-série'];
 
@@ -89,68 +91,6 @@ jQuery(document).ready(function ($) {
         }
 
         painel.graficoDistorcaoPorRedes.unshift(legendaPorAtraso);
-
-        function charts() {
-            let options = {
-                width: '100%',
-                height: 400,
-                legend: {
-                    position: 'right',
-                    alignment: 'center',
-                    maxLines: 3,
-                    textStyle: {
-                        fontSize: 12
-                    }
-                },
-                bar: {
-                    groupWidth: '90%'
-                },
-                vAxis: {
-                    format: '#,###'
-                },
-                isStacked: true,
-                series: {
-                    0: {
-                        color: '#c0d4e5'
-                    },
-                    1: {
-                        color: '#82a9cb'
-                    },
-                    2: {
-                        color: '#437eb0'
-                    },
-                    3: {
-                        color: '#045396'
-                    },
-                },
-                backgroundColor: 'none',
-            };
-            for (var g in painel.graficosDistorcaoPorTipoAno) {
-                let data = google.visualization.arrayToDataTable(
-                    painel.graficosDistorcaoPorTipoAno[g]
-                );
-                drawChart(g, data, options);
-            }
-            if (document.getElementById('grafico_por_redes').innerHTML === '') {
-                let data = google.visualization.arrayToDataTable(
-                    painel.graficoDistorcaoPorRedes
-                );
-                options.series = {
-                    0: {
-                        color: '#ffda80'
-                    },
-                    1: {
-                        color: '#ffb400'
-                    },
-                };
-                drawChart('grafico_por_redes', data, options);
-            }
-        }
-
-        function drawChart(id, data, options) {
-            let chart = new google.charts.Bar(document.getElementById(id));
-            chart.draw(data, google.charts.Bar.convertOptions(options));
-        }
 
         $('section.aba:not(:eq(0))').hide();
 
@@ -167,20 +107,20 @@ jQuery(document).ready(function ($) {
             });
             $(par).addClass('active').siblings('li').not(par).removeClass('active');
             $(id).fadeIn(vel, function () {
-                charts();
+                chartsDistorcao();
             });
         });
 
-        $(window).resize(function () {
-            $('div.grafico').empty();
-            charts();
-        });
     }
 
     function iniciaGraficosReprovacao()
     {
 
-        console.log(painel.graficosReprovacaoPorTipoAno);
+        let legendaTipoReprovacao = [ '', 'Matrículas', 'Reprovacoes', 'Abandonos'];
+
+        for (var h in painel.graficosReprovacaoPorTipoAno) {
+            painel.graficosReprovacaoPorTipoAno[h].unshift(legendaTipoReprovacao);
+        }
 
         $('section.aba_reprovacao:not(:eq(0))').hide();
 
@@ -192,26 +132,224 @@ jQuery(document).ready(function ($) {
                 id = $(me).attr('href'),
                 par = $(me).parent();
             $('section.aba_reprovacao').fadeOut('fast', function () {
-                $('div.grafico', id).empty();
+                $('grafico-reprovacao', id).empty();
             });
             $(par).addClass('active').siblings('li').not(par).removeClass('active');
             $(id).fadeIn('fast', function () {
-                //charts();
+                chartsReprovacao();
+            });
+        });
+
+    }
+
+    function iniciaGraficosAbandono()
+    {
+        let legendaTipoAbandono = [ '', 'Matrículas', 'Reprovacoes', 'Abandonos'];
+
+        for (var i in painel.graficosAbandonoPorTipoAno) {
+            painel.graficosAbandonoPorTipoAno[i].unshift(legendaTipoAbandono);
+        }
+
+        $('section.aba_abandono:not(:eq(0))').hide();
+
+        $('ul.abas_abandonos>li:eq(0)').addClass('active');
+
+        $('ul.abas_abandonos>li>a').click(function (e) {
+            e.preventDefault();
+            let me = $(this),
+                id = $(me).attr('href'),
+                par = $(me).parent();
+            $('section.aba_abandono').fadeOut('fast', function () {
+                $('grafico-abandono', id).empty();
+            });
+            $(par).addClass('active').siblings('li').not(par).removeClass('active');
+            $(id).fadeIn('fast', function () {
+                chartsAbandono();
             });
         });
     }
 
-    function iniciaGraficosAbandono()
-    {}
-
-    $('a[href^=#]').click(function ()
+    function chartsDistorcao()
     {
-        if (typeof ga == 'function') {
-            let url = window.location.href;
-            url = url.replace(painel.siteUrl, '/');
-            url = url.replace('#', '');
-            ga('send', 'pageview', url + $(this).attr('href'));
+
+        let options = {
+            width: '100%',
+            height: 400,
+            legend: {
+                position: 'right',
+                alignment: 'center',
+                maxLines: 3,
+                textStyle: {
+                    fontSize: 12
+                }
+            },
+            bar: {
+                groupWidth: '90%'
+            },
+            vAxis: {
+                format: '#,###'
+            },
+            isStacked: true,
+            series: {
+                0: {
+                    color: '#c0d4e5'
+                },
+                1: {
+                    color: '#82a9cb'
+                },
+                2: {
+                    color: '#437eb0'
+                },
+                3: {
+                    color: '#045396'
+                },
+            },
+            backgroundColor: 'none',
+        };
+
+        for (var g in painel.graficosDistorcaoPorTipoAno) {
+            let data = google.visualization.arrayToDataTable(
+                painel.graficosDistorcaoPorTipoAno[g]
+            );
+            drawChart(g, data, options);
         }
+
+        if (document.getElementById('grafico_por_redes').innerHTML === '') {
+            let data = google.visualization.arrayToDataTable(
+                painel.graficoDistorcaoPorRedes
+            );
+            options.series = {
+                0: {
+                    color: '#ffda80'
+                },
+                1: {
+                    color: '#ffb400'
+                },
+            };
+            drawChart('grafico_por_redes', data, options);
+        }
+
+    }
+
+    function chartsReprovacao()
+    {
+        let options = {
+            width: '100%',
+            height: 400,
+            legend: {
+                position: 'right',
+                alignment: 'center',
+                maxLines: 3,
+                textStyle: {
+                    fontSize: 12
+                }
+            },
+            bar: {
+                groupWidth: '90%'
+            },
+            vAxis: {
+                format: '#,###'
+            },
+            isStacked: true,
+            series: {
+                0: {
+                    color: '#c0d4e5'
+                },
+                1: {
+                    color: '#82a9cb'
+                },
+                2: {
+                    color: '#437eb0'
+                },
+                3: {
+                    color: '#045396'
+                },
+            },
+            backgroundColor: 'none',
+        };
+
+        for (var g in painel.graficosReprovacaoPorTipoAno) {
+
+            console.log(painel.graficosReprovacaoPorTipoAno[g]);
+
+            let data = google.visualization.arrayToDataTable(
+                painel.graficosReprovacaoPorTipoAno[g]
+            );
+            drawChart(g, data, options);
+        }
+
+
+    }
+
+    function chartsAbandono()
+    {
+
+        let options = {
+            width: '100%',
+            height: 400,
+            legend: {
+                position: 'right',
+                alignment: 'center',
+                maxLines: 3,
+                textStyle: {
+                    fontSize: 12
+                }
+            },
+            bar: {
+                groupWidth: '90%'
+            },
+            vAxis: {
+                format: '#,###'
+            },
+            isStacked: true,
+            series: {
+                0: {
+                    color: '#c0d4e5'
+                },
+                1: {
+                    color: '#82a9cb'
+                },
+                2: {
+                    color: '#437eb0'
+                },
+                3: {
+                    color: '#045396'
+                },
+            },
+            backgroundColor: 'none',
+        };
+
+        for (var g in painel.graficosAbandonoPorTipoAno) {
+
+            let data = google.visualization.arrayToDataTable(
+                painel.graficosAbandonoPorTipoAno[g]
+            );
+
+            drawChart(g, data, options);
+        }
+
+    }
+
+    iniciaGraficosDistorcao();
+    iniciaGraficosReprovacao();
+    iniciaGraficosAbandono();
+
+    google.charts.load('current', {
+        'packages': ['corechart', 'bar'],
+        'language': 'pt_br'
+    });
+
+    function drawChart(id, data, options)
+    {
+        let chart = new google.charts.Bar(document.getElementById(id));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+
+    //resize window
+    $(window).resize(function ()
+    {
+        $('div.grafico').empty();
+        chartsDistorcao();
     });
 
     //Action for select year of panel
@@ -221,8 +359,12 @@ jQuery(document).ready(function ($) {
         window.location.href = value_link;
     });
 
-    iniciaGraficosDistorcao();
-    iniciaGraficosReprovacao();
-    iniciaGraficosAbandono();
+    function iniciaCharts(){
+        chartsDistorcao();
+        chartsReprovacao();
+        chartsAbandono();
+    }
+
+    google.charts.setOnLoadCallback(iniciaCharts);
 
 });
