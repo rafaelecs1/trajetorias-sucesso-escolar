@@ -98,7 +98,7 @@
             }
             //            ?>
         </section>
-        <section id="grafico-por-redes-abandono" class="grafico-por-redes">
+        <section id="grafico-por-redes" class="grafico-por-redes">
             <header><h2 class="color-black">Total de Matrículas na Educação Básica</h2></header>
             <div class="valor">
                 <?php

@@ -18,7 +18,7 @@ jQuery(document).ready(function ($) {
         });
     });
     $('#redes-de-ensino .perc').each(function (i, e) {
-        $(e).append(' <sup class="asterisco">*</sup>');
+        $(e).append(' <sup class="asterisco"></sup>');
     });
     $('#total-em-distorcao, #rede-municipal, #rede-estadual').append('<span class="legenda">* Taxa de distorção idade-serie</span>');
 
