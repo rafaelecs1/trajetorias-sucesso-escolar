@@ -19,7 +19,7 @@
                                     <h4>Anos iniciais</h4>
                                     <div class="value value_fi counter"><?php echo number_format($reprovacoes->anos_iniciais, 0, ',', '.'); ?></div>
                                     <div class="perc">[<span
-                                            class="perc_fi"><?php echo number_format(($reprovacoes->anos_iniciais * 100) / $matriculas->anos_iniciais, 2) ?></span>]%
+                                                class="perc_fi"><?php echo number_format(($reprovacoes->anos_iniciais * 100) / $matriculas->anos_iniciais, 2) ?></span>]%
                                     </div>
                                 </div>
 
@@ -45,7 +45,7 @@
                                 <div class="item unico">
                                     <div class="value value_mi counter"><?php echo number_format($reprovacoes->medio, 0, ',', '.'); ?></div>
                                     <div class="perc">[<span
-                                            class="perc_mi"><?php echo number_format(($reprovacoes->medio * 100) / $matriculas->medio, 2) ?></span>]%
+                                                class="perc_mi"><?php echo number_format(($reprovacoes->medio * 100) / $matriculas->medio, 2) ?></span>]%
                                     </div>
                                 </div>
 
@@ -82,27 +82,27 @@
                                         <li class="norte">
                                             <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_norte->anos_iniciais, 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                    class="value"><?php echo number_format(((int)$reprovacoes->regiao_norte->anos_iniciais * 100) / (int)$matriculas->regiao_norte->anos_iniciais, 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$reprovacoes->regiao_norte->anos_iniciais * 100) / (int)$matriculas->regiao_norte->anos_iniciais, 2) ?></span>%]</span>
                                         </li>
                                         <li class="nordeste">
                                             <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_nordeste->anos_iniciais, 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                    class="value"><?php echo number_format(((int)$reprovacoes->regiao_nordeste->anos_iniciais * 100) / (int)$matriculas->regiao_nordeste->anos_iniciais, 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$reprovacoes->regiao_nordeste->anos_iniciais * 100) / (int)$matriculas->regiao_nordeste->anos_iniciais, 2) ?></span>%]</span>
                                         </li>
                                         <li class="sudeste">
                                             <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_sudeste->anos_iniciais, 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                    class="value"><?php echo number_format(((int)$reprovacoes->regiao_sudeste->anos_iniciais * 100) / (int)$matriculas->regiao_sudeste->anos_iniciais, 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$reprovacoes->regiao_sudeste->anos_iniciais * 100) / (int)$matriculas->regiao_sudeste->anos_iniciais, 2) ?></span>%]</span>
                                         </li>
                                         <li class="sul">
                                             <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_sul->anos_iniciais, 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                    class="value"><?php echo number_format(((int)$reprovacoes->regiao_sul->anos_iniciais * 100) / (int)$matriculas->regiao_sul->anos_iniciais, 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$reprovacoes->regiao_sul->anos_iniciais * 100) / (int)$matriculas->regiao_sul->anos_iniciais, 2) ?></span>%]</span>
                                         </li>
                                         <li class="centro_oeste">
                                             <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_centro_oeste->anos_iniciais, 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                    class="value"><?php echo number_format(((int)$reprovacoes->regiao_centro_oeste->anos_iniciais * 100) / (int)$matriculas->regiao_centro_oeste->anos_iniciais, 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$reprovacoes->regiao_centro_oeste->anos_iniciais * 100) / (int)$matriculas->regiao_centro_oeste->anos_iniciais, 2) ?></span>%]</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -111,29 +111,29 @@
                                     <h4>Anos finais</h4>
                                     <ul>
                                         <li class="norte">
-                                            <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_norte->medio, 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_norte->anos_finais, 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                    class="value"><?php echo number_format(((int)$reprovacoes->regiao_norte->medio * 100) / (int)$matriculas->regiao_norte->medio, 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$reprovacoes->regiao_norte->anos_finais * 100) / (int)$matriculas->regiao_norte->anos_finais, 2) ?></span>%]</span>
                                         </li>
                                         <li class="nordeste">
-                                            <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_nordeste->medio, 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_nordeste->anos_finais, 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                    class="value"><?php echo number_format(((int)$reprovacoes->regiao_nordeste->medio * 100) / (int)$matriculas->regiao_nordeste->medio, 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$reprovacoes->regiao_nordeste->anos_finais * 100) / (int)$matriculas->regiao_nordeste->anos_finais, 2) ?></span>%]</span>
                                         </li>
                                         <li class="sudeste">
-                                            <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_sudeste->medio, 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_sudeste->anos_finais, 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                    class="value"><?php echo number_format(((int)$reprovacoes->regiao_sudeste->medio * 100) / (int)$matriculas->regiao_sudeste->medio, 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$reprovacoes->regiao_sudeste->anos_finais * 100) / (int)$matriculas->regiao_sudeste->anos_finais, 2) ?></span>%]</span>
                                         </li>
                                         <li class="sul">
-                                            <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_sul->medio, 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_sul->anos_finais, 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                    class="value"><?php echo number_format(((int)$reprovacoes->regiao_sul->medio * 100) / (int)$matriculas->regiao_sul->medio, 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$reprovacoes->regiao_sul->anos_finais * 100) / (int)$matriculas->regiao_sul->anos_finais, 2) ?></span>%]</span>
                                         </li>
                                         <li class="centro_oeste">
-                                            <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_centro_oeste->medio, 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_centro_oeste->anos_finais, 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                    class="value"><?php echo number_format(((int)$reprovacoes->regiao_centro_oeste->medio * 100) / (int)$matriculas->regiao_centro_oeste->medio, 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$reprovacoes->regiao_centro_oeste->anos_finais * 100) / (int)$matriculas->regiao_centro_oeste->anos_finais, 2) ?></span>%]</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -156,29 +156,29 @@
                                 <div class="item unico">
                                     <ul>
                                         <li class="norte">
-                                            <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_norte->anos_finais, 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_norte->medio, 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                    class="value"><?php echo number_format(((int)$reprovacoes->regiao_norte->anos_finais * 100) / (int)$matriculas->regiao_norte->anos_finais, 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$reprovacoes->regiao_norte->medio * 100) / (int)$matriculas->regiao_norte->medio, 2) ?></span>%]</span>
                                         </li>
                                         <li class="nordeste">
-                                            <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_nordeste->anos_finais, 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_nordeste->medio, 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                    class="value"><?php echo number_format(((int)$reprovacoes->regiao_nordeste->anos_finais * 100) / (int)$matriculas->regiao_nordeste->anos_finais, 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$reprovacoes->regiao_nordeste->medio * 100) / (int)$matriculas->regiao_nordeste->medio, 2) ?></span>%]</span>
                                         </li>
                                         <li class="sudeste">
-                                            <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_sudeste->anos_finais, 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_sudeste->medio, 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                    class="value"><?php echo number_format(((int)$reprovacoes->regiao_sudeste->anos_finais * 100) / (int)$matriculas->regiao_sudeste->anos_finais, 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$reprovacoes->regiao_sudeste->medio * 100) / (int)$matriculas->regiao_sudeste->medio, 2) ?></span>%]</span>
                                         </li>
                                         <li class="sul">
-                                            <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_sul->anos_finais, 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_sul->medio, 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                    class="value"><?php echo number_format(((int)$reprovacoes->regiao_sul->anos_finais * 100) / (int)$matriculas->regiao_sul->anos_finais, 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$reprovacoes->regiao_sul->medio * 100) / (int)$matriculas->regiao_sul->medio, 2) ?></span>%]</span>
                                         </li>
                                         <li class="centro_oeste">
-                                            <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_centro_oeste->anos_finais, 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$reprovacoes->regiao_centro_oeste->medio, 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                    class="value"><?php echo number_format(((int)$reprovacoes->regiao_centro_oeste->anos_finais * 100) / (int)$matriculas->regiao_centro_oeste->anos_finais, 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$reprovacoes->regiao_centro_oeste->medio * 100) / (int)$matriculas->regiao_centro_oeste->medio, 2) ?></span>%]</span>
                                         </li>
                                     </ul>
                                 </div>

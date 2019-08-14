@@ -1,8 +1,11 @@
 <section class="ficha <?php echo $tipo; ?>">
+
     <section id="redes-de-ensino">
+
         <header>
             <h2 class="mt-0">Redes de Ensino - <?php echo $this->year - 1; ?></h2>
         </header>
+
         <section id="total-em-distorcao">
             <header>
                 <h3>
@@ -36,8 +39,10 @@
                             class="asterico">*</sup></span>
             </div>
         </section>
+
         <?php
         if ($tipo !== 'escola') {
+
             foreach ($painel['tipo_rede'] as $rede => $ensinos) {
                 echo '<section id="rede-', strtolower($rede), '">';
                 echo '<header><h3>', (($rede == 'Municipal') && ($tipo != "municipio")) ? 'Redes Municipais' : 'Rede '.$rede, '</h3></header>';
@@ -54,9 +59,11 @@
             }
         }
         ?>
+
         <span class="legenda">* Taxa de distorção idade-serie 1</span>
 
         <section id="graficos-por-tipo-ensino">
+
             <?php
             $tiposAno = array(
                 'Iniciais' => 'Anos Iniciais - Ensino Fundamental',
@@ -66,6 +73,7 @@
             $graficosPorTipoAno = array();
             $lis = $sections = '';
             foreach ($tiposAno as $tipoAno => $label) {
+
                 if (array_key_exists($tipoAno, $painel['anos'])) {
                     $slug = 'grafico-' . sanitize_title($label);
                     $id = str_replace('-', '_', $slug);
@@ -81,6 +89,7 @@
                         $graficosPorTipoAno[$id][] = $arAux;
                     }
                 }
+
             }
             if (!empty($lis)) {
                 echo '<ul class="abas">';
@@ -90,6 +99,7 @@
             }
             ?>
         </section>
+
         <section id="grafico-por-redes">
             <header><h2>Total de Matrículas na Educação Básica</h2></header>
             <div class="valor">
@@ -117,7 +127,9 @@
             }
             ?>
         </section>
+
     </section>
+
     <section id="genero">
         <header><h2>Gênero</h2></header>
         <section class="genero">
@@ -128,6 +140,7 @@
             ?>
         </section>
     </section>
+
     <section id="cor-raca">
         <header><h2>Cor/Raça</h2></header>
         <section class="cor-raca">
@@ -138,6 +151,7 @@
             ?>
         </section>
     </section>
+
     <span class="legenda">* Taxa de distorção idade-serie</span>
 
     <section id="localizacao">
@@ -159,11 +173,7 @@
         }
         ?>
     </section>
+
+    <span class="legenda">* Taxa de distorção idade-serie</span>
+
 </section>
-<span class="legenda">* Taxa de distorção idade-serie</span>
-<div class="remodal"
-     data-remodal-id="situacao-das-escolas" <?php echo ($tipo === 'escola') ? 'style="display:none"' : ''; ?>>
-    <button data-remodal-action="close" class="remodal-close"></button>
-    <div id="lista-escolas">
-    </div>
-</div>

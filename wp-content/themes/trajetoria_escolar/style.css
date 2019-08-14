@@ -1202,7 +1202,7 @@ a.situacao-das-escolas:hover {
 }
 
 .ficha section section h3,
-.grafico-por-redes h2 {
+#grafico-por-redes h2 {
     font-size: 1.9em;
     line-height: 1em;
     margin-top: 0px;
@@ -1373,7 +1373,7 @@ a.situacao-das-escolas:hover {
     width: 100%;
 }
 
-.grafico-por-redes {
+#grafico-por-redes {
     background-color: #eeeeee;
     margin-top: 1%;
     width: 36.5%;
@@ -2274,7 +2274,7 @@ span.wpcf7-not-valid-tip {
 
 @media screen and (max-width: 1000px) {
     #graficos-por-tipo-ensino,
-    .grafico-por-redes {
+    #grafico-por-redes {
         width: 100%
     }
 

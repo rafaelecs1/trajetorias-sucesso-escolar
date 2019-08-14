@@ -1,0 +1,9 @@
+INSERT INTO tse_cor_raca (id, nome) VALUES (1, 'Não declarada');
+INSERT INTO tse_cor_raca (id, nome) VALUES (2, 'Branca');
+INSERT INTO tse_cor_raca (id, nome) VALUES (3, 'Preta');
+INSERT INTO tse_cor_raca (id, nome) VALUES (4, 'Parda');
+INSERT INTO tse_cor_raca (id, nome) VALUES (5, 'Amarela');
+INSERT INTO tse_cor_raca (id, nome) VALUES (6, 'Indígena');
+
+INSERT INTO tse_genero (id, nome) VALUES (1, 'Feminino');
+INSERT INTO tse_genero (id, nome) VALUES (2, 'Masculino');

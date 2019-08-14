@@ -1,4 +1,5 @@
 jQuery(document).ready(function ($) {
+
     //Interface
     $('#voltar').attr('href', painel.siteUrl + painel.voltar);
 
@@ -11,23 +12,32 @@ jQuery(document).ready(function ($) {
         }
         return ' <span class="perc">(' + ((valor * 100) / total).toFixed(2).replace('.', ',') + '%)<sup class="astericos">*</sup></span>';
     }
+
     $('div.amostra').each(function () {
         $('div.valor', this).each(function () {
             $(this).html($(this).html() + perc($(this)));
         });
     });
+
     // $('#redes-de-ensino .perc').each(function (i, e) {
     //     $(e).append(' <sup class="asterisco">*</sup>');
     // });
+
     // $('#total-em-distorcao, #rede-municipal, #rede-estadual').append('<span class="legenda">* Taxa de distorção idade-serie</span>');
-    $('h1:eq(1)').before('<span class="pre-h1">' + painel.especificacao + '</span>').after('<span>Perfil das crianças e adolescentes em distorção idade-série:</span>');
-    $('.situacao-das-escolas').click(function (e) {
+
+    //$('h1:eq(1)').before('<span class="pre-h1">' + painel.especificacao + '</span>').after('<span>Perfil das crianças e adolescentes em distorção idade-série:</span>');
+
+    $(document).on('click', '.situacao-das-escolas', function (e) {
         e.preventDefault();
         let me = $(this),
             id = parseInt($(me).data('municipio')),
             rede = $(me).data('rede'),
             modal = $('[data-remodal-id=situacao-das-escolas]').remodal();
+
+        console.log($(me).data('municipio'));
+
         if (id > 0) {
+
             $('.ver-escolas').hide();
             $(me).next().show();
             $.ajax({
@@ -53,7 +63,9 @@ jQuery(document).ready(function ($) {
             });
         }
 
+
     });
+
     $(document).on('keyup', '#filtrar-escolas', function () {
         let search = $(this).val().toUpperCase();
         $('#lista-escolas .escola a').each(function (i, o) {
@@ -64,17 +76,22 @@ jQuery(document).ready(function ($) {
             }
         });
     });
+
     // Gráficos
     google.charts.load('current', {
         'packages': ['corechart', 'bar'],
         'language': 'pt_br'
     });
+
     google.charts.setOnLoadCallback(charts);
+
     let legendaTipoDistorcao = ['', 'Sem atraso escolar', '1 ano de atraso escolar', '2 anos de atraso escolar', '3 anos ou mais de atraso escolar'],
         legendaPorAtraso = ['Redes', 'Estudantes sem distorção idade-série', 'Estudantes em distorção idade-série'];
+
     for (var g in painel.graficosPorTipoAno) {
         painel.graficosPorTipoAno[g].unshift(legendaTipoDistorcao);
     }
+
     painel.graficoPorRedes.unshift(legendaPorAtraso);
 
     function charts()
