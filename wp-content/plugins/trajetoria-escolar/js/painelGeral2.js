@@ -3,14 +3,14 @@ jQuery(document).ready(function ($) {
     $('#voltar').attr('href', painel2.siteUrl + painel2.voltar);
 
 
-    function perc(ele) {
-        let total = parseInt($(ele).data('total')),
-            valor = parseInt($(ele).data('valor'));
-        if (total <= 0) {
-            total = 1;
-        }
-        return ' <span class="perc">(' + ((valor * 100) / total).toFixed(1).replace('.', ',') + '%)<sup class="asterisco">*</sup> </span>';
-    }
+    // function perc(ele) {
+    //     let total = parseInt($(ele).data('total')),
+    //         valor = parseInt($(ele).data('valor'));
+    //     if (total <= 0) {
+    //         total = 1;
+    //     }
+    //     return ' <span class="perc">(' + ((valor * 100) / total).toFixed(1).replace('.', ',') + '%)<sup class="asterisco">*</sup> </span>';
+    // }
 
     // $('div.amostra').each(function () {
     //     $('div.valor', this).each(function () {
