@@ -119,9 +119,6 @@ jQuery(document).ready(function ($) {
             backgroundColor: 'none',
         };
         for (var g in painel3.graficosPorTipoAnoAbandono) {
-
-            console.log(g)
-
             let data = google.visualization.arrayToDataTable(
                 painel3.graficosPorTipoAnoAbandono[g]
             );

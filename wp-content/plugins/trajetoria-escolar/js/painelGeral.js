@@ -12,15 +12,15 @@ jQuery(document).ready(function ($) {
         return ' <span class="perc">(' + ((valor * 100) / total).toFixed(1).replace('.', ',') + '%)<sup class="asterisco">*</sup> </span>';
     }
 
-    // $('div.amostra').each(function () {
-    //     $('div.valor', this).each(function () {
-    //         $(this).html($(this).html() + perc($(this)));
-    //     });
-    // });
-    // $('#redes-de-ensino .perc').each(function (i, e) {
-    //     $(e).append(' <sup class="asterisco">*</sup>');/
-    // });
-    // $('#total-em-distorcao, #rede-municipal, #rede-estadual').append('<span class="legenda">* Taxa de distorção idade-serie</span>');
+    $('div.amostra').each(function () {
+        $('div.valor', this).each(function () {
+            $(this).html($(this).html() + perc($(this)));
+        });
+    });
+    $('#redes-de-ensino .perc').each(function (i, e) {
+        $(e).append(' <sup class="asterisco">*</sup>');
+    });
+    $('#total-em-distorcao, #rede-municipal, #rede-estadual').append('<span class="legenda">* Taxa de distorção idade-serie</span>');
 
     var escopo = painel.especificacao == null ? "" : painel.especificacao;
 

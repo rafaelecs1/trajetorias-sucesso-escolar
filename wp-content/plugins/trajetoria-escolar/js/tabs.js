@@ -9,9 +9,6 @@ jQuery(document).ready(function ($) {
         var ntabReg = TabId.match(/\d+/g);
         var nTab = ntabReg[0];
 
-
-        console.log(this)
-
         // Declare all variables
         var i, tabcontent, tablinks;
 
