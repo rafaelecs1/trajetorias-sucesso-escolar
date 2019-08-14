@@ -37,8 +37,6 @@ jQuery(document).ready(function ($) {
             rede = $(me).data('rede'),
             modal = $('[data-remodal-id=situacao-das-escolas]').remodal();
 
-        console.log($(me).data('municipio'));
-
         if (id > 0) {
 
             $('.ver-escolas').hide();
@@ -270,8 +268,6 @@ jQuery(document).ready(function ($) {
 
         for (var g in painel.graficosReprovacaoPorTipoAno) {
 
-            console.log(painel.graficosReprovacaoPorTipoAno[g]);
-
             let data = google.visualization.arrayToDataTable(
                 painel.graficosReprovacaoPorTipoAno[g]
             );
@@ -350,7 +346,17 @@ jQuery(document).ready(function ($) {
     {
         $('div.grafico').empty();
         chartsDistorcao();
+        chartsAbandono();
+        chartsReprovacao();
     });
+
+    //check if tab is visible. If true reload the graph
+    $('.tablinks').click(function () {
+            chartsReprovacao();
+            chartsAbandono();
+            chartsDistorcao();
+        }
+    );
 
     //Action for select year of panel
     $('#select-year').change(function ()
