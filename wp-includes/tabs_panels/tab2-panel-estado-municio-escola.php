@@ -85,19 +85,20 @@
 
                 foreach ($tiposAnosAbandonos as $tipoAno => $label) {
 
+
                     if (array_key_exists($tipoAno, $arrayAnos['anos'])) {
+
                         $slugReprovacao = 'grafico-reprovacao-' . sanitize_title($label);
                         $idReprovacao = str_replace('-', '_', $slugReprovacao);
+
                         $lisReprovacoes .= '<li><a href="#' . $slugReprovacao . '">' . $label . '</a></li>';
                         $sectionsReprovacoes .= '<section id="' . $slugReprovacao . '" class="aba_reprovacao"><span>Número de estudantes reprovados por ano '.$slugReprovacao.' </span><div id="'.$idReprovacao.'" class="grafico"></div></section>';
+
                         foreach ($arrayAnos['anos'][$tipoAno] as $ano => $reprovacoes) {
-                            $arAux = array();
-                            $arAux[] = $ano . '° ano';
-                            foreach ($reprovacoes as $dist) {
-                                $arAux[] = $dist;
-                            }
-                            $graficosReprovacaoPorTipoAno[$id][] = $arAux;
+                            $nomeAno = $ano . '° ano';
+                            $graficosReprovacaoPorTipoAno[''.$nomeAno.''] = $reprovacoes;
                         }
+
                     }
 
                 }

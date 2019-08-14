@@ -179,6 +179,9 @@ jQuery(document).ready(function ($) {
 
     function iniciaGraficosReprovacao()
     {
+
+        console.log(painel.graficosReprovacaoPorTipoAno);
+
         $('section.aba_reprovacao:not(:eq(0))').hide();
 
         $('ul.abas_reprovacoes>li:eq(0)').addClass('active');
