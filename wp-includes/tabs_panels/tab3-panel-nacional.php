@@ -41,7 +41,7 @@
         $tiposAno = array(
             'Iniciais' => 'Anos Iniciais - Ensino Fundamental',
             'Finais' => 'Anos Finais - Ensino Fundamental',
-            'Todos' => 'Ensino Médio',
+            'Medio' => 'Ensino Médio',
         );
 
         if (true) {
@@ -63,39 +63,43 @@
         }
         ?>
 
-        <span class="legenda">* Taxa de distorção idade-serie</span>
+        <span class="legenda">* Taxa de abandono</span>
         <section id="graficos-por-tipo-ensino">
-<!--            <img src="--><?php //echo plugins_url('trajetoria-escolar/img/panel/porano.png') ?><!--">-->
+            <!--            <img src="--><?php //echo plugins_url('trajetoria-escolar/img/panel/porano.png') ?><!--">-->
             <?php
-            $graficosPorTipoAno = array();
+            $graficosPorTipoAnoAbandono = array();
             $lis = $sections = '';
-            foreach ($tiposAno as $tipoAno => $label) {
-                if (array_key_exists($tipoAno, $distorcao['anos'])) {
-                    $slug = 'grafico-' . sanitize_title($label);
-                    $id = str_replace('-', '_', $slug);
-                    $lis .= '<li class="abandono"><a href="#' . $slug . '">' . $label . '</a></li>';
-                    $sections .= '<section id="' . $slug . '" class="aba"><span>Número de estudantes em atraso escolar por ano</span><div id="' . $id . '" class="grafico"></div></section>';
 
-                    foreach ($distorcao['anos'][$tipoAno] as $ano => $distorcoes) {
-                        $arAux = array();
+            foreach ($tiposAno as $tipoAno => $label) {
+//                if (array_key_exists($tipoAno, $abandonos['anos'])) {
+                $slug = 'grafico-' . sanitize_title($label) . '-abandono';
+                $id = str_replace('-', '_', $slug);
+                $lis .= '<li class="abandonos"><a href="#' . $slug . '">' . $label . '</a></li>';
+                $sections .= '<section id="' . $slug . '" class="aba abandono"><span>Número de estudantes que abandonaram a escola</span><div id="' . $id . '" class="grafico-abandono"></div></section>';
+
+                foreach ($abandonos->anos->$tipoAno as $ano => $item) {
+                    $arAux = array();
+                    if ($ano > 9) {
+                        $arAux[] = substr($ano, 1, 1) + 1 . '° ano';
+                    } else {
                         $arAux[] = $ano . '° ano';
-                        foreach ($distorcoes as $dist) {
-                            $arAux[] = $dist;
-                        }
-                        $graficosPorTipoAno[$id][] = $arAux;
                     }
+                    foreach ($item as $dist) {
+                        $arAux[] = $dist;
+                    }
+                    $graficosPorTipoAnoAbandono[$id][] = $arAux;
                 }
             }
             if (!empty($lis)) {
-                echo '<ul class="abas">';
+                echo '<ul class="abas abandonos">';
                 echo $lis;
                 echo '</ul>';
                 echo $sections;
             }
-            ?>
+            //            ?>
         </section>
-        <section id="grafico-por-redes">
-            <header><h2>Total de Matrículas na Educação Básica</h2></header>
+        <section id="grafico-por-redes-abandono" class="grafico-por-redes">
+            <header><h2 class="color-black">Total de Matrículas na Educação Básica</h2></header>
             <div class="valor">
                 <?php
                 echo number_format((int)$distorcao['total_geral'], 0, ',', '.')
@@ -103,26 +107,25 @@
             </div>
             <hr>
 
-            <div id="grafico_por_redes" class="grafico"></div>
-            <img src="<?php echo plugins_url('trajetoria-escolar/img/panel/educacaobasica.png') ?>">
+            <div id="grafico_por_redes_abandono" class="grafico"></div>
 
-            <!--            --><?php
-            //            $graficoPorRedes = array();
-            //            foreach ($distorcao['tipo_rede'] as $rede => $ensinos) {
-            //                $arAux = array();
-            //                $arAux[] = $rede;
-            //                $semDistorcao = $distorcaoValor = 0;
-            //                foreach ($ensinos as $anos) {
-            //                    foreach ($anos as $ano) {
-            //                        $semDistorcao += $ano['sem_distorcao'];
-            //                        $distorcaoValor += $ano['distorcao'];
-            //                    }
-            //                }
-            //                $arAux[] = $semDistorcao;
-            //                $arAux[] = $distorcaoValor;
-            //                $graficoPorRedes[] = $arAux;
-            //            }
-            //            ?>
+            <?php
+            $graficoPorRedesAbandono = array();
+            foreach ($distorcao['tipo_rede'] as $rede => $ensinos) {
+                $arAux = array();
+                $arAux[] = $rede;
+                $semDistorcao = $distorcaoValor = 0;
+                foreach ($ensinos as $anos) {
+                    foreach ($anos as $ano) {
+                        $semDistorcao += $ano['sem_distorcao'];
+                        $distorcaoValor += $ano['distorcao'];
+                    }
+                }
+                $arAux[] = $semDistorcao;
+                $arAux[] = $distorcaoValor;
+                $graficoPorRedesAbandono[] = $arAux;
+            }
+            ?>
         </section>
     </section>
     <section id="genero">
@@ -150,12 +153,11 @@
             ?>
         </section>
     </section>
-    <span class="legenda">* Taxa de distorção idade-serie</span>
+    <span class="legenda">* Taxa de abandono</span>
     <section id="localizacao">
         <header><h2>Localização</h2></header>
         <section class="localizacao">
             <?php
-
             foreach ($abandonos->localizacao as $k => $v) {
                 if ($k != 'total')
                     echo self::gerarAmostra($k, $v, $abandonos->total);
@@ -177,4 +179,4 @@
         ?>
     </section>
 </section>
-<span class="legenda">* Taxa de distorção idade-serie</span>
+<span class="legenda">* Taxa de abandono</span>

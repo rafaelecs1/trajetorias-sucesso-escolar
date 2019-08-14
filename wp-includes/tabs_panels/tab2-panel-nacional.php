@@ -63,7 +63,7 @@
         }
         ?>
 
-        <span class="legenda">* Taxa de distorção idade-serie</span>
+        <span class="legenda">* Taxa de reprovação</span>
         <section id="graficos-por-tipo-ensino">
             <!--            <img src="--><?php //echo plugins_url('trajetoria-escolar/img/panel/porano.png') ?><!--">-->
             <?php
@@ -72,10 +72,10 @@
 
             foreach ($tiposAno as $tipoAno => $label) {
 //                if (array_key_exists($tipoAno, $reprovacoes['anos'])) {
-                $slug = 'grafico-' . sanitize_title($label) . '_reprovacao';
+                $slug = 'grafico-' . sanitize_title($label) . '-reprovacao';
                 $id = str_replace('-', '_', $slug);
                 $lis .= '<li class="reprovacoes"><a href="#' . $slug . '">' . $label . '</a></li>';
-                $sections .= '<section id="' . $slug . '" class="aba reprovacao"><span>Número de estudantes em atraso escolar por ano (Reprovação)</span><div id="' . $id . '" class="grafico"></div></section>';
+                $sections .= '<section id="' . $slug . '" class="aba reprovacao"><span>Número de estudantes que foram reprovados</span><div id="' . $id . '" class="grafico-reprovacao"></div></section>';
 
                 foreach ($reprovacoes->anos->$tipoAno as $ano => $item) {
                     $arAux = array();
@@ -99,7 +99,7 @@
             //            ?>
         </section>
         <section id="grafico-por-redes-reprovacao" class="grafico-por-redes">
-            <header><h2>Total de Matrículas na Educação Básica</h2></header>
+            <header><h2 class="color-black">Total de Matrículas na Educação Básica</h2></header>
             <div class="valor">
                 <?php
                 echo number_format((int)$distorcao['total_geral'], 0, ',', '.')
@@ -153,7 +153,7 @@
             ?>
         </section>
     </section>
-    <span class="legenda">* Taxa de distorção idade-serie</span>
+    <span class="legenda">* Taxa de reprovação</span>
     <section id="localizacao">
         <header><h2>Localização</h2></header>
         <section class="localizacao">
@@ -179,4 +179,4 @@
         ?>
     </section>
 </section>
-<span class="legenda">* Taxa de distorção idade-serie</span>
+<span class="legenda">* Taxa de reprovação</span>

@@ -151,7 +151,6 @@ jQuery(document).ready(function ($) {
     $('ul.distorcoes>li:eq(0)').addClass('active');
 
     $('ul>li.distorcoes>a').click(function (e) {
-        alert('distorcao')
         e.preventDefault();
         let me = $(this),
             id = $(me).attr('href'),
@@ -165,19 +164,19 @@ jQuery(document).ready(function ($) {
             charts();
         });
     });
-    // $(window).resize(function () {
-    //     $('div.grafico').empty();
-    //     charts();
-    // });
-    // $('a[href^=#]').click(function () {
-    //     alert()
-    //     if (typeof ga == 'function') {
-    //         let url = window.location.href;
-    //         url = url.replace(painel.siteUrl, '/');
-    //         url = url.replace('#', '');
-    //         ga('send', 'pageview', url + $(this).attr('href'));
-    //     }
-    // });
+    $(window).resize(function () {
+        $('div.grafico-distorcao').empty();
+        charts();
+    });
+
+    $('a[href^=#]').click(function () {
+        if (typeof ga == 'function') {
+            let url = window.location.href;
+            url = url.replace(painel.siteUrl, '/');
+            url = url.replace('#', '');
+            ga('send', 'pageview', url + $(this).attr('href'));
+        }
+    });
 
     $('#select-year').change(function () {
         var value_link = $(this).val();

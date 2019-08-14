@@ -108,6 +108,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     font-weight: normal;
     font-style: normal;
 }
+.color-black {
+    color: #3C3C3C !important;
+}
 
 /*--------------------------------------------------------------
 # Normalize
@@ -1123,7 +1126,7 @@ article .entry-header {
 }
 
 .ficha section header h2 {
-    /*color: #fff;*/
+    color: #fff;
     padding: 0px 0;
     font-size: 1.8em;
     margin-bottom: 1%;

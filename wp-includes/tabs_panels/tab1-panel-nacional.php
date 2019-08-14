@@ -70,7 +70,7 @@
                     $slug = 'grafico-' . sanitize_title($label);
                     $id = str_replace('-', '_', $slug);
                     $lis .= '<li class="distorcoes"><a href="#' . $slug . '">' . $label . '</a></li>';
-                    $sections .= '<section id="' . $slug . '" class="aba distorcao"><span>Número de estudantes em atraso escolar por ano</span><div id="' . $id . '" class="grafico"></div></section>';
+                    $sections .= '<section id="' . $slug . '" class="aba distorcao"><span>Número de estudantes em atraso escolar por ano</span><div id="' . $id . '" class="grafico-distorcao"></div></section>';
 
                     foreach ($distorcao['anos'][$tipoAno] as $ano => $distorcoes) {
                         $arAux = array();
@@ -91,7 +91,7 @@
             ?>
         </section>
         <section id="grafico-por-redes" class="grafico-por-redes">
-            <header><h2>Total de Matrículas na Educação Básica</h2></header>
+            <header><h2 class="color-black">Total de Matrículas na Educação Básica</h2></header>
             <div class="valor">
                 <?php
                 echo number_format((int)$distorcao['total_geral'], 0, ',', '.')

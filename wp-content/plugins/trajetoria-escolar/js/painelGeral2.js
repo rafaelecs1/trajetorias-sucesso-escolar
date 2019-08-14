@@ -121,9 +121,11 @@ jQuery(document).ready(function ($) {
         };
 
         for (var g in painel2.graficosPorTipoAnoReprovacao) {
+
             let data = google.visualization.arrayToDataTable(
                 painel2.graficosPorTipoAnoReprovacao[g]
             );
+
             drawChart(g, data, options);
         }
         // if (document.getElementById('grafico_por_redes_reprovacao').innerHTML === '') {
@@ -149,13 +151,11 @@ jQuery(document).ready(function ($) {
 
     //Gambi para clicar no painel
     $('ul>li.tablinks').click(function (e) {
-        var TabId = $(this).attr('id');
         e.preventDefault();
         $('ul>li.reprovacoes>a:eq(0)').trigger('click');
     })
 
     $('section.reprovacao:not(:eq(0))').hide();
-
 
     $('ul>li.reprovacoes:eq(0)').addClass('active');
 
@@ -166,7 +166,7 @@ jQuery(document).ready(function ($) {
             par = $(me).parent();
         vel = 'fast';
         $('section.reprovacao').fadeOut(vel, function () {
-            $('div.grafico-reprovacao', id).empty();
+            $('div.grafico', id).empty();
         });
         $(par).addClass('active').siblings('li').not(par).removeClass('active');
 
@@ -179,6 +179,7 @@ jQuery(document).ready(function ($) {
         $('div.grafico-reprovacao').empty();
         charts();
     });
+
     $('a[href^=#]').click(function () {
         if (typeof ga == 'function') {
             let url = window.location.href;

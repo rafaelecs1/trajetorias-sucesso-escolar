@@ -293,7 +293,7 @@ class FrontEnd
             <section id="tab-3" class="aba-panel tabcontent" style="display: none;">
                 <?php
 
-//                include 'wp-includes/tabs_panels/tab3-panel-nacional.php'
+                include 'wp-includes/tabs_panels/tab3-panel-nacional.php'
 
                 ?>
             </section>
@@ -311,7 +311,7 @@ class FrontEnd
 
         wp_enqueue_script('painel', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral.js', array('jquery'), false, true);
         wp_enqueue_script('painel2', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral2.js', array('jquery'), false, true);
-//        wp_enqueue_script('painel3', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral3.js', array('jquery'), false, true);
+        wp_enqueue_script('painel3', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral3.js', array('jquery'), false, true);
         wp_enqueue_script('tabs', plugin_dir_url(dirname(__FILE__)) . 'js/tabs.js', array('jquery'), false, true);
 
         $voltar = $especificacao = null;
@@ -334,17 +334,21 @@ class FrontEnd
             'graficoPorRedesReprovacao' => $graficoPorRedesReprovacao,
         ));
 
-//                  wp_localize_script('painel3', 'painel3', array(
-//            'siteUrl' => site_url('/'),
-//            'ajaxUrl' => admin_url('admin-ajax.php'),
-//            'voltar' => $voltar,
-//            'especificacao' => $especificacao,
-//            'graficosPorTipoAnoReprovacao' => $graficosPorTipoAnoReprovacao,
-////            'graficoPorRedesReprovacao' => $graficoPorRedes,
-//        ));
+            wp_localize_script('painel3', 'painel3', array(
+            'siteUrl' => site_url('/'),
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'voltar' => $voltar,
+            'especificacao' => $especificacao,
+            'graficosPorTipoAnoAbandono' => $graficosPorTipoAnoAbandono,
+            'graficosPorRedesAbandono' => $graficoPorRedesAbandono,
+        ));
+
+//            echo '<pre>';
+//            var_dump($graficosPorTipoAnoAbandono);
+//            echo '</pre>';
 
         wp_enqueue_script('google_charts', 'https://www.gstatic.com/charts/loader.js', null, false, true);
-//        return ob_get_clean();
+        return ob_get_clean();
     }
 
     /**
