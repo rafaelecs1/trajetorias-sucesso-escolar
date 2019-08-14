@@ -147,14 +147,12 @@ jQuery(document).ready(function ($) {
         chart.draw(data, google.charts.Bar.convertOptions(options));
     }
 
-
-
+    //Gambi para clicar no painel
     $('ul>li.tablinks').click(function (e) {
         var TabId = $(this).attr('id');
         e.preventDefault();
-        charts();
+        $('ul>li.reprovacoes>a:eq(0)').trigger('click');
     })
-
 
     $('section.reprovacao:not(:eq(0))').hide();
 
@@ -177,10 +175,10 @@ jQuery(document).ready(function ($) {
         });
     });
 
-    // $(window).resize(function () {
-    //     $('div.grafico-reprovacao').empty();
-    //     charts();
-    // });
+    $(window).resize(function () {
+        $('div.grafico-reprovacao').empty();
+        charts();
+    });
     $('a[href^=#]').click(function () {
         if (typeof ga == 'function') {
             let url = window.location.href;

@@ -75,7 +75,7 @@
                 $slug = 'grafico-' . sanitize_title($label) . '_reprovacao';
                 $id = str_replace('-', '_', $slug);
                 $lis .= '<li class="reprovacoes"><a href="#' . $slug . '">' . $label . '</a></li>';
-                $sections .= '<section id="' . $slug . '" class="aba reprovacao"><span>Número de estudantes em atraso escolar por ano (Reprovação)</span><div id="' . $id . '" class="grafico-reprovacao"></div></section>';
+                $sections .= '<section id="' . $slug . '" class="aba reprovacao"><span>Número de estudantes em atraso escolar por ano (Reprovação)</span><div id="' . $id . '" class="grafico"></div></section>';
 
                 foreach ($reprovacoes->anos->$tipoAno as $ano => $item) {
                     $arAux = array();
@@ -98,7 +98,7 @@
             }
             //            ?>
         </section>
-        <section id="grafico-por-redes-reprovacao">
+        <section id="grafico-por-redes-reprovacao" class="grafico-por-redes">
             <header><h2>Total de Matrículas na Educação Básica</h2></header>
             <div class="valor">
                 <?php
@@ -107,7 +107,7 @@
             </div>
             <hr>
 
-            <div id="grafico_por_redes_reprovacao" class="grafico-reprovacao"></div>
+            <div id="grafico_por_redes_reprovacao" class="grafico"></div>
 
             <?php
             $graficoPorRedesReprovacao = array();
@@ -125,7 +125,6 @@
                 $arAux[] = $distorcaoValor;
                 $graficoPorRedesReprovacao[] = $arAux;
             }
-            //                        var_dump($graficoPorRedesReprovacao)
             ?>
         </section>
     </section>

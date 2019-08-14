@@ -3,22 +3,11 @@ jQuery(document).ready(function ($) {
         var TabId = $(this).attr('id');
         e.preventDefault();
 
-        // let me = $(this),
-        //     id = $(me).attr('href'),
-        //     par = $(me).parent();
-
-        console.log(this);
-
         var numbertab = 1;
         var intervalo = '';
         var auto = true;
         var ntabReg = TabId.match( /\d+/g );
         var nTab = ntabReg[0];
-
-        // $('section.tabcontent').fadeOut('fast', function () {
-        //     $('div.grafico', TabId).empty();
-        // });
-
 
         // Declare all variables
             var i, tabcontent, tablinks;

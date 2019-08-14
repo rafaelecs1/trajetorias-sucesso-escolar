@@ -82,9 +82,6 @@
                     }
                 }
             }
-//            echo '<pre>';
-//            var_dump($graficosPorTipoAno);
-//            echo '</pre>';
             if (!empty($lis)) {
                 echo '<ul class="abas distorcoes">';
                 echo $lis;
@@ -93,7 +90,7 @@
             }
             ?>
         </section>
-        <section id="grafico-por-redes">
+        <section id="grafico-por-redes" class="grafico-por-redes">
             <header><h2>Total de Matrículas na Educação Básica</h2></header>
             <div class="valor">
                 <?php

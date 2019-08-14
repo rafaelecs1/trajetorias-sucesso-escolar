@@ -12,11 +12,11 @@ jQuery(document).ready(function ($) {
         return ' <span class="perc">(' + ((valor * 100) / total).toFixed(1).replace('.', ',') + '%)<sup class="asterisco">*</sup> </span>';
     }
 
-    $('div.amostra').each(function () {
-        $('div.valor', this).each(function () {
-            $(this).html($(this).html() + perc($(this)));
-        });
-    });
+    // $('div.amostra').each(function () {
+    //     $('div.valor', this).each(function () {
+    //         $(this).html($(this).html() + perc($(this)));
+    //     });
+    // });
     // $('#redes-de-ensino .perc').each(function (i, e) {
     //     $(e).append(' <sup class="asterisco">*</sup>');/
     // });
@@ -25,7 +25,6 @@ jQuery(document).ready(function ($) {
     var escopo = painel.especificacao == null ? "" : painel.especificacao;
 
     // $('h1:eq(1)').before('<span class="pre-h1">' + escopo + '</span>').after('<span>Perfil das crianças e adolescentes em distorção idade-série:</span>');
-    console.log(painel.ajaxUrl)
     $('.situacao-das-escolas').click(function (e) {
         e.preventDefault();
         let me = $(this),
@@ -166,18 +165,19 @@ jQuery(document).ready(function ($) {
             charts();
         });
     });
-    $(window).resize(function () {
-        $('div.grafico').empty();
-        charts();
-    });
-    $('a[href^=#]').click(function () {
-        if (typeof ga == 'function') {
-            let url = window.location.href;
-            url = url.replace(painel.siteUrl, '/');
-            url = url.replace('#', '');
-            ga('send', 'pageview', url + $(this).attr('href'));
-        }
-    });
+    // $(window).resize(function () {
+    //     $('div.grafico').empty();
+    //     charts();
+    // });
+    // $('a[href^=#]').click(function () {
+    //     alert()
+    //     if (typeof ga == 'function') {
+    //         let url = window.location.href;
+    //         url = url.replace(painel.siteUrl, '/');
+    //         url = url.replace('#', '');
+    //         ga('send', 'pageview', url + $(this).attr('href'));
+    //     }
+    // });
 
     $('#select-year').change(function () {
         var value_link = $(this).val();
