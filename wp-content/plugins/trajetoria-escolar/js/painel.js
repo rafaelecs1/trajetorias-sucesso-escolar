@@ -284,8 +284,6 @@ jQuery(document).ready(function ($) {
 
         if (document.getElementById('grafico_por_redes_reprovacao').innerHTML === '') {
 
-            console.log(painel.graficoReprovacaoPorRedes);
-
             let data = google.visualization.arrayToDataTable(
                 painel.graficoReprovacaoPorRedes
             );
