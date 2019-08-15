@@ -77,7 +77,7 @@
                 $lis .= '<li class="abandonos"><a href="#' . $slug . '">' . $label . '</a></li>';
                 $sections .= '<section id="' . $slug . '" class="aba abandono"><span>Número de estudantes que abandonaram a escola</span><div id="' . $id . '" class="grafico-abandono"></div></section>';
 
-                foreach ($abandonos->anos->$tipoAno as $ano => $item) {
+                foreach ($abandonos->anos->anos->$tipoAno as $ano => $item) {
                     $arAux = array();
                     if ($ano > 9) {
                         $arAux[] = substr($ano, 1, 1) + 1 . '° ano';

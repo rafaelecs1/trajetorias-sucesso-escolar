@@ -343,10 +343,6 @@ class FrontEnd
             'graficosPorRedesAbandono' => $graficoPorRedesAbandono,
         ));
 
-//            echo '<pre>';
-//            var_dump($graficosPorTipoAnoAbandono);
-//            echo '</pre>';
-
         wp_enqueue_script('google_charts', 'https://www.gstatic.com/charts/loader.js', null, false, true);
         return ob_get_clean();
     }

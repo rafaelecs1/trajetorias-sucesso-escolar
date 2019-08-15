@@ -70,6 +70,8 @@
             $graficosPorTipoAnoReprovacao = array();
             $lis = $sections = '';
 
+
+
             foreach ($tiposAno as $tipoAno => $label) {
 //                if (array_key_exists($tipoAno, $reprovacoes['anos'])) {
                 $slug = 'grafico-' . sanitize_title($label) . '-reprovacao';
@@ -77,11 +79,11 @@
                 $lis .= '<li class="reprovacoes"><a href="#' . $slug . '">' . $label . '</a></li>';
                 $sections .= '<section id="' . $slug . '" class="aba reprovacao"><span>Número de estudantes que foram reprovados</span><div id="' . $id . '" class="grafico-reprovacao"></div></section>';
 
-                foreach ($reprovacoes->anos->$tipoAno as $ano => $item) {
+                foreach ($reprovacoes->anos->anos->$tipoAno as $ano => $item) {
                     $arAux = array();
-                    if($ano > 9){
-                        $arAux[] = substr($ano, 1,1) + 1 . '° ano';
-                    }else{
+                    if ($ano > 9) {
+                        $arAux[] = substr($ano, 1, 1) + 1 . '° ano';
+                    } else {
                         $arAux[] = $ano . '° ano';
                     }
                     foreach ($item as $dist) {
@@ -96,7 +98,8 @@
                 echo '</ul>';
                 echo $sections;
             }
-            //            ?>
+
+            ?>
         </section>
         <section id="grafico-por-redes" class="grafico-por-redes">
             <header><h2 class="color-black">Total de Matrículas na Educação Básica</h2></header>

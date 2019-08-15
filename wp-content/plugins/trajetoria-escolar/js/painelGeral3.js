@@ -74,7 +74,7 @@ jQuery(document).ready(function ($) {
         'language': 'pt_br'
     });
     google.charts.setOnLoadCallback(charts);
-    let legendaTipoDistorcao = ['', 'Abandono', 'Matriculas'],
+    let legendaTipoDistorcao = ['', 'Matriculas','Abandono', 'Reprovados'],
         legendaPorAtraso = ['Redes', 'Abandono', 'Matriculas'];
 
     for (var g in painel3.graficosPorTipoAnoAbandono) {

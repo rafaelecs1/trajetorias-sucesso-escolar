@@ -74,8 +74,8 @@ jQuery(document).ready(function ($) {
         'language': 'pt_br'
     });
     google.charts.setOnLoadCallback(charts);
-    let legendaTipoDistorcao = ['', 'Reprovados', 'Aprovados'],
-        legendaPorAtraso = ['Redes', 'Reprovados', 'Aprovados'];
+    let legendaTipoDistorcao = ['', 'Matricula', 'Reprovados', 'Aprovados'],
+        legendaPorAtraso = ['Redes','Reprovados', 'Aprovados'];
 
     for (var g in painel2.graficosPorTipoAnoReprovacao) {
         painel2.graficosPorTipoAnoReprovacao[g].unshift(legendaTipoDistorcao);
