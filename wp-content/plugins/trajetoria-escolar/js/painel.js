@@ -146,11 +146,14 @@ jQuery(document).ready(function ($) {
 
     function iniciaGraficosAbandono()
     {
-        let legendaTipoAbandono = [ '', 'Matrículas', 'Reprovacoes', 'Abandonos'];
+        let legendaTipoAbandono = [ '', 'Matrículas', 'Reprovacoes', 'Abandonos'],
+            legendaAbandonoPorRede = ['', 'Matrículas', 'Reprovacoes', 'Abandonos'];
 
         for (var i in painel.graficosAbandonoPorTipoAno) {
             painel.graficosAbandonoPorTipoAno[i].unshift(legendaTipoAbandono);
         }
+
+        painel.graficoAbandonoPorRedes.unshift(legendaAbandonoPorRede);
 
         $('section.aba_abandono:not(:eq(0))').hide();
 
@@ -163,6 +166,7 @@ jQuery(document).ready(function ($) {
                 par = $(me).parent();
             $('section.aba_abandono').fadeOut('fast', function () {
                 $('grafico-abandono', id).empty();
+                $('grafico_por_redes_abandono').empty();
             });
             $(par).addClass('active').siblings('li').not(par).removeClass('active');
             $(id).fadeIn('fast', function () {
@@ -354,6 +358,32 @@ jQuery(document).ready(function ($) {
             );
 
             drawChart(g, data, options);
+        }
+
+        if (document.getElementById('grafico_por_redes_abandono').innerHTML === '') {
+
+            let data = google.visualization.arrayToDataTable(
+                painel.graficoAbandonoPorRedes
+            );
+            options.series = {
+                0: {
+                    color: '#ffd87a'
+                },
+                1: {
+                    color: '#ffc331'
+                },
+                2: {
+                    color: '#ffb500'
+                }
+            };
+
+            options.bar = {
+                groupWidth: '50%'
+            };
+
+            options.height = 400;
+
+            drawChart('grafico_por_redes_abandono', data, options);
         }
 
     }
