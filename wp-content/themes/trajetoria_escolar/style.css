@@ -108,6 +108,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     font-weight: normal;
     font-style: normal;
 }
+.color-black {
+    color: #3C3C3C !important;
+}
 
 /*--------------------------------------------------------------
 # Normalize
@@ -1343,20 +1346,18 @@ a.situacao-das-escolas:hover {
     background: #e4e4e4
 }
 
-/*
-    abas distorcao, abandono e  reprovacao do painel de estado, cidade e escola
- */
-#slider-tabs ul.abas_estado_cidade_escola {
+/** Abas paineis*/
+#slider-tabs ul.abas-paineis {
     margin: 0;
     padding: 0
 }
 
-#slider-tabs ul.abas_estado_cidade_escola li {
+#slider-tabs ul.abas-paineis li {
     display: inline;
 
 }
 
-#slider-tabs ul.abas_estado_cidade_escola li a {
+#slider-tabs ul.abas-paineis li a {
     padding: 1.5%;
     text-decoration: none;
     color: #3c3c3c;
@@ -1367,17 +1368,14 @@ a.situacao-das-escolas:hover {
     border-right: 7px solid #fff;
 }
 
-#slider-tabs ul.abas_estado_cidade_escola li a:hover {
+#slider-tabs ul.abas-paineis li a:hover {
     background-color: #ffb400
 }
 
-#slider-tabs ul.abas_estado_cidade_escola li.active a {
+#slider-tabs ul.abas-paineis li.active a {
     background: #e4e4e4
 }
-
-/*
-    ----------------------------------------------------
- */
+/** Fim */
 
 .aba,
 .aba_reprovacao,

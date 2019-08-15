@@ -137,7 +137,7 @@ abstract class AbstractRepository implements IRestFull
     protected function getTotalPainelCorRaca($anoReferencia = null, $corRacaId = null)
     {
         $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ' . $this->tableName . ' join te_escolas te on te.id = ' . $this->tableName . '.escolas_id                                                                                   
-                                      where ' . $this->tableName . '.ano_referencia = %d AND '. $this->tableName . '.genero_id IS NULL AND ' . $this->tableName . '.cor_raca_id = %d';
+                                      where ' . $this->tableName . '.ano_referencia = %d AND ' . $this->tableName . '.genero_id IS NULL AND ' . $this->tableName . '.cor_raca_id = %d';
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $corRacaId), ARRAY_A);
 
@@ -213,15 +213,18 @@ abstract class AbstractRepository implements IRestFull
 
     }
 
-    protected function getTotalAnosIniciaisPorAno() {
+    protected function getTotalAnosIniciaisPorAno()
+    {
 
     }
 
-    protected function getTotalAnosFinaisPorAno() {
+    protected function getTotalAnosFinaisPorAno()
+    {
 
     }
 
-    protected function getTotalMedioPorAno() {
+    protected function getTotalMedioPorAno()
+    {
 
     }
 
@@ -323,7 +326,7 @@ abstract class AbstractRepository implements IRestFull
         $data->estadual->anos_finais = $this->getTotalPainel($anoReferencia, 'Estadual', 'finais');
         $data->estadual->medio = $this->getTotalPainel($anoReferencia, 'Estadual', 'medio');
 
-        $data->anos = $this->getArrayMatriculasReprovacoesAbandonos( $anoReferencia, null, null, null);
+        $data->anos = $this->getArrayMatriculasReprovacoesAbandonos($anoReferencia, null, null, null);
 
         $data->localizacao = new \stdClass();
         $data->localizacao->rural = $this->getTotalPainelLocalizacao($anoReferencia, 'Rural');
@@ -389,39 +392,41 @@ abstract class AbstractRepository implements IRestFull
     {
         //TODO Colocar um redirect aqui
         //TODO Validar numeros!
-        if($anoReferencia == null){ return false; }
+        if ($anoReferencia == null) {
+            return false;
+        }
 
-        $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM '.$this->tableName;
+        $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ' . $this->tableName;
         $join = '';
-        $where = ' WHERE '.$this->tableName.'.ano_referencia = %d';
+        $where = ' WHERE ' . $this->tableName . '.ano_referencia = %d';
 
         $join .= $estadoId == null
             ? ''
-            : ' INNER JOIN te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
+            : ' INNER JOIN te_escolas on te_escolas.id = ' . $this->tableName . '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
 
         $where .= $estadoId == null
             ? ''
-            : ' AND te_municipios.estado_id = '.$estadoId;
+            : ' AND te_municipios.estado_id = ' . $estadoId;
 
         $join .= $municipioId == null
             ? ''
-            : ' INNER JOIN te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
+            : ' INNER JOIN te_escolas on te_escolas.id = ' . $this->tableName . '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
 
         $where .= $municipioId == null
             ? ''
-            : ' AND te_municipios.id = '.$municipioId;
+            : ' AND te_municipios.id = ' . $municipioId;
 
         $where .= $escolaId == null
             ? ''
-            : ' AND '.$this->tableName.'.escolas_id ='.$escolaId;
+            : ' AND ' . $this->tableName . '.escolas_id =' . $escolaId;
 
         $where .= $corRacaId == null
-            ? ' AND '.$this->tableName.'.cor_raca_id IS NULL'
-            : ' AND '.$this->tableName.'.cor_raca_id ='.$corRacaId;
+            ? ' AND ' . $this->tableName . '.cor_raca_id IS NULL'
+            : ' AND ' . $this->tableName . '.cor_raca_id =' . $corRacaId;
 
         $where .= $generoId == null
-            ? ' AND '.$this->tableName.'.genero_id IS NULL'
-            : ' AND '.$this->tableName.'.genero_id ='.$generoId;
+            ? ' AND ' . $this->tableName . '.genero_id IS NULL'
+            : ' AND ' . $this->tableName . '.genero_id =' . $generoId;
 
         $sql .= $join . $where;
 
@@ -434,39 +439,41 @@ abstract class AbstractRepository implements IRestFull
     {
         //TODO Colocar um redirect aqui
         //TODO Validar numeros!
-        if($anoReferencia == null){ return false; }
+        if ($anoReferencia == null) {
+            return false;
+        }
 
-        $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5) as qtd FROM '.$this->tableName;
+        $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5) as qtd FROM ' . $this->tableName;
         $join = '';
-        $where = ' WHERE '.$this->tableName.'.ano_referencia = %d';
+        $where = ' WHERE ' . $this->tableName . '.ano_referencia = %d';
 
         $join .= $estadoId == null
             ? ''
-            : ' INNER JOIN te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
+            : ' INNER JOIN te_escolas on te_escolas.id = ' . $this->tableName . '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
 
         $where .= $estadoId == null
             ? ''
-            : ' AND te_municipios.estado_id = '.$estadoId;
+            : ' AND te_municipios.estado_id = ' . $estadoId;
 
         $join .= $municipioId == null
             ? ''
-            : ' INNER JOIN te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
+            : ' INNER JOIN te_escolas on te_escolas.id = ' . $this->tableName . '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
 
         $where .= $municipioId == null
             ? ''
-            : ' AND te_municipios.id = '.$municipioId;
+            : ' AND te_municipios.id = ' . $municipioId;
 
         $where .= $escolaId == null
             ? ''
-            : ' AND '.$this->tableName.'.escolas_id ='.$escolaId;
+            : ' AND ' . $this->tableName . '.escolas_id =' . $escolaId;
 
         $where .= $corRacaId == null
-            ? ' AND '.$this->tableName.'.cor_raca_id IS NULL'
-            : ' AND '.$this->tableName.'.cor_raca_id ='.$corRacaId;
+            ? ' AND ' . $this->tableName . '.cor_raca_id IS NULL'
+            : ' AND ' . $this->tableName . '.cor_raca_id =' . $corRacaId;
 
         $where .= $generoId == null
-            ? ' AND '.$this->tableName.'.genero_id IS NULL'
-            : ' AND '.$this->tableName.'.genero_id ='.$generoId;
+            ? ' AND ' . $this->tableName . '.genero_id IS NULL'
+            : ' AND ' . $this->tableName . '.genero_id =' . $generoId;
 
         $sql .= $join . $where;
 
@@ -479,39 +486,41 @@ abstract class AbstractRepository implements IRestFull
     {
         //TODO Colocar um redirect aqui
         //TODO Validar numeros!
-        if($anoReferencia == null){ return false; }
+        if ($anoReferencia == null) {
+            return false;
+        }
 
-        $sql = 'SELECT SUM(ano6 + ano7 + ano8 + ano9) as qtd FROM '.$this->tableName;
+        $sql = 'SELECT SUM(ano6 + ano7 + ano8 + ano9) as qtd FROM ' . $this->tableName;
         $join = '';
-        $where = ' WHERE '.$this->tableName.'.ano_referencia = %d';
+        $where = ' WHERE ' . $this->tableName . '.ano_referencia = %d';
 
         $join .= $estadoId == null
             ? ''
-            : ' INNER JOIN te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
+            : ' INNER JOIN te_escolas on te_escolas.id = ' . $this->tableName . '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
 
         $where .= $estadoId == null
             ? ''
-            : ' AND te_municipios.estado_id = '.$estadoId;
+            : ' AND te_municipios.estado_id = ' . $estadoId;
 
         $join .= $municipioId == null
             ? ''
-            : ' INNER JOIN te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
+            : ' INNER JOIN te_escolas on te_escolas.id = ' . $this->tableName . '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
 
         $where .= $municipioId == null
             ? ''
-            : ' AND te_municipios.id = '.$municipioId;
+            : ' AND te_municipios.id = ' . $municipioId;
 
         $where .= $escolaId == null
             ? ''
-            : ' AND '.$this->tableName.'.escolas_id ='.$escolaId;
+            : ' AND ' . $this->tableName . '.escolas_id =' . $escolaId;
 
         $where .= $corRacaId == null
-            ? ' AND '.$this->tableName.'.cor_raca_id IS NULL'
-            : ' AND '.$this->tableName.'.cor_raca_id ='.$corRacaId;
+            ? ' AND ' . $this->tableName . '.cor_raca_id IS NULL'
+            : ' AND ' . $this->tableName . '.cor_raca_id =' . $corRacaId;
 
         $where .= $generoId == null
-            ? ' AND '.$this->tableName.'.genero_id IS NULL'
-            : ' AND '.$this->tableName.'.genero_id ='.$generoId;
+            ? ' AND ' . $this->tableName . '.genero_id IS NULL'
+            : ' AND ' . $this->tableName . '.genero_id =' . $generoId;
 
         $sql .= $join . $where;
 
@@ -525,39 +534,41 @@ abstract class AbstractRepository implements IRestFull
     {
         //TODO Colocar um redirect aqui
         //TODO Validar numeros!
-        if($anoReferencia == null){ return false; }
+        if ($anoReferencia == null) {
+            return false;
+        }
 
-        $sql = 'SELECT SUM(ano10 + ano11 + ano12 + ano13) as qtd FROM '.$this->tableName;
+        $sql = 'SELECT SUM(ano10 + ano11 + ano12 + ano13) as qtd FROM ' . $this->tableName;
         $join = '';
-        $where = ' WHERE '.$this->tableName.'.ano_referencia = %d';
+        $where = ' WHERE ' . $this->tableName . '.ano_referencia = %d';
 
         $join .= $estadoId == null
             ? ''
-            : ' INNER JOIN te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
+            : ' INNER JOIN te_escolas on te_escolas.id = ' . $this->tableName . '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
 
         $where .= $estadoId == null
             ? ''
-            : ' AND te_municipios.estado_id = '.$estadoId;
+            : ' AND te_municipios.estado_id = ' . $estadoId;
 
         $join .= $municipioId == null
             ? ''
-            : ' INNER JOIN te_escolas on te_escolas.id = ' .$this->tableName. '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
+            : ' INNER JOIN te_escolas on te_escolas.id = ' . $this->tableName . '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
 
         $where .= $municipioId == null
             ? ''
-            : ' AND te_municipios.id = '.$municipioId;
+            : ' AND te_municipios.id = ' . $municipioId;
 
         $where .= $escolaId == null
             ? ''
-            : ' AND '.$this->tableName.'.escolas_id ='.$escolaId;
+            : ' AND ' . $this->tableName . '.escolas_id =' . $escolaId;
 
         $where .= $corRacaId == null
-            ? ' AND '.$this->tableName.'.cor_raca_id IS NULL'
-            : ' AND '.$this->tableName.'.cor_raca_id ='.$corRacaId;
+            ? ' AND ' . $this->tableName . '.cor_raca_id IS NULL'
+            : ' AND ' . $this->tableName . '.cor_raca_id =' . $corRacaId;
 
         $where .= $generoId == null
-            ? ' AND '.$this->tableName.'.genero_id IS NULL'
-            : ' AND '.$this->tableName.'.genero_id ='.$generoId;
+            ? ' AND ' . $this->tableName . '.genero_id IS NULL'
+            : ' AND ' . $this->tableName . '.genero_id =' . $generoId;
 
         $sql .= $join . $where;
 
@@ -566,32 +577,37 @@ abstract class AbstractRepository implements IRestFull
         return $response['qtd'];
     }
 
-    protected function getTotalDependenciaEstadoMunicipioEscola($anoReferencia = null, $dependencia = null, $tipoAno = null, $estadoId = null, $municipioId = null, $escolaId = null){
+    protected function getTotalDependenciaEstadoMunicipioEscola($anoReferencia = null, $dependencia = null, $tipoAno = null, $estadoId = null, $municipioId = null, $escolaId = null)
+    {
 
         //TODO Colocar um redirect aqui
         //TODO Validar numeros!
-        if($anoReferencia == null){ return false; }
-        if($dependencia == null){ return false; }
+        if ($anoReferencia == null) {
+            return false;
+        }
+        if ($dependencia == null) {
+            return false;
+        }
 
         if ($tipoAno == null) {
-            $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM '.$this->tableName;
+            $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ' . $this->tableName;
         }
 
         if ($tipoAno == 'iniciais') {
-            $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5) as qtd FROM '.$this->tableName;
+            $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5) as qtd FROM ' . $this->tableName;
         }
 
         if ($tipoAno == 'finais') {
-            $sql = 'SELECT SUM(ano6 + ano7 + ano8 + ano9) as qtd FROM '.$this->tableName;
+            $sql = 'SELECT SUM(ano6 + ano7 + ano8 + ano9) as qtd FROM ' . $this->tableName;
         }
 
         if ($tipoAno == 'medio') {
-            $sql = 'SELECT SUM(ano10 + ano11 + ano12 + ano13) as qtd FROM '.$this->tableName;
+            $sql = 'SELECT SUM(ano10 + ano11 + ano12 + ano13) as qtd FROM ' . $this->tableName;
         }
 
-        $join = ' INNER JOIN te_escolas on te_escolas.id ='.$this->tableName.'.escolas_id';
+        $join = ' INNER JOIN te_escolas on te_escolas.id =' . $this->tableName . '.escolas_id';
 
-        $where = ' WHERE '.$this->tableName.'.ano_referencia = %d';
+        $where = ' WHERE ' . $this->tableName . '.ano_referencia = %d';
 
         $where .= ' AND te_escolas.dependencia = %s';
 
@@ -601,7 +617,7 @@ abstract class AbstractRepository implements IRestFull
 
         $where .= $estadoId == null
             ? ''
-            : ' AND te_municipios.estado_id = '.$estadoId;
+            : ' AND te_municipios.estado_id = ' . $estadoId;
 
         $join .= $municipioId == null
             ? ''
@@ -609,13 +625,13 @@ abstract class AbstractRepository implements IRestFull
 
         $where .= $municipioId == null
             ? ''
-            : ' AND te_municipios.id = '.$municipioId;
+            : ' AND te_municipios.id = ' . $municipioId;
 
         $where .= $escolaId == null
             ? ''
-            : ' AND '.$this->tableName.'.escolas_id ='.$escolaId;
+            : ' AND ' . $this->tableName . '.escolas_id =' . $escolaId;
 
-        $where .= ' AND '.$this->tableName.'.cor_raca_id IS NULL AND '.$this->tableName.'.genero_id IS NULL';
+        $where .= ' AND ' . $this->tableName . '.cor_raca_id IS NULL AND ' . $this->tableName . '.genero_id IS NULL';
 
         $sql .= $join . $where;
 
@@ -624,32 +640,37 @@ abstract class AbstractRepository implements IRestFull
         return $response['qtd'];
     }
 
-    protected function getTotalLocalizacaoEstadoMunicipioEscola($anoReferencia = null, $localizacao = null, $tipoAno = null, $estadoId = null, $municipioId = null, $escolaId = null){
+    protected function getTotalLocalizacaoEstadoMunicipioEscola($anoReferencia = null, $localizacao = null, $tipoAno = null, $estadoId = null, $municipioId = null, $escolaId = null)
+    {
 
         //TODO Colocar um redirect aqui
         //TODO Validar numeros!
-        if($anoReferencia == null){ return false; }
-        if($localizacao == null){ return false; }
+        if ($anoReferencia == null) {
+            return false;
+        }
+        if ($localizacao == null) {
+            return false;
+        }
 
         if ($tipoAno == null) {
-            $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM '.$this->tableName;
+            $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ' . $this->tableName;
         }
 
         if ($tipoAno == 'iniciais') {
-            $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5) as qtd FROM '.$this->tableName;
+            $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5) as qtd FROM ' . $this->tableName;
         }
 
         if ($tipoAno == 'finais') {
-            $sql = 'SELECT SUM(ano6 + ano7 + ano8 + ano9) as qtd FROM '.$this->tableName;
+            $sql = 'SELECT SUM(ano6 + ano7 + ano8 + ano9) as qtd FROM ' . $this->tableName;
         }
 
         if ($tipoAno == 'medio') {
-            $sql = 'SELECT SUM(ano10 + ano11 + ano12 + ano13) as qtd FROM '.$this->tableName;
+            $sql = 'SELECT SUM(ano10 + ano11 + ano12 + ano13) as qtd FROM ' . $this->tableName;
         }
 
-        $join = ' INNER JOIN te_escolas on te_escolas.id ='.$this->tableName.'.escolas_id';
+        $join = ' INNER JOIN te_escolas on te_escolas.id =' . $this->tableName . '.escolas_id';
 
-        $where = ' WHERE '.$this->tableName.'.ano_referencia = %d';
+        $where = ' WHERE ' . $this->tableName . '.ano_referencia = %d';
 
         $where .= ' AND te_escolas.localizacao = %s';
 
@@ -659,7 +680,7 @@ abstract class AbstractRepository implements IRestFull
 
         $where .= $estadoId == null
             ? ''
-            : ' AND te_municipios.estado_id = '.$estadoId;
+            : ' AND te_municipios.estado_id = ' . $estadoId;
 
         $join .= $municipioId == null
             ? ''
@@ -667,13 +688,13 @@ abstract class AbstractRepository implements IRestFull
 
         $where .= $municipioId == null
             ? ''
-            : ' AND te_municipios.id = '.$municipioId;
+            : ' AND te_municipios.id = ' . $municipioId;
 
         $where .= $escolaId == null
             ? ''
-            : ' AND '.$this->tableName.'.escolas_id ='.$escolaId;
+            : ' AND ' . $this->tableName . '.escolas_id =' . $escolaId;
 
-        $where .= ' AND '.$this->tableName.'.cor_raca_id IS NULL AND '.$this->tableName.'.genero_id IS NULL';
+        $where .= ' AND ' . $this->tableName . '.cor_raca_id IS NULL AND ' . $this->tableName . '.genero_id IS NULL';
 
         $sql .= $join . $where;
 
@@ -682,32 +703,37 @@ abstract class AbstractRepository implements IRestFull
         return $response['qtd'];
     }
 
-    protected function getTotalLocalizacaoDiferenciadaEstadoMunicipioEscola($anoReferencia = null, $localizacaoDiferenciada = null, $tipoAno = null, $estadoId = null, $municipioId = null, $escolaId = null){
+    protected function getTotalLocalizacaoDiferenciadaEstadoMunicipioEscola($anoReferencia = null, $localizacaoDiferenciada = null, $tipoAno = null, $estadoId = null, $municipioId = null, $escolaId = null)
+    {
 
         //TODO Colocar um redirect aqui
         //TODO Validar numeros!
-        if($anoReferencia == null){ return false; }
-        if($localizacaoDiferenciada == null){ return false; }
+        if ($anoReferencia == null) {
+            return false;
+        }
+        if ($localizacaoDiferenciada == null) {
+            return false;
+        }
 
         if ($tipoAno == null) {
-            $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM '.$this->tableName;
+            $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ' . $this->tableName;
         }
 
         if ($tipoAno == 'iniciais') {
-            $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5) as qtd FROM '.$this->tableName;
+            $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5) as qtd FROM ' . $this->tableName;
         }
 
         if ($tipoAno == 'finais') {
-            $sql = 'SELECT SUM(ano6 + ano7 + ano8 + ano9) as qtd FROM '.$this->tableName;
+            $sql = 'SELECT SUM(ano6 + ano7 + ano8 + ano9) as qtd FROM ' . $this->tableName;
         }
 
         if ($tipoAno == 'medio') {
-            $sql = 'SELECT SUM(ano10 + ano11 + ano12 + ano13) as qtd FROM '.$this->tableName;
+            $sql = 'SELECT SUM(ano10 + ano11 + ano12 + ano13) as qtd FROM ' . $this->tableName;
         }
 
-        $join = ' INNER JOIN te_escolas on te_escolas.id ='.$this->tableName.'.escolas_id';
+        $join = ' INNER JOIN te_escolas on te_escolas.id =' . $this->tableName . '.escolas_id';
 
-        $where = ' WHERE '.$this->tableName.'.ano_referencia = %d';
+        $where = ' WHERE ' . $this->tableName . '.ano_referencia = %d';
 
         $where .= ' AND te_escolas.localizacao_diferenciada = %s';
 
@@ -717,7 +743,7 @@ abstract class AbstractRepository implements IRestFull
 
         $where .= $estadoId == null
             ? ''
-            : ' AND te_municipios.estado_id = '.$estadoId;
+            : ' AND te_municipios.estado_id = ' . $estadoId;
 
         $join .= $municipioId == null
             ? ''
@@ -725,13 +751,13 @@ abstract class AbstractRepository implements IRestFull
 
         $where .= $municipioId == null
             ? ''
-            : ' AND te_municipios.id = '.$municipioId;
+            : ' AND te_municipios.id = ' . $municipioId;
 
         $where .= $escolaId == null
             ? ''
-            : ' AND '.$this->tableName.'.escolas_id ='.$escolaId;
+            : ' AND ' . $this->tableName . '.escolas_id =' . $escolaId;
 
-        $where .= ' AND '.$this->tableName.'.cor_raca_id IS NULL AND '.$this->tableName.'.genero_id IS NULL';
+        $where .= ' AND ' . $this->tableName . '.cor_raca_id IS NULL AND ' . $this->tableName . '.genero_id IS NULL';
 
         $sql .= $join . $where;
 
@@ -741,13 +767,14 @@ abstract class AbstractRepository implements IRestFull
     }
 
 
-    public function getArrayMatriculasReprovacoesAbandonos($anoReferencia = null, $estadoId = null, $municipioId = null, $escolaId = null){
+    protected function getArrayMatriculasReprovacoesAbandonos($anoReferencia = null, $estadoId = null, $municipioId = null, $escolaId = null)
+    {
 
         $data = new \stdClass();
 
         $data->anos = array();
 
-        $data->anos['iniciais'] = array(
+        $data->anos['Iniciais'] = array(
             '1' =>
                 [
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'matriculas'),
@@ -785,7 +812,7 @@ abstract class AbstractRepository implements IRestFull
 
         );
 
-        $data->anos['finais'] = array(
+        $data->anos['Finais'] = array(
             '6' =>
                 [
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano6', 'matriculas'),
@@ -816,29 +843,29 @@ abstract class AbstractRepository implements IRestFull
 
         );
 
-        $data->anos['medio'] = array(
-            '1' =>
+        $data->anos['Medio'] = array(
+            '10' =>
                 [
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'matriculas'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'abandonos')
                 ],
 
-            '2' =>
+            '11' =>
                 [
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'matriculas'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'abandonos')
                 ],
 
-            '3' =>
+            '12' =>
                 [
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'matriculas'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'abandonos')
                 ],
 
-            '4' =>
+            '13' =>
                 [
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'matriculas'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'reprovacoes'),
@@ -851,12 +878,17 @@ abstract class AbstractRepository implements IRestFull
 
     }
 
-    private function getTotalPorAno($anoReferencia = null, $estadoId = null, $municipioId = null, $escolaId = null, $ano = null, $tipoSoma){
+    private function getTotalPorAno($anoReferencia = null, $estadoId = null, $municipioId = null, $escolaId = null, $ano = null, $tipoSoma)
+    {
 
         //TODO Colocar um redirect aqui
         //TODO Validar numeros!
-        if($anoReferencia == null){ return false; }
-        if($ano == null){ return false; }
+        if ($anoReferencia == null) {
+            return false;
+        }
+        if ($ano == null) {
+            return false;
+        }
 
         switch ($tipoSoma) {
             case "matriculas";
@@ -873,11 +905,11 @@ abstract class AbstractRepository implements IRestFull
 
         }
 
-        $sql = 'SELECT SUM('.$ano.') as qtd FROM '.$tabela;
+        $sql = 'SELECT SUM(' . $ano . ') as qtd FROM ' . $tabela;
 
-        $join = ' INNER JOIN te_escolas ON te_escolas.id = '.$tabela.'.escolas_id';
+        $join = ' INNER JOIN te_escolas ON te_escolas.id = ' . $tabela . '.escolas_id';
 
-        $where = ' WHERE '.$tabela.'.ano_referencia = %d';
+        $where = ' WHERE ' . $tabela . '.ano_referencia = %d';
 
         $join .= $estadoId == null
             ? ''
@@ -885,7 +917,7 @@ abstract class AbstractRepository implements IRestFull
 
         $where .= $estadoId == null
             ? ''
-            : ' AND te_municipios.estado_id = '.$estadoId;
+            : ' AND te_municipios.estado_id = ' . $estadoId;
 
         $join .= $municipioId == null
             ? ''
@@ -893,13 +925,13 @@ abstract class AbstractRepository implements IRestFull
 
         $where .= $municipioId == null
             ? ''
-            : ' AND te_municipios.id = '.$municipioId;
+            : ' AND te_municipios.id = ' . $municipioId;
 
         $where .= $escolaId == null
             ? ''
-            : ' AND te_escolas.id = '.$escolaId;
+            : ' AND te_escolas.id = ' . $escolaId;
 
-        $where .= ' AND '.$tabela.'.cor_raca_id IS NULL AND '.$tabela.'.genero_id IS NULL';
+        $where .= ' AND ' . $tabela . '.cor_raca_id IS NULL AND ' . $tabela . '.genero_id IS NULL';
 
         $sql .= $join . $where;
 

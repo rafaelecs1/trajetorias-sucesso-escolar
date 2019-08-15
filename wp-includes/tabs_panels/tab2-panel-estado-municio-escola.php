@@ -77,9 +77,9 @@
                 $arrayAnos = json_decode(json_encode($anosReprovacoes), True);
 
                 $tiposAnosReprovacoes = array(
-                    'iniciais' => 'Anos Iniciais - Ensino Fundamental',
-                    'finais' => 'Anos Finais - Ensino Fundamental',
-                    'medio' => 'Ensino Médio',
+                    'Iniciais' => 'Anos Iniciais - Ensino Fundamental',
+                    'Finais' => 'Anos Finais - Ensino Fundamental',
+                    'Medio' => 'Ensino Médio',
                 );
 
 

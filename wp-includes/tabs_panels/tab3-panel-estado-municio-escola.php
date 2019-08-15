@@ -78,9 +78,9 @@
                 $arrayAnosAbandonos = json_decode(json_encode($anosAbandonos), True);
 
                 $tiposAnosAbandonos = array(
-                    'iniciais' => 'Anos Iniciais - Ensino Fundamental',
-                    'finais' => 'Anos Finais - Ensino Fundamental',
-                    'medio' => 'Ensino Médio',
+                    'Iniciais' => 'Anos Iniciais - Ensino Fundamental',
+                    'Finais' => 'Anos Finais - Ensino Fundamental',
+                    'Medio' => 'Ensino Médio',
                 );
 
                 $graficosAbandonoPorTipoAno = array();
