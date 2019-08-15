@@ -114,11 +114,14 @@ jQuery(document).ready(function ($) {
     function iniciaGraficosReprovacao()
     {
 
-        let legendaTipoReprovacao = [ '', 'Matrículas', 'Reprovacoes', 'Abandonos'];
+        let legendaTipoReprovacao = [ '', 'Matrículas', 'Reprovacoes', 'Abandonos'],
+            legendaReprovacaoPorRede = ['', 'Matrículas', 'Reprovacoes', 'Abandonos'];
 
         for (var h in painel.graficosReprovacaoPorTipoAno) {
             painel.graficosReprovacaoPorTipoAno[h].unshift(legendaTipoReprovacao);
         }
+
+        painel.graficoReprovacaoPorRedes.unshift(legendaReprovacaoPorRede);
 
         $('section.aba_reprovacao:not(:eq(0))').hide();
 
@@ -131,6 +134,7 @@ jQuery(document).ready(function ($) {
                 par = $(me).parent();
             $('section.aba_reprovacao').fadeOut('fast', function () {
                 $('grafico-reprovacao', id).empty();
+                $('grafico_por_redes_reprovacao').empty();
             });
             $(par).addClass('active').siblings('li').not(par).removeClass('active');
             $(id).fadeIn('fast', function () {
@@ -274,6 +278,34 @@ jQuery(document).ready(function ($) {
             drawChart(g, data, options);
         }
 
+        if (document.getElementById('grafico_por_redes_reprovacao').innerHTML === '') {
+
+            console.log(painel.graficoReprovacaoPorRedes);
+
+            let data = google.visualization.arrayToDataTable(
+                painel.graficoReprovacaoPorRedes
+            );
+            options.series = {
+                0: {
+                    color: '#ffd87a'
+                },
+                1: {
+                    color: '#ffc331'
+                },
+                2: {
+                    color: '#ffb500'
+                }
+            };
+
+            options.bar = {
+                groupWidth: '50%'
+            };
+
+            options.height = 400;
+
+            drawChart('grafico_por_redes_reprovacao', data, options);
+        }
+
 
     }
 
@@ -352,6 +384,7 @@ jQuery(document).ready(function ($) {
 
     //check if tab is visible. If true reload the graph
     $('.tablinks').click(function () {
+            $('div.grafico').empty();
             chartsReprovacao();
             chartsAbandono();
             chartsDistorcao();

@@ -98,8 +98,26 @@
                         $sectionsReprovacoes .= '<section id="' . $slugReprovacao . '" class="aba_reprovacao"><span>Número de estudantes reprovados por ano </span><div id="'.$idReprovacao.'" class="grafico-reprovacao"></div></section>';
 
                         foreach ( $arrayAnos['anos'][$tipoAno] as $ano => $anoReprovacoes ) {
+
+                            switch ($ano){
+                                case 10:
+                                    $serie = 1;
+                                    break;
+                                case 11:
+                                    $serie = 2;
+                                    break;
+                                case 12:
+                                    $serie = 3;
+                                    break;
+                                case 13:
+                                    $serie = 4;
+                                    break;
+                                default:
+                                    $serie = $ano;
+                            }
+
                             $arAux = array();
-                            $arAux[] = $ano . '° ano';
+                            $arAux[] = $serie . '° ano';
                             foreach ($anoReprovacoes as $dist) {
                                 $arAux[] = $dist;
                             }
@@ -128,12 +146,13 @@
             </div>
             <hr>
             <div id="grafico_por_redes_reprovacao" class="grafico"></div>
+
             <?php
-
                 $graficoReprovacaoPorRedes = array();
-
-
+                $graficoReprovacaoPorRedes[0] = ['Municipal', (int)$matriculas->municipal->total, (int)$reprovacoes->municipal->total, (int)$abandonos->municipal->total];
+                $graficoReprovacaoPorRedes[1] = ['Estadual', (int)$matriculas->estadual->total, (int)$reprovacoes->estadual->total, (int)$abandonos->estadual->total];
             ?>
+
         </section>
 
     </section>

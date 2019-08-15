@@ -98,8 +98,26 @@
                         $sectionsAbandonos .= '<section id="' . $slugAbandono . '" class="aba_abandono"><span>Número de estudantes que abandonaram a escola por ano </span><div id="'.$idAbandono.'" class="grafico-abandono"></div></section>';
 
                         foreach ( $arrayAnosAbandonos['anos'][$tipoAno] as $ano => $anoReprovacoes ) {
+
+                            switch ($ano){
+                                case 10:
+                                    $serie = 1;
+                                    break;
+                                case 11:
+                                    $serie = 2;
+                                    break;
+                                case 12:
+                                    $serie = 3;
+                                    break;
+                                case 13:
+                                    $serie = 4;
+                                    break;
+                                default:
+                                    $serie = $ano;
+                            }
+
                             $arAux = array();
-                            $arAux[] = $ano . '° ano';
+                            $arAux[] = $serie . '° ano';
                             foreach ($anoReprovacoes as $dist) {
                                 $arAux[] = $dist;
                             }
