@@ -69,6 +69,9 @@ class MySQLAbandonoRepository extends AbstractRepository{
         $data->genero->masculino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 1, $estadoId, null, null);
         $data->genero->feminino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 2, $estadoId, null, null);
 
+        $data->deficiencia = new \stdClass();
+        $data->deficiencia->com =  $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, null, $estadoId, null, null, 1);
+
         $this->saveBrasil($estadoId, self::ESTADO_ABANDONO, $anoReferencia, $data);
 
         return $data;
@@ -128,6 +131,10 @@ class MySQLAbandonoRepository extends AbstractRepository{
         $data->genero->masculino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 1, null, $municipioId, null);
         $data->genero->feminino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 2, null, $municipioId, null);
 
+        $data->deficiencia = new \stdClass();
+        $data->deficiencia->com =  $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, null, null, $municipioId, null, 1);
+
+
         $this->saveBrasil($municipioId, self::MUNICIPIO_ABANDONO, $anoReferencia, $data);
 
         return $data;
@@ -186,6 +193,11 @@ class MySQLAbandonoRepository extends AbstractRepository{
         $data->genero = new \stdClass();
         $data->genero->masculino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 1, null, null, $escolaId);
         $data->genero->feminino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 2, null, null, $escolaId);
+
+        $data->deficiencia = new \stdClass();
+        $data->deficiencia->com =  $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, null, null, null, $escolaId, 1);
+
+
 
         $this->saveBrasil($escolaId, self::ESCOLA_ABANDONO, $anoReferencia, $data);
 

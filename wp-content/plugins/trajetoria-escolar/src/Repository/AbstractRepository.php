@@ -152,6 +152,14 @@ abstract class AbstractRepository implements IRestFull
         return $response['qtd'];
     }
 
+    protected function getTotalPainelDeficiente($anoReferencia = null, $deficienciaId = null)
+    {
+        $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ' . $this->tableName . ' join te_escolas te on te.id = ' . $this->tableName . '.escolas_id                                                                                   
+                                      where ' . $this->tableName . '.ano_referencia = %d AND ' . $this->tableName . '.cor_raca_id IS NULL AND ' . $this->tableName . '.genero_id IS NULL AND ' . $this->tableName . '.deficiencia_id = %d';
+        $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $deficienciaId), ARRAY_A);
+        return $response['qtd'];
+    }
+
     protected function getTotalPorRegiao($anoReferencia = null, $regiao = null, $tipoAno = null)
     {
         if ($tipoAno == null) {
@@ -349,9 +357,11 @@ abstract class AbstractRepository implements IRestFull
         $data->cor_raca->indigena = $this->getTotalPainelCorRaca($anoReferencia, 6);
 
         $data->genero = new \stdClass();
-        $data->genero->total = '100';
         $data->genero->masculino = $this->getTotalPainelGenero($anoReferencia, 1);
         $data->genero->feminino = $this->getTotalPainelGenero($anoReferencia, 2);
+
+        $data->deficiencia = new \stdClass();
+        $data->deficiencia->com = $this->getTotalPainelDeficiente($anoReferencia, 1);
 
         $this->saveBrasil(1, $tipo, $anoReferencia, $data);
 
@@ -388,7 +398,7 @@ abstract class AbstractRepository implements IRestFull
     }
 
 
-    protected function getTotalMatriculasEstadoMunicipioEscola($anoReferencia = null, $corRacaId = null, $generoId = null, $estadoId = null, $municipioId = null, $escolaId = null)
+    protected function getTotalMatriculasEstadoMunicipioEscola($anoReferencia = null, $corRacaId = null, $generoId = null, $estadoId = null, $municipioId = null, $escolaId = null, $deficienciaId = null)
     {
         //TODO Colocar um redirect aqui
         //TODO Validar numeros!
@@ -427,6 +437,10 @@ abstract class AbstractRepository implements IRestFull
         $where .= $generoId == null
             ? ' AND ' . $this->tableName . '.genero_id IS NULL'
             : ' AND ' . $this->tableName . '.genero_id =' . $generoId;
+
+        $where .= $deficienciaId == null
+            ? ' AND ' . $this->tableName . '.deficiencia_id IS NULL'
+            : ' AND ' . $this->tableName . '.deficiencia_id =' . $deficienciaId;
 
         $sql .= $join . $where;
 

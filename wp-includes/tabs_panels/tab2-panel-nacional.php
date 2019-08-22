@@ -31,7 +31,7 @@
             }
             $percDistorcao = ($reprovacoes->total * 100) / $divisor;
             ?>
-            <div class="total"><?php echo self::formatarNumero($matriculas->total); ?> <span
+            <div class="total"><?php echo self::formatarNumero($reprovacoes->total); ?> <span
                         class="perc">(<?php echo number_format($percDistorcao, 1, ',', '.'); ?>%)<sup
                             class="arterico">*</sup></span></div>
         </section>
@@ -69,7 +69,6 @@
             <?php
             $graficosPorTipoAnoReprovacao = array();
             $lis = $sections = '';
-
 
 
             foreach ($tiposAno as $tipoAno => $label) {
@@ -181,5 +180,21 @@
         }
         ?>
     </section>
+    <section id="deficiencia">
+        <header><h2>Deficiência</h2></header>
+        <section class="deficiencia">
+            <?php
+
+            $reprovacoes->deficiencia->sem = $reprovacoes->total - $reprovacoes->deficiencia->com;
+
+            foreach ($reprovacoes->deficiencia as $k => $v) {
+                echo self::gerarAmostra($k . ' deficiência', $v, $reprovacoes->total);
+            }
+            ?>
+        </section>
+    </section>
+    <span class="legenda">* Taxa de reprovação</span>
+
 </section>
-<span class="legenda">* Taxa de reprovação</span>
+
+

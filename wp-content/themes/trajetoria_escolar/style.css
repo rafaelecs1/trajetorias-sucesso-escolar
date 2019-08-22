@@ -1407,6 +1407,9 @@ a.situacao-das-escolas:hover {
     width: 25%;
     margin-right: 1%;
 }
+#deficiencia{
+    width: 100%;
+}
 
 #localizacao .localizacao {
     background-color: #045396;
@@ -1424,6 +1427,14 @@ a.situacao-das-escolas:hover {
     width: 100%;
 
 }
+#deficiencia .deficiencia {
+    background-color: #eeeeee;
+    padding: 7%;
+    padding-left: 10%;
+    padding-right: 10%;
+    width: 100%;
+
+}
 
 #cor-raca .cor-raca {
     padding: 5%;
@@ -1434,7 +1445,8 @@ a.situacao-das-escolas:hover {
 }
 
 #genero .amostra,
-#localizacao .amostra {
+#localizacao .amostra,
+#deficiencia .amostra {
     float: left;
     width: 49%;
     margin-right: 1%;
@@ -1452,6 +1464,7 @@ a.situacao-das-escolas:hover {
 }
 
 #genero .amostra:last-child,
+#deficiencia .amostra:last-child,
 #localizacao .amostra:last-child,
 #cor-raca .amostra:last-child,
 #localizacao .localizacao-diferenciada .amostra {
@@ -1472,11 +1485,13 @@ a.situacao-das-escolas:hover {
 }
 
 #genero .amostra:first-child,
+#deficiencia .amostra:first-child,
 #localizacao .amostra:first-child {
     padding-left: 0
 }
 
 #genero .amostra div:first-child,
+#deficiencia .amostra div:first-child,
 #cor-raca .amostra div:first-child,
 #localizacao .amostra div:first-child {
     font-family: 'steelfish';
@@ -2312,6 +2327,7 @@ span.wpcf7-not-valid-tip {
     #rede-municipal,
     #rede-estadual,
     #genero,
+    #deficiencia,
     #cor-raca,
     #container-filtros-e-legenda,
     .filtros-e-legendas,

@@ -64,6 +64,7 @@ class MySQLPainelRepository implements IPainelRepository
             'localizacao_diferenciada' => $repository->getPorLocalizacaoDiferenciada($origem, $anoReferencia),
             'cor_raca' => $repository->getPorCorRaca($origem, $anoReferencia),
             'genero' => $repository->getPorGenero($origem, $anoReferencia),
+            'deficiencia' => array('com'=>'1234567', 'sem'=>'2345678'),
             'total_geral' => $repository->getTotalMatriculas($origem, $anoReferencia),
         );
 
@@ -92,6 +93,7 @@ class MySQLPainelRepository implements IPainelRepository
             'localizacao_diferenciada' => $repository->getPorLocalizacaoDiferenciadaBrasil($anoReferencia),
             'cor_raca' => $repository->getPorCorRacaBrasil($anoReferencia),
             'genero' => $repository->getPorGeneroBrasil($anoReferencia),
+            'deficiencia' => array('com'=>'1234567', 'sem'=>'2345678'),
             'total_geral' => $totalGeral
         );
 
