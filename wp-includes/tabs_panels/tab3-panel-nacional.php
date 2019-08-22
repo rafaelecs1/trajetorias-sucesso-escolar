@@ -31,7 +31,7 @@
             }
             $percDistorcao = ($abandonos->total * 100) / $divisor;
             ?>
-            <div class="total"><?php echo self::formatarNumero($matriculas->total); ?> <span
+            <div class="total"><?php echo self::formatarNumero($abandonos->total); ?> <span
                         class="perc">(<?php echo number_format($percDistorcao, 1, ',', '.'); ?>%)<sup
                             class="arterico">*</sup></span></div>
         </section>
@@ -178,5 +178,21 @@
         }
         ?>
     </section>
+
+    <span class="legenda">* Taxa de abandono</span>
+
+    <section id="deficiencia">
+        <header><h2>Deficiência</h2></header>
+        <section class="deficiencia">
+            <?php
+
+            $abandonos->deficiencia->sem = $abandonos->total - $abandonos->deficiencia->com;
+
+            foreach ($abandonos->deficiencia as $k => $v) {
+                echo self::gerarAmostra($k . ' deficiência', $v, $abandonos->total);
+            }
+            ?>
+        </section>
+    </section>
+    <span class="legenda">* Taxa de reprovação</span>
 </section>
-<span class="legenda">* Taxa de abandono</span>

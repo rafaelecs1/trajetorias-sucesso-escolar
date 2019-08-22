@@ -33,7 +33,7 @@
                 if ($divisor <= 0) { $divisor = 1;}
                 $percReprovacao = ($reprovacoes->total * 100) / $divisor;
             ?>
-            <div class="total"><?php echo self::formatarNumero($matriculas->total); ?>
+            <div class="total"><?php echo self::formatarNumero($reprovacoes->total); ?>
                 <span class="perc">(<?php echo number_format($percReprovacao, 1, ',', '.'); ?>%)
                     <sup class="arterico">*</sup>
                 </span>
@@ -256,6 +256,22 @@
         </section>
     </section>
 
+    <span class="legenda">* Taxa de reprovação</span>
+
+    <section id="deficiencia">
+        <header><h2>Deficiência</h2></header>
+        <section class="deficiencia">
+            <?php
+            echo '<pre>';
+            var_dump($reprovacoes->total .'-'. $reprovacoes->deficiencia->com);
+            $reprovacoes->deficiencia->sem = $reprovacoes->total - $reprovacoes->deficiencia->com;
+
+            foreach ($reprovacoes->deficiencia as $k => $v) {
+                echo self::gerarAmostra($k . ' deficiência', $v, $reprovacoes->total);
+            }
+            ?>
+        </section>
+    </section>
     <span class="legenda">* Taxa de reprovação</span>
 
 </section>

@@ -175,6 +175,19 @@
         }
         ?>
     </section>
+    <span class="legenda">* Taxa de distorção idade-serie</span>
+
+    <section id="deficiencia">
+        <header><h2>Deficiência</h2></header>
+        <section class="deficiencia">
+            <?php
+
+            foreach ($painel['deficiencia'] as $k => $v) {
+                echo self::gerarAmostra($k . ' deficiência', $v, '6000000');
+            }
+            ?>
+        </section>
+    </section>
 
     <span class="legenda">* Taxa de distorção idade-serie</span>
 

@@ -78,6 +78,10 @@ class MySQLMatriculaRepository extends AbstractRepository
         $data->genero->masculino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 1, $estadoId, null, null);
         $data->genero->feminino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 2, $estadoId, null, null);
 
+        $data->deficiencia = new \stdClass();
+        $data->deficiencia->com = $this->getTotalPainelDeficiente($anoReferencia, 1, null, null, null, null, null);
+        $data->deficiencia->sem = $data->total - $data->deficiencia->com;
+
         $this->saveBrasil($estadoId, self::ESTADO_MATRICULA, $anoReferencia, $data);
 
         return $data;
