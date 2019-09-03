@@ -593,7 +593,7 @@ class BackEnd
     {
         $domain = 'trajetoria_escolar';
         $labels = array(
-            'name' => _x('Download dos Materiais', 'Post Type General Name', $domain),
+            'name' => _x('Cadernos de recomendações', 'Post Type General Name', $domain),
             'singular_name' => _x('Material', 'Post Type Singular Name', $domain),
             'menu_name' => __('Materiais', $domain),
             'name_admin_bar' => __('Materiais', $domain),

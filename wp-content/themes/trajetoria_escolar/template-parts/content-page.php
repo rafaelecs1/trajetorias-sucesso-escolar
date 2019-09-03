@@ -11,10 +11,11 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <?php if (is_front_page()) : ?>
+        <div class="bg-image"></div>
 
         <div class="faixa-video">
             <div class="center">
-                <a class="bot1">
+                <a class="bot1 animated bounceInLeft background-text">
                     <h3 class="entry-header-home">Trajetórias de Sucesso Escolar</h3>
                     <p class="alignjustify">A distorção idade-série acontece quando um aluno está com dois ou mais anos de atraso escolar,
                         considerando a idade esperada para cada ano. No Brasil, cada criança deve ingressar no 1º ano do
@@ -28,7 +29,7 @@
                         a essas múltiplas reprovações e, muitas vezes, à exclusão escolar.
                     </p>
                 </a>
-                <a class="bot12 bot1">
+                <a class="bot12 bot1 animated fadeInUp">
                     <p>
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/6P3DmtgOjfk" frameborder="0"
                                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"

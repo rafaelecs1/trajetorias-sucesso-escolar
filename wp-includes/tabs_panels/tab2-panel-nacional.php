@@ -76,7 +76,7 @@
                 $slug = 'grafico-' . sanitize_title($label) . '-reprovacao';
                 $id = str_replace('-', '_', $slug);
                 $lis .= '<li class="reprovacoes"><a href="#' . $slug . '">' . $label . '</a></li>';
-                $sections .= '<section id="' . $slug . '" class="aba reprovacao"><span>Número de estudantes que foram reprovados</span><div id="' . $id . '" class="grafico-reprovacao"></div></section>';
+                $sections .= '<section id="' . $slug . '" class="aba reprovacao"><span>Número de estudantes reprovados</span><div id="' . $id . '" class="grafico-reprovacao"></div></section>';
 
                 foreach ($reprovacoes->anos->anos->$tipoAno as $ano => $item) {
                     $arAux = array();
@@ -180,6 +180,9 @@
         }
         ?>
     </section>
+
+    <span class="legenda">* Taxa de reprovação</span>
+
     <section id="deficiencia">
         <header><h2>Deficiência</h2></header>
         <section class="deficiencia">

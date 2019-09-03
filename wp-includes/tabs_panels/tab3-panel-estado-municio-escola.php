@@ -95,7 +95,7 @@
                         $idAbandono = str_replace('-', '_', $slugAbandono);
 
                         $lisAbandonos .= '<li><a href="#' . $slugAbandono . '">' . $label . '</a></li>';
-                        $sectionsAbandonos .= '<section id="' . $slugAbandono . '" class="aba_abandono"><span>Número de estudantes que abandonaram a escola por ano </span><div id="'.$idAbandono.'" class="grafico-abandono"></div></section>';
+                        $sectionsAbandonos .= '<section id="' . $slugAbandono . '" class="aba_abandono"><span>Número de estudantes em situação de abandono </span><div id="'.$idAbandono.'" class="grafico-abandono"></div></section>';
 
                         foreach ( $arrayAnosAbandonos['anos'][$tipoAno] as $ano => $anoReprovacoes ) {
 
