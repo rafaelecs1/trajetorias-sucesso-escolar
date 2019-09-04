@@ -75,7 +75,7 @@
                 $slug = 'grafico-' . sanitize_title($label) . '-abandono';
                 $id = str_replace('-', '_', $slug);
                 $lis .= '<li class="abandonos"><a href="#' . $slug . '">' . $label . '</a></li>';
-                $sections .= '<section id="' . $slug . '" class="aba abandono"><span>Número de estudantes que abandonaram a escola</span><div id="' . $id . '" class="grafico-abandono"></div></section>';
+                $sections .= '<section id="' . $slug . '" class="aba abandono"><span>Número de estudantes em situação de abandono</span><div id="' . $id . '" class="grafico-abandono"></div></section>';
 
                 foreach ($abandonos->anos->anos->$tipoAno as $ano => $item) {
                     $arAux = array();
@@ -194,5 +194,5 @@
             ?>
         </section>
     </section>
-    <span class="legenda">* Taxa de reprovação</span>
+    <span class="legenda">* Taxa de abandono</span>
 </section>

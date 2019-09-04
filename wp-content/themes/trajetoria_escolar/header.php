@@ -71,12 +71,13 @@
             </ul>
         </div>
     </header><!-- #masthead -->
+    <div class="faixa-header"></div>
     <?php
         $faixa = null;
 
-        if(is_front_page()) {
-            $faixa = '<a class="bot1" href="' . site_url('por-que-e-fundamental-promover-trajetorias-de-sucesso-escolar-para-criancas-e-adolescentes') . '" rel="bookmark" class="button"><p>Por que é fundamental promover trajetórias de sucesso escolar para crianças e adolescentes?</p></a> <a class="bot2" href="' . site_url('download-dos-materiais') . '" rel="bookmark" class="button"><p>Recomendações para a promoção de trajetórias de sucesso escolar para crianças e adolescentes</p></a>';
-        }
+//        if(is_front_page()) {
+//            $faixa = '<a class="bot1" href="' . site_url('por-que-e-fundamental-promover-trajetorias-de-sucesso-escolar-para-criancas-e-adolescentes') . '" rel="bookmark" class="button"><p>Por que é fundamental promover trajetórias de sucesso escolar para crianças e adolescentes?</p></a> <a class="bot2" href="' . site_url('download-dos-materiais') . '" rel="bookmark" class="button"><p>Recomendações para a promoção de trajetórias de sucesso escolar para crianças e adolescentes</p></a>';
+//        }
 
         if(strpos($_SERVER['REQUEST_URI'], '/painel/') !== false) {
             $faixa =

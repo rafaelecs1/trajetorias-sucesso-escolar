@@ -5,6 +5,8 @@ var map,
 jQuery(document).ready(function ($) {
 
     $('h1:eq(1)').after('<p class="entry-header-description">Nas redes públicas municipais e estaduais (Censo Escolar - INEP/MEC)</p> ');
+    $('h1:eq(1)').after('<p class="entry-header-description">Em distorção, situação de reprovação ou abandono</p> ');
+
 
     $('#select-year').change(function () {
         $('#form-year').submit();
