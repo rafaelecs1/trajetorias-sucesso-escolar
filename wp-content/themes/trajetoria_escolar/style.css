@@ -1713,6 +1713,11 @@ Faixa
     width: 47%;
     background-repeat: no-repeat;
 }
+.faixa-video a.bot12 {
+    width: 53%;
+    background-repeat: no-repeat;
+    padding-left: 55px !important;
+}
 
 .home .faixa {
     background-position: bottom;
@@ -2569,4 +2574,7 @@ iframe {
 }
 .pt-0 {
     padding-top: 0px !important;
+}
+.pr-0 {
+    padding-right: 0px !important;
 }
