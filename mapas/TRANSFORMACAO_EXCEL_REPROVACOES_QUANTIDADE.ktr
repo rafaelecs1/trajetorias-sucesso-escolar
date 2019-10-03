@@ -581,7 +581,7 @@
     <accept_field/>
     <accept_stepname/>
     <file>
-      <name>C:\Users\mansouza\Documents\www\arquivos\tabela1_padrao_reprovacao.xlsx</name>
+      <name>C:\Users\mansouza\Documents\www\Trajetorias 2019 - dados - guilherme\mapas_outubro_2019\tabela4_padrao_reprovacao.xlsx</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -855,7 +855,7 @@
     </fields>
     <sheets>
       <sheet>
-        <name>Reprovacao-Total</name>
+        <name>Matrícula Repovação</name>
         <startrow>3</startrow>
         <startcol>0</startcol>
       </sheet>
