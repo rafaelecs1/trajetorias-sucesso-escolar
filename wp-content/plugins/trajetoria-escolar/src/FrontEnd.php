@@ -310,38 +310,29 @@ class FrontEnd
             }
 
             wp_enqueue_script('painel', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral.js', array('jquery'), false, true);
-            wp_enqueue_script('painel2', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral2.js', array('jquery'), false, true);
-            wp_enqueue_script('painel3', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral3.js', array('jquery'), false, true);
+//            wp_enqueue_script('painel2', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral2.js', array('jquery'), false, true);
+//            wp_enqueue_script('painel3', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral3.js', array('jquery'), false, true);
             wp_enqueue_script('tabs', plugin_dir_url(dirname(__FILE__)) . 'js/tabs.js', array('jquery'), false, true);
 
             $voltar = $especificacao = null;
 
-            wp_localize_script('painel', 'painel', array(
-                'siteUrl' => site_url('/'),
-                'ajaxUrl' => admin_url('admin-ajax.php'),
-                'voltar' => $voltar,
-                'especificacao' => $especificacao,
-                'graficosPorTipoAno' => $graficosPorTipoAno,
-                'graficoPorRedes' => $graficoPorRedes,
-            ));
+                 wp_localize_script('painel', 'painel', array(
+                    'siteUrl' => site_url('/'),
+                    'ajaxUrl' => admin_url('admin-ajax.php'),
+                    'voltar' => $voltar,
+                    'especificacao' => $especificacao,
 
-                wp_localize_script('painel2', 'painel2', array(
-                'siteUrl' => site_url('/'),
-                'ajaxUrl' => admin_url('admin-ajax.php'),
-                'voltar' => $voltar,
-                'especificacao' => $especificacao,
-                'graficosPorTipoAnoReprovacao' => $graficosPorTipoAnoReprovacao,
-                'graficoPorRedesReprovacao' => $graficoPorRedesReprovacao,
-            ));
+                    'graficosDistorcaoPorTipoAno' => $graficosPorTipoAno,
+                    'graficoDistorcaoPorRedes' => $graficoPorRedes,
 
-                wp_localize_script('painel3', 'painel3', array(
-                'siteUrl' => site_url('/'),
-                'ajaxUrl' => admin_url('admin-ajax.php'),
-                'voltar' => $voltar,
-                'especificacao' => $especificacao,
-                'graficosPorTipoAnoAbandono' => $graficosPorTipoAnoAbandono,
-                'graficosPorRedesAbandono' => $graficoPorRedesAbandono,
-            ));
+                    'graficosReprovacaoPorTipoAno' => $graficosPorTipoAnoReprovacao,
+                    'graficoReprovacaoPorRedes' => $graficoPorRedesReprovacao,
+
+                    'graficosAbandonoPorTipoAno' => $graficosPorTipoAnoAbandono,
+                    'graficoAbandonoPorRedes' => $graficoPorRedesAbandono,
+
+                    'year' => $this->year
+                ));
 
             wp_enqueue_script('google_charts', 'https://www.gstatic.com/charts/loader.js', null, false, true);
             return ob_get_clean();
