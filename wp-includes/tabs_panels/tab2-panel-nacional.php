@@ -187,12 +187,9 @@
         <header><h2>Deficiência</h2></header>
         <section class="deficiencia">
             <?php
-
-            $reprovacoes->deficiencia->sem = $reprovacoes->total - $reprovacoes->deficiencia->com;
-
-            foreach ($reprovacoes->deficiencia as $k => $v) {
-                echo self::gerarAmostra($k . ' deficiência', $v, $reprovacoes->total);
-            }
+                foreach ($reprovacoes->deficiencia as $k => $v) {
+                    echo self::gerarAmostra($k . ' deficiência', $v, $reprovacoes->total);
+                }
             ?>
         </section>
     </section>

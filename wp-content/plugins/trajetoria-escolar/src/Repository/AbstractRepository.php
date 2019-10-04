@@ -152,11 +152,41 @@ abstract class AbstractRepository implements IRestFull
         return $response['qtd'];
     }
 
-    protected function getTotalPainelDeficiente($anoReferencia = null, $deficienciaId = null)
+    protected function getTotalPainelDeficiente($anoReferencia = null, $deficienciaId = null, $tipo, $estado_id = null, $municipio_id = null)
     {
-        $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ' . $this->tableName . ' join te_escolas te on te.id = ' . $this->tableName . '.escolas_id                                                                                   
-                                      where ' . $this->tableName . '.ano_referencia = %d AND ' . $this->tableName . '.cor_raca_id IS NULL AND ' . $this->tableName . '.genero_id IS NULL AND ' . $this->tableName . '.deficiencia_id = %d';
-        $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $deficienciaId), ARRAY_A);
+
+        switch ($tipo) {
+            case "NacionalMatricula":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia where tse_deficiencia.id > 0';
+                break;
+            case "NacionalAbandono":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia where tse_deficiencia.situacao_id = 1';
+                break;
+            case "NacionalReprovacao":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia where tse_deficiencia.situacao_id = 2';
+                break;
+            case "EstadoMatricula":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.estado_id = '.$estado_id;
+                break;
+            case "EstadoAbandono":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.estado_id = '.$estado_id.' and tse_deficiencia.situacao_id = 1';
+                break;
+            case "EstadoReprovacao":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.estado_id = '.$estado_id.' and tse_deficiencia.situacao_id = 2';
+                break;
+            case "MunicipioMatricula":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.id = '.$municipio_id;
+                break;
+            case "MunicipioAbandono":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.id = '.$municipio_id.' and tse_deficiencia.situacao_id = 1';
+                break;
+            case "MunicipioReprovacao":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.id = '.$municipio_id.' and tse_deficiencia.situacao_id = 2';
+                break;
+        }
+
+        $sql .= ' and tse_deficiencia.deficiencia = %d and tse_deficiencia.ano_referencia = %a';
+        $response = $this->db->get_row($this->db->prepare($sql, $deficienciaId, $anoReferencia), ARRAY_A);
         return $response['qtd'];
     }
 
@@ -183,7 +213,6 @@ abstract class AbstractRepository implements IRestFull
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $regiao), ARRAY_A);
         return $response['qtd'];
     }
-
 
     protected function getAnosIniciais($anoReferencia = null, $corRacaId = null, $generoId = null)
     {
@@ -361,7 +390,8 @@ abstract class AbstractRepository implements IRestFull
         $data->genero->feminino = $this->getTotalPainelGenero($anoReferencia, 2);
 
         $data->deficiencia = new \stdClass();
-        $data->deficiencia->com = $this->getTotalPainelDeficiente($anoReferencia, 1);
+        $data->deficiencia->sem = $this->getTotalPainelDeficiente($anoReferencia, 0, $tipo, null, null);
+        $data->deficiencia->com = $this->getTotalPainelDeficiente($anoReferencia, 1, $tipo, null, null);
 
         $this->saveBrasil(1, $tipo, $anoReferencia, $data);
 
