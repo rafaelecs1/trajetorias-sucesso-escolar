@@ -78,19 +78,19 @@ abstract class AbstractRepository implements IRestFull
             $sql .= $this->tableName . ' where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d';
 
             $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
-            return $response['qtd'];
+            return (int)$response['qtd'];
 
         }
         if (!empty($corRacaId)) {
             $sql .= $this->tableName . ' where ano_referencia = %d AND cor_raca_id = %d';
             $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
-            return $response['qtd'];
+            return (int)$response['qtd'];
         }
 
         if (!empty($generoId)) {
             $sql .= $this->tableName . ' where ano_referencia = %d AND genero_id = %d';
             $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
-            return $response['qtd'];
+            return (int)$response['qtd'];
         }
     }
 
@@ -113,7 +113,7 @@ abstract class AbstractRepository implements IRestFull
                                       where ' . $this->tableName . '.ano_referencia = %d AND ' . $this->tableName . '.cor_raca_id IS NULL AND ' . $this->tableName . '.genero_id IS NULL AND te.dependencia = %s';
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $dependencia), ARRAY_A);
-        return $response['qtd'];
+        return (int)$response['qtd'];
     }
 
     protected function getTotalPainelLocalizacao($anoReferencia = null, $tipo = null)
@@ -122,7 +122,7 @@ abstract class AbstractRepository implements IRestFull
                                       where ' . $this->tableName . '.ano_referencia = %d AND ' . $this->tableName . '.cor_raca_id IS NULL AND ' . $this->tableName . '.genero_id IS NULL AND te.localizacao = %s';
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $tipo), ARRAY_A);
-        return $response['qtd'];
+        return (int)$response['qtd'];
     }
 
     protected function getTotalPainelLocalizacaoDiferenciada($anoReferencia = null, $tipo = null)
@@ -131,7 +131,7 @@ abstract class AbstractRepository implements IRestFull
                                       where ' . $this->tableName . '.ano_referencia = %d AND ' . $this->tableName . '.cor_raca_id IS NULL AND ' . $this->tableName . '.genero_id IS NULL AND te.localizacao_diferenciada = %s';
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $tipo), ARRAY_A);
-        return $response['qtd'];
+        return (int)$response['qtd'];
     }
 
     protected function getTotalPainelCorRaca($anoReferencia = null, $corRacaId = null)
@@ -141,7 +141,7 @@ abstract class AbstractRepository implements IRestFull
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $corRacaId), ARRAY_A);
 
-        return $response['qtd'];
+        return (int)$response['qtd'];
     }
 
     protected function getTotalPainelGenero($anoReferencia = null, $generoId = null)
@@ -149,7 +149,7 @@ abstract class AbstractRepository implements IRestFull
         $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ' . $this->tableName . ' join te_escolas te on te.id = ' . $this->tableName . '.escolas_id                                                                                   
                                       where ' . $this->tableName . '.ano_referencia = %d AND ' . $this->tableName . '.cor_raca_id IS NULL AND ' . $this->tableName . '.genero_id = %d';
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $generoId), ARRAY_A);
-        return $response['qtd'];
+        return (int)$response['qtd'];
     }
 
     protected function getTotalPainelDeficiente($anoReferencia = null, $deficienciaId = null)
@@ -157,7 +157,7 @@ abstract class AbstractRepository implements IRestFull
         $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ' . $this->tableName . ' join te_escolas te on te.id = ' . $this->tableName . '.escolas_id                                                                                   
                                       where ' . $this->tableName . '.ano_referencia = %d AND ' . $this->tableName . '.cor_raca_id IS NULL AND ' . $this->tableName . '.genero_id IS NULL AND ' . $this->tableName . '.deficiencia_id = %d';
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $deficienciaId), ARRAY_A);
-        return $response['qtd'];
+        return (int)$response['qtd'];
     }
 
     protected function getTotalPorRegiao($anoReferencia = null, $regiao = null, $tipoAno = null)
@@ -181,7 +181,7 @@ abstract class AbstractRepository implements IRestFull
                                       where ' . $this->tableName . '.ano_referencia = %d AND ' . $this->tableName . '.cor_raca_id IS NULL AND ' . $this->tableName . '.genero_id IS NULL AND tes.regiao = %s';
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $regiao), ARRAY_A);
-        return $response['qtd'];
+        return (int)$response['qtd'];
     }
 
 
@@ -192,7 +192,7 @@ abstract class AbstractRepository implements IRestFull
         if (empty($corRacaId) && empty($generoId)) {
             $sql .= $this->tableName . ' where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d';
             $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
-            return $response['qtd'];
+            return (int)$response['qtd'];
         }
     }
 
@@ -204,7 +204,7 @@ abstract class AbstractRepository implements IRestFull
         if (empty($corRacaId) && empty($generoId)) {
             $sql .= $this->tableName . ' where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d';
             $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
-            return $response['qtd'];
+            return (int)$response['qtd'];
         }
 
     }
@@ -216,7 +216,7 @@ abstract class AbstractRepository implements IRestFull
         if (empty($corRacaId) && empty($generoId)) {
             $sql .= $this->tableName . ' where cor_raca_id IS NULL AND genero_id IS NULL AND ano_referencia = %d';
             $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
-            return $response['qtd'];
+            return (int)$response['qtd'];
         }
 
     }
@@ -446,7 +446,7 @@ abstract class AbstractRepository implements IRestFull
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
 
-        return $response['qtd'];
+        return (int)$response['qtd'];
     }
 
     protected function getTotalAnosIniciaisEstadoMunicipioEscola($anoReferencia = null, $corRacaId = null, $generoId = null, $estadoId = null, $municipioId = null, $escolaId = null)
@@ -493,7 +493,7 @@ abstract class AbstractRepository implements IRestFull
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
 
-        return $response['qtd'];
+        return (int)$response['qtd'];
     }
 
     protected function getTotalAnosFinaisEstadoMunicipioEscola($anoReferencia = null, $corRacaId = null, $generoId = null, $estadoId = null, $municipioId = null, $escolaId = null)
@@ -540,7 +540,7 @@ abstract class AbstractRepository implements IRestFull
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
 
-        return $response['qtd'];
+        return (int)$response['qtd'];
 
     }
 
@@ -588,7 +588,7 @@ abstract class AbstractRepository implements IRestFull
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
 
-        return $response['qtd'];
+        return (int)$response['qtd'];
     }
 
     protected function getTotalDependenciaEstadoMunicipioEscola($anoReferencia = null, $dependencia = null, $tipoAno = null, $estadoId = null, $municipioId = null, $escolaId = null)
@@ -651,7 +651,7 @@ abstract class AbstractRepository implements IRestFull
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $dependencia), ARRAY_A);
 
-        return $response['qtd'];
+        return (int)$response['qtd'];
     }
 
     protected function getTotalLocalizacaoEstadoMunicipioEscola($anoReferencia = null, $localizacao = null, $tipoAno = null, $estadoId = null, $municipioId = null, $escolaId = null)
@@ -714,7 +714,7 @@ abstract class AbstractRepository implements IRestFull
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $localizacao), ARRAY_A);
 
-        return $response['qtd'];
+        return (int)$response['qtd'];
     }
 
     protected function getTotalLocalizacaoDiferenciadaEstadoMunicipioEscola($anoReferencia = null, $localizacaoDiferenciada = null, $tipoAno = null, $estadoId = null, $municipioId = null, $escolaId = null)
@@ -777,7 +777,11 @@ abstract class AbstractRepository implements IRestFull
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $localizacaoDiferenciada), ARRAY_A);
 
-        return $response['qtd'];
+        return (int)$response['qtd'];
+    }
+
+    private function getAprovados(){
+
     }
 
 
@@ -791,35 +795,45 @@ abstract class AbstractRepository implements IRestFull
         $data->anos['Iniciais'] = array(
             '1' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'matriculas') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'reprovacoes') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'abandonos'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'abandonos')
                 ],
 
             '2' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano2', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano2', 'matriculas') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano2', 'reprovacoes') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano2', 'abandonos'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano2', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano2', 'abandonos')
                 ],
 
             '3' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano3', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano3', 'matriculas') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano3', 'reprovacoes') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano3', 'abandonos'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano3', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano3', 'abandonos')
                 ],
 
             '4' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano4', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano4', 'matriculas') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano4', 'reprovacoes') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano4', 'abandonos'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano4', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano4', 'abandonos')
                 ],
 
             '5' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano5', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano5', 'matriculas') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano5', 'reprovacoes') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano5', 'abandonos'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano5', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano5', 'abandonos')
                 ],
@@ -829,28 +843,36 @@ abstract class AbstractRepository implements IRestFull
         $data->anos['Finais'] = array(
             '6' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano6', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano6', 'matriculas') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano6', 'reprovacoes') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano6', 'abandonos'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano6', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano6', 'abandonos')
                 ],
 
             '7' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano7', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano7', 'matriculas') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano7', 'reprovacoes') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano7', 'abandonos'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano7', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano7', 'abandonos')
                 ],
 
             '8' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano8', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano8', 'matriculas') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano8', 'reprovacoes') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano8', 'abandonos'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano8', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano8', 'abandonos')
                 ],
 
             '9' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano9', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano9', 'matriculas') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano9', 'reprovacoes') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano9', 'abandonos'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano9', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano9', 'abandonos')
                 ],
@@ -860,28 +882,36 @@ abstract class AbstractRepository implements IRestFull
         $data->anos['Medio'] = array(
             '10' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'matriculas') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'reprovacoes') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'abandonos'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'abandonos')
                 ],
 
             '11' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'matriculas') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'reprovacoes') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'abandonos'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'abandonos')
                 ],
 
             '12' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'matriculas') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'reprovacoes') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'abandonos'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'abandonos')
                 ],
 
             '13' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'matriculas'),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'matriculas') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'reprovacoes') -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'abandonos'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'abandonos')
                 ],
@@ -951,7 +981,7 @@ abstract class AbstractRepository implements IRestFull
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
 
-        return $response['qtd'];
+        return (int)$response['qtd'];
 
     }
 

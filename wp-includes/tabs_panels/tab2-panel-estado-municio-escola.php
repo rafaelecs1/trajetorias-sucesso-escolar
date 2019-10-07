@@ -263,7 +263,6 @@
         <section class="deficiencia">
             <?php
             echo '<pre>';
-            var_dump($reprovacoes->total .'-'. $reprovacoes->deficiencia->com);
             $reprovacoes->deficiencia->sem = $reprovacoes->total - $reprovacoes->deficiencia->com;
 
             foreach ($reprovacoes->deficiencia as $k => $v) {

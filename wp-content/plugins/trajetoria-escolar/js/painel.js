@@ -3,8 +3,7 @@ jQuery(document).ready(function ($) {
     //Interface
     $('#voltar').attr('href', painel.siteUrl + painel.voltar);
 
-    function perc(ele)
-    {
+    function perc(ele) {
         let total = parseInt($(ele).data('total')),
             valor = parseInt($(ele).data('valor'));
         if (total <= 0) {
@@ -19,8 +18,7 @@ jQuery(document).ready(function ($) {
         });
     });
 
-    $('a[href^=#]').click(function ()
-    {
+    $('a[href^=#]').click(function () {
         if (typeof ga == 'function') {
             let url = window.location.href;
             url = url.replace(painel.siteUrl, '/');
@@ -29,8 +27,7 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    $(document).on('click', '.situacao-das-escolas', function (e)
-    {
+    $(document).on('click', '.situacao-das-escolas', function (e) {
         e.preventDefault();
         let me = $(this),
             id = parseInt($(me).data('municipio')),
@@ -54,7 +51,7 @@ jQuery(document).ready(function ($) {
                     if (d.length !== 0) {
                         $('#lista-escolas').html('').append('<h4>Lista de escolas</h4><h5>' + $('h1:eq(1)').text() + ' - Rede ' + rede + ':</h5><input type="search" id="filtrar-escolas" placeholder="Filtrar escolas"/><div class="lista"></div>');
                         $.each(d, function (i, o) {
-                            $('#lista-escolas .lista').append('<div class="escola"><a href="' + painel.siteUrl + 'painel/escola/' + o.id + '/' + (parseInt(painel.year)-1) + '/">' + o.nome + '</a></div>');
+                            $('#lista-escolas .lista').append('<div class="escola"><a href="' + painel.siteUrl + 'painel/escola/' + o.id + '/' + (parseInt(painel.year) - 1) + '/">' + o.nome + '</a></div>');
                         });
                         modal.open();
                         $('.ver-escolas').show();
@@ -67,8 +64,7 @@ jQuery(document).ready(function ($) {
 
     });
 
-    $(document).on('keyup', '#filtrar-escolas', function ()
-    {
+    $(document).on('keyup', '#filtrar-escolas', function () {
         let search = $(this).val().toUpperCase();
         $('#lista-escolas .escola a').each(function (i, o) {
             if ($(this).text().toUpperCase().indexOf(search) !== -1) {
@@ -79,8 +75,7 @@ jQuery(document).ready(function ($) {
         });
     });
 
-    function iniciaGraficosDistorcao()
-    {
+    function iniciaGraficosDistorcao() {
         let legendaTipoDistorcao = ['', 'Sem atraso escolar', '1 ano de atraso escolar', '2 anos de atraso escolar', '3 anos ou mais de atraso escolar'],
             legendaPorAtraso = ['Redes', 'Estudantes sem distorção idade-série', 'Estudantes em distorção idade-série'];
 
@@ -96,6 +91,9 @@ jQuery(document).ready(function ($) {
 
         $('ul.abas>li>a').click(function (e) {
             e.preventDefault();
+            if (!e.isTrigger) {
+                clearInterval(window.intervalo);
+            }
             let me = $(this),
                 id = $(me).attr('href'),
                 par = $(me).parent();
@@ -111,11 +109,10 @@ jQuery(document).ready(function ($) {
 
     }
 
-    function iniciaGraficosReprovacao()
-    {
+    function iniciaGraficosReprovacao() {
 
-        let legendaTipoReprovacao = [ '', 'Matrículas', 'Reprovacoes', 'Abandonos'],
-            legendaReprovacaoPorRede = ['', 'Matrículas', 'Reprovacoes', 'Abandonos'];
+        let legendaTipoReprovacao = ['', 'Aprovados', 'Reprovacões', 'Abandonos'],
+            legendaReprovacaoPorRede = ['Redes', 'Aprovados', 'Reprovacoes', 'Abandonos'];
 
         for (var h in painel.graficosReprovacaoPorTipoAno) {
             painel.graficosReprovacaoPorTipoAno[h].unshift(legendaTipoReprovacao);
@@ -129,6 +126,9 @@ jQuery(document).ready(function ($) {
 
         $('ul.abas_reprovacoes>li>a').click(function (e) {
             e.preventDefault();
+            if (!e.isTrigger) {
+                clearInterval(window.intervalo);
+            }
             let me = $(this),
                 id = $(me).attr('href'),
                 par = $(me).parent();
@@ -144,9 +144,8 @@ jQuery(document).ready(function ($) {
 
     }
 
-    function iniciaGraficosAbandono()
-    {
-        let legendaTipoAbandono = [ '', 'Matrículas', 'Reprovacoes', 'Abandonos'],
+    function iniciaGraficosAbandono() {
+        let legendaTipoAbandono = ['', 'Matrículas', 'Reprovacoes', 'Abandonos'],
             legendaAbandonoPorRede = ['', 'Matrículas', 'Reprovacoes', 'Abandonos'];
 
         for (var i in painel.graficosAbandonoPorTipoAno) {
@@ -161,6 +160,9 @@ jQuery(document).ready(function ($) {
 
         $('ul.abas_abandonos>li>a').click(function (e) {
             e.preventDefault();
+            if (!e.isTrigger) {
+                clearInterval(window.intervalo);
+            }
             let me = $(this),
                 id = $(me).attr('href'),
                 par = $(me).parent();
@@ -175,8 +177,7 @@ jQuery(document).ready(function ($) {
         });
     }
 
-    function chartsDistorcao()
-    {
+    function chartsDistorcao() {
 
         let options = {
             width: '100%',
@@ -219,6 +220,7 @@ jQuery(document).ready(function ($) {
             );
             drawChart(g, data, options);
         }
+        document.getElementById('grafico_por_redes').innerHTML = '';
 
         if (document.getElementById('grafico_por_redes').innerHTML === '') {
             let data = google.visualization.arrayToDataTable(
@@ -237,8 +239,7 @@ jQuery(document).ready(function ($) {
 
     }
 
-    function chartsReprovacao()
-    {
+    function chartsReprovacao() {
         let options = {
             width: '100%',
             height: 400,
@@ -281,7 +282,7 @@ jQuery(document).ready(function ($) {
             );
             drawChart(g, data, options);
         }
-
+        document.getElementById('grafico_por_redes_reprovacao').innerHTML = ''
         if (document.getElementById('grafico_por_redes_reprovacao').innerHTML === '') {
 
             let data = google.visualization.arrayToDataTable(
@@ -311,8 +312,7 @@ jQuery(document).ready(function ($) {
 
     }
 
-    function chartsAbandono()
-    {
+    function chartsAbandono() {
 
         let options = {
             width: '100%',
@@ -354,10 +354,9 @@ jQuery(document).ready(function ($) {
             let data = google.visualization.arrayToDataTable(
                 painel.graficosAbandonoPorTipoAno[g]
             );
-
             drawChart(g, data, options);
         }
-
+        document.getElementById('grafico_por_redes_abandono').innerHTML = ''
         if (document.getElementById('grafico_por_redes_abandono').innerHTML === '') {
 
             let data = google.visualization.arrayToDataTable(
@@ -395,15 +394,13 @@ jQuery(document).ready(function ($) {
         'language': 'pt_br'
     });
 
-    function drawChart(id, data, options)
-    {
+    function drawChart(id, data, options) {
         let chart = new google.charts.Bar(document.getElementById(id));
         chart.draw(data, google.charts.Bar.convertOptions(options));
     }
 
     //resize window
-    $(window).resize(function ()
-    {
+    $(window).resize(function () {
         $('div.grafico').empty();
         chartsDistorcao();
         chartsAbandono();
@@ -413,23 +410,31 @@ jQuery(document).ready(function ($) {
     //check if tab is visible. If true reload the graph
     $('.tablinks').click(function () {
             $('div.grafico').empty();
-            chartsReprovacao();
-            chartsAbandono();
-            chartsDistorcao();
+            if (this.id === 'tab-link-1') {
+                chartsDistorcao();
+                $('ul.abas>li>a:eq(0)').trigger('click');
+            }
+            if (this.id === 'tab-link-2') {
+                chartsAbandono();
+                $('ul.abas_reprovacoes>li>a:eq(0)').trigger('click');
+            }
+            if (this.id === 'tab-link-3') {
+                chartsReprovacao();
+                $('ul.abas_abandonos>li>a:eq(0)').trigger('click');
+            }
+
         }
     );
 
+
     //Action for select year of panel
-    $('#select-year').change(function ()
-    {
+    $('#select-year').change(function () {
         var value_link = $(this).val();
         window.location.href = value_link;
     });
 
-    function iniciaCharts(){
+    function iniciaCharts() {
         chartsDistorcao();
-        chartsReprovacao();
-        chartsAbandono();
     }
 
     google.charts.setOnLoadCallback(iniciaCharts);
