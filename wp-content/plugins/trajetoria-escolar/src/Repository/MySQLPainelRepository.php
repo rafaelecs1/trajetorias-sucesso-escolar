@@ -48,13 +48,25 @@ class MySQLPainelRepository implements IPainelRepository
      * @param integer $anoReferencia
      * @return array
      */
-    public function get(IDistorcao $origem, $anoReferencia = 0)
+    public function get(IDistorcao $origem, $anoReferencia = 0, $situacao = null, $estadoId = null, $municipioId = null)
     {
+
         $painel = $this->getCache($origem, $anoReferencia);
         if (!empty($painel)) {
             return json_decode($painel, true);
         }
         $repository = new MySQLDistorcaoRepository();
+
+        $matriculasDeficiencia = null;
+
+        if( $situacao == "EstadoDistorcao" || $situacao == "MunicipioDistorcao") {
+            $matriculaRepository = new MySQLMatriculaRepository();
+            $matriculasDeficiencia = array(
+                'com' => $matriculaRepository->getTotalPainelDeficiente($anoReferencia, 1, $situacao, $estadoId, $municipioId),
+                'sem' => $matriculaRepository->getTotalPainelDeficiente($anoReferencia, 0, $situacao, $estadoId, $municipioId)
+            );
+        }
+
         $painel = array(
             'distorcao' => $repository->getTotal($origem, $anoReferencia),
             'sem_distorcao' => $repository->getTotalSem($origem, $anoReferencia),
@@ -64,7 +76,7 @@ class MySQLPainelRepository implements IPainelRepository
             'localizacao_diferenciada' => $repository->getPorLocalizacaoDiferenciada($origem, $anoReferencia),
             'cor_raca' => $repository->getPorCorRaca($origem, $anoReferencia),
             'genero' => $repository->getPorGenero($origem, $anoReferencia),
-            'deficiencia' => array('com'=>'1234567', 'sem'=>'2345678'),
+            'deficiencia' => $matriculasDeficiencia,
             'total_geral' => $repository->getTotalMatriculas($origem, $anoReferencia),
         );
 

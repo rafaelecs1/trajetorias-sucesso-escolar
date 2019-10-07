@@ -70,7 +70,8 @@ class MySQLAbandonoRepository extends AbstractRepository{
         $data->genero->feminino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 2, $estadoId, null, null);
 
         $data->deficiencia = new \stdClass();
-        $data->deficiencia->com =  $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, null, $estadoId, null, null, 1);
+        $data->deficiencia->com = $this->getTotalPainelDeficiente($anoReferencia, 1, self::ESTADO_ABANDONO, $estadoId, null);
+        $data->deficiencia->sem = $this->getTotalPainelDeficiente($anoReferencia, 0, self::ESTADO_ABANDONO, $estadoId, null);
 
         $this->saveBrasil($estadoId, self::ESTADO_ABANDONO, $anoReferencia, $data);
 
@@ -132,7 +133,8 @@ class MySQLAbandonoRepository extends AbstractRepository{
         $data->genero->feminino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 2, null, $municipioId, null);
 
         $data->deficiencia = new \stdClass();
-        $data->deficiencia->com =  $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, null, null, $municipioId, null, 1);
+        $data->deficiencia->com = $this->getTotalPainelDeficiente($anoReferencia, 1, self::MUNICIPIO_ABANDONO, null, $municipioId);
+        $data->deficiencia->sem = $this->getTotalPainelDeficiente($anoReferencia, 0, self::MUNICIPIO_ABANDONO, null, $municipioId);
 
 
         $this->saveBrasil($municipioId, self::MUNICIPIO_ABANDONO, $anoReferencia, $data);

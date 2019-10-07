@@ -262,11 +262,9 @@
         <header><h2>Deficiência</h2></header>
         <section class="deficiencia">
             <?php
-            $abandonos->deficiencia->sem = $abandonos->total - $abandonos->deficiencia->com;
 
-            foreach ($abandonos->deficiencia as $k => $v) {
-                echo self::gerarAmostra($k . ' deficiência', $v, $abandonos->total);
-            }
+            echo self::gerarAmostra('com deficiência', intval($abandonos->deficiencia->com), intval($abandonos->deficiencia->sem)+intval($abandonos->deficiencia->com));
+            echo self::gerarAmostra('sem deficiência', intval($abandonos->deficiencia->sem), intval($abandonos->deficiencia->sem)+intval($abandonos->deficiencia->com));
             ?>
         </section>
     </section>

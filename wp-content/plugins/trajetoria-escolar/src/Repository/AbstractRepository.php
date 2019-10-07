@@ -152,15 +152,15 @@ abstract class AbstractRepository implements IRestFull
         return $response['qtd'];
     }
 
-    public function getTotalPainelDeficiente($anoReferencia = null, $deficienciaId = null, $tipo, $estado_id = null, $municipio_id = null)
+    public function getTotalPainelDeficiente($anoReferencia = null, $deficienciaId = null, $situacao, $estado_id = null, $municipio_id = null)
     {
 
-        switch ($tipo) {
+        switch ($situacao) {
             case "Distorcao":
                 $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia where tse_deficiencia.situacao_id = 4';
                 break;
             case "NacionalMatricula":
-                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia where tse_deficiencia.id > 0';
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia where tse_deficiencia.id > 0 and tse_deficiencia.situacao_id != 4';
                 break;
             case "NacionalAbandono":
                 $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia where tse_deficiencia.situacao_id = 1';
@@ -169,7 +169,7 @@ abstract class AbstractRepository implements IRestFull
                 $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia where tse_deficiencia.situacao_id = 2';
                 break;
             case "EstadoMatricula":
-                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.estado_id = '.$estado_id;
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where tse_deficiencia.situacao_id != 4 and te_municipios.estado_id = '.$estado_id;
                 break;
             case "EstadoAbandono":
                 $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.estado_id = '.$estado_id.' and tse_deficiencia.situacao_id = 1';
@@ -177,14 +177,20 @@ abstract class AbstractRepository implements IRestFull
             case "EstadoReprovacao":
                 $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.estado_id = '.$estado_id.' and tse_deficiencia.situacao_id = 2';
                 break;
+            case "EstadoDistorcao":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.estado_id = '.$estado_id.' and tse_deficiencia.situacao_id = 4';
+                break;
             case "MunicipioMatricula":
-                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.id = '.$municipio_id;
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where tse_deficiencia.situacao_id != 4 and te_municipios.id = '.$municipio_id;
                 break;
             case "MunicipioAbandono":
                 $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.id = '.$municipio_id.' and tse_deficiencia.situacao_id = 1';
                 break;
             case "MunicipioReprovacao":
                 $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.id = '.$municipio_id.' and tse_deficiencia.situacao_id = 2';
+                break;
+            case "MunicipioDistorcao":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.id = '.$municipio_id.' and tse_deficiencia.situacao_id = 4';
                 break;
         }
 
@@ -470,10 +476,6 @@ abstract class AbstractRepository implements IRestFull
         $where .= $generoId == null
             ? ' AND ' . $this->tableName . '.genero_id IS NULL'
             : ' AND ' . $this->tableName . '.genero_id =' . $generoId;
-
-        $where .= $deficienciaId == null
-            ? ' AND ' . $this->tableName . '.deficiencia_id IS NULL'
-            : ' AND ' . $this->tableName . '.deficiencia_id =' . $deficienciaId;
 
         $sql .= $join . $where;
 

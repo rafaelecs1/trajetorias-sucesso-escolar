@@ -181,10 +181,8 @@
         <header><h2>Deficiência</h2></header>
         <section class="deficiencia">
             <?php
-
-            foreach ($painel['deficiencia'] as $k => $v) {
-                echo self::gerarAmostra($k . ' deficiência', $v, '6000000');
-            }
+                echo self::gerarAmostra('com deficiência', intval($painel['deficiencia']['com']), intval($painel['deficiencia']['com'])+intval($painel['deficiencia']['sem']));
+                echo self::gerarAmostra('sem deficiência', intval($painel['deficiencia']['sem']), intval($painel['deficiencia']['com'])+intval($painel['deficiencia']['sem']));
             ?>
         </section>
     </section>
