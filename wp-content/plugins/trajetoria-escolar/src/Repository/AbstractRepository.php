@@ -152,10 +152,13 @@ abstract class AbstractRepository implements IRestFull
         return $response['qtd'];
     }
 
-    protected function getTotalPainelDeficiente($anoReferencia = null, $deficienciaId = null, $tipo, $estado_id = null, $municipio_id = null)
+    public function getTotalPainelDeficiente($anoReferencia = null, $deficienciaId = null, $tipo, $estado_id = null, $municipio_id = null)
     {
 
         switch ($tipo) {
+            case "Distorcao":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia where tse_deficiencia.situacao_id = 4';
+                break;
             case "NacionalMatricula":
                 $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia where tse_deficiencia.id > 0';
                 break;
@@ -185,7 +188,7 @@ abstract class AbstractRepository implements IRestFull
                 break;
         }
 
-        $sql .= ' and tse_deficiencia.deficiencia = %d and tse_deficiencia.ano_referencia = %a';
+        $sql .= ' and tse_deficiencia.deficiencia = %d and tse_deficiencia.ano_referencia = %d';
         $response = $this->db->get_row($this->db->prepare($sql, $deficienciaId, $anoReferencia), ARRAY_A);
         return $response['qtd'];
     }
