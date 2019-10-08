@@ -164,14 +164,17 @@ class FrontEnd
         $rDistorcaoMapa = new MySQLMapaRepository();
         $distorcaoMapa = $rDistorcaoMapa->getBrasil($this->year);
 
-        $matriculasObj = new MySQLMatriculaRepository();
-        $matriculas = $matriculasObj->getDataMapaBrasil($this->year);
+        if( $this->year == 2019 ){
 
-        $abandonosObj = new MySQLAbandonoRepository();
-        $abandonos = $abandonosObj->getDataMapaBrasil($this->year);
+            $matriculasObj = new MySQLMatriculaRepository();
+            $matriculas = $matriculasObj->getDataMapaBrasil($this->year);
 
-        $reprovacoesObj = new MySQLReprovacaoRepository();
-        $reprovacoes = $reprovacoesObj->getDataMapaBrasil($this->year);
+            $abandonosObj = new MySQLAbandonoRepository();
+            $abandonos = $abandonosObj->getDataMapaBrasil($this->year);
+
+            $reprovacoesObj = new MySQLReprovacaoRepository();
+            $reprovacoes = $reprovacoesObj->getDataMapaBrasil($this->year);
+        }
 
 
         ob_start();
@@ -187,15 +190,23 @@ class FrontEnd
 
         <section id="slider-tabs">
             <ul class="abas" >
-                <li id="tab-link-1" class="tablinks active"><a href="#">Distorção idade-série </a></li>
-                <li id="tab-link-2" class="tablinks"><a  href="#">Reprovação</a></li>
-                <li id="tab-link-3" class="tablinks"><a href="#">Abandono</a></li>
+
+                <?php if ($this->year == 2019) { ?>
+                    <li id="tab-link-1" class="tablinks active"><a href="#">Distorção idade-série </a></li>
+                    <li id="tab-link-2" class="tablinks"><a  href="#">Reprovação</a></li>
+                    <li id="tab-link-3" class="tablinks"><a href="#">Abandono</a></li>
+                <?php } ?>
+
+                <?php if ($this->year == 2018) { ?>
+                    <li id="tab-link-1" class="tablink active"><a href="#">Distorção idade-série </a></li>
+                <?php } ?>
+
             </ul>
             <section id="tab-1" class="aba-home tabcontent active" style="display: block;">
 
                 <?php
 
-                include_once 'wp-includes/tabs_home/tab1-brasil.php'
+                     include_once 'wp-includes/tabs_home/tab1-brasil.php';
 
                 ?>
 
@@ -203,14 +214,14 @@ class FrontEnd
             <section id="tab-2" class="aba-home tabcontent" style="display: none;">
                 <?php
 
-                include_once 'wp-includes/tabs_home/tab2-brasil.php'
+                    if( $this->year == 2019 ) include_once 'wp-includes/tabs_home/tab2-brasil.php'
 
                 ?>
             </section>
             <section id="tab-3" class="aba-home tabcontent" style="display: none;">
                 <?php
 
-                include_once 'wp-includes/tabs_home/tab3-brasil.php'
+                    if( $this->year == 2019 ) include_once 'wp-includes/tabs_home/tab3-brasil.php'
 
                 ?>
             </section>
@@ -239,14 +250,16 @@ class FrontEnd
         $rDistorcaoPainel = new MySQLPainelRepository();
         $painel = $rDistorcaoPainel->getBrasil($this->year);
 
-        $matriculasObj = new MySQLMatriculaRepository();
-        $matriculas = $matriculasObj->getDataPainelBrasil($this->year);
+        if($this->year == 2019 ){
+            $matriculasObj = new MySQLMatriculaRepository();
+            $matriculas = $matriculasObj->getDataPainelBrasil($this->year);
 
-        $abandonosObj = new MySQLAbandonoRepository();
-        $abandonos = $abandonosObj->getDataPainelBrasil($this->year);
+            $abandonosObj = new MySQLAbandonoRepository();
+            $abandonos = $abandonosObj->getDataPainelBrasil($this->year);
 
-        $reprovacoesObj = new MySQLReprovacaoRepository();
-        $reprovacoes = $reprovacoesObj->getDataPainelBrasil($this->year);
+            $reprovacoesObj = new MySQLReprovacaoRepository();
+            $reprovacoes = $reprovacoesObj->getDataPainelBrasil($this->year);
+        }
 
         ob_start();
 
@@ -270,15 +283,23 @@ class FrontEnd
 
         <section id="slider-tabs">
             <ul class="abas-paineis" >
-                <li id="tab-link-1" class="tablinks active"><a href="#">Distorção Idade-série</a></li>
-                <li id="tab-link-2" class="tablinks"><a  href="#">Reprovação</a></li>
-                <li id="tab-link-3" class="tablinks"><a href="#">Abandono</a></li>
+
+                <?php if ($this->year == 2019) { ?>
+                    <li id="tab-link-1" class="tablinks active"><a href="#">Distorção Idade-série</a></li>
+                    <li id="tab-link-2" class="tablinks"><a  href="#">Reprovação</a></li>
+                    <li id="tab-link-3" class="tablinks"><a href="#">Abandono</a></li>
+                <?php } ?>
+
+                <?php if ($this->year == 2018) { ?>
+                    <li id="tab-link-1" class="tablink active"><a href="#">Distorção Idade-série</a></li>
+                <?php } ?>
+
             </ul>
             <section id="tab-1" class="aba-panel tabcontent active" style="display: block;">
 
                 <?php
 
-                include 'wp-includes/tabs_panels/tab1-panel-estado-municio-escola.php';
+                    include 'wp-includes/tabs_panels/tab1-panel-estado-municio-escola.php';
 
                 ?>
 
@@ -286,14 +307,14 @@ class FrontEnd
             <section id="tab-2" class="aba-panel tabcontent" style="display: none;">
                 <?php
 
-                include 'wp-includes/tabs_panels/tab2-panel-estado-municio-escola.php';
+                    if($this->year == 2019 ) include 'wp-includes/tabs_panels/tab2-panel-estado-municio-escola.php';
 
                 ?>
             </section>
             <section id="tab-3" class="aba-panel tabcontent" style="display: none;">
                 <?php
 
-                include 'wp-includes/tabs_panels/tab3-panel-estado-municio-escola.php';
+                    if($this->year == 2019 ) include 'wp-includes/tabs_panels/tab3-panel-estado-municio-escola.php';
 
                 ?>
             </section>
@@ -364,19 +385,21 @@ class FrontEnd
                 $rEst = new MySQLEstadoRepository();
                 $origem = $rEst->get($id);
 
-                $matriculasObj = new MySQLMatriculaRepository();
-                $matriculas = $matriculasObj->getDataMatriculaEstado($id, $this->year);
+                if($this->year == 2019 ) {
 
-                $reprovacoesObj = new MySQLReprovacaoRepository();
-                $reprovacoes = $reprovacoesObj->getDataReprovacaoEstado($id, $this->year);
+                    $matriculasObj = new MySQLMatriculaRepository();
+                    $matriculas = $matriculasObj->getDataMatriculaEstado($id, $this->year);
 
-                $abandonosObj = new MySQLAbandonoRepository();
-                $abandonos = $abandonosObj->getDataAbandonoEstado($id, $this->year);
+                    $reprovacoesObj = new MySQLReprovacaoRepository();
+                    $reprovacoes = $reprovacoesObj->getDataReprovacaoEstado($id, $this->year);
+
+                    $abandonosObj = new MySQLAbandonoRepository();
+                    $abandonos = $abandonosObj->getDataAbandonoEstado($id, $this->year);
+
+                }
 
                 $rPainel = new MySQLPainelRepository();
                 $painel = $rPainel->get($origem, $this->year, "EstadoDistorcao", $origem->getId(), null);
-
-
 
 
             } elseif ($tipo === 'municipio') {
@@ -384,34 +407,41 @@ class FrontEnd
                 $rMun = new MySQLMunicipioRepository();
                 $origem = $rMun->get($id);
 
-                $matriculasObj = new MySQLMatriculaRepository();
-                $matriculas = $matriculasObj->getDataMatriculaMunicipio($id, $this->year);
+                if($this->year == 2019 ) {
 
-                $reprovacoesObj = new MySQLReprovacaoRepository();
-                $reprovacoes = $reprovacoesObj->getDataReprovacaoMunicipio($id, $this->year);
+                    $matriculasObj = new MySQLMatriculaRepository();
+                    $matriculas = $matriculasObj->getDataMatriculaMunicipio($id, $this->year);
 
-                $abandonosObj = new MySQLAbandonoRepository();
-                $abandonos = $abandonosObj->getDataAbandonoMunicipio($id, $this->year);
+                    $reprovacoesObj = new MySQLReprovacaoRepository();
+                    $reprovacoes = $reprovacoesObj->getDataReprovacaoMunicipio($id, $this->year);
+
+                    $abandonosObj = new MySQLAbandonoRepository();
+                    $abandonos = $abandonosObj->getDataAbandonoMunicipio($id, $this->year);
+
+                }
 
                 $idMunicipio = $id;
 
                 $rPainel = new MySQLPainelRepository();
                 $painel = $rPainel->get($origem, $this->year, "MunicipioDistorcao", null, $origem->getId());
 
-
             } elseif ($tipo === 'escola') {
 
                 $rEsc = new MySQLEscolaRepository();
                 $origem = $rEsc->get($id);
 
-                $matriculasObj = new MySQLMatriculaRepository();
-                $matriculas = $matriculasObj->getDataMatriculaEscola($id, $this->year);
+                if($this->year == 2019 ) {
 
-                $reprovacoesObj = new MySQLReprovacaoRepository();
-                $reprovacoes = $reprovacoesObj->getDataReprovacaoEscola($id, $this->year);
+                    $matriculasObj = new MySQLMatriculaRepository();
+                    $matriculas = $matriculasObj->getDataMatriculaEscola($id, $this->year);
 
-                $abandonosObj = new MySQLAbandonoRepository();
-                $abandonos = $abandonosObj->getDataAbandonoEscola($id, $this->year);
+                    $reprovacoesObj = new MySQLReprovacaoRepository();
+                    $reprovacoes = $reprovacoesObj->getDataReprovacaoEscola($id, $this->year);
+
+                    $abandonosObj = new MySQLAbandonoRepository();
+                    $abandonos = $abandonosObj->getDataAbandonoEscola($id, $this->year);
+
+                }
 
                 $rPainel = new MySQLPainelRepository();
                 $painel = $rPainel->get($origem, $this->year, null, null, null);
@@ -486,26 +516,32 @@ class FrontEnd
             <section id="slider-tabs">
 
                 <ul class="abas-paineis" >
-                    <li id="tab-link-1" class="tablinks active"><a href="#">Distorção Idade-série</a></li>
-                    <li id="tab-link-2" class="tablinks"><a  href="#">Reprovação</a></li>
-                    <li id="tab-link-3" class="tablinks"><a href="#">Abandono</a></li>
+                    <?php if ($this->year == 2019) { ?>
+                        <li id="tab-link-1" class="tablinks active"><a href="#">Distorção Idade-série</a></li>
+                        <li id="tab-link-2" class="tablinks"><a  href="#">Reprovação</a></li>
+                        <li id="tab-link-3" class="tablinks"><a href="#">Abandono</a></li>
+                    <?php } ?>
+
+                    <?php if ($this->year == 2018) { ?>
+                        <li id="tab-link-1" class="tablink active"><a href="#">Distorção Idade-série</a></li>
+                    <?php } ?>
                 </ul>
 
-                <section id="tab-1" class="aba-panel tabcontent active" style="display: block;">
+                <section id="tab-1" class="aba-panel tabcontent active">
                     <?php
                         include_once 'wp-includes/tabs_panels/tab1-panel-estado-municio-escola.php'
                     ?>
                 </section>
 
-                <section id="tab-2" class="aba-panel tabcontent" style="display: none;">
+                <section id="tab-2" class="aba-panel tabcontent" style="display: <?php echo $this->year == 2019 ? "block" : "none"; ?>">
                     <?php
-                        include_once 'wp-includes/tabs_panels/tab2-panel-estado-municio-escola.php'
+                        if( $this->year == 2019 ) include_once 'wp-includes/tabs_panels/tab2-panel-estado-municio-escola.php'
                     ?>
                 </section>
 
-                <section id="tab-3" class="aba-panel tabcontent" style="display: none;">
+                <section id="tab-3" class="aba-panel tabcontent" style="display: <?php echo $this->year == 2019 ? "block" : "none"; ?>">
                     <?php
-                        include_once 'wp-includes/tabs_panels/tab3-panel-estado-municio-escola.php'
+                        if( $this->year == 2019 ) include_once 'wp-includes/tabs_panels/tab3-panel-estado-municio-escola.php'
                     ?>
                 </section>
 

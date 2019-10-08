@@ -177,7 +177,7 @@
     </section>
     <span class="legenda">* Taxa de distorção idade-serie</span>
 
-    <?php if($painel['deficiencia'] != null) { ?>
+    <?php if($painel['deficiencia'] != null && $this->year == 2019 ) { ?>
         <section id="deficiencia">
             <header><h2>Deficiência</h2></header>
             <section class="deficiencia">
