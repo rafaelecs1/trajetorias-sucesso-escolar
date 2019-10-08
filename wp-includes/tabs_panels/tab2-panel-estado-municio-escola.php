@@ -255,20 +255,20 @@
             ?>
         </section>
     </section>
-
     <span class="legenda">* Taxa de reprovação</span>
 
-    <section id="deficiencia">
-        <header><h2>Deficiência</h2></header>
-        <section class="deficiencia">
-            <?php
-
-                echo self::gerarAmostra('com deficiência', intval($reprovacoes->deficiencia->com), intval($reprovacoes->deficiencia->sem)+intval($reprovacoes->deficiencia->com));
-                echo self::gerarAmostra('sem deficiência', intval($reprovacoes->deficiencia->sem), intval($reprovacoes->deficiencia->sem)+intval($reprovacoes->deficiencia->com));
-
-            ?>
+    <?php if($reprovacoes->deficiencia != null) { ?>
+        <section id="deficiencia">
+            <header><h2>Deficiência</h2></header>
+            <section class="deficiencia">
+                <?php
+                    echo self::gerarAmostra('com deficiência', intval($reprovacoes->deficiencia->com), intval($reprovacoes->deficiencia->sem)+intval($reprovacoes->deficiencia->com));
+                    echo self::gerarAmostra('sem deficiência', intval($reprovacoes->deficiencia->sem), intval($reprovacoes->deficiencia->sem)+intval($reprovacoes->deficiencia->com));
+                ?>
+            </section>
         </section>
-    </section>
-    <span class="legenda">* Taxa de reprovação</span>
+        <span class="legenda">* Taxa de reprovação</span>
+    <?php } ?>
+
 
 </section>

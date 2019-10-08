@@ -177,16 +177,17 @@
     </section>
     <span class="legenda">* Taxa de distorção idade-serie</span>
 
-    <section id="deficiencia">
-        <header><h2>Deficiência</h2></header>
-        <section class="deficiencia">
-            <?php
-                echo self::gerarAmostra('com deficiência', intval($painel['deficiencia']['com']), intval($painel['deficiencia']['com'])+intval($painel['deficiencia']['sem']));
-                echo self::gerarAmostra('sem deficiência', intval($painel['deficiencia']['sem']), intval($painel['deficiencia']['com'])+intval($painel['deficiencia']['sem']));
-            ?>
+    <?php if($painel['deficiencia'] != null) { ?>
+        <section id="deficiencia">
+            <header><h2>Deficiência</h2></header>
+            <section class="deficiencia">
+                <?php
+                    echo self::gerarAmostra('com deficiência', intval($painel['deficiencia']['com']), intval($painel['deficiencia']['com'])+intval($painel['deficiencia']['sem']));
+                    echo self::gerarAmostra('sem deficiência', intval($painel['deficiencia']['sem']), intval($painel['deficiencia']['com'])+intval($painel['deficiencia']['sem']));
+                ?>
+            </section>
         </section>
-    </section>
-
-    <span class="legenda">* Taxa de distorção idade-serie</span>
+        <span class="legenda">* Taxa de distorção idade-serie</span>
+    <?php } ?>
 
 </section>

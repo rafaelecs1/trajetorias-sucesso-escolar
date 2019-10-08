@@ -196,9 +196,7 @@ class MySQLReprovacaoRepository extends AbstractRepository
         $data->genero->masculino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 1, null, null, $escolaId);
         $data->genero->feminino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 2, null, null, $escolaId);
 
-        $data->deficiencia = new \stdClass();
-        $data->deficiencia->com = $this->getTotalPainelDeficiente($anoReferencia, 1);
-        $data->deficiencia->sem = $data->total - $data->deficiencia->com;
+        $data->deficiencia = null;
 
         $this->saveBrasil($escolaId, self::ESCOLA_REPROVACAO, $anoReferencia, $data);
 

@@ -196,10 +196,7 @@ class MySQLAbandonoRepository extends AbstractRepository{
         $data->genero->masculino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 1, null, null, $escolaId);
         $data->genero->feminino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 2, null, null, $escolaId);
 
-        $data->deficiencia = new \stdClass();
-        $data->deficiencia->com =  $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, null, null, null, $escolaId, 1);
-
-
+        $data->deficiencia = null;
 
         $this->saveBrasil($escolaId, self::ESCOLA_ABANDONO, $anoReferencia, $data);
 
