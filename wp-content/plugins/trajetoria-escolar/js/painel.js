@@ -112,7 +112,7 @@ jQuery(document).ready(function ($) {
     function iniciaGraficosReprovacao() {
 
         let legendaTipoReprovacao = ['', 'Aprovações', 'Reprovacões', 'Abandonos'],
-            legendaReprovacaoPorRede = ['', 'Aprovações', 'Reprovacoes', 'Abandonos'];
+            legendaReprovacaoPorRede = ['', 'Aprovações', 'Reprovacões', 'Abandonos'];
 
         for (var h in painel.graficosReprovacaoPorTipoAno) {
             painel.graficosReprovacaoPorTipoAno[h].unshift(legendaTipoReprovacao);
@@ -145,8 +145,8 @@ jQuery(document).ready(function ($) {
     }
 
     function iniciaGraficosAbandono() {
-        let legendaTipoAbandono = ['', 'Aprovações', 'Reprovacoes', 'Abandonos'],
-            legendaAbandonoPorRede = ['', 'Aprovações', 'Reprovacoes', 'Abandonos'];
+        let legendaTipoAbandono = ['', 'Aprovações', 'Reprovacões', 'Abandonos'],
+            legendaAbandonoPorRede = ['', 'Aprovações', 'Reprovacões', 'Abandonos'];
 
         for (var i in painel.graficosAbandonoPorTipoAno) {
             painel.graficosAbandonoPorTipoAno[i].unshift(legendaTipoAbandono);
@@ -282,7 +282,9 @@ jQuery(document).ready(function ($) {
             );
             drawChart(g, data, options);
         }
-        document.getElementById('grafico_por_redes_reprovacao').innerHTML = ''
+
+        document.getElementById('grafico_por_redes_reprovacao').innerHTML = '';
+
         if (document.getElementById('grafico_por_redes_reprovacao').innerHTML === '') {
 
             let data = google.visualization.arrayToDataTable(
@@ -356,7 +358,9 @@ jQuery(document).ready(function ($) {
             );
             drawChart(g, data, options);
         }
-        document.getElementById('grafico_por_redes_abandono').innerHTML = ''
+
+        document.getElementById('grafico_por_redes_abandono').innerHTML = '';
+
         if (document.getElementById('grafico_por_redes_abandono').innerHTML === '') {
 
             let data = google.visualization.arrayToDataTable(
