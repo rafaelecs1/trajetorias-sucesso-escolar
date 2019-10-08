@@ -152,19 +152,15 @@ abstract class AbstractRepository implements IRestFull
         return (int)$response['qtd'];
     }
 
-    protected function getTotalPainelDeficiente($anoReferencia = null, $deficienciaId = null)
+    public function getTotalPainelDeficiente($anoReferencia = null, $deficienciaId = null, $situacao, $estado_id = null, $municipio_id = null)
     {
-        $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ' . $this->tableName . ' join te_escolas te on te.id = ' . $this->tableName . '.escolas_id                                                                                   
-                                      where ' . $this->tableName . '.ano_referencia = %d AND ' . $this->tableName . '.cor_raca_id IS NULL AND ' . $this->tableName . '.genero_id IS NULL AND ' . $this->tableName . '.deficiencia_id = %d';
-        $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $deficienciaId), ARRAY_A);
-        return (int)$response['qtd'];
 
-        switch ($tipo) {
+        switch ($situacao) {
             case "Distorcao":
                 $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia where tse_deficiencia.situacao_id = 4';
                 break;
             case "NacionalMatricula":
-                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia where tse_deficiencia.id > 0';
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia where tse_deficiencia.id > 0 and tse_deficiencia.situacao_id != 4';
                 break;
             case "NacionalAbandono":
                 $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia where tse_deficiencia.situacao_id = 1';
@@ -173,7 +169,7 @@ abstract class AbstractRepository implements IRestFull
                 $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia where tse_deficiencia.situacao_id = 2';
                 break;
             case "EstadoMatricula":
-                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.estado_id = '.$estado_id;
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where tse_deficiencia.situacao_id != 4 and te_municipios.estado_id = '.$estado_id;
                 break;
             case "EstadoAbandono":
                 $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.estado_id = '.$estado_id.' and tse_deficiencia.situacao_id = 1';
@@ -181,8 +177,11 @@ abstract class AbstractRepository implements IRestFull
             case "EstadoReprovacao":
                 $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.estado_id = '.$estado_id.' and tse_deficiencia.situacao_id = 2';
                 break;
+            case "EstadoDistorcao":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.estado_id = '.$estado_id.' and tse_deficiencia.situacao_id = 4';
+                break;
             case "MunicipioMatricula":
-                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.id = '.$municipio_id;
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where tse_deficiencia.situacao_id != 4 and te_municipios.id = '.$municipio_id;
                 break;
             case "MunicipioAbandono":
                 $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.id = '.$municipio_id.' and tse_deficiencia.situacao_id = 1';
@@ -190,11 +189,14 @@ abstract class AbstractRepository implements IRestFull
             case "MunicipioReprovacao":
                 $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.id = '.$municipio_id.' and tse_deficiencia.situacao_id = 2';
                 break;
+            case "MunicipioDistorcao":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.id = '.$municipio_id.' and tse_deficiencia.situacao_id = 4';
+                break;
         }
 
         $sql .= ' and tse_deficiencia.deficiencia = %d and tse_deficiencia.ano_referencia = %d';
         $response = $this->db->get_row($this->db->prepare($sql, $deficienciaId, $anoReferencia), ARRAY_A);
-        return $response['qtd'];
+        return (int)$response['qtd'];
     }
 
     protected function getTotalPorRegiao($anoReferencia = null, $regiao = null, $tipoAno = null)
@@ -220,7 +222,6 @@ abstract class AbstractRepository implements IRestFull
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $regiao), ARRAY_A);
         return (int)$response['qtd'];
     }
-
 
     protected function getAnosIniciais($anoReferencia = null, $corRacaId = null, $generoId = null)
     {
@@ -398,7 +399,8 @@ abstract class AbstractRepository implements IRestFull
         $data->genero->feminino = $this->getTotalPainelGenero($anoReferencia, 2);
 
         $data->deficiencia = new \stdClass();
-        $data->deficiencia->com = $this->getTotalPainelDeficiente($anoReferencia, 1);
+        $data->deficiencia->sem = $this->getTotalPainelDeficiente($anoReferencia, 0, $tipo, null, null);
+        $data->deficiencia->com = $this->getTotalPainelDeficiente($anoReferencia, 1, $tipo, null, null);
 
         $this->saveBrasil(1, $tipo, $anoReferencia, $data);
 
@@ -474,10 +476,6 @@ abstract class AbstractRepository implements IRestFull
         $where .= $generoId == null
             ? ' AND ' . $this->tableName . '.genero_id IS NULL'
             : ' AND ' . $this->tableName . '.genero_id =' . $generoId;
-
-        $where .= $deficienciaId == null
-            ? ' AND ' . $this->tableName . '.deficiencia_id IS NULL'
-            : ' AND ' . $this->tableName . '.deficiencia_id =' . $deficienciaId;
 
         $sql .= $join . $where;
 
@@ -817,10 +815,6 @@ abstract class AbstractRepository implements IRestFull
         return (int)$response['qtd'];
     }
 
-    private function getAprovados(){
-
-    }
-
 
     protected function getArrayMatriculasReprovacoesAbandonos($anoReferencia = null, $estadoId = null, $municipioId = null, $escolaId = null)
     {
@@ -838,7 +832,6 @@ abstract class AbstractRepository implements IRestFull
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'abandonos')
                 ],
-
             '2' =>
                 [
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano2', 'matriculas') -
@@ -847,7 +840,6 @@ abstract class AbstractRepository implements IRestFull
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano2', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano2', 'abandonos')
                 ],
-
             '3' =>
                 [
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano3', 'matriculas') -
@@ -856,7 +848,6 @@ abstract class AbstractRepository implements IRestFull
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano3', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano3', 'abandonos')
                 ],
-
             '4' =>
                 [
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano4', 'matriculas') -
@@ -865,7 +856,6 @@ abstract class AbstractRepository implements IRestFull
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano4', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano4', 'abandonos')
                 ],
-
             '5' =>
                 [
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano5', 'matriculas') -
@@ -874,9 +864,7 @@ abstract class AbstractRepository implements IRestFull
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano5', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano5', 'abandonos')
                 ],
-
         );
-
         $data->anos['Finais'] = array(
             '6' =>
                 [
@@ -886,7 +874,6 @@ abstract class AbstractRepository implements IRestFull
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano6', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano6', 'abandonos')
                 ],
-
             '7' =>
                 [
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano7', 'matriculas') -
@@ -895,7 +882,6 @@ abstract class AbstractRepository implements IRestFull
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano7', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano7', 'abandonos')
                 ],
-
             '8' =>
                 [
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano8', 'matriculas') -
@@ -904,7 +890,6 @@ abstract class AbstractRepository implements IRestFull
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano8', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano8', 'abandonos')
                 ],
-
             '9' =>
                 [
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano9', 'matriculas') -
@@ -913,9 +898,7 @@ abstract class AbstractRepository implements IRestFull
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano9', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano9', 'abandonos')
                 ],
-
         );
-
         $data->anos['Medio'] = array(
             '10' =>
                 [
@@ -925,7 +908,6 @@ abstract class AbstractRepository implements IRestFull
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'abandonos')
                 ],
-
             '11' =>
                 [
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'matriculas') -
@@ -934,7 +916,6 @@ abstract class AbstractRepository implements IRestFull
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'abandonos')
                 ],
-
             '12' =>
                 [
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'matriculas') -
@@ -943,7 +924,6 @@ abstract class AbstractRepository implements IRestFull
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'abandonos')
                 ],
-
             '13' =>
                 [
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'matriculas') -
@@ -952,7 +932,6 @@ abstract class AbstractRepository implements IRestFull
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'reprovacoes'),
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'abandonos')
                 ],
-
         );
 
         return $data;
