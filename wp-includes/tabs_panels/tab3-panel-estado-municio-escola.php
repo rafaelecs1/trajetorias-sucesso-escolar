@@ -216,41 +216,41 @@
 
         <section class="localizacao">
             <?php
-            if($abandonos->localizacao->rural != null) {
-                echo self::gerarAmostra('Rural', $abandonos->localizacao->rural, $matriculas->localizacao->rural);
-            }
+                if($abandonos->localizacao->rural != null) {
+                    echo self::gerarAmostra('Rural', $abandonos->localizacao->rural, $matriculas->localizacao->rural);
+                }
 
-            if($abandonos->localizacao->urbana != null) {
-                echo self::gerarAmostra('Urbana', $abandonos->localizacao->urbana, $matriculas->localizacao->urbana);
-            }
+                if($abandonos->localizacao->urbana != null) {
+                    echo self::gerarAmostra('Urbana', $abandonos->localizacao->urbana, $matriculas->localizacao->urbana);
+                }
             ?>
         </section>
 
         <section class="localizacao-diferenciada">
             <?php
-            if($abandonos->localizacao_diferenciada->area_de_assentamento != null) {
-                echo self::gerarAmostra('Áre de assentamento', $abandonos->localizacao_diferenciada->area_de_assentamento, $matriculas->localizacao_diferenciada->area_de_assentamento);
-            }
+                if($abandonos->localizacao_diferenciada->area_de_assentamento != null) {
+                    echo self::gerarAmostra('Áre de assentamento', $abandonos->localizacao_diferenciada->area_de_assentamento, $matriculas->localizacao_diferenciada->area_de_assentamento);
+                }
 
-            if($abandonos->localizacao_diferenciada->area_remanecente_quilombola != null) {
-                echo self::gerarAmostra('Área remanescente de quilombo', $abandonos->localizacao_diferenciada->area_remanecente_quilombola, $matriculas->localizacao_diferenciada->area_remanecente_quilombola);
-            }
+                if($abandonos->localizacao_diferenciada->area_remanecente_quilombola != null) {
+                    echo self::gerarAmostra('Área remanescente de quilombo', $abandonos->localizacao_diferenciada->area_remanecente_quilombola, $matriculas->localizacao_diferenciada->area_remanecente_quilombola);
+                }
 
-            if($abandonos->localizacao_diferenciada->terra_inidigena != null) {
-                echo self::gerarAmostra('Terra indígena', $abandonos->localizacao_diferenciada->terra_inidigena, $matriculas->localizacao_diferenciada->terra_inidigena);
-            }
+                if($abandonos->localizacao_diferenciada->terra_inidigena != null) {
+                    echo self::gerarAmostra('Terra indígena', $abandonos->localizacao_diferenciada->terra_inidigena, $matriculas->localizacao_diferenciada->terra_inidigena);
+                }
 
-            if($abandonos->localizacao_diferenciada->unidade_uso_sustentavel != null) {
-                echo self::gerarAmostra('Unidade de uso sustentável', $abandonos->localizacao_diferenciada->unidade_uso_sustentavel, $matriculas->localizacao_diferenciada->unidade_uso_sustentavel);
-            }
+                if($abandonos->localizacao_diferenciada->unidade_uso_sustentavel != null) {
+                    echo self::gerarAmostra('Unidade de uso sustentável', $abandonos->localizacao_diferenciada->unidade_uso_sustentavel, $matriculas->localizacao_diferenciada->unidade_uso_sustentavel);
+                }
 
-            if($abandonos->localizacao_diferenciada->unidade_uso_sustentavel_em_area_remancente_de_quilombo != null) {
-                echo self::gerarAmostra('Unidade de uso sustentável em área remanescente de quilombo', $abandonos->localizacao_diferenciada->unidade_uso_sustentavel_em_area_remancente_de_quilombo, $matriculas->localizacao_diferenciada->unidade_uso_sustentavel_em_area_remancente_de_quilombo);
-            }
+                if($abandonos->localizacao_diferenciada->unidade_uso_sustentavel_em_area_remancente_de_quilombo != null) {
+                    echo self::gerarAmostra('Unidade de uso sustentável em área remanescente de quilombo', $abandonos->localizacao_diferenciada->unidade_uso_sustentavel_em_area_remancente_de_quilombo, $matriculas->localizacao_diferenciada->unidade_uso_sustentavel_em_area_remancente_de_quilombo);
+                }
 
-            if($abandonos->localizacao_diferenciada->unidade_uso_sustentavel_em_terra_indigena != null) {
-                echo self::gerarAmostra('Unidade de uso sustentável em terra indígena', $abandonos->localizacao_diferenciada->unidade_uso_sustentavel_em_terra_indigena, $matriculas->localizacao_diferenciada->unidade_uso_sustentavel_em_terra_indigena);
-            }
+                if($abandonos->localizacao_diferenciada->unidade_uso_sustentavel_em_terra_indigena != null) {
+                    echo self::gerarAmostra('Unidade de uso sustentável em terra indígena', $abandonos->localizacao_diferenciada->unidade_uso_sustentavel_em_terra_indigena, $matriculas->localizacao_diferenciada->unidade_uso_sustentavel_em_terra_indigena);
+                }
             ?>
         </section>
 
@@ -258,18 +258,17 @@
 
     <span class="legenda">* Taxa de abandono</span>
 
-    <section id="deficiencia">
-        <header><h2>Deficiência</h2></header>
-        <section class="deficiencia">
-            <?php
-            $abandonos->deficiencia->sem = $abandonos->total - $abandonos->deficiencia->com;
-
-            foreach ($abandonos->deficiencia as $k => $v) {
-                echo self::gerarAmostra($k . ' deficiência', $v, $abandonos->total);
-            }
-            ?>
+    <?php if($abandonos->deficiencia != null) { ?>
+        <section id="deficiencia">
+            <header><h2>Deficiência</h2></header>
+            <section class="deficiencia">
+                <?php
+                    echo self::gerarAmostra('com deficiência', intval($abandonos->deficiencia->com), intval($abandonos->deficiencia->sem)+intval($abandonos->deficiencia->com));
+                    echo self::gerarAmostra('sem deficiência', intval($abandonos->deficiencia->sem), intval($abandonos->deficiencia->sem)+intval($abandonos->deficiencia->com));
+                ?>
+            </section>
         </section>
-    </section>
-    <span class="legenda">* Taxa de abandono</span>
+        <span class="legenda">* Taxa de abandono</span>
+    <?php } ?>
 
 </section>

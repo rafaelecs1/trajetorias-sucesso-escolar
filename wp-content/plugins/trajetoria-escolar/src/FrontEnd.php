@@ -373,6 +373,9 @@ class FrontEnd
                 $abandonosObj = new MySQLAbandonoRepository();
                 $abandonos = $abandonosObj->getDataAbandonoEstado($id, $this->year);
 
+                $rPainel = new MySQLPainelRepository();
+                $painel = $rPainel->get($origem, $this->year, "EstadoDistorcao", $origem->getId(), null);
+
 
 
 
@@ -392,6 +395,9 @@ class FrontEnd
 
                 $idMunicipio = $id;
 
+                $rPainel = new MySQLPainelRepository();
+                $painel = $rPainel->get($origem, $this->year, "MunicipioDistorcao", null, $origem->getId());
+
 
             } elseif ($tipo === 'escola') {
 
@@ -407,14 +413,14 @@ class FrontEnd
                 $abandonosObj = new MySQLAbandonoRepository();
                 $abandonos = $abandonosObj->getDataAbandonoEscola($id, $this->year);
 
+                $rPainel = new MySQLPainelRepository();
+                $painel = $rPainel->get($origem, $this->year, null, null, null);
+
             }
 
             if (empty($origem)) {
                 return false;
             }
-
-            $rPainel = new MySQLPainelRepository();
-            $painel = $rPainel->get($origem, $this->year);
 
             ob_start();
 

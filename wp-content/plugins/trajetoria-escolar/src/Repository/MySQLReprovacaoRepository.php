@@ -71,7 +71,8 @@ class MySQLReprovacaoRepository extends AbstractRepository
         $data->genero->feminino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 2, $estadoId, null, null);
 
         $data->deficiencia = new \stdClass();
-        $data->deficiencia->com = $this->getTotalPainelDeficiente($anoReferencia, 1);
+        $data->deficiencia->com = $this->getTotalPainelDeficiente($anoReferencia, 1, self::ESTADO_REPROVACAO, $estadoId, null);
+        $data->deficiencia->sem = $this->getTotalPainelDeficiente($anoReferencia, 0, self::ESTADO_REPROVACAO, $estadoId, null);
 
         $this->saveBrasil($estadoId, self::ESTADO_REPROVACAO, $anoReferencia, $data);
 
@@ -133,8 +134,8 @@ class MySQLReprovacaoRepository extends AbstractRepository
         $data->genero->feminino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 2, null, $municipioId, null);
 
         $data->deficiencia = new \stdClass();
-        $data->deficiencia->com = $this->getTotalPainelDeficiente($anoReferencia, 1);
-        $data->deficiencia->sem = $data->total - $data->deficiencia->com;
+        $data->deficiencia->com = $this->getTotalPainelDeficiente($anoReferencia, 1, self::MUNICIPIO_REPROVACAO, null, $municipioId);
+        $data->deficiencia->sem = $this->getTotalPainelDeficiente($anoReferencia, 0, self::MUNICIPIO_REPROVACAO, null, $municipioId);
 
         $this->saveBrasil($municipioId, self::MUNICIPIO_REPROVACAO, $anoReferencia, $data);
 
@@ -195,9 +196,7 @@ class MySQLReprovacaoRepository extends AbstractRepository
         $data->genero->masculino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 1, null, null, $escolaId);
         $data->genero->feminino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 2, null, null, $escolaId);
 
-        $data->deficiencia = new \stdClass();
-        $data->deficiencia->com = $this->getTotalPainelDeficiente($anoReferencia, 1);
-        $data->deficiencia->sem = $data->total - $data->deficiencia->com;
+        $data->deficiencia = null;
 
         $this->saveBrasil($escolaId, self::ESCOLA_REPROVACAO, $anoReferencia, $data);
 
