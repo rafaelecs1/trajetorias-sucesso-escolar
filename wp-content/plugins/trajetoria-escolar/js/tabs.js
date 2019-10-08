@@ -41,26 +41,26 @@ jQuery(document).ready(function ($) {
 });
 
 
-// jQuery(document).ready(function ($) {
-//     var contador = 0;
-//     window.intervalo = setInterval(function () {
-//         // console.log(contador)
-//         if (contador === 0) {
-//             $('ul>li.tablinks>a:eq(0)').trigger('click');
-//         }
-//         if (contador === 1) {
-//             $('ul>li.tablinks>a:eq(1)').trigger('click');
-//         }
-//
-//         if (contador === 2) {
-//             $('ul>li.tablinks>a:eq(2)').trigger('click');
-//         }
-//
-//         if (contador > 2) {
-//             contador = -1;
-//         }
-//         contador++;
-//     }, 6000);
-//
-// })
+jQuery(document).ready(function ($) {
+    var contador = 0;
+    window.intervalo = setInterval(function () {
+        // console.log(contador)
+        if (contador === 0) {
+            $('ul>li.tablinks>a:eq(0)').trigger('click');
+        }
+        if (contador === 1) {
+            $('ul>li.tablinks>a:eq(1)').trigger('click');
+        }
+
+        if (contador === 2) {
+            $('ul>li.tablinks>a:eq(2)').trigger('click');
+        }
+
+        if (contador > 2) {
+            contador = -1;
+        }
+        contador++;
+    }, 6000);
+
+})
 

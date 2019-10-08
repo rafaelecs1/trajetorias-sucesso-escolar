@@ -237,7 +237,7 @@ class FrontEnd
         $this->year = in_array($this->year, $this->years) ? $this->year : $this->default_year;
 
         $rDistorcaoPainel = new MySQLPainelRepository();
-        $distorcao = $rDistorcaoPainel->getBrasil($this->year);
+        $painel = $rDistorcaoPainel->getBrasil($this->year);
 
         $matriculasObj = new MySQLMatriculaRepository();
         $matriculas = $matriculasObj->getDataPainelBrasil($this->year);
@@ -278,7 +278,7 @@ class FrontEnd
 
                 <?php
 
-                    include 'wp-includes/tabs_panels/tab1-panel-nacional.php'
+                include 'wp-includes/tabs_panels/tab1-panel-estado-municio-escola.php';
 
                 ?>
 
@@ -286,14 +286,14 @@ class FrontEnd
             <section id="tab-2" class="aba-panel tabcontent" style="display: none;">
                 <?php
 
-                    include 'wp-includes/tabs_panels/tab2-panel-nacional.php'
+                include 'wp-includes/tabs_panels/tab2-panel-estado-municio-escola.php';
 
                 ?>
             </section>
             <section id="tab-3" class="aba-panel tabcontent" style="display: none;">
                 <?php
 
-                    include 'wp-includes/tabs_panels/tab3-panel-nacional.php'
+                include 'wp-includes/tabs_panels/tab3-panel-estado-municio-escola.php';
 
                 ?>
             </section>
@@ -309,39 +309,33 @@ class FrontEnd
 
             }
 
-            wp_enqueue_script('painel', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral.js', array('jquery'), false, true);
-            wp_enqueue_script('painel2', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral2.js', array('jquery'), false, true);
-            wp_enqueue_script('painel3', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral3.js', array('jquery'), false, true);
+            wp_enqueue_script('painel', plugin_dir_url(dirname(__FILE__)) . 'js/painel.js', array('jquery'), false, true);
+//            wp_enqueue_script('painel2', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral2.js', array('jquery'), false, true);
+//            wp_enqueue_script('painel3', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral3.js', array('jquery'), false, true);
             wp_enqueue_script('tabs', plugin_dir_url(dirname(__FILE__)) . 'js/tabs.js', array('jquery'), false, true);
 
             $voltar = $especificacao = null;
 
-            wp_localize_script('painel', 'painel', array(
-                'siteUrl' => site_url('/'),
-                'ajaxUrl' => admin_url('admin-ajax.php'),
-                'voltar' => $voltar,
-                'especificacao' => $especificacao,
-                'graficosPorTipoAno' => $graficosPorTipoAno,
-                'graficoPorRedes' => $graficoPorRedes,
-            ));
+          wp_localize_script('painel', 'painel', array(
+                    'siteUrl' => site_url('/'),
+                    'ajaxUrl' => admin_url('admin-ajax.php'),
+                    'voltar' => $voltar,
+                    'especificacao' => $especificacao,
 
-                wp_localize_script('painel2', 'painel2', array(
-                'siteUrl' => site_url('/'),
-                'ajaxUrl' => admin_url('admin-ajax.php'),
-                'voltar' => $voltar,
-                'especificacao' => $especificacao,
-                'graficosPorTipoAnoReprovacao' => $graficosPorTipoAnoReprovacao,
-                'graficoPorRedesReprovacao' => $graficoPorRedesReprovacao,
-            ));
+                    'graficosDistorcaoPorTipoAno' => $graficosPorTipoAno,
+                    'graficoDistorcaoPorRedes' => $graficoPorRedes,
 
-                wp_localize_script('painel3', 'painel3', array(
-                'siteUrl' => site_url('/'),
-                'ajaxUrl' => admin_url('admin-ajax.php'),
-                'voltar' => $voltar,
-                'especificacao' => $especificacao,
-                'graficosPorTipoAnoAbandono' => $graficosPorTipoAnoAbandono,
-                'graficosPorRedesAbandono' => $graficoPorRedesAbandono,
-            ));
+                    'graficosReprovacaoPorTipoAno' => $graficosReprovacaoPorTipoAno,
+                    'graficoReprovacaoPorRedes' => $graficoReprovacaoPorRedes,
+
+                    'graficosAbandonoPorTipoAno' => $graficosAbandonoPorTipoAno,
+                    'graficoAbandonoPorRedes' => $graficoAbandonoPorRedes,
+
+                    'year' => $this->year
+                ));
+//          echo "<pre>";
+//          var_dump($graficosReprovacaoPorTipoAno);
+//          echo "</pre>";
 
             wp_enqueue_script('google_charts', 'https://www.gstatic.com/charts/loader.js', null, false, true);
             return ob_get_clean();
@@ -381,6 +375,8 @@ class FrontEnd
 
                 $rPainel = new MySQLPainelRepository();
                 $painel = $rPainel->get($origem, $this->year, "EstadoDistorcao", $origem->getId(), null);
+
+
 
 
             } elseif ($tipo === 'municipio') {

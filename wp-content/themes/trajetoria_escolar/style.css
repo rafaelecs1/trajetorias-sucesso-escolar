@@ -504,7 +504,7 @@ pre {
     line-height: 1.6;
     margin-bottom: 1.6em;
     max-width: 100%;
-    overflow: auto;
+    /*overflow: auto;*/
     padding: 1.6em;
 }
 
