@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>TRANSFORMACAO_EXCEL_MATRICULAS_QUANTIDADE</name>
+    <name>TRANSFORMACAO_EXCEL_DEFICIENCIA</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
-    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -428,9 +427,9 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2019/07/16 14:31:02.093</created_date>
+    <created_date>2019/10/03 17:34:52.062</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2019/07/16 14:31:02.093</modified_date>
+    <modified_date>2019/10/03 17:34:52.062</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -493,72 +492,26 @@
   </connection>
   <order>
     <hop>
-      <from>Microsoft Excel input</from>
-      <to>Add constants</to>
+      <from>Value mapper</from>
+      <to>Table output</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Add constants</from>
-      <to>anos</to>
+      <from>constantes</from>
+      <to>Value mapper</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Microsoft Excel input</from>
+      <to>constantes</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Add constants</name>
-    <type>Constant</type>
-    <description>Add contants 1</description>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>ano_referencia2018</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>2018</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>ano_referencia2019</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>2019</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>272</xloc>
-      <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Microsoft Excel input</name>
     <type>ExcelInput</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -575,43 +528,19 @@
     <sheetfield/>
     <filefield/>
     <limit>0</limit>
-    <encoding>UTF-8</encoding>
+    <encoding/>
     <add_to_result_filenames>Y</add_to_result_filenames>
     <accept_filenames>N</accept_filenames>
     <accept_field/>
     <accept_stepname/>
     <file>
-      <name>C:\Users\mansouza\Documents\www\Trajetorias 2019 - dados - guilherme\mapas_outubro_2019\tabela1_padrao_matricula.xlsx</name>
+      <name>C:\Users\mansouza\Documents\www\Trajetorias 2019 - dados - guilherme\mapas_outubro_2019\tabela3_padrao_deficiencia.xlsx</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
       <include_subfolders>N</include_subfolders>
     </file>
     <fields>
-      <field>
-        <name>Código da Escola</name>
-        <type>Integer</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>Região</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
       <field>
         <name>UF</name>
         <type>String</type>
@@ -626,7 +555,7 @@
       </field>
       <field>
         <name>Código do Município</name>
-        <type>String</type>
+        <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -638,18 +567,6 @@
       </field>
       <field>
         <name>Município</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>Nome</name>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -673,31 +590,7 @@
         <group/>
       </field>
       <field>
-        <name>Dependência Adminsitrativa</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>Localização Diferenciada</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>1º ano</name>
+        <name>Abandono</name>
         <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -709,7 +602,7 @@
         <group/>
       </field>
       <field>
-        <name>2º ano</name>
+        <name>Reprovado</name>
         <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -721,7 +614,7 @@
         <group/>
       </field>
       <field>
-        <name>3º ano</name>
+        <name>Aprovado</name>
         <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -733,7 +626,7 @@
         <group/>
       </field>
       <field>
-        <name>4º ano</name>
+        <name>Distorção</name>
         <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -745,7 +638,7 @@
         <group/>
       </field>
       <field>
-        <name>5º ano</name>
+        <name>Abandono_1</name>
         <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -757,7 +650,7 @@
         <group/>
       </field>
       <field>
-        <name>6º ano</name>
+        <name>Reprovado_1</name>
         <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -769,7 +662,7 @@
         <group/>
       </field>
       <field>
-        <name>7º ano</name>
+        <name>Aprovado_1</name>
         <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -781,67 +674,7 @@
         <group/>
       </field>
       <field>
-        <name>8º ano</name>
-        <type>Number</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>9º ano</name>
-        <type>Number</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>1ª série</name>
-        <type>Number</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>2ª série</name>
-        <type>Number</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>3ª série</name>
-        <type>Number</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>4ª série</name>
+        <name>Distorção_1</name>
         <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -855,9 +688,9 @@
     </fields>
     <sheets>
       <sheet>
-        <name>Matrículas-Total</name>
-        <startrow>3</startrow>
-        <startcol>0</startcol>
+        <name>Necessidade Especial</name>
+        <startrow>1</startrow>
+        <startcol>1</startcol>
       </sheet>
     </sheets>
     <strict_types>N</strict_types>
@@ -888,13 +721,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>48</xloc>
-      <yloc>32</yloc>
+      <xloc>80</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>anos</name>
+    <name>Table output</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -906,7 +739,7 @@
     </partitioning>
     <connection>trajetorias</connection>
     <schema/>
-    <table>tse_qtd_matriculas</table>
+    <table>tse_deficiencia</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -923,64 +756,24 @@
     <return_field/>
     <fields>
       <field>
-        <column_name>escolas_id</column_name>
-        <stream_name>Código da Escola</stream_name>
+        <column_name>te_municipios_id</column_name>
+        <stream_name>Código do Município</stream_name>
       </field>
       <field>
-        <column_name>ano_referencia</column_name>
-        <stream_name>ano_referencia2019</stream_name>
+        <column_name>localizacao_id</column_name>
+        <stream_name>Localização</stream_name>
       </field>
       <field>
-        <column_name>ano1</column_name>
-        <stream_name>1º ano</stream_name>
+        <column_name>situacao_id</column_name>
+        <stream_name>situacao_distorcao</stream_name>
       </field>
       <field>
-        <column_name>ano2</column_name>
-        <stream_name>2º ano</stream_name>
+        <column_name>deficiencia</column_name>
+        <stream_name>sem_deficiencia</stream_name>
       </field>
       <field>
-        <column_name>ano3</column_name>
-        <stream_name>3º ano</stream_name>
-      </field>
-      <field>
-        <column_name>ano4</column_name>
-        <stream_name>4º ano</stream_name>
-      </field>
-      <field>
-        <column_name>ano5</column_name>
-        <stream_name>5º ano</stream_name>
-      </field>
-      <field>
-        <column_name>ano6</column_name>
-        <stream_name>6º ano</stream_name>
-      </field>
-      <field>
-        <column_name>ano7</column_name>
-        <stream_name>7º ano</stream_name>
-      </field>
-      <field>
-        <column_name>ano8</column_name>
-        <stream_name>8º ano</stream_name>
-      </field>
-      <field>
-        <column_name>ano9</column_name>
-        <stream_name>9º ano</stream_name>
-      </field>
-      <field>
-        <column_name>ano10</column_name>
-        <stream_name>1ª série</stream_name>
-      </field>
-      <field>
-        <column_name>ano11</column_name>
-        <stream_name>2ª série</stream_name>
-      </field>
-      <field>
-        <column_name>ano12</column_name>
-        <stream_name>3ª série</stream_name>
-      </field>
-      <field>
-        <column_name>ano13</column_name>
-        <stream_name>4ª série</stream_name>
+        <column_name>qtd</column_name>
+        <stream_name>Distorção_1</stream_name>
       </field>
     </fields>
     <attributes/>
@@ -992,8 +785,145 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
-      <yloc>32</yloc>
+      <xloc>432</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Value mapper</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>Localização</field_to_use>
+    <target_field/>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>Urbana</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>Rural</source_value>
+        <target_value>2</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>304</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>constantes</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>com_deficiencia</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>1</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>sem_deficiencia</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>0</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>situacao_abandono</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>1</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>situacao_aprovado</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>3</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>situacao_reprovado</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>2</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>situacao_distorcao</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>4</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>192</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

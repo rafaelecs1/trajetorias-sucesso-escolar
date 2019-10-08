@@ -188,11 +188,9 @@
         <section class="deficiencia">
             <?php
 
-            $reprovacoes->deficiencia->sem = $reprovacoes->total - $reprovacoes->deficiencia->com;
+                echo self::gerarAmostra('com deficiência', intval($reprovacoes->deficiencia->com), intval($reprovacoes->deficiencia->sem)+intval($reprovacoes->deficiencia->com));
+                echo self::gerarAmostra('sem deficiência', intval($reprovacoes->deficiencia->sem), intval($reprovacoes->deficiencia->sem)+intval($reprovacoes->deficiencia->com));
 
-            foreach ($reprovacoes->deficiencia as $k => $v) {
-                echo self::gerarAmostra($k . ' deficiência', $v, $reprovacoes->total);
-            }
             ?>
         </section>
     </section>

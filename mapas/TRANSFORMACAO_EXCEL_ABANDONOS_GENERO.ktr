@@ -831,7 +831,7 @@
       <exclude_filemask/>
       <file_required>N</file_required>
       <include_subfolders>N</include_subfolders>
-      <name>C:\Users\mansouza\Documents\www\arquivos\tabela1_padrao_abandono.xlsx</name>
+      <name>C:\Users\mansouza\Documents\www\Trajetorias 2019 - dados - guilherme\mapas_outubro_2019\tabela2_padrao_abandono.xlsx</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -1261,7 +1261,7 @@
     </fields>
     <sheets>
       <sheet>
-        <name>Abandono genero</name>
+        <name>Matrícula abandono genero</name>
         <startrow>3</startrow>
         <startcol>0</startcol>
       </sheet>

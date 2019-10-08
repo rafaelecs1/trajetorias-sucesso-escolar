@@ -111,8 +111,8 @@ jQuery(document).ready(function ($) {
 
     function iniciaGraficosReprovacao() {
 
-        let legendaTipoReprovacao = ['', 'Aprovados', 'Reprovacões', 'Abandonos'],
-            legendaReprovacaoPorRede = ['Redes', 'Aprovados', 'Reprovacoes', 'Abandonos'];
+        let legendaTipoReprovacao = ['', 'Aprovações', 'Reprovacões', 'Abandonos'],
+            legendaReprovacaoPorRede = ['', 'Aprovações', 'Reprovacoes', 'Abandonos'];
 
         for (var h in painel.graficosReprovacaoPorTipoAno) {
             painel.graficosReprovacaoPorTipoAno[h].unshift(legendaTipoReprovacao);
@@ -145,8 +145,8 @@ jQuery(document).ready(function ($) {
     }
 
     function iniciaGraficosAbandono() {
-        let legendaTipoAbandono = ['', 'Matrículas', 'Reprovacoes', 'Abandonos'],
-            legendaAbandonoPorRede = ['', 'Matrículas', 'Reprovacoes', 'Abandonos'];
+        let legendaTipoAbandono = ['', 'Aprovações', 'Reprovacoes', 'Abandonos'],
+            legendaAbandonoPorRede = ['', 'Aprovações', 'Reprovacoes', 'Abandonos'];
 
         for (var i in painel.graficosAbandonoPorTipoAno) {
             painel.graficosAbandonoPorTipoAno[i].unshift(legendaTipoAbandono);

@@ -83,6 +83,12 @@ class MySQLPainelRepository implements IPainelRepository
         $rDistorcaoPainel = new MySQLMapaRepository();
         $totalGeral = $rDistorcaoPainel->getTotalGeral($anoReferencia);
 
+        $matriculaRepository = new MySQLMatriculaRepository();
+        $matriculasDeficiencia = array(
+            'com' => $matriculaRepository->getTotalPainelDeficiente($anoReferencia, 1, "Distorcao",null,null),
+            'sem' => $matriculaRepository->getTotalPainelDeficiente($anoReferencia, 0, "Distorcao",null,null)
+        );
+
         $painel = array(
             'distorcao' => $repository->getTotalBrasil($anoReferencia),
             'regiao' => $repository->getTotalBrasil($anoReferencia),
@@ -93,7 +99,7 @@ class MySQLPainelRepository implements IPainelRepository
             'localizacao_diferenciada' => $repository->getPorLocalizacaoDiferenciadaBrasil($anoReferencia),
             'cor_raca' => $repository->getPorCorRacaBrasil($anoReferencia),
             'genero' => $repository->getPorGeneroBrasil($anoReferencia),
-            'deficiencia' => array('com'=>'1234567', 'sem'=>'2345678'),
+            'deficiencia' => $matriculasDeficiencia,
             'total_geral' => $totalGeral
         );
 

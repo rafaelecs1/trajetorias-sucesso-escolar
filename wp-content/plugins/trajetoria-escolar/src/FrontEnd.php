@@ -278,7 +278,7 @@ class FrontEnd
 
                 <?php
 
-                include 'wp-includes/tabs_panels/tab1-panel-estado-municio-escola.php'
+                include 'wp-includes/tabs_panels/tab1-panel-estado-municio-escola.php';
 
                 ?>
 
@@ -286,14 +286,14 @@ class FrontEnd
             <section id="tab-2" class="aba-panel tabcontent" style="display: none;">
                 <?php
 
-                include 'wp-includes/tabs_panels/tab2-panel-estado-municio-escola.php'
+                include 'wp-includes/tabs_panels/tab2-panel-estado-municio-escola.php';
 
                 ?>
             </section>
             <section id="tab-3" class="aba-panel tabcontent" style="display: none;">
                 <?php
 
-                include 'wp-includes/tabs_panels/tab3-panel-estado-municio-escola.php'
+                include 'wp-includes/tabs_panels/tab3-panel-estado-municio-escola.php';
 
                 ?>
             </section>

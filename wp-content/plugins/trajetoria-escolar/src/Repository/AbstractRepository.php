@@ -158,6 +158,43 @@ abstract class AbstractRepository implements IRestFull
                                       where ' . $this->tableName . '.ano_referencia = %d AND ' . $this->tableName . '.cor_raca_id IS NULL AND ' . $this->tableName . '.genero_id IS NULL AND ' . $this->tableName . '.deficiencia_id = %d';
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $deficienciaId), ARRAY_A);
         return (int)$response['qtd'];
+
+        switch ($tipo) {
+            case "Distorcao":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia where tse_deficiencia.situacao_id = 4';
+                break;
+            case "NacionalMatricula":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia where tse_deficiencia.id > 0';
+                break;
+            case "NacionalAbandono":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia where tse_deficiencia.situacao_id = 1';
+                break;
+            case "NacionalReprovacao":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia where tse_deficiencia.situacao_id = 2';
+                break;
+            case "EstadoMatricula":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.estado_id = '.$estado_id;
+                break;
+            case "EstadoAbandono":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.estado_id = '.$estado_id.' and tse_deficiencia.situacao_id = 1';
+                break;
+            case "EstadoReprovacao":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.estado_id = '.$estado_id.' and tse_deficiencia.situacao_id = 2';
+                break;
+            case "MunicipioMatricula":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.id = '.$municipio_id;
+                break;
+            case "MunicipioAbandono":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.id = '.$municipio_id.' and tse_deficiencia.situacao_id = 1';
+                break;
+            case "MunicipioReprovacao":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.id = '.$municipio_id.' and tse_deficiencia.situacao_id = 2';
+                break;
+        }
+
+        $sql .= ' and tse_deficiencia.deficiencia = %d and tse_deficiencia.ano_referencia = %d';
+        $response = $this->db->get_row($this->db->prepare($sql, $deficienciaId, $anoReferencia), ARRAY_A);
+        return $response['qtd'];
     }
 
     protected function getTotalPorRegiao($anoReferencia = null, $regiao = null, $tipoAno = null)
