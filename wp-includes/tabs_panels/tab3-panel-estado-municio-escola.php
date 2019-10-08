@@ -1,4 +1,4 @@
-<section class="ficha <?php echo $tipo; ?>">
+<section class="ficha animated fadeIn <?php echo $tipo; ?>">
 
     <section id="redes-de-ensino">
 
