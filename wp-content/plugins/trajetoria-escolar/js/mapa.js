@@ -4,9 +4,9 @@ var map,
     infoWindow;
 jQuery(document).ready(function ($) {
 
-    $('h1:eq(1)').after('<p class="entry-header-description">Nas redes públicas municipais e estaduais (Censo Escolar - INEP/MEC)</p> ');
-    $('h1:eq(1)').after('<p class="entry-header-description">Em distorção, situação de reprovação ou abandono</p> ');
-
+    $('h1:eq(1)').after('<p class="entry-header-description">Redes públicas municipais e estaduais (Censo Escolar - INEP/MEC)</p> ');
+    $('h1:eq(1)').after('<p class="entry-header-description">Distorção idade-série, reprovação e abandono</p> ');
+    $('h1:eq(1)').after('<p class="entry-header-description">MATRÍCULAS</p> ');
 
     $('#select-year').change(function () {
         $('#form-year').submit();
@@ -98,7 +98,7 @@ jQuery(document).ready(function ($) {
                             google.maps.event.addListener(pol, 'click', function (e) {
                                 let content = '<div class="iw">';
                                 content +='<h3 class="map-nome">' + this.nome + '</h3>';
-                                content += '<section class="map-section"><span class="map-total">' + this.distorcao.toLocaleString('pt-BR') + ' (' + ((pol.distorcao * 100) / (pol.distorcao + pol.semDistorcao)).toFixed(1).replace('.', ',') + '%)</span> crianças e adolescentes em distorção idade-série.</section>';
+                                content += '<section class="map-section"><span class="map-total">' + this.distorcao.toLocaleString('pt-BR') + ' (' + ((pol.distorcao * 100) / (pol.distorcao + pol.semDistorcao)).toFixed(1).replace('.', ',') + '%)</span> crianças e adolescentes</section>';
                                 content += '<a href="' + mapa.siteUrl + 'painel/municipio/' + this.id + '/' + mapa.year + '/" class="map-button">Ver os dados</a>';
                                 content += '</div>';
                                 infoWindow.setContent(content);
