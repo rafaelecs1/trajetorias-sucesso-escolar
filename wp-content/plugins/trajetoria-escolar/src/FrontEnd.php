@@ -72,14 +72,10 @@ class FrontEnd
         ob_start();
         ?>
         <section id="container-filtros-e-legenda" class="home-col">
+
             <div class="filtros-e-legenda">
-                <section id="filtros">
-                    <!--header><h3>Selecione um ano:</h3></header>
-                    <select id="ano">
-                        <option value="2018">2018</option>
-                        <option value="2019">2019</option>
-                    </select -->
-                </section>
+           <a class="map-button btn-paniel-nacional" style="" href="/painel-brasil/<?php echo $this->year - 1 ?>">Ver dados nacionais</a>
+           <p class="color-white">Para ver os dados de estado, município ou escola selecione os filtros abaixo:</p>
                 <section id="filtros">
                     <header><h3>Selecione um estado:</h3></header>
                     <select id="estados">
