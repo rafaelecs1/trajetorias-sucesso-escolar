@@ -5,7 +5,7 @@
         <section class="mn_container mn_flex center">
 
             <div class="item item_1">
-                <h2>Reprovação no Brasil - <?php echo $this->year - 1 ?></h2>
+                <h2>Reprovação Escolar no Brasil - <?php echo $this->year - 1 ?></h2>
                 <div class="mn_fundamental_e_medio">
 
                     <div class="mn_fundamental">

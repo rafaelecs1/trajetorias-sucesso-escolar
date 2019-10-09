@@ -1558,7 +1558,7 @@ button.menu-toggle {
 }
 
 .center {
-    max-width: 1286px;
+    max-width: 1356px;
     width: 100%;
     padding: 0 60px;
     margin: auto;
@@ -2557,7 +2557,7 @@ span.wpcf7-not-valid-tip {
 .container-video {
     position: relative !important;
     width: 100%;
-    height: 481px;
+    height: 500px;
     /*padding-bottom: 56.25% !important;*/
 }
 iframe {

@@ -11,22 +11,21 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <?php if (is_front_page()) : ?>
-<!--        <div class="faixa"></div>-->
+        <!--        <div class="faixa"></div>-->
 
         <div class="faixa-video">
             <div class="center">
                 <a class="bot1 background-text">
                     <h3 class="entry-header-home">Trajetórias de Sucesso Escolar</h3>
-                    <p class="alignjustify">A distorção idade-série acontece quando um aluno está com dois ou mais anos de atraso escolar,
-                        considerando a idade esperada para cada ano. No Brasil, cada criança deve ingressar no 1º ano do
-                        Ensino Fundamental aos 6 anos e concluir o 9º ano aos 14. No Ensino Médio, o ingresso deve
-                        acontecer aos 15 anos e a conclusão aos 17. A taxa de distorção idade-série é calculada pelo
-                        Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (INEP) com base no Censo
-                        Escolar. Segundo os dados da edição 2018 do Censo, de cada 100 alunos brasileiros matriculados
-                        em escolas públicas municipais e estaduais, 22 estão em situação de distorção idade-série. São
-                        quase 6,5 milhões de crianças e adolescentes em atraso escolar sobretudo devido à reprovações
-                        sucessivas. A estratégia <b>Trajetórias de Sucesso Escolar</b> é uma iniciativa do UNICEF, com apoio do Instituto NET Claro Embratel e outros parceiros, para enfrentar a cultura de fracasso escolar que leva
-                        a essas múltiplas reprovações e, muitas vezes, à exclusão escolar.
+                    <p class="alignjustify">A estratégia <b>Trajetórias de Sucesso Escolar</b> é uma iniciativa do UNICEF, do
+                        Instituto Claro e outros parceiros para o enfrentamento da cultura de fracasso escolar no
+                        Brasil. O site disponibiliza indicadores de fluxo escolar nacionais, estaduais, municipais e por
+                        escola retirados do Censo Escolar. O objetivo é facilitar um diagnóstico amplo sobre a distorção
+                        idade-série no país – quando um estudante está com dois ou mais anos de  atraso escolar – e
+                        oferecer um conjunto de recomendações para o desenvolvimento de políticas educacionais que
+                        promovam o acesso, permanência e aprendizagem desses estudantes. Além das taxas de distorção e
+                        índices de abandono e reprovação, o site disponibiliza recortes por gênero, raça e localidade
+                        que mostram as relações entre o atraso escolar e as desigualdades brasileiras. 
                     </p>
                 </a>
                 <a class="bot12 bot1 pt-0 pr-0">

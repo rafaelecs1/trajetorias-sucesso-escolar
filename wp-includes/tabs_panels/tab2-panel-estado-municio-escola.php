@@ -51,7 +51,7 @@
 
                     echo self::gerarAmostra('<span class="">Ensino Fundamental</span> <br/><span class="bold">Anos Iniciais </span>', $item->anos_iniciais, $matriculas->$key->anos_iniciais);
                     echo self::gerarAmostra('<span class="">Ensino Fundamental</span> <br/><span class="bold">Anos Finais </span>', $item->anos_finais, $matriculas->$key->anos_finais);
-                    echo self::gerarAmostra('<span class=""></span><br/><span class="bold">Anos Médio </span>', $item->medio, $matriculas->$key->medio);
+                    echo self::gerarAmostra('<span class=""></span><br/><span class="bold">Ensino Médio </span>', $item->medio, $matriculas->$key->medio);
 
                     if ($tipo === 'municipio') {
                         echo '<a class="situacao-das-escolas" data-municipio="', $idMunicipio, '" data-rede="', sanitize_title($key), '" href="#situacao-das-escolas-rede-', sanitize_title($key), '">Situação das escolas</a>';
