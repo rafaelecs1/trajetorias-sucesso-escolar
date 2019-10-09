@@ -197,11 +197,6 @@
 
         </section>
 
-        <div class="center" style="text-align: center;">
-            <p><a id="bt_link_nacional" style="" href="/painel-brasil/<?php echo $this->year - 1 ?>">Ver dados
-                    nacionais</a></p>
-        </div>
-
     </div>
 
 </div>
