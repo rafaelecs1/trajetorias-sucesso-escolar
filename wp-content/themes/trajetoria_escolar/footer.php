@@ -32,7 +32,7 @@ if (is_front_page()) {
                 'netclaroembratel' => array('url' => 'https://www.institutonetclaroembratel.org.br/', 'tipo' => 'Parceiro Estratégico'),
                 'itau' => array('url' => 'https://www.samsung.com/br/', 'tipo' => 'Apoio'),
                 'aprendiz' => array('url' => 'http://www.cidadeescolaaprendiz.org.br/', 'tipo' => 'Parceiro técnico'),
-                'cedac' => array('url' => 'https://www.samsung.com/br/', 'tipo' => ''),
+                'cedac' => array('url' => 'http://www.comunidadeeducativa.org.br/', 'tipo' => ''),
 
             );
             foreach ($realizacao as $k => $v) {
