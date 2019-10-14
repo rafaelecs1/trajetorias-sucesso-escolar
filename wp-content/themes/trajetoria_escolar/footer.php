@@ -28,15 +28,16 @@ if (is_front_page()) {
         <ul class="realizacao">
             <?php
             $realizacao = array(
-                'unicef' => array('url' => 'https://www.unicef.org/brazil/pt/', 'tipo' => 'Realização'),
-                'netclaroembratel' => array('url' => 'https://www.institutonetclaroembratel.org.br/', 'tipo' => 'Parceiro Estratégico'),
-                'itau' => array('url' => 'https://www.samsung.com/br/', 'tipo' => 'Apoio'),
-                'aprendiz' => array('url' => 'http://www.cidadeescolaaprendiz.org.br/', 'tipo' => 'Parceiro técnico'),
-                'cedac' => array('url' => 'https://www.samsung.com/br/', 'tipo' => ''),
+                'unicef' => array('url' => 'https://www.unicef.org/brazil/pt', 'tipo' => 'Realização'),
+                'netclaroembratel' => array('url' => 'https://www.institutonetclaroembratel.org.br', 'tipo' => 'Parceiro Estratégico'),
+                'itau' => array('url' => 'https://www.itausocial.org.br', 'tipo' => 'Apoio'),
+                'aprendiz' => array('url' => 'https://www.cidadeescolaaprendiz.org.br', 'tipo' => 'Parceiro técnico'),
+                'cedac' => array('url' => 'http://www.comunidadeeducativa.org.br', 'tipo' => ''),
+                'avisa_la' => array('url' => 'https://avisala.org.br', 'tipo' => ''),
 
             );
             foreach ($realizacao as $k => $v) {
-                echo '<li><span>', $v['tipo'], '</span><a href="', $v['url'], '" class="realizador ', $k, '" target="_blank"><img src="', get_template_directory_uri(), '/img/logo/', $k, '.png" alt="', strtoupper($k), '" title="', strtoupper($k), '"/></a></li>';
+                echo '<li><strong><span>', $v['tipo'], '</span></strong><a href="', $v['url'], '" class="realizador ', $k, '" target="_blank"><img src="', get_template_directory_uri(), '/img/logo/', $k, '.png" alt="', strtoupper($k), '" title="', strtoupper($k), '"/></a></li>';
             }
             ?>
         </ul>
