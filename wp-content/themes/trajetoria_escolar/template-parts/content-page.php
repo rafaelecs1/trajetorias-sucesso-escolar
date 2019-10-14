@@ -16,7 +16,7 @@
         <div class="faixa-video">
             <div class="center">
                 <a class="bot1 background-text">
-                    <h3 class="entry-header-home">Trajetórias de Sucesso Escolar</h3>
+                    <h3 class="entry-header-home">Sobre a estratégia</h3>
                     <p class="alignjustify">A estratégia <b>Trajetórias de Sucesso Escolar</b> é uma iniciativa do UNICEF, do
                         Instituto Claro e outros parceiros para o enfrentamento da cultura de fracasso escolar no
                         Brasil. O site disponibiliza indicadores de fluxo escolar nacionais, estaduais, municipais e por
