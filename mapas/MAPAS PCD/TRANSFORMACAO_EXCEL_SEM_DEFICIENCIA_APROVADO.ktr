@@ -775,6 +775,10 @@
         <column_name>qtd</column_name>
         <stream_name>Aprovado_1</stream_name>
       </field>
+      <field>
+        <column_name>ano_referencia</column_name>
+        <stream_name>ano_2019</stream_name>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -908,6 +912,18 @@
         <decimal/>
         <group/>
         <nullif>4</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>ano_2019</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>2019</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
