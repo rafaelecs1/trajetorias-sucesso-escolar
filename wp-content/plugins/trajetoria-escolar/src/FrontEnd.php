@@ -71,11 +71,14 @@ class FrontEnd
         $estados = $rEstado->getLimites();
         ob_start();
         ?>
-        <section id="container-filtros-e-legenda" class="home-col">
 
+        <header class="entry-header">
+            <h1 class="entry-title">Painel Distorção idade-série, reprovação e abandono </h1> <p class="entry-header-description">Brasil, estados, municípios e escolas</p>
+        </header>
+        <section id="container-filtros-e-legenda" class="home-col">
             <div class="filtros-e-legenda">
            <a class="map-button btn-paniel-nacional" style="" href="/painel-brasil/<?php echo $this->year - 1 ?>">Ver dados nacionais</a>
-           <p class="color-white">Para ver os dados de estado, município ou escola selecione os filtros abaixo:</p>
+           <!--p class="color-white">Para ver os dados de estado, município ou escola selecione os filtros abaixo:</p -->
                 <section id="filtros">
                     <header><h3>Selecione um estado:</h3></header>
                     <select id="estados">

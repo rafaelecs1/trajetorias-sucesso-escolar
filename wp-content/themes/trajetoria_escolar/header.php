@@ -54,21 +54,22 @@
             </div>
             <ul class="share">
                 <?php
-                $detect = new Mobile_Detect();
-                $siteUrl = home_url('/');
-                $siteTitle = get_bloginfo('blogname');
-                global $arShare;
-                $arShare = array(
-                    'whatsapp' => (($detect->isMobile() || $detect->isTablet()) ? 'https://wa.me/?text=' : 'https://web.whatsapp.com/send?text=') . urlencode($siteUrl),
-                    'twitter' => 'http://twitter.com/intent/tweet?status=' . $siteUrl . '+-+' . $siteTitle,
-                    'facebook' => 'http://www.facebook.com/share.php?u=' . $siteUrl . '&title=' . $siteTitle,
-                    );
-                foreach($arShare as $k =>$v)
-                {
-                    echo '<li><a class="', $k,'" href="', $v, '" title="Compartilhe no ', ucfirst($k), '"><img src="', get_template_directory_uri(), '/img/', $k, '-share.png" /></a></li>';
-                }
+                    $detect = new Mobile_Detect();
+                    $siteUrl = home_url('/');
+                    $siteTitle = get_bloginfo('blogname');
+                    global $arShare;
+                    $arShare = array(
+                        'whatsapp' => (($detect->isMobile() || $detect->isTablet()) ? 'https://wa.me/?text=' : 'https://web.whatsapp.com/send?text=') . urlencode($siteUrl),
+                        'twitter' => 'http://twitter.com/intent/tweet?status=' . $siteUrl . '+-+' . $siteTitle,
+                        'facebook' => 'http://www.facebook.com/share.php?u=' . $siteUrl . '&title=' . $siteTitle,
+                        );
+                    foreach($arShare as $k =>$v)
+                    {
+                        echo '<li><a class="', $k,'" href="', $v, '" title="Compartilhe no ', ucfirst($k), '"><img src="', get_template_directory_uri(), '/img/', $k, '-share.png" /></a></li>';
+                    }
                 ?>
             </ul>
+
         </div>
     </header><!-- #masthead -->
     <div class="faixa-header"></div>
