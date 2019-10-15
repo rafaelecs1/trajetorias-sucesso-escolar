@@ -58,6 +58,9 @@ class FrontEnd
 
         //Filters
         add_filter('the_content', array($this, 'proxyParaMaterial'));
+
+        wp_enqueue_script('trajetoria_escolar-modifications', plugin_dir_url(dirname(__FILE__)) . 'js/modifications.js', array('jquery'), false, true);
+        
     }
 
     /**
