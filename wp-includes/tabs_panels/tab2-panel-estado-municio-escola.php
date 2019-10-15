@@ -262,8 +262,8 @@
             <header><h2>Deficiência</h2></header>
             <section class="deficiencia">
                 <?php
-                    echo self::gerarAmostra('com deficiência', intval($reprovacoes->deficiencia->com), intval($reprovacoes->deficiencia->sem)+intval($reprovacoes->deficiencia->com));
-                    echo self::gerarAmostra('sem deficiência', intval($reprovacoes->deficiencia->sem), intval($reprovacoes->deficiencia->sem)+intval($reprovacoes->deficiencia->com));
+                    echo self::gerarAmostra('com deficiência', intval($reprovacoes->deficiencia->com), $matriculas->deficiencia->com);
+                    echo self::gerarAmostra('sem deficiência', intval($reprovacoes->deficiencia->sem), $matriculas->deficiencia->sem);
                 ?>
             </section>
         </section>

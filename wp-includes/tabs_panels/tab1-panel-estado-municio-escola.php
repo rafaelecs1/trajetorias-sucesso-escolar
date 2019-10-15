@@ -182,8 +182,8 @@
             <header><h2>Deficiência</h2></header>
             <section class="deficiencia">
                 <?php
-                    echo self::gerarAmostra('com deficiência', intval($painel['deficiencia']['com']), intval($painel['deficiencia']['com'])+intval($painel['deficiencia']['sem']));
-                    echo self::gerarAmostra('sem deficiência', intval($painel['deficiencia']['sem']), intval($painel['deficiencia']['com'])+intval($painel['deficiencia']['sem']));
+                    echo self::gerarAmostra('com deficiência', intval($painel['deficiencia']['com']), $matriculas->deficiencia->com);
+                    echo self::gerarAmostra('sem deficiência', intval($painel['deficiencia']['sem']), $matriculas->deficiencia->sem);
                 ?>
             </section>
         </section>
