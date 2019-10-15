@@ -1,3 +1,3 @@
 jQuery( document ).ready(function() {
-    $("#menu-item-139 a").attr("target","_blank");
+    jQuery("#menu-item-139 a").attr("target","_blank");
 });
