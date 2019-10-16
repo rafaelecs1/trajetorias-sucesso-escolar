@@ -230,7 +230,7 @@
             <?php
 
                 if($reprovacoes->localizacao_diferenciada->area_de_assentamento != null) {
-                    echo self::gerarAmostra('Áre de assentamento', $reprovacoes->localizacao_diferenciada->area_de_assentamento, $matriculas->localizacao_diferenciada->area_de_assentamento);
+                    echo self::gerarAmostra('Área de assentamento', $reprovacoes->localizacao_diferenciada->area_de_assentamento, $matriculas->localizacao_diferenciada->area_de_assentamento);
                 }
 
                 if($reprovacoes->localizacao_diferenciada->area_remanecente_quilombola != null) {

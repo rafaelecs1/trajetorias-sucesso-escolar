@@ -1306,13 +1306,13 @@ a.situacao-das-escolas:hover {
 #graficos-por-tipo-ensino ul.abas li a:hover,
 #graficos-por-tipo-ensino ul.abas_reprovacoes li a:hover,
 #graficos-por-tipo-ensino ul.abas_abandonos li a:hover {
-    background-color: #ffb400
+    background-color: #ffb400;
 }
 
 #graficos-por-tipo-ensino ul.abas li.active a,
 #graficos-por-tipo-ensino ul.abas_reprovacoes li.active a,
 #graficos-por-tipo-ensino ul.abas_abandonos li.active a {
-    background: #e4e4e4
+    background: #ffb400;
 }
 
 #slider-tabs {
@@ -1353,7 +1353,8 @@ a.situacao-das-escolas:hover {
 #slider-tabs ul.abas li.active a,
 #slider-tabs ul.abas_reprovacoes li.active a,
 #slider-tabs ul.abas_abandonos li.active a {
-    background: #e4e4e4
+    background: #ffb400;
+    color: white;
 }
 
 /** Abas paineis*/
@@ -1379,11 +1380,12 @@ a.situacao-das-escolas:hover {
 }
 
 #slider-tabs ul.abas-paineis li a:hover {
-    background-color: #ffb400
+    background-color: #ffb400;
 }
 
 #slider-tabs ul.abas-paineis li.active a {
-    background: #e4e4e4
+    background: #ffb400;
+    color: white;
 }
 
 /** Fim */
@@ -1676,53 +1678,117 @@ Faixa
 /*    background-size: cover;*/
 /*    border: 1px solid red;*/
 /*}*/
-.background-text {
-    /*background-color: #EBB516;*/
-    /*background-color: rgb(100, 198, 227); !* Fallback color *!*/
-    /*background-color: rgba(100, 198, 227, 0.9); !* Black w/opacity/see-through *!*/
-}
-.faixa-video {
 
-    //background-image: url("img/background-home.jpg");
-    padding: 22px 0;
-    margin: 0 0 80px 0;
-    float: left;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
+/*.background-text {*/
+/*    !*background-color: #EBB516;*!*/
+/*    !*background-color: rgb(100, 198, 227); !* Fallback color *!*!*/
+/*    !*background-color: rgba(100, 198, 227, 0.9); !* Black w/opacity/see-through *!*!*/
+/*}*/
+
+/*.faixa-video {*/
+
+/*    //background-image: url("img/background-home.jpg");*/
+/*    padding: 22px 0;*/
+/*    margin: 0 0 80px 0;*/
+/*    float: left;*/
+/*    width: 100%;*/
+/*    background-repeat: no-repeat;*/
+/*    background-attachment: fixed;*/
+/*    background-position: center;*/
+/*    background-color: #ffb400;*/
+/*}*/
+
+/*@media screen and (max-width: 1000px) {*/
+/*    .faixa-video a.bot1 {*/
+/*        width: 100% !important;*/
+/*        text-align: center;*/
+/*    }*/
+/*}*/
+
+/*.faixa-video p {*/
+/*    margin-top: 15px 0 0 0;*/
+/*    color: #fff;*/
+/*    font-size: 19px;*/
+/*    display: inline-block;*/
+/*}*/
+
+/*.faixa-video a {*/
+/*    padding: 20px;*/
+/*    display: inline-block;*/
+/*}*/
+
+/*.faixa-video a.bot1 {*/
+/*    float: left;*/
+/*    width: 47%;*/
+/*    background-repeat: no-repeat;*/
+/*}*/
+/*.faixa-video a.bot12 {*/
+/*    width: 53%;*/
+/*    background-repeat: no-repeat;*/
+/*    padding-left: 55px !important;*/
+/*}*/
+
+/*
+    VIDEO
+ */
+
+
+.faixa_video{
+    margin-bottom: 80px;
+    padding: 80px;
     background-color: #ffb400;
 }
 
-@media screen and (max-width: 1000px) {
-    .faixa-video a.bot1 {
-        width: 100% !important;
-        text-align: center;
+.faixa_video p{
+    font-family: 'lato-light';
+    font-size: 19px;
+    line-height: 25px;
+    color: white;
+}
+
+.faixa-video .entry-header-home{
+
+}
+
+.content_video {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.content_video .item{
+    min-width: 300px;
+    flex: 1;
+}
+
+.content_video .video{
+   margin-left: 40px;
+}
+
+.content_video .text{
+    margin-right: 40px;
+}
+
+@media only screen and (max-device-width: 480px) {
+    /* styles for mobile browsers smaller than 480px; (iPhone) */
+    .content_video .video{
+        margin: 0;
+    }
+
+    .content_video .text{
+        margin: 0;
     }
 }
 
-.faixa-video p {
-    margin-top: 15px 0 0 0;
-    color: #fff;
-    font-size: 19px;
-    display: inline-block;
-}
 
-.faixa-video a {
-    padding: 20px;
-    display: inline-block;
-}
+/*
+    FINAL VIDEO
+ */
 
-.faixa-video a.bot1 {
-    float: left;
-    width: 47%;
-    background-repeat: no-repeat;
-}
-.faixa-video a.bot12 {
-    width: 53%;
-    background-repeat: no-repeat;
-    padding-left: 55px !important;
-}
+
+
+
+
 
 .home .faixa {
     background-position: bottom;

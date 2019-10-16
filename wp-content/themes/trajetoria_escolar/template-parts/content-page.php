@@ -10,33 +10,46 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
     <?php if (is_front_page()) : ?>
         <!--        <div class="faixa"></div>-->
 
-        <div class="faixa-video">
-            <div class="center">
-                <a class="bot1 background-text">
-                    <h3 class="entry-header-home">Sobre a estratégia</h3>
-                    <p class="alignjustify">A estratégia <b>Trajetórias de Sucesso Escolar</b> é uma iniciativa do UNICEF, do
-                        Instituto Claro e outros parceiros para o enfrentamento da cultura de fracasso escolar no
-                        Brasil. O site disponibiliza indicadores de fluxo escolar nacionais, estaduais, municipais e por
-                        escola retirados do Censo Escolar. O objetivo é facilitar um diagnóstico amplo sobre a distorção
-                        idade-série no país – quando um estudante está com dois ou mais anos de  atraso escolar – e
-                        oferecer um conjunto de recomendações para o desenvolvimento de políticas educacionais que
-                        promovam o acesso, permanência e aprendizagem desses estudantes. Além das taxas de distorção e
-                        índices de abandono e reprovação, o site disponibiliza recortes por gênero, raça e localidade
-                        que mostram as relações entre o atraso escolar e as desigualdades brasileiras. 
-                    </p>
-                </a>
-                <a class="bot12 bot1 pt-0 pr-0">
-                    <div class="container-video">
-                        <iframe src="https://www.youtube.com/embed/6P3DmtgOjfk" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
+        <div class="faixa_video">
+
+            <div class="center content_video">
+
+                    <div class="item text">
+                        <h3 class="entry-header-home">Sobre a estratégia</h3>
+
+                        <p class="alignjustify">A estratégia <b>Trajetórias de Sucesso Escolar</b> é uma iniciativa do UNICEF, do
+                            Instituto Claro e outros parceiros para o enfrentamento da cultura de fracasso escolar no
+                            Brasil. O site disponibiliza indicadores de fluxo escolar nacionais, estaduais, municipais e por
+                            escola retirados do Censo Escolar. O objetivo é facilitar um diagnóstico amplo sobre a distorção
+                            idade-série no país – quando um estudante está com dois ou mais anos de  atraso escolar – e
+                            oferecer um conjunto de recomendações para o desenvolvimento de políticas educacionais que
+                            promovam o acesso, permanência e aprendizagem desses estudantes. Além das taxas de distorção e
+                            índices de abandono e reprovação, o site disponibiliza recortes por gênero, raça e localidade
+                            que mostram as relações entre o atraso escolar e as desigualdades brasileiras. 
+                        </p>
+
                     </div>
-                </a>
+
+                    <div class="item video">
+
+                        <iframe src="https://www.youtube.com/embed/6P3DmtgOjfk"
+                                frameborder="0"
+                                color="white"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+
+                        </iframe>
+
+                    </div>
+
             </div>
+
         </div>
+
     <?php endif; ?>
 
 

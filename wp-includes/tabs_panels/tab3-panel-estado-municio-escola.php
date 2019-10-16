@@ -229,7 +229,7 @@
         <section class="localizacao-diferenciada">
             <?php
                 if($abandonos->localizacao_diferenciada->area_de_assentamento != null) {
-                    echo self::gerarAmostra('Áre de assentamento', $abandonos->localizacao_diferenciada->area_de_assentamento, $matriculas->localizacao_diferenciada->area_de_assentamento);
+                    echo self::gerarAmostra('Área de assentamento', $abandonos->localizacao_diferenciada->area_de_assentamento, $matriculas->localizacao_diferenciada->area_de_assentamento);
                 }
 
                 if($abandonos->localizacao_diferenciada->area_remanecente_quilombola != null) {
