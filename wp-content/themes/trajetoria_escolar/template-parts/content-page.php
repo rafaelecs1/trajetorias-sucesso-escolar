@@ -50,6 +50,39 @@
 
         </div>
 
+        <div class="faixa_frases">
+
+            <div class="center itens">
+
+                <div class="material_download">
+                    <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/painel2_03.jpg">
+                </div>
+
+                <div class="text">
+
+                    <div>
+
+                        <h2 class="title">
+                            O enfrentamento da cultura do fracasso escolar é urgente porque...
+                        </h2>
+
+                        <div class="frases">
+
+                            + As redes estaduais e municipais do Brasil somam 6,4 milhões de estudantes em atraso escolar e
+                            2,4 milhões reprovados.
+
+                        </div>
+
+                        <span class="font">FONTE: Censo Escolar 2018 das redes municipais e estaduais de ensino do Brasil. </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
     <?php endif; ?>
 
 

@@ -1729,14 +1729,67 @@ Faixa
 /*}*/
 
 /*
-    VIDEO
+    ---- VIDEO
  */
+
+.faixa_frases{
+    background-color: #64C6E3;
+    margin-bottom: 80px;
+    padding: 20px;
+    color: white;
+}
+
+.faixa_frases .itens{
+    display: flex;
+}
+
+.faixa_frases .itens .material_download{
+    flex: 1;
+    margin-right: 20px;
+}
+
+.faixa_frases .itens .text{
+    flex: 10;
+}
+
+.faixa_frases .itens .text .title {
+    font-size: 30px;
+    margin: 0px;
+}
+
+
+.faixa_frases .itens .text .frases {
+    padding-bottom: 5px;
+    font-family: lato-italic;
+    font-size: 22px;
+    text-shadow: 0.5px 0.5px #ded8d8;
+}
+
+.faixa_frases .itens .text .font {
+    font-size: 14px;
+}
+
+
+@media only screen and (max-device-width: 480px) {
+
+    .faixa_frases .itens{
+        display: block;
+    }
+
+    .faixa_frases .itens .material_download{
+        margin: 0px;
+    }
+
+    .faixa_frases .itens .text{
+        margin: 0px;
+    }
+}
 
 
 .faixa_video{
-    margin-bottom: 80px;
-    padding: 80px;
     background-color: #ffb400;
+    padding-top: 80px;
+    padding-bottom: 80px;
 }
 
 .faixa_video p{
@@ -1782,10 +1835,8 @@ Faixa
 
 
 /*
-    FINAL VIDEO
+    ---- FINAL VIDEO
  */
-
-
 
 
 
