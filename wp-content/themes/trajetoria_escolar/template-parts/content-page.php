@@ -36,7 +36,7 @@
 
                     <div class="item video">
 
-                        <iframe src="https://www.youtube.com/embed/6P3DmtgOjfk"
+                        <iframe src="https://www.youtube.com/embed/7MuJKuRBIxY"
                                 frameborder="0"
                                 color="white"
                                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
