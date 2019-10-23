@@ -60,7 +60,9 @@ class FrontEnd
         add_filter('the_content', array($this, 'proxyParaMaterial'));
 
         wp_enqueue_script('trajetoria_escolar-modifications', plugin_dir_url(dirname(__FILE__)) . 'js/modifications.js', array('jquery'), false, true);
-
+        wp_enqueue_script('trajetoria_escolar-owlcarousel', plugin_dir_url(dirname(__FILE__)) . 'css/owlcarousel/owl.carousel.min.js', array('jquery'), false, true);
+        wp_enqueue_style('carousel', plugin_dir_url(dirname(__FILE__)) . 'css/owlcarousel/owl.carousel.min.css');
+//      wp_enqueue_style('carouseltheme', plugin_dir_url(dirname(__FILE__)) . 'css/owlcarousel/owl.theme.default.min.css');
     }
 
     /**

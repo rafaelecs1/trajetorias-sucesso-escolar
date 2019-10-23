@@ -1734,7 +1734,6 @@ Faixa
 
 .faixa_frases{
     background-color: #64C6E3;
-    margin-bottom: 80px;
     padding: 20px;
     color: white;
 }
@@ -1765,8 +1764,31 @@ Faixa
     text-shadow: 0.5px 0.5px #ded8d8;
 }
 
-.faixa_frases .itens .text .font {
+.faixa_frases .font {
     font-size: 14px;
+    margin: 0 auto;
+   text-align: center;
+}
+
+.faixa_frases .navigation-owl{
+    margin: 0 auto;
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.faixa_frases .navigation-owl label{
+    margin: 6px;
+    height: 5px;
+    width: 10px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    border: solid 2px #2980b9;
+    font-size: 8px;
+    cursor: pointer;
+}
+
+.faixa_frases .navigation-owl .active{
+    background-color: #045396;
 }
 
 
@@ -1790,6 +1812,7 @@ Faixa
     background-color: #ffb400;
     padding-top: 80px;
     padding-bottom: 80px;
+    margin-bottom: 80px;
 }
 
 .faixa_video p{

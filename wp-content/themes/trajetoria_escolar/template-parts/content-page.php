@@ -14,6 +14,215 @@
     <?php if (is_front_page()) : ?>
         <!--        <div class="faixa"></div>-->
 
+        <div class="faixa_frases">
+
+            <div class="center">
+
+                <div class="owl-carousel">
+
+                    <div class="itens">
+
+                        <div class="material_download item">
+                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/destaque1.jpg">
+                        </div>
+
+                        <div class="text item">
+
+                            <div>
+
+                                <h2 class="title">
+                                    O enfrentamento da cultura do fracasso escolar é urgente porque...
+                                </h2>
+
+                                <div class="frases">
+
+                                    + As redes estaduais e municipais do Brasil somam 6,4 milhões de estudantes em atraso escolar e
+                                    2,4 milhões reprovados.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="itens">
+
+                        <div class="material_download item">
+                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/destaque2.jpg">
+                        </div>
+
+                        <div class="text item">
+
+                            <div>
+
+                                <h2 class="title">
+                                    O enfrentamento da cultura do fracasso escolar é urgente porque...
+                                </h2>
+
+                                <div class="frases">
+
+                                    + Mais de 832 mil crianças e adolescentes deixaram a escola apenas em 2018.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="itens">
+
+                        <div class="material_download item">
+                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/destaque3.jpg">
+                        </div>
+
+                        <div class="text item">
+
+                            <div>
+
+                                <h2 class="title">
+                                    O enfrentamento da cultura do fracasso escolar é urgente porque...
+                                </h2>
+
+                                <div class="frases">
+
+                                    + Os estudantes negros e pardos deixam a escola 2,5 vezes mais que os brancos e são reprovados duas vezes mais.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="itens">
+
+                        <div class="material_download item">
+                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/destaque4.jpg">
+                        </div>
+
+                        <div class="text item">
+
+                            <div>
+
+                                <h2 class="title">
+                                    O enfrentamento da cultura do fracasso escolar é urgente porque...
+                                </h2>
+
+                                <div class="frases">
+
+                                    + Os indígenas têm as maiores taxas de distorção idade-série, abandono e reprovação. Mais de 41% dos estudantes estão em atraso escolar.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="itens">
+
+                        <div class="material_download item">
+                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/destaque5.jpg">
+                        </div>
+
+                        <div class="text item">
+
+                            <div>
+
+                                <h2 class="title">
+                                    O enfrentamento da cultura do fracasso escolar é urgente porque...
+                                </h2>
+
+                                <div class="frases">
+
+                                    + São 383 mil crianças e adolescentes com deficiência em distorção idade-série, o equivalente a quase 49% das matrículas.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="itens">
+
+                        <div class="material_download item">
+                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/destaque6.jpg">
+                        </div>
+
+                        <div class="text item">
+
+                            <div>
+
+                                <h2 class="title">
+                                    O enfrentamento da cultura do fracasso escolar é urgente porque...
+                                </h2>
+
+                                <div class="frases">
+
+                                    + Norte e Nordeste são as regiões com as maiores taxas de distorção idade-série e abandono escolar do país.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="itens">
+
+                        <div class="material_download item">
+                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/destaque7.jpg">
+                        </div>
+
+                        <div class="text item">
+
+                            <div>
+
+                                <h2 class="title">
+                                    O enfrentamento da cultura do fracasso escolar é urgente porque...
+                                </h2>
+
+                                <div class="frases">
+
+                                    + O Ensino Médio perdeu 439 mil estudantes apenas em 2018, a maioria abandona a escola no primeiro ano. É também a etapa de ensino que mais reprova no país.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="navigation-owl">
+                    <label data="0">&emsp;</label>
+                    <label data="1">&emsp;</label>
+                    <label data="2">&emsp;</label>
+                    <label data="3">&emsp;</label>
+                    <label data="4">&emsp;</label>
+                    <label data="5">&emsp;</label>
+                    <label data="6">&emsp;</label>
+                </div>
+
+                <div class="font">
+                    <span>FONTE: Censo Escolar 2018 das redes municipais e estaduais de ensino do Brasil. </span>
+                </div>
+
+            </div>
+
+        </div>
+
         <div class="faixa_video">
 
             <div class="center content_video">
@@ -45,39 +254,6 @@
                         </iframe>
 
                     </div>
-
-            </div>
-
-        </div>
-
-        <div class="faixa_frases">
-
-            <div class="center itens">
-
-                <div class="material_download">
-                    <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/painel2_03.jpg">
-                </div>
-
-                <div class="text">
-
-                    <div>
-
-                        <h2 class="title">
-                            O enfrentamento da cultura do fracasso escolar é urgente porque...
-                        </h2>
-
-                        <div class="frases">
-
-                            + As redes estaduais e municipais do Brasil somam 6,4 milhões de estudantes em atraso escolar e
-                            2,4 milhões reprovados.
-
-                        </div>
-
-                        <span class="font">FONTE: Censo Escolar 2018 das redes municipais e estaduais de ensino do Brasil. </span>
-
-                    </div>
-
-                </div>
 
             </div>
 
