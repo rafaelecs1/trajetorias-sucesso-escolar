@@ -149,8 +149,8 @@
 
             <?php
                 $graficoReprovacaoPorRedes = array();
-                $graficoReprovacaoPorRedes[0] = ['Municipal', (int)$matriculas->municipal->total, (int)$reprovacoes->municipal->total, (int)$abandonos->municipal->total];
-                $graficoReprovacaoPorRedes[1] = ['Estadual', (int)$matriculas->estadual->total, (int)$reprovacoes->estadual->total, (int)$abandonos->estadual->total];
+                $graficoReprovacaoPorRedes[0] = ['Municipal', ((int)$matriculas->municipal->total - (int)$reprovacoes->municipal->total - (int)$abandonos->municipal->total), (int)$reprovacoes->municipal->total, (int)$abandonos->municipal->total];
+                $graficoReprovacaoPorRedes[1] = ['Estadual', ((int)$matriculas->estadual->total - (int)$reprovacoes->estadual->total - (int)$abandonos->estadual->total), (int)$reprovacoes->estadual->total, (int)$abandonos->estadual->total];
             ?>
 
         </section>

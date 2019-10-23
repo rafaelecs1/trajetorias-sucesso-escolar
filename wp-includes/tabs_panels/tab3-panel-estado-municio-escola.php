@@ -149,8 +149,8 @@
 
             <?php
                 $graficoAbandonoPorRedes = array();
-                $graficoAbandonoPorRedes[0] = ['Municipal', (int)$matriculas->municipal->total, (int)$reprovacoes->municipal->total, (int)$abandonos->municipal->total];
-                $graficoAbandonoPorRedes[1] = ['Estadual', (int)$matriculas->estadual->total, (int)$reprovacoes->estadual->total, (int)$abandonos->estadual->total];
+                $graficoAbandonoPorRedes[0] = ['Municipal', ((int)$matriculas->municipal->total - (int)$reprovacoes->municipal->total - (int)$abandonos->municipal->total), (int)$reprovacoes->municipal->total, (int)$abandonos->municipal->total];
+                $graficoAbandonoPorRedes[1] = ['Estadual', ((int)$matriculas->estadual->total - (int)$reprovacoes->estadual->total - (int)$abandonos->estadual->total), (int)$reprovacoes->estadual->total, (int)$abandonos->estadual->total];
             ?>
             
         </section>

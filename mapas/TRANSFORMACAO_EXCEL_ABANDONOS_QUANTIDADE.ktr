@@ -581,7 +581,7 @@
     <accept_field/>
     <accept_stepname/>
     <file>
-      <name>C:\Users\mansouza\Documents\www\Trajetorias 2019 - dados - guilherme\mapas_outubro_2019\tabela2_padrao_abandono.xlsx</name>
+      <name>C:\Users\mansouza\Documents\www\Trajetorias 2019 - dados - guilherme\mapas_outubro_2_2019\tabela2_padrao_abandono.xlsx</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -908,7 +908,7 @@
     <schema/>
     <table>tse_qtd_abandonos</table>
     <commit>1000</commit>
-    <truncate>N</truncate>
+    <truncate>Y</truncate>
     <ignore_errors>N</ignore_errors>
     <use_batch>Y</use_batch>
     <specify_fields>Y</specify_fields>
