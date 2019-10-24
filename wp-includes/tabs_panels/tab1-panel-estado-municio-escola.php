@@ -103,13 +103,19 @@
         </section>
 
         <section id="grafico-por-redes">
-            <header><h2>Total de Matrículas na Educação Básica</h2></header>
+            <header><h2>Total de Matrículas em Distorção Idade-Série </h2></header>
+            <hr>
+            <br/><br/><br/>
+
+
+
             <div class="valor">
                 <?php
-                echo number_format((int)$painel['total_geral'], 0, ',', '.')
+                    //echo number_format((int)$painel['total_geral'], 0, ',', '.')
                 ?>
             </div>
-            <hr>
+
+
             <div id="grafico_por_redes" class="grafico"></div>
             <?php
                 $graficoPorRedes = array();

@@ -141,16 +141,56 @@
 
         <section id="grafico-por-redes">
             <header><h2>Total de reprovações</h2></header>
-            <div class="valor">
-                <?php echo number_format((int)$reprovacoes->total, 0, ',', '.') ?>
-            </div>
             <hr>
+
+            <br><br><br>
+
+            <div class="valor">
+                <?php //echo number_format((int)$reprovacoes->total, 0, ',', '.') ?>
+            </div>
+
             <div id="grafico_por_redes_reprovacao" class="grafico"></div>
 
             <?php
                 $graficoReprovacaoPorRedes = array();
-                $graficoReprovacaoPorRedes[0] = ['Municipal', ((int)$matriculas->municipal->total - (int)$reprovacoes->municipal->total - (int)$abandonos->municipal->total), (int)$reprovacoes->municipal->total, (int)$abandonos->municipal->total];
-                $graficoReprovacaoPorRedes[1] = ['Estadual', ((int)$matriculas->estadual->total - (int)$reprovacoes->estadual->total - (int)$abandonos->estadual->total), (int)$reprovacoes->estadual->total, (int)$abandonos->estadual->total];
+
+                $graficoReprovacaoPorRedes[0] = [
+                        'Municipal',
+                        ((int)$matriculas->municipal->total - (int)$reprovacoes->municipal->total - (int)$abandonos->municipal->total),
+                        (int)$reprovacoes->municipal->total,
+                        (int)$abandonos->municipal->total,
+
+                        (
+                            (
+                                $painel["tipo_rede"]["Municipal"]["Fundamental"]["Iniciais"]["sem_distorcao"]
+                                +$painel["tipo_rede"]["Municipal"]["Fundamental"]["Iniciais"]["distorcao"]
+                                +$painel["tipo_rede"]["Municipal"]["Fundamental"]["Finais"]["sem_distorcao"]
+                                +$painel["tipo_rede"]["Municipal"]["Fundamental"]["Finais"]["distorcao"]
+                                +$painel["tipo_rede"]["Municipal"]["Médio"]["Todos"]["sem_distorcao"]
+                                +$painel["tipo_rede"]["Municipal"]["Médio"]["Todos"]["distorcao"]
+                            )
+                            -(int)$matriculas->municipal->total
+                        )
+                ];
+
+                $graficoReprovacaoPorRedes[1] = [
+                        'Estadual',
+                        ((int)$matriculas->estadual->total - (int)$reprovacoes->estadual->total - (int)$abandonos->estadual->total),
+                        (int)$reprovacoes->estadual->total,
+                        (int)$abandonos->estadual->total,
+
+                        (
+                            (
+                                $painel["tipo_rede"]["Estadual"]["Fundamental"]["Iniciais"]["sem_distorcao"]
+                                +$painel["tipo_rede"]["Estadual"]["Fundamental"]["Iniciais"]["distorcao"]
+                                +$painel["tipo_rede"]["Estadual"]["Fundamental"]["Finais"]["sem_distorcao"]
+                                +$painel["tipo_rede"]["Estadual"]["Fundamental"]["Finais"]["distorcao"]
+                                +$painel["tipo_rede"]["Estadual"]["Médio"]["Todos"]["sem_distorcao"]
+                                +$painel["tipo_rede"]["Estadual"]["Médio"]["Todos"]["distorcao"]
+                            )
+                            -(int)$matriculas->estadual->total
+                        )
+                ];
             ?>
 
         </section>

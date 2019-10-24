@@ -112,7 +112,7 @@ jQuery(document).ready(function ($) {
     function iniciaGraficosReprovacao() {
 
         let legendaTipoReprovacao = ['', 'Aprovados', 'Reprovados', 'Abandono'],
-            legendaReprovacaoPorRede = ['', 'Aprovados', 'Reprovados', 'Abandono'];
+            legendaReprovacaoPorRede = ['', 'Aprovados', 'Reprovados', 'Abandono', 'Situação não informada'];
 
         for (var h in painel.graficosReprovacaoPorTipoAno) {
             painel.graficosReprovacaoPorTipoAno[h].unshift(legendaTipoReprovacao);
@@ -146,7 +146,7 @@ jQuery(document).ready(function ($) {
 
     function iniciaGraficosAbandono() {
         let legendaTipoAbandono = ['', 'Aprovados', 'Reprovados', 'Abandono'],
-            legendaAbandonoPorRede = ['', 'Aprovados', 'Reprovados', 'Abandono'];
+            legendaAbandonoPorRede = ['', 'Aprovados', 'Reprovados', 'Abandono', 'Situação não informada'];
 
         for (var i in painel.graficosAbandonoPorTipoAno) {
             painel.graficosAbandonoPorTipoAno[i].unshift(legendaTipoAbandono);
@@ -291,14 +291,17 @@ jQuery(document).ready(function ($) {
                 painel.graficoReprovacaoPorRedes
             );
             options.series = {
-                0: {
-                    color: '#ffd87a'
-                },
-                1: {
-                    color: '#ffc331'
+                3: {
+                    color: '#ffb400'
                 },
                 2: {
-                    color: '#ffb500'
+                    color: '#fdbd24'
+                },
+                1: {
+                    color: '#f9c852'
+                },
+                0: {
+                    color: '#fad67f'
                 }
             };
 
@@ -367,14 +370,17 @@ jQuery(document).ready(function ($) {
                 painel.graficoAbandonoPorRedes
             );
             options.series = {
-                0: {
-                    color: '#ffd87a'
-                },
-                1: {
-                    color: '#ffc331'
+                3: {
+                    color: '#ffb400'
                 },
                 2: {
-                    color: '#ffb500'
+                    color: '#fdbd24'
+                },
+                1: {
+                    color: '#f9c852'
+                },
+                0: {
+                    color: '#fad67f'
                 }
             };
 
