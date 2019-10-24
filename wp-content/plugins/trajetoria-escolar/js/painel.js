@@ -285,6 +285,7 @@ jQuery(document).ready(function ($) {
 
         document.getElementById('grafico_por_redes_reprovacao').innerHTML = '';
 
+
         if (document.getElementById('grafico_por_redes_reprovacao').innerHTML === '') {
 
             let data = google.visualization.arrayToDataTable(
