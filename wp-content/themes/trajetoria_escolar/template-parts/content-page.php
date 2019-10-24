@@ -23,7 +23,7 @@
                     <div class="itens">
 
                         <div class="material_download item">
-                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/destaque1.jpg">
+                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/new_detaque-5.jpg">
                         </div>
 
                         <div class="text item">
@@ -50,7 +50,7 @@
                     <div class="itens">
 
                         <div class="material_download item">
-                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/destaque2.jpg">
+                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/new_detaque-4.jpg">
                         </div>
 
                         <div class="text item">
@@ -76,7 +76,7 @@
                     <div class="itens">
 
                         <div class="material_download item">
-                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/destaque3.jpg">
+                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/new_detaque-2.jpg">
                         </div>
 
                         <div class="text item">
@@ -102,7 +102,7 @@
                     <div class="itens">
 
                         <div class="material_download item">
-                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/destaque4.jpg">
+                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/new_detaque-6.jpg">
                         </div>
 
                         <div class="text item">
@@ -128,7 +128,7 @@
                     <div class="itens">
 
                         <div class="material_download item">
-                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/destaque5.jpg">
+                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/new_detaque-7.jpg">
                         </div>
 
                         <div class="text item">
@@ -154,7 +154,7 @@
                     <div class="itens">
 
                         <div class="material_download item">
-                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/destaque6.jpg">
+                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/new_detaque-3.jpg">
                         </div>
 
                         <div class="text item">
@@ -180,7 +180,7 @@
                     <div class="itens">
 
                         <div class="material_download item">
-                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/destaque7.jpg">
+                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/new_detaque-1.jpg">
                         </div>
 
                         <div class="text item">

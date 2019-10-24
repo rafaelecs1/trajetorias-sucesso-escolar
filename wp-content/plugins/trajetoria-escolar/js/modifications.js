@@ -14,7 +14,7 @@ var Owl = {
                 autoWidth:false,
                 autoHeight: false,
                 autoplay:true,
-                autoplayTimeout:5000,
+                autoplayTimeout:10000,
                 items: 1,
                 center: true,
                 dots: true,
@@ -22,7 +22,7 @@ var Owl = {
             });
 
             jQuery('.navigation-owl').on('click', 'label', function(e) {
-                owl.trigger('to.owl.carousel', [jQuery(this).index(), 300]);
+                owl.trigger('to.owl.carousel', [jQuery(this).index(), 500]);
             });
 
         });

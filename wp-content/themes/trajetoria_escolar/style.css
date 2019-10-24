@@ -1752,7 +1752,7 @@ Faixa
 }
 
 .faixa_frases .itens .text .title {
-    font-size: 30px;
+    font-size: 35px;
     margin: 0px;
 }
 
@@ -1760,14 +1760,16 @@ Faixa
 .faixa_frases .itens .text .frases {
     padding-bottom: 5px;
     font-family: lato-italic;
-    font-size: 22px;
+    font-size: 25px;
     text-shadow: 0.5px 0.5px #ded8d8;
 }
 
 .faixa_frases .font {
-    font-size: 14px;
+    font-size: 12px;
     margin: 0 auto;
-   text-align: center;
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: bold;
 }
 
 .faixa_frases .navigation-owl{
@@ -1793,6 +1795,15 @@ Faixa
 
 
 @media only screen and (max-device-width: 480px) {
+
+    .faixa_frases{
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .faixa_frases .navigation-owl{
+        display: none;
+    }
 
     .faixa_frases .itens{
         display: block;
