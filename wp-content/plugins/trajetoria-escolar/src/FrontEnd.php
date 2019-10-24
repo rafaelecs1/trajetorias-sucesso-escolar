@@ -58,11 +58,6 @@ class FrontEnd
 
         //Filters
         add_filter('the_content', array($this, 'proxyParaMaterial'));
-
-        wp_enqueue_script('trajetoria_escolar-modifications', plugin_dir_url(dirname(__FILE__)) . 'js/modifications.js', array('jquery'), false, true);
-        wp_enqueue_script('trajetoria_escolar-owlcarousel', plugin_dir_url(dirname(__FILE__)) . 'css/owlcarousel/owl.carousel.min.js', array('jquery'), false, true);
-        wp_enqueue_style('carousel', plugin_dir_url(dirname(__FILE__)) . 'css/owlcarousel/owl.carousel.min.css');
-//      wp_enqueue_style('carouseltheme', plugin_dir_url(dirname(__FILE__)) . 'css/owlcarousel/owl.theme.default.min.css');
     }
 
     /**
@@ -189,6 +184,10 @@ class FrontEnd
         wp_enqueue_script('counterup', plugin_dir_url(dirname(__FILE__)) . 'js/counterup.js', array('jquery'), false, true);
         wp_enqueue_script('counter', plugin_dir_url(dirname(__FILE__)) . 'js/counter.js', array('jquery'), false, true);
         wp_enqueue_script('tabs', plugin_dir_url(dirname(__FILE__)) . 'js/tabs.js', array('jquery'), false, true);
+
+        wp_enqueue_script('trajetoria_escolar-modifications', plugin_dir_url(dirname(__FILE__)) . 'js/modifications.js', array('jquery'), false, true);
+        wp_enqueue_script('trajetoria_escolar-owlcarousel', plugin_dir_url(dirname(__FILE__)) . 'css/owlcarousel/owl.carousel.min.js', array('jquery'), false, true);
+        wp_enqueue_style('carousel', plugin_dir_url(dirname(__FILE__)) . 'css/owlcarousel/owl.carousel.min.css');
 
         ?>
 
