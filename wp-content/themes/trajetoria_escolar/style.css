@@ -1388,6 +1388,22 @@ a.situacao-das-escolas:hover {
     color: white;
 }
 
+@media only screen and (max-device-width: 480px) {
+
+    #slider-tabs ul.abas li,
+    #slider-tabs ul.abas-paineis li{
+        display: block;
+        margin: 0px;
+    }
+
+    #slider-tabs ul.abas li a,
+    #slider-tabs ul.abas-paineis li a{
+        width: 100%;
+        border-right: 0px;
+        text-align: center;
+    }
+}
+
 /** Fim */
 
 .aba,
@@ -1738,30 +1754,21 @@ Faixa
     color: white;
 }
 
-.faixa_frases .itens{
-    display: flex;
-}
-
-.faixa_frases .itens .material_download{
-    flex: 1;
-    margin-right: 20px;
-}
-
-.faixa_frases .itens .text{
-    flex: 10;
-}
-
-.faixa_frases .itens .text .title {
+.faixa_frases .title {
     font-size: 35px;
-    margin: 0px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+    text-align: center;
 }
-
 
 .faixa_frases .itens .text .frases {
     padding-bottom: 5px;
     font-family: lato-italic;
-    font-size: 25px;
+    font-size: 30px;
     text-shadow: 0.5px 0.5px #ded8d8;
+    text-align: center;
 }
 
 .faixa_frases .font {

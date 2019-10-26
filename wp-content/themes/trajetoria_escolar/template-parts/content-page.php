@@ -18,21 +18,17 @@
 
             <div class="center">
 
+                <h2 class="title">
+                    O enfrentamento da cultura do fracasso escolar é urgente porque...
+                </h2>
+
                 <div class="owl-carousel">
 
                     <div class="itens">
 
-                        <div class="material_download item">
-                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/new_detaque-5.jpg">
-                        </div>
-
                         <div class="text item">
 
                             <div>
-
-                                <h2 class="title">
-                                    O enfrentamento da cultura do fracasso escolar é urgente porque...
-                                </h2>
 
                                 <div class="frases">
 
@@ -49,17 +45,9 @@
 
                     <div class="itens">
 
-                        <div class="material_download item">
-                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/new_detaque-4.jpg">
-                        </div>
-
                         <div class="text item">
 
                             <div>
-
-                                <h2 class="title">
-                                    O enfrentamento da cultura do fracasso escolar é urgente porque...
-                                </h2>
 
                                 <div class="frases">
 
@@ -75,17 +63,9 @@
 
                     <div class="itens">
 
-                        <div class="material_download item">
-                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/new_detaque-2.jpg">
-                        </div>
-
                         <div class="text item">
 
                             <div>
-
-                                <h2 class="title">
-                                    O enfrentamento da cultura do fracasso escolar é urgente porque...
-                                </h2>
 
                                 <div class="frases">
 
@@ -101,17 +81,9 @@
 
                     <div class="itens">
 
-                        <div class="material_download item">
-                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/new_detaque-6.jpg">
-                        </div>
-
                         <div class="text item">
 
                             <div>
-
-                                <h2 class="title">
-                                    O enfrentamento da cultura do fracasso escolar é urgente porque...
-                                </h2>
 
                                 <div class="frases">
 
@@ -127,17 +99,9 @@
 
                     <div class="itens">
 
-                        <div class="material_download item">
-                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/new_detaque-7.jpg">
-                        </div>
-
                         <div class="text item">
 
                             <div>
-
-                                <h2 class="title">
-                                    O enfrentamento da cultura do fracasso escolar é urgente porque...
-                                </h2>
 
                                 <div class="frases">
 
@@ -153,17 +117,9 @@
 
                     <div class="itens">
 
-                        <div class="material_download item">
-                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/new_detaque-3.jpg">
-                        </div>
-
                         <div class="text item">
 
                             <div>
-
-                                <h2 class="title">
-                                    O enfrentamento da cultura do fracasso escolar é urgente porque...
-                                </h2>
 
                                 <div class="frases">
 
@@ -179,17 +135,9 @@
 
                     <div class="itens">
 
-                        <div class="material_download item">
-                            <img src="https://trajetoriaescolar.org.br/wp-content/uploads/2019/10/new_detaque-1.jpg">
-                        </div>
-
                         <div class="text item">
 
                             <div>
-
-                                <h2 class="title">
-                                    O enfrentamento da cultura do fracasso escolar é urgente porque...
-                                </h2>
 
                                 <div class="frases">
 
