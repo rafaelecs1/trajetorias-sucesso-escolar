@@ -481,7 +481,7 @@ abstract class AbstractRepository implements IRestFull
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
 
-        return (int)$response['qtd'];
+        return (float)$response['qtd'];
     }
 
     protected function getTotalAnosIniciaisEstadoMunicipioEscola($anoReferencia = null, $corRacaId = null, $generoId = null, $estadoId = null, $municipioId = null, $escolaId = null)
@@ -528,7 +528,7 @@ abstract class AbstractRepository implements IRestFull
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
 
-        return (int)$response['qtd'];
+        return (float)$response['qtd'];
     }
 
     protected function getTotalAnosFinaisEstadoMunicipioEscola($anoReferencia = null, $corRacaId = null, $generoId = null, $estadoId = null, $municipioId = null, $escolaId = null)
@@ -575,7 +575,7 @@ abstract class AbstractRepository implements IRestFull
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
 
-        return (int)$response['qtd'];
+        return (float)$response['qtd'];
 
     }
 
@@ -623,7 +623,7 @@ abstract class AbstractRepository implements IRestFull
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
 
-        return (int)$response['qtd'];
+        return (float)$response['qtd'];
     }
 
     protected function getTotalDependenciaEstadoMunicipioEscola($anoReferencia = null, $dependencia = null, $tipoAno = null, $estadoId = null, $municipioId = null, $escolaId = null)
@@ -686,7 +686,7 @@ abstract class AbstractRepository implements IRestFull
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $dependencia), ARRAY_A);
 
-        return (int)$response['qtd'];
+        return (float)$response['qtd'];
     }
 
     protected function getTotalLocalizacaoEstadoMunicipioEscola($anoReferencia = null, $localizacao = null, $tipoAno = null, $estadoId = null, $municipioId = null, $escolaId = null)
@@ -749,7 +749,7 @@ abstract class AbstractRepository implements IRestFull
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $localizacao), ARRAY_A);
 
-        return (int)$response['qtd'];
+        return (float)$response['qtd'];
     }
 
     protected function getTotalLocalizacaoDiferenciadaEstadoMunicipioEscola($anoReferencia = null, $localizacaoDiferenciada = null, $tipoAno = null, $estadoId = null, $municipioId = null, $escolaId = null)
@@ -812,7 +812,7 @@ abstract class AbstractRepository implements IRestFull
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia, $localizacaoDiferenciada), ARRAY_A);
 
-        return (int)$response['qtd'];
+        return (float)$response['qtd'];
     }
 
 
@@ -997,7 +997,7 @@ abstract class AbstractRepository implements IRestFull
 
         $response = $this->db->get_row($this->db->prepare($sql, $anoReferencia), ARRAY_A);
 
-        return (int)$response['qtd'];
+        return (float)$response['qtd'];
 
     }
 

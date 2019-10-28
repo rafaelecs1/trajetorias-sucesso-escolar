@@ -441,7 +441,7 @@
     <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>trajetorias_test4</database>
+    <database>trajetorias_test6</database>
     <port>3320</port>
     <username>root</username>
     <password>Encrypted 2be98afc86aa7f2e4cb79ce10cc9da0ce</password>
@@ -1257,7 +1257,7 @@
     <sheets>
       <sheet>
         <name>Matrícula abandono genero</name>
-        <startrow>3</startrow>
+        <startrow>2</startrow>
         <startcol>0</startcol>
       </sheet>
     </sheets>
