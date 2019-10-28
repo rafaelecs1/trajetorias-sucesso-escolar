@@ -33,7 +33,7 @@
                                 <div class="frases">
 
                                     + As redes estaduais e municipais do Brasil somam 6,4 milhões de estudantes em atraso escolar e
-                                    2,4 milhões reprovados.
+                                    2,6 milhões reprovados.
 
                                 </div>
 
@@ -51,7 +51,7 @@
 
                                 <div class="frases">
 
-                                    + Mais de 832 mil crianças e adolescentes deixaram a escola apenas em 2018.
+                                    + Mais de 912 mil crianças e adolescentes deixaram a escola apenas em 2018.
 
                                 </div>
 
@@ -69,7 +69,7 @@
 
                                 <div class="frases">
 
-                                    + Os estudantes negros e pardos deixam a escola 2,5 vezes mais que os brancos e são reprovados duas vezes mais.
+                                    + Os estudantes negros e pardos deixam a escola quase duas vezes mais que os brancos e representam 48,4% do total de reprovados.
 
                                 </div>
 
@@ -87,7 +87,7 @@
 
                                 <div class="frases">
 
-                                    + Os indígenas têm as maiores taxas de distorção idade-série, abandono e reprovação. Mais de 41% dos estudantes estão em atraso escolar.
+                                    + Os indígenas têm as maiores taxas de distorção idade-série e abandono. Mais de 41% dos estudantes estão em atraso escolar e mais de 15 mil deixaram a escola em 2018.
 
                                 </div>
 
@@ -123,7 +123,7 @@
 
                                 <div class="frases">
 
-                                    + Norte e Nordeste são as regiões com as maiores taxas de distorção idade-série e abandono escolar do país.
+                                    + Norte e Nordeste são as regiões com as maiores taxas de distorção idade-série e abandono escolar do país. Essas regiões concentram 54,8% das crianças com dois ou mais anos de atraso
 
                                 </div>
 
@@ -141,7 +141,7 @@
 
                                 <div class="frases">
 
-                                    + O Ensino Médio perdeu 439 mil estudantes apenas em 2018, a maioria abandona a escola no primeiro ano. É também a etapa de ensino que mais reprova no país.
+                                    + O Ensino Médio perdeu 459 mil estudantes apenas em 2018, a maioria abandona a escola no primeiro ano. É também a etapa de ensino que mais reprova no país.
 
                                 </div>
 
