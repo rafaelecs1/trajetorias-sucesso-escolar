@@ -68,12 +68,6 @@ Thumbs.db
 
 wp-config.php
 wp-content/advanced-cache.php
-wp-content/plugins/contact-form-7
-wp-content/plugins/log-erro
-wp-content/plugins/wordpress-seo
-wp-content/plugins/wp-mail-smtp
-wp-content/plugins/wp-responsive-menu
-wp-content/plugins/wp-super-cache
 wp-content/cache/
 wp-content/upgrade/*
 wp-content/wp-cache-config.php
