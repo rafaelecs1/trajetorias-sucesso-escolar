@@ -32,7 +32,7 @@
 
                                 <div class="frases">
 
-                                    + As redes estaduais e municipais do Brasil somam 6,4 milhões de estudantes em atraso escolar e
+                                    + As redes estaduais e municipais do Brasil somam 6,4 milhões de estudantes com dois ou mais anos de atraso escolar e
                                     2,6 milhões reprovados.
 
                                 </div>
