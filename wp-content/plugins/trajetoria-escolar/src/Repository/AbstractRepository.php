@@ -819,11 +819,9 @@ abstract class AbstractRepository implements IRestFull
     protected function getArrayMatriculasReprovacoesAbandonos($anoReferencia = null, $estadoId = null, $municipioId = null, $escolaId = null)
     {
 
-        $data = new \stdClass();
+        $anos = array();
 
-        $data->anos = array();
-
-        $data->anos['Iniciais'] = array(
+        $anos['Iniciais'] = array(
             '1' =>
                 [
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'matriculas') -
@@ -865,7 +863,7 @@ abstract class AbstractRepository implements IRestFull
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano5', 'abandonos')
                 ],
         );
-        $data->anos['Finais'] = array(
+        $anos['Finais'] = array(
             '6' =>
                 [
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano6', 'matriculas') -
@@ -899,7 +897,7 @@ abstract class AbstractRepository implements IRestFull
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano9', 'abandonos')
                 ],
         );
-        $data->anos['Medio'] = array(
+        $anos['Medio'] = array(
             '10' =>
                 [
                     $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'matriculas') -
@@ -934,7 +932,7 @@ abstract class AbstractRepository implements IRestFull
                 ],
         );
 
-        return $data;
+        return $this->prepareArrayGraficoSeries($anos);
 
     }
 
@@ -999,6 +997,27 @@ abstract class AbstractRepository implements IRestFull
 
         return (float)$response['qtd'];
 
+    }
+
+    //retorna um array apenas com campos que tem pelo menos um valor acima de 0.0
+    private function prepareArrayGraficoSeries($values){
+        $data = new \stdClass();
+        $data->anos = array();
+        $keys = false;
+        foreach ($values as $key => $value) {
+            foreach ($value as $val){
+                foreach ($val as $v){
+                    if($v > 0){
+                        $keys = true;
+                    }
+                }
+            }
+            if ($keys){
+                $data->anos[$key] = $value;
+            }
+            $keys = false;
+        }
+        return $data;
     }
 
 }

@@ -295,6 +295,7 @@
             ?>
         </section>
     </section>
+
     <span class="legenda">* Taxa de reprovação</span>
 
     <?php if($reprovacoes->deficiencia != null) { ?>
