@@ -164,7 +164,7 @@
                 </div>
 
                 <div class="font">
-                    <span><a href="https://trajetoriaescolar.org.br/wp-content/uploads/2019/12/Relatorio_Trajetorias-Sucesso-Escolar.pdf" target="_blank">Veja mais dados</a> </span></br>
+                    <span><a href="https://trajetoriaescolar.org.br/wp-content/uploads/2019/12/Relatorio_Trajetorias-Sucesso-Escolar.pdf" target="_blank" style="color: white; size: 13px;">Veja mais dados</a> </span></br>
                     <span>FONTE: Censo Escolar 2018 das redes municipais e estaduais de ensino do Brasil. </span>
                 </div>
 
