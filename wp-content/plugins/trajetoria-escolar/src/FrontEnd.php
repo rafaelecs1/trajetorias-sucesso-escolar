@@ -191,7 +191,8 @@ class FrontEnd
 
         ?>
 
-        <section id="slider-tabs">
+        <section id="slider-tabs" class="regiao_geografica regiao_mapas">
+            
             <ul class="abas" >
 
                 <?php if ($this->year == 2019) { ?>
@@ -205,29 +206,49 @@ class FrontEnd
                 <?php } ?>
 
             </ul>
+
             <section id="tab-1" class="aba-home tabcontent active" style="display: block;">
-
-                <?php
-
-                     include_once 'wp-includes/tabs_home/tab1-brasil.php';
-
-                ?>
-
+                <?php include_once 'wp-includes/tabs_home/tab1-brasil.php'; ?>
             </section>
+
             <section id="tab-2" class="aba-home tabcontent" style="display: none;">
-                <?php
-
-                    if( $this->year == 2019 ) include_once 'wp-includes/tabs_home/tab2-brasil.php'
-
-                ?>
+                <?php if( $this->year == 2019 ) include_once 'wp-includes/tabs_home/tab2-brasil.php'; ?>
             </section>
+
             <section id="tab-3" class="aba-home tabcontent" style="display: none;">
-                <?php
-
-                    if( $this->year == 2019 ) include_once 'wp-includes/tabs_home/tab3-brasil.php'
-
-                ?>
+                <?php if( $this->year == 2019 ) include_once 'wp-includes/tabs_home/tab3-brasil.php'; ?>
             </section>
+            
+        </section>
+
+        <section id="slider-tabs" class="regiao_territorial regiao_mapas">
+            
+            <ul class="abas" >
+
+                <?php if ($this->year == 2019) { ?>
+                    <li id="tab-link-4" class="tablinks"><a href="#">Distorção idade-série </a></li>
+                    <li id="tab-link-5" class="tablinks"><a  href="#">Reprovação</a></li>
+                    <li id="tab-link-6" class="tablinks"><a href="#">Abandono</a></li>
+                <?php } ?>
+
+                <?php if ($this->year == 2018) { ?>
+                    <li id="tab-link-1" class="tablink"><a href="#">Distorção idade-série </a></li>
+                <?php } ?>
+
+            </ul>
+
+            <section id="tab-4" class="aba-home tabcontent" style="display: block;">
+                <?php include_once 'wp-includes/tabs_home/tab4-brasil.php'; ?>
+            </section>
+
+            <section id="tab-5" class="aba-home tabcontent" style="display: none;">
+                <?php if( $this->year == 2019 ) include_once 'wp-includes/tabs_home/tab5-brasil.php'; ?>
+            </section>
+
+            <section id="tab-6" class="aba-home tabcontent" style="display: none;">
+                <?php if( $this->year == 2019 ) include_once 'wp-includes/tabs_home/tab6-brasil.php'; ?>
+            </section>
+            
         </section>
 
         <?php
@@ -300,26 +321,14 @@ class FrontEnd
             </ul>
             <section id="tab-1" class="aba-panel tabcontent active" style="display: block;">
 
-                <?php
-
-                    include 'wp-includes/tabs_panels/tab1-panel-estado-municio-escola.php';
-
-                ?>
+                <?php include 'wp-includes/tabs_panels/tab1-panel-estado-municio-escola.php'; ?>
 
             </section>
             <section id="tab-2" class="aba-panel tabcontent" style="display: none;">
-                <?php
-
-                    if($this->year == 2019 ) include 'wp-includes/tabs_panels/tab2-panel-estado-municio-escola.php';
-
-                ?>
+                <?php if($this->year == 2019 ) include 'wp-includes/tabs_panels/tab2-panel-estado-municio-escola.php'; ?>
             </section>
             <section id="tab-3" class="aba-panel tabcontent" style="display: none;">
-                <?php
-
-                    if($this->year == 2019 ) include 'wp-includes/tabs_panels/tab3-panel-estado-municio-escola.php';
-
-                ?>
+                <?php if($this->year == 2019 ) include 'wp-includes/tabs_panels/tab3-panel-estado-municio-escola.php'; ?>
             </section>
         </section>
 

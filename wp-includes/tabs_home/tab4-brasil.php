@@ -59,7 +59,7 @@
 
             <div class="item item_2">
 
-                <?php include('wp-includes/mapa_regioes_svg.php'); ?>
+                <?php include('wp-includes/mapa_territorios_svg.php'); ?>
 
             </div>
 
@@ -82,62 +82,38 @@
                                         <h4>Anos iniciais</h4>
                                     </div>
                                     <ul>
-                                        <li class="norte">
+                                        
+                                        <li class="amazonia">
                                             <span class="number counter"><?php echo number_format((int)$distorcaoMapa->regiao[6]['total'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
                                                         class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[6]['total'] * 100) / (int)$distorcaoMapa->regiao[6]['total_geral'], 2) ?></span>%]</span>
                                         </li>
-                                        <li class="nordeste">
+
+                                        <li class="semiarido">
                                             <span class="number counter"><?php echo number_format((int)$distorcaoMapa->regiao[3]['total'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
                                                         class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[3]['total'] * 100) / (int)$distorcaoMapa->regiao[3]['total_geral'], 2) ?></span>%]</span>
                                         </li>
-                                        <li class="sudeste">
-                                            <span class="number counter"><?php echo number_format((int)$distorcaoMapa->regiao[9]['total'], 0, ',', '.'); ?></span>
-                                            <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[9]['total'] * 100) / (int)$distorcaoMapa->regiao[9]['total_geral'], 2) ?></span>%]</span>
-                                        </li>
-                                        <li class="sul">
-                                            <span class="number counter"><?php echo number_format((int)$distorcaoMapa->regiao[12]['total'], 0, ',', '.'); ?></span>
-                                            <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[12]['total'] * 100) / (int)$distorcaoMapa->regiao[12]['total_geral'], 2) ?></span>%]</span>
-                                        </li>
-                                        <li class="centro_oeste">
-                                            <span class="number counter"><?php echo number_format((int)$distorcaoMapa->regiao[0]['total'], 0, ',', '.'); ?></span>
-                                            <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[0]['total'] * 100) / (int)$distorcaoMapa->regiao[0]['total_geral'], 2) ?></span>%]</span>
-                                        </li>
+                                        
                                     </ul>
                                 </div>
 
                                 <div class="item finais">
                                     <h4>Anos finais</h4>
                                     <ul>
-                                        <li class="norte">
+                                        
+                                        <li class="amazonia">
                                             <span class="number counter"><?php echo number_format((int)$distorcaoMapa->regiao[7]['total'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
                                                         class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[7]['total'] * 100) / (int)$distorcaoMapa->regiao[7]['total_geral'], 2) ?></span>%]</span>
                                         </li>
-                                        <li class="nordeste">
+
+                                        <li class="semiarido">
                                             <span class="number counter"><?php echo number_format((int)$distorcaoMapa->regiao[4]['total'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
                                                         class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[4]['total'] * 100) / (int)$distorcaoMapa->regiao[4]['total_geral'], 2) ?></span>%]</span>
                                         </li>
-                                        <li class="sudeste">
-                                            <span class="number counter"><?php echo number_format((int)$distorcaoMapa->regiao[10]['total'], 0, ',', '.'); ?></span>
-                                            <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[10]['total'] * 100) / (int)$distorcaoMapa->regiao[10]['total_geral'], 2) ?></span>%]</span>
-                                        </li>
-                                        <li class="sul">
-                                            <span class="number counter"><?php echo number_format((int)$distorcaoMapa->regiao[13]['total'], 0, ',', '.'); ?></span>
-                                            <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[13]['total'] * 100) / (int)$distorcaoMapa->regiao[13]['total_geral'], 2) ?></span>%]</span>
-                                        </li>
-                                        <li class="centro_oeste">
-                                            <span class="number counter"><?php echo number_format((int)$distorcaoMapa->regiao[1]['total'], 0, ',', '.'); ?></span>
-                                            <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[1]['total'] * 100) / (int)$distorcaoMapa->regiao[1]['total_geral'], 2) ?></span>%]</span>
-                                        </li>
+                                        
                                     </ul>
                                 </div>
 
@@ -158,31 +134,19 @@
 
                                 <div class="item unico">
                                     <ul>
-                                        <li class="norte">
+                                        
+                                    <li class="amazonia">
                                             <span class="number counter"><?php echo number_format((int)$distorcaoMapa->regiao[8]['total'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
                                                         class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[8]['total'] * 100) / (int)$distorcaoMapa->regiao[8]['total_geral'], 2) ?></span>%]</span>
                                         </li>
-                                        <li class="nordeste">
+
+                                        <li class="semiarido">
                                             <span class="number counter"><?php echo number_format((int)$distorcaoMapa->regiao[5]['total'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
                                                         class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[5]['total'] * 100) / (int)$distorcaoMapa->regiao[5]['total_geral'], 2) ?></span>%]</span>
                                         </li>
-                                        <li class="sudeste">
-                                            <span class="number counter"><?php echo number_format((int)$distorcaoMapa->regiao[11]['total'], 0, ',', '.'); ?></span>
-                                            <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[11]['total'] * 100) / (int)$distorcaoMapa->regiao[11]['total_geral'], 2) ?></span>%]</span>
-                                        </li>
-                                        <li class="sul">
-                                            <span class="number counter"><?php echo number_format((int)$distorcaoMapa->regiao[14]['total'], 0, ',', '.'); ?></span>
-                                            <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[14]['total'] * 100) / (int)$distorcaoMapa->regiao[14]['total_geral'], 2) ?></span>%]</span>
-                                        </li>
-                                        <li class="centro_oeste">
-                                            <span class="number counter"><?php echo number_format((int)$distorcaoMapa->regiao[2]['total'], 0, ',', '.'); ?></span>
-                                            <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[2]['total'] * 100) / (int)$distorcaoMapa->regiao[2]['total_geral'], 2) ?></span>%]</span>
-                                        </li>
+                                    
                                     </ul>
                                 </div>
 

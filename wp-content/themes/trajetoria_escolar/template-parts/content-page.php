@@ -12,7 +12,6 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
     <?php if (is_front_page()) : ?>
-        <!--        <div class="faixa"></div>-->
 
         <div class="faixa_frases">
 
@@ -212,9 +211,11 @@
 
 
     <header class="entry-header">
+        
         <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
 
         <?php if (is_front_page()) { ?>
+
             <div class="content-select-year">
                 <form name="form-year" id="form-year" action="/" method="post">
                     <label>Ano referência
@@ -232,8 +233,15 @@
                     </label>
                 </form>
             </div>
-        <?php } ?>
 
+            <div div="regions_selector">
+                <p class="entry-header-description" style="margin-top: 25px;">
+                    <a href="#" id="regiao_geografica" class="type_region active">Regiões geográficas</a> | <a href="#" id="regiao_territorial" class="type_region">Territórios</a>
+                </p>
+            </div>
+
+        <?php } ?>
+        
     </header><!-- .entry-header -->
 
     <?php trajetoria_escolar_post_thumbnail(); ?>
