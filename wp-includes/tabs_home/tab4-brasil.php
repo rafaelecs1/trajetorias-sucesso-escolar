@@ -84,15 +84,15 @@
                                     <ul>
                                         
                                         <li class="amazonia">
-                                            <span class="number counter"><?php echo number_format((int)$distorcaoMapa->regiao[6]['total'], 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$distorcaoMapa->territorio[0]['total'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[6]['total'] * 100) / (int)$distorcaoMapa->regiao[6]['total_geral'], 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$distorcaoMapa->territorio[0]['total'] * 100) / (int)$distorcaoMapa->territorio[0]['total_geral'], 2) ?></span>%]</span>
                                         </li>
 
                                         <li class="semiarido">
-                                            <span class="number counter"><?php echo number_format((int)$distorcaoMapa->regiao[3]['total'], 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$distorcaoMapa->territorio[3]['total'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[3]['total'] * 100) / (int)$distorcaoMapa->regiao[3]['total_geral'], 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$distorcaoMapa->territorio[3]['total'] * 100) / (int)$distorcaoMapa->territorio[3]['total_geral'], 2) ?></span>%]</span>
                                         </li>
                                         
                                     </ul>
@@ -103,15 +103,15 @@
                                     <ul>
                                         
                                         <li class="amazonia">
-                                            <span class="number counter"><?php echo number_format((int)$distorcaoMapa->regiao[7]['total'], 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$distorcaoMapa->territorio[1]['total'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[7]['total'] * 100) / (int)$distorcaoMapa->regiao[7]['total_geral'], 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$distorcaoMapa->territorio[1]['total'] * 100) / (int)$distorcaoMapa->territorio[1]['total_geral'], 2) ?></span>%]</span>
                                         </li>
 
                                         <li class="semiarido">
-                                            <span class="number counter"><?php echo number_format((int)$distorcaoMapa->regiao[4]['total'], 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$distorcaoMapa->territorio[4]['total'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[4]['total'] * 100) / (int)$distorcaoMapa->regiao[4]['total_geral'], 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$distorcaoMapa->territorio[4]['total'] * 100) / (int)$distorcaoMapa->territorio[4]['total_geral'], 2) ?></span>%]</span>
                                         </li>
                                         
                                     </ul>
@@ -136,15 +136,15 @@
                                     <ul>
                                         
                                     <li class="amazonia">
-                                            <span class="number counter"><?php echo number_format((int)$distorcaoMapa->regiao[8]['total'], 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$distorcaoMapa->territorio[2]['total'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[8]['total'] * 100) / (int)$distorcaoMapa->regiao[8]['total_geral'], 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$distorcaoMapa->territorio[2]['total'] * 100) / (int)$distorcaoMapa->territorio[2]['total_geral'], 2) ?></span>%]</span>
                                         </li>
 
                                         <li class="semiarido">
-                                            <span class="number counter"><?php echo number_format((int)$distorcaoMapa->regiao[5]['total'], 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$distorcaoMapa->territorio[5]['total'], 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$distorcaoMapa->regiao[5]['total'] * 100) / (int)$distorcaoMapa->regiao[5]['total_geral'], 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$distorcaoMapa->territorio[5]['total'] * 100) / (int)$distorcaoMapa->territorio[5]['total_geral'], 2) ?></span>%]</span>
                                         </li>
                                     
                                     </ul>

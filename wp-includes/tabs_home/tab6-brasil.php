@@ -81,15 +81,15 @@
                                     <ul>
                                         
                                         <li class="amazonia">
-                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_norte->anos_iniciais, 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_amazonia_legal->anos_iniciais, 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_norte->anos_iniciais * 100) / (int)$matriculas->regiao_norte->anos_iniciais, 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_amazonia_legal->anos_iniciais * 100) / (int)$matriculas->regiao_amazonia_legal->anos_iniciais, 2) ?></span>%]</span>
                                         </li>
                                         
                                         <li class="semiarido">
-                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_nordeste->anos_iniciais, 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_semiarido->anos_iniciais, 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_nordeste->anos_iniciais * 100) / (int)$matriculas->regiao_nordeste->anos_iniciais, 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_semiarido->anos_iniciais * 100) / (int)$matriculas->regiao_semiarido->anos_iniciais, 2) ?></span>%]</span>
                                         </li>
                                         
                                     </ul>
@@ -100,15 +100,15 @@
                                     <ul>
                                         
                                         <li class="amazonia">
-                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_norte->anos_finais, 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_amazonia_legal->anos_finais, 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_norte->anos_finais * 100) / (int)$matriculas->regiao_norte->anos_finais, 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_amazonia_legal->anos_finais * 100) / (int)$matriculas->regiao_amazonia_legal->anos_finais, 2) ?></span>%]</span>
                                         </li>
 
                                         <li class="semiarido">
-                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_nordeste->anos_finais, 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_semiarido->anos_finais, 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_nordeste->anos_finais * 100) / (int)$matriculas->regiao_nordeste->anos_finais, 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_semiarido->anos_finais * 100) / (int)$matriculas->regiao_semiarido->anos_finais, 2) ?></span>%]</span>
                                         </li>
                                         
                                     </ul>
@@ -133,15 +133,15 @@
                                     <ul>
                                         
                                         <li class="amazonia">
-                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_norte->medio, 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_amazonia_legal->medio, 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_norte->medio * 100) / (int)$matriculas->regiao_norte->medio, 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_amazonia_legal->medio * 100) / (int)$matriculas->regiao_amazonia_legal->medio, 2) ?></span>%]</span>
                                         </li>
 
                                         <li class="semiarido">
-                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_nordeste->medio, 0, ',', '.'); ?></span>
+                                            <span class="number counter"><?php echo number_format((int)$abandonos->regiao_semiarido->medio, 0, ',', '.'); ?></span>
                                             <span class="perc">[<span
-                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_nordeste->medio * 100) / (int)$matriculas->regiao_nordeste->medio, 2) ?></span>%]</span>
+                                                        class="value"><?php echo number_format(((int)$abandonos->regiao_semiarido->medio * 100) / (int)$matriculas->regiao_semiarido->medio, 2) ?></span>%]</span>
                                         </li>
                                         
                                     </ul>
