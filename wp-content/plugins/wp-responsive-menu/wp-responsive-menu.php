@@ -1,38 +1,42 @@
 <?php
-/*
-Plugin Name: WP Responsive Menu
-Plugin URI: http://magnigenie.com/wp-responsive-menu-mobile-menu-plugin-wordpress/
-Description: WP Responsive Menu is mobile menu plugin that lets you add a highly customizable responsive menu to any WordPress site in no time.
-Version: 3.1.3
-Author: MagniGenie
-Author URI: http://magnigenie.com
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+/**
+* Plugin Name: WP Responsive Menu
+* Description: WP Responsive Menu is mobile menu plugin that lets you add a highly customizable responsive menu to any WordPress site in no time.
+* Plugin URI: http://magnigenie.com/wp-responsive-menu-mobile-menu-plugin-wordpress?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash
+* Author: MagniGenie
+* Version: 3.1.4
+* Author URI: http://magnigenie.com/?utm_source=wp-plugins&utm_campaign=author-uri&utm_medium=wp-dash
+* Text Domain: wprmenu
+* Domain Path: /languages/
+*
+* @package wprmenu
 */
 
-/**
- * Enable Localization
- */
-define( 'MG_WPRM_FILE', __FILE__ );
-define(	'MG_WPRM_PATH', plugin_dir_path( __FILE__ ) );
-define( 'MG_WPRM_BASE', plugin_basename( __FILE__ ) );
-define( 'MG_WPRM_BASE_NAME', basename( dirname( __FILE__ ) ) );
-define( 'MG_WPRM_DEMO_SITE_URL', 'http://demo.magnigenie.com/wp-responsive-menu-pro' );
+defined( 'ABSPATH' ) || exit;
 
-add_action('plugins_loaded', 'wprmenu_load_textdomain');
+// Plugin Folder URL.
+if ( ! defined( 'WPRMENU_FILE' ) ) {
+  define( 'WPRMENU_FILE', __FILE__ );
+}
 
-function wprmenu_load_textdomain() {
-	load_plugin_textdomain( 'wprmenu', false, MG_WPRM_BASE_NAME . '/languages/' );
+if ( ! defined( 'WPRMENU_BASE' ) ) {
+  define( 'WPRMENU_BASE', plugin_basename( __FILE__ ) );
 }
 
 
+// Include WPR Menu Loader class.
+if ( ! class_exists( 'WPR_Menu_Loader', false ) ) {
+  include_once dirname( __FILE__ ) . '/inc/wprmenu-loader.php';
+}
+
 /**
- * Add admin settings
+ * Returns the main instance of WP_Responsive_Menu.
+ *
+ * @since  3.1.4
+ * @return WP_Responsive_Menu
  */
-define( 'WPR_OPTIONS_FRAMEWORK_DIRECTORY', plugins_url( '/inc/', __FILE__ ) );
-define( 'WPR_OPTIONS_FRAMEWORK_PATH', dirname( __FILE__ ) . '/inc/' );
+function WP_Responsive_Menu() {
+  return WPR_Menu_Loader::instance();
+}
 
-require_once dirname( __FILE__ ) . '/inc/options-framework.php';
-require_once dirname( __FILE__ ) . '/inc/wprmclass.php';
-
-new WP_Responsive_Menu();
+WP_Responsive_Menu();
