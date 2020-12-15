@@ -6,12 +6,12 @@ use Unicef\TrajetoriaEscolar\Repository\AbstractRepository;
 
 class MySQLAbandonoRepository extends AbstractRepository{
 
-    public function getDataMapaBrasil($anoReferencia)
+    public function getDataMapaBrasil($anoReferencia, $tipo)
     {
         return parent::getDataMapaBrasil($anoReferencia, self::NACIONAL_ABANDONO);
     }
 
-    public function getDataPainelBrasil($anoReferencia)
+    public function getDataPainelBrasil($anoReferencia, $tipo)
     {
         return parent::getDataPainelBrasil($anoReferencia, self::NACIONAL_ABANDONO);
     }
