@@ -1,5 +1,13 @@
 jQuery(document).ready(function ($) {
 
+    var color = Chart.helpers.color;
+
+    var tipos_trajetorias = [
+        {id: 1, title: 'Matrículas iniciais de 6 anos no 1º ano do Ensino Fundamental', backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(), borderColor: window.chartColors.red },
+        {id: 2, title: 'Matrículas iniciais de 10 anos no 5º ano do Ensino Fundamental', backgroundColor: color(window.chartColors.green).alpha(0.5).rgbString(), borderColor: window.chartColors.green },
+        {id: 3, title: 'Matrículas iniciais de 14 anos no 9º ano do Ensino Fundamental', backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(), borderColor: window.chartColors.blue }
+    ];
+
     $('#select-uf').change(function () {
         let me = $(this);
         id = parseInt($(me).val());
@@ -16,7 +24,42 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    function getDatasetsByArrayTrajetorias(trajetoriasArray){
+        var datasets = [];
+        tipos_trajetorias.forEach( function(e){
+            datasets.push({
+                label: e.title,
+                backgroundColor: e.backgroundColor,
+                borderColor: e.borderColor,
+                borderWidth: 1,
+                data: getDataByTipoTrajetoriaId(e.id, trajetoriasArray)
+            });
+        });
+        return datasets;
+    };
+
+    function getDataByTipoTrajetoriaId(idTrajetoria, trajetoriasArray){
+        var data = [];
+        trajetoriasArray.forEach(function(e){
+            if( idTrajetoria == parseInt(e.tipo) ){
+                data.push( parseInt(e.matriculas) );
+            }
+        });
+        return data;
+    };
+
+    function getLabelsTrajetoriasByArray(trajetoriasArray){
+        var labels = [];
+        trajetoriasArray.forEach( function(e) {
+            if($.inArray(e.ano, labels) === -1) labels.push(e.ano);
+        });
+        return labels;
+    };
+
     window.onload = function() {
+
+        var datasets = getDatasetsByArrayTrajetorias(painel.trajetorias);
+        var labels = getLabelsTrajetoriasByArray(painel.trajetorias);
 
         if( painel.uf != null ){
 
@@ -45,55 +88,10 @@ jQuery(document).ready(function ($) {
         } 
 
         var ctx = document.getElementById('myChart').getContext('2d');
-
-        var color = Chart.helpers.color;
     
         var barChartData = {
-            labels: ['2015', '2016', '2017', '2018', '2019'],
-            datasets: [
-            
-                {
-                    label: 'Matrículas iniciais de 6 anos no 1º ano do Ensino Fundamental',
-                    backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-                    borderColor: window.chartColors.red,
-                    borderWidth: 1,
-                    data: [
-                        10.0,
-                        10.0,
-                        10.0,
-                        10.0,
-                        10.0
-                    ]
-                }, 
-                
-                {
-                    label: 'Matrículas iniciais de 10 anos no 5º ano do Ensino Fundamental',
-                    backgroundColor: color(window.chartColors.green).alpha(0.5).rgbString(),
-                    borderColor: window.chartColors.green,
-                    borderWidth: 1,
-                    data: [
-                        10.0,
-                        10.0,
-                        10.0,
-                        10.0,
-                        10.0
-                    ]
-                },
-
-                {
-                    label: 'Matrículas iniciais de 14 anos no 9º ano do Ensino Fundamental',
-                    backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
-                    borderColor: window.chartColors.blue,
-                    borderWidth: 1,
-                    data: [
-                        10.0,
-                        10.0,
-                        10.0,
-                        10.0,
-                        10.0
-                    ]
-                }
-            ]
+            labels: labels,
+            datasets: datasets
         };
         
         window.myBar = new Chart(ctx, {

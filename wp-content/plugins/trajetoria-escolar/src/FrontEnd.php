@@ -17,6 +17,7 @@ use Unicef\TrajetoriaEscolar\Repository\MySQLMunicipioRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLEscolaRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLMapaRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLPainelRepository;use Unicef\TrajetoriaEscolar\Repository\MySQLReprovacaoRepository;
+use Unicef\TrajetoriaEscolar\Repository\MySQLTrajetoriaRepository;
 
 /**
  * Classe que implementa os requisitos para o front-end (páginas)
@@ -734,11 +735,25 @@ class FrontEnd
 
         global $wp_query;
 
+        $rTrajetoria = new MySQLTrajetoriaRepository();
         $rEstado = new MySQLEstadoRepository();
+
         $estados = $rEstado->getLimites();
 
         $uf = (isset($wp_query->query_vars['painel_uf'])) ? (int)$wp_query->query_vars['painel_uf'] : null;
         $municipio = (isset($wp_query->query_vars['painel_municipio'])) ? (int)$wp_query->query_vars['painel_municipio'] : null;
+
+        if( $uf == null AND $municipio == null){
+            $trajetorias = $rTrajetoria->getTrajetoriasNacional();
+        }
+
+        if( $uf != null AND $municipio == null){
+            $trajetorias = $rTrajetoria->getTrajetoriasPorUF($uf);
+        }
+
+        if( $uf != null AND $municipio != null){
+            $trajetorias = $rTrajetoria->getTrajetoriasPorCidadeId($municipio);
+        }
 
         ob_start();
 
@@ -746,7 +761,7 @@ class FrontEnd
 
         <div id="painel_trajetorias">
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean porta malesuada elit, ut accumsan turpis pharetra a. Ut accumsan tellus sapien, ut cursus nisi varius vitae. Praesent facilisis est elit, vitae ornare diam finibus sit amet. Duis non purus nec tortor venenatis pretium nec eu lorem.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean porta malesuada elit, ut accumsan turpis pharetra a. Ut accumsan tellus sapien, ut cursus nisi varius vitae. Praesent facilisis est elit, vitae ornare diam finibus sit amet.</p>
             
             <div id="seletores">
             
@@ -808,7 +823,8 @@ class FrontEnd
             'actionGetCidades' => 'get_cidades',
             'ajaxUrl' => admin_url('admin-ajax.php'),
             'uf' => $uf,
-            'municipio' => $municipio
+            'municipio' => $municipio,
+            'trajetorias' => $trajetorias
         ));
 
         wp_enqueue_script('charts_js', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js', null, false, true);
