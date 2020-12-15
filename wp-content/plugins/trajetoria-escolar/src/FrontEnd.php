@@ -29,8 +29,8 @@ class FrontEnd
 {
 
     private $year = null;
-    private $default_year = 2019;
-    private $years = [2018, 2019];
+    private $default_year = 2020;
+    private $years = [2016, 2017, 2018, 2019, 2020];
 
     /**
      * * Configura callbacks para shortcodes, actions e filters para customizar as páginas do site
@@ -199,7 +199,7 @@ class FrontEnd
             
             <ul class="abas" >
 
-                <?php if ($this->year == 2019) { ?>
+                <?php if ($this->year != 2019) { ?>
                     <li id="tab-link-1" class="tablinks active"><a href="#">Distorção idade-série </a></li>
                     <li id="tab-link-2" class="tablinks"><a  href="#">Reprovação</a></li>
                     <li id="tab-link-3" class="tablinks"><a href="#">Abandono</a></li>

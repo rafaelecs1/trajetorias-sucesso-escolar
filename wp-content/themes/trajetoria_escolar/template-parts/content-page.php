@@ -221,7 +221,11 @@
                     <label>Ano referência
                         <select class="select-year" id="select-year" name="select-year">
                             <option>Selecione</option>
-                            <option value="2019" <?php if ((int)$_POST['select-year'] == 2019 OR (int)$_POST['select-year'] == 0) {
+                            <option value="2020" <?php if ((int)$_POST['select-year'] == 2020 OR (int)$_POST['select-year'] == 0) {
+                                echo "selected";
+                            } ?> >2019
+                            </option>
+                            <option value="2019" <?php if ((int)$_POST['select-year'] == 2019) {
                                 echo "selected";
                             } ?> >2018
                             </option>
