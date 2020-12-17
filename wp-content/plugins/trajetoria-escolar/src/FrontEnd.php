@@ -768,7 +768,7 @@ class FrontEnd
                 <div id="uf_selector" class="item_seletores">
                     <label>Estado</label>
                     <select class="select" name="select-uf" id="select-uf">
-                        <option value="0">--</option>
+                        <option value="0">Nacional</option>
                         <?php
                             foreach ($estados as $k => $v) {
                                 if ($k == $uf){
@@ -810,7 +810,9 @@ class FrontEnd
 
             </div>
 
-            <canvas id="myChart"></canvas>
+            <canvas id="trajetoria1"></canvas> <br/><br/>
+            <canvas id="trajetoria2"></canvas> <br/><br/>
+            <canvas id="trajetoria3"></canvas>
 
         </div>
 
