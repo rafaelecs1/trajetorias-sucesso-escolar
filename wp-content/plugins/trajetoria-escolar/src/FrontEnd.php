@@ -290,7 +290,7 @@ class FrontEnd
             <form name="form-year" id="form-year" method="post">
                 <label>Ano referência
                     <select class="select-year" id="select-year" name="select-year">
-                        <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel-brasil/2018/"; ?>" <?php if ((int)$this->year == 2020) {
+                        <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel-brasil/2019/"; ?>" <?php if ((int)$this->year == 2020) {
                             echo "selected";
                         } ?> >2019
                         </option>
@@ -298,15 +298,15 @@ class FrontEnd
                             echo "selected";
                         } ?> >2018
                         </option>
-                            <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel-brasil/2018/"; ?>" <?php if ((int)$this->year == 2018) {
+                            <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel-brasil/2017/"; ?>" <?php if ((int)$this->year == 2018) {
                             echo "selected";
                         } ?> >2017
                         </option>
-                        <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel-brasil/2018/"; ?>" <?php if ((int)$this->year == 2017) {
+                        <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel-brasil/2016/"; ?>" <?php if ((int)$this->year == 2017) {
                             echo "selected";
                         } ?> >2016
                         </option>
-                        <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel-brasil/2017/"; ?>" <?php if ((int)$this->year == 2016) {
+                        <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel-brasil/2015/"; ?>" <?php if ((int)$this->year == 2016) {
                             echo "selected";
                         } ?> >2015
                         </option>
@@ -461,7 +461,7 @@ class FrontEnd
                     <form name="form-year" id="form-year" method="post">
                         <label>Ano referência
                             <select class="select-year" id="select-year" name="select-year">
-                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/estado/" . substr($_SERVER['REQUEST_URI'], 15, 2) . "/2018"; ?>" <?php if ((int)$this->year == 2020) {
+                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/estado/" . substr($_SERVER['REQUEST_URI'], 15, 2) . "/2019"; ?>" <?php if ((int)$this->year == 2020) {
                                     echo "selected";
                                 } ?> >2019
                                 </option>
@@ -473,11 +473,11 @@ class FrontEnd
                                     echo "selected";
                                 } ?> >2017
                                 </option>
-                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/estado/" . substr($_SERVER['REQUEST_URI'], 15, 2) . "/2018"; ?>" <?php if ((int)$this->year == 2017) {
+                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/estado/" . substr($_SERVER['REQUEST_URI'], 15, 2) . "/2016"; ?>" <?php if ((int)$this->year == 2017) {
                                     echo "selected";
                                 } ?> >2016
                                 </option>
-                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/estado/" . substr($_SERVER['REQUEST_URI'], 15, 2) . "/2017"; ?>" <?php if ((int)$this->year == 2016) {
+                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/estado/" . substr($_SERVER['REQUEST_URI'], 15, 2) . "/2015"; ?>" <?php if ((int)$this->year == 2016) {
                                     echo "selected";
                                 } ?> >2015
                                 </option>

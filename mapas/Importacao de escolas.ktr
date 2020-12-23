@@ -430,7 +430,7 @@
     <created_date>2020/12/17 19:34:33.340</created_date>
     <modified_user>-</modified_user>
     <modified_date>2020/12/17 19:34:33.340</modified_date>
-    <key_for_session_key/>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -498,6 +498,74 @@
     </hop>
   </order>
   <step>
+    <name>Insert / update</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>trajetorias</connection>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>trajetorias1</schema>
+      <table>te_escolas</table>
+      <key>
+        <name>Código da Escola</name>
+        <field>id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>nome</name>
+        <rename>Nome</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>municipio_id</name>
+        <rename>Código do Município</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>localizacao</name>
+        <rename>Localização</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>dependencia</name>
+        <rename>Dependência Adminsitrativa</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>localizacao_diferenciada</name>
+        <rename>Localização Diferenciada</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>id</name>
+        <rename>Código da Escola</rename>
+        <update>N</update>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Microsoft Excel input</name>
     <type>ExcelInput</type>
     <description/>
@@ -524,7 +592,7 @@
     <accept_field/>
     <accept_stepname/>
     <file>
-      <name>/home/unicef/Documents/www/trajetorias-sucesso-escolar/Planilhas/REPROVADOS_DEP_EST_MUN_2019.xlsx</name>
+      <name>/home/unicef/Documents/www/trajetorias-sucesso-escolar/Planilhas/2015/ABANDONO_ESTADUAL_MUNICIPAL_2015.xlsx</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -1590,7 +1658,7 @@
     </fields>
     <sheets>
       <sheet>
-        <name>REPROV_Cor_Raca</name>
+        <name>ABAND_Total</name>
         <startrow>3</startrow>
         <startcol>0</startcol>
       </sheet>
@@ -1624,74 +1692,6 @@
     </remotesteps>
     <GUI>
       <xloc>272</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Insert / update</name>
-    <type>InsertUpdate</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>trajetorias</connection>
-    <commit>100</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>trajetorias1</schema>
-      <table>te_escolas</table>
-      <key>
-        <name>Código da Escola</name>
-        <field>id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>nome</name>
-        <rename>Nome</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>municipio_id</name>
-        <rename>Código do Município</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>localizacao</name>
-        <rename>Localização</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>dependencia</name>
-        <rename>Dependência Adminsitrativa</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>localizacao_diferenciada</name>
-        <rename>Localização Diferenciada</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>id</name>
-        <rename>Código da Escola</rename>
-        <update>N</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
       <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
