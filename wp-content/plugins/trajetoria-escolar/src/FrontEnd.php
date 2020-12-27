@@ -218,7 +218,6 @@ class FrontEnd
             </section>
             
         </section>
-
         <section id="slider-tabs" class="regiao_territorial regiao_mapas">
             
             <ul class="abas" >
@@ -559,19 +558,19 @@ class FrontEnd
 
                 </ul>
 
-                <section id="tab-1" class="aba-panel tabcontent active">
+                <section id="tab-1" class="aba-panel tabcontent active" style="display: block;">
                     <?php
                         include_once 'wp-includes/tabs_panels/tab1-panel-estado-municio-escola.php'
                     ?>
                 </section>
 
-                <section id="tab-2" class="aba-panel tabcontent" style="display: <?php echo $this->year == 2019 ? "block" : "none"; ?>">
+                <section id="tab-2" class="aba-panel tabcontent" style="display: none;">
                     <?php
                         include_once 'wp-includes/tabs_panels/tab2-panel-estado-municio-escola.php'
                     ?>
                 </section>
 
-                <section id="tab-3" class="aba-panel tabcontent" style="display: <?php echo $this->year == 2019 ? "block" : "none"; ?>">
+                <section id="tab-3" class="aba-panel tabcontent" style="display: none;">
                     <?php
                         include_once 'wp-includes/tabs_panels/tab3-panel-estado-municio-escola.php'
                     ?>
