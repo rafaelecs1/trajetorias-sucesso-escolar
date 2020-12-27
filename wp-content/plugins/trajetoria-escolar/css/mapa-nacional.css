@@ -209,6 +209,18 @@
     margin-right: 1em;
 }
 
+.mn_container .item_2 .mapa_legenda .legenda .amazonia::before {
+    content: "⬤"; color: #20EAB5;
+    display: inline-block; width: 1em;
+    margin-right: 1em;
+}
+
+.mn_container .item_2 .mapa_legenda .legenda .semiarido::before {
+    content: "⬤"; color: #20BAEA;
+    display: inline-block; width: 1em;
+    margin-right: 1em;
+}
+
 .mr_fundamental_e_medio .item{
     background-color: white;
 }

@@ -1,16 +1,12 @@
-/*
 !planilhas_modelo/
 !wp-content/
 !wp-includes/
-<<<<<<< HEAD
 !Modelos/
 !Modelos_V1/
 !Modelos_V2/
 !Modelos_V3
 !equipamentos
-=======
-!mapas/
->>>>>>> models_abandono_reprovacao_matricula
+!Planilhas/
 
 # ignore all files starting with .
 .*
