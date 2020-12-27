@@ -1,5 +1,4 @@
 jQuery(document).ready(function ($) {
-
     $('ul>li.tablinks').click(function (e) {
         var TabId = $(this).attr('id');
         e.preventDefault();
@@ -38,91 +37,30 @@ jQuery(document).ready(function ($) {
             document.getElementById('tab-' + nTab).style.display = "block";
             document.getElementById(TabId).classList.add('active');
         }
-        
     });
-
 });
 
+
 jQuery(document).ready(function ($) {
-
-    $('.type_region').click( function(e){
-
-        //houve click e não trigger
-        if ( e.originalEvent !== undefined ){
-            clearInterval(window.intervalo);
+    var contador = 0;
+    window.intervalo = setInterval(function () {
+        // console.log(contador)
+        if (contador === 0) {
+            $('ul>li.tablinks>a:eq(0)').trigger('click');
         }
-        
-        e.preventDefault();
-        var idRegion = $(this).attr('id');
-
-        // Todos os elementos com class="type_region" -> seletores das regioes
-        typeRegions = document.getElementsByClassName("type_region");
-        for (i = 0; i < typeRegions.length; i++) {
-            typeRegions[i].className = typeRegions[i].className.replace(" active", "");
-        }
-        document.getElementById(idRegion).classList.add('active'); // deixa o link ativo com a seta >
-
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        if (contador === 1) {
+            $('ul>li.tablinks>a:eq(1)').trigger('click');
         }
 
-        // Todos os elementos com class="regiao_mapas" -> grandes slides de regioes
-        slideRegions = document.getElementsByClassName("regiao_mapas");
-        for (i = 0; i < slideRegions.length; i++) {
-            slideRegions[i].style.display = "none";
+        if (contador === 2) {
+            $('ul>li.tablinks>a:eq(2)').trigger('click');
         }
-        document.getElementsByClassName(idRegion)[0].style.display = "block"; //exibe o slide
-        document.querySelectorAll('.'+idRegion+' > .tabcontent')[0].style.display = "block"; //ativa primeira div das regioes (geografica/ territorio)
-        document.querySelectorAll('.'+idRegion+' > .abas > .tablinks')[0].classList.add('active'); //ativa primeira aba da div das regioes (geografica/ territorio)
 
-    });
+        if (contador > 2) {
+            contador = -1;
+        }
+        contador++;
+    }, 6000);
 
 })
-
-
-// jQuery(document).ready(function ($) {
-//
-//     //fecha o slide de territorios
-//     document.getElementsByClassName('regiao_territorial')[0].style.display = "none";
-//
-//     var contador = 0;
-//
-//     window.intervalo = setInterval(function () {
-//
-//         if (contador === 0) {
-//             $('#regiao_geografica').trigger('click');
-//             $('ul>li.tablinks>a:eq(0)').trigger('click');
-//         }
-//
-//         if (contador === 1) {
-//             $('ul>li.tablinks>a:eq(1)').trigger('click');
-//         }
-//
-//         if (contador === 2) {
-//             $('ul>li.tablinks>a:eq(2)').trigger('click');
-//         }
-//
-//         if (contador === 3) {
-//             $('#regiao_territorial').trigger('click');
-//             $('ul>li.tablinks>a:eq(3)').trigger('click');
-//         }
-//
-//         if (contador === 4) {
-//             $('ul>li.tablinks>a:eq(4)').trigger('click');
-//         }
-//
-//         if (contador === 5) {
-//             $('ul>li.tablinks>a:eq(5)').trigger('click');
-//         }
-//
-//         if (contador > 5) {
-//             contador = -1;
-//         }
-//
-//         contador++;
-//
-//     }, 6000);
-//
-// });
 

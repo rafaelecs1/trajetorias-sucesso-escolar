@@ -397,9 +397,11 @@ jQuery(document).ready(function ($) {
     }
 
     iniciaGraficosDistorcao();
-    iniciaGraficosReprovacao();
-    iniciaGraficosAbandono();
 
+    if(painel.year == 2019) {
+        iniciaGraficosReprovacao();
+        iniciaGraficosAbandono();
+    }
 
     google.charts.load('current', {
         'packages': ['corechart', 'bar'],

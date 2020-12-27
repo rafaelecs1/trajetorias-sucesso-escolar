@@ -58,7 +58,7 @@
             </div>
 
             <div class="item item_2">
-                <?php include('wp-includes/mapa_regioes_svg.php'); ?>
+                <?php include('wp-includes/mapa_svg.php'); ?>
             </div>
 
             <div class="item item_3">

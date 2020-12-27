@@ -223,28 +223,6 @@ abstract class AbstractRepository implements IRestFull
         return (int)$response['qtd'];
     }
 
-    protected function getTotalPorTerritorio($anoReferencia = null, $territorio = null, $tipoAno = null){
-        if ($tipoAno == null) {
-            $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5 + ano6 + ano7 + ano8 + ano9 + ano10 + ano11 + ano12 + ano13) as qtd FROM ';
-        }
-        if ($tipoAno == 'iniciais') {
-            $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5) as qtd FROM ';
-        }
-        if ($tipoAno == 'finais') {
-            $sql = 'SELECT SUM(ano6 + ano7 + ano8 + ano9) as qtd FROM ';
-        }
-        if ($tipoAno == 'medio') {
-            $sql = 'SELECT SUM(ano10 + ano11 + ano12 + ano13) as qtd FROM ';
-        }
-
-        $sql .= $this->tableName . ' join te_escolas te on te.id = ' . $this->tableName . '.escolas_id
-                                      join te_municipios tm on tm.id = te.municipio_id
-                                      where tm.territorio = %d AND '. $this->tableName . '.ano_referencia = %s AND ' . $this->tableName . '.cor_raca_id IS NULL AND ' . $this->tableName . '.genero_id IS NULL';
-
-        $response = $this->db->get_row($this->db->prepare($sql, $territorio, $anoReferencia), ARRAY_A);
-        return (int)$response['qtd'];
-    }
-
     protected function getAnosIniciais($anoReferencia = null, $corRacaId = null, $generoId = null)
     {
         $sql = 'SELECT SUM(ano1 + ano2 + ano3 + ano4 + ano5) as qtd FROM ';
@@ -360,19 +338,6 @@ abstract class AbstractRepository implements IRestFull
         $data->regiao_sudeste->anos_iniciais = $this->getTotalPorRegiao($anoReferencia, 'Sudeste', 'iniciais');
         $data->regiao_sudeste->anos_finais = $this->getTotalPorRegiao($anoReferencia, 'Sudeste', 'finais');
         $data->regiao_sudeste->medio = $this->getTotalPorRegiao($anoReferencia, 'Sudeste', 'medio');
-
-        $data->regiao_amazonia_legal = new \stdClass();
-        $data->regiao_amazonia_legal->total = $this->getTotalPorTerritorio($anoReferencia, 'Amazônia Legal');
-        $data->regiao_amazonia_legal->anos_iniciais = $this->getTotalPorTerritorio($anoReferencia, 'Amazônia Legal', 'iniciais');
-        $data->regiao_amazonia_legal->anos_finais = $this->getTotalPorTerritorio($anoReferencia, 'Amazônia Legal', 'finais');
-        $data->regiao_amazonia_legal->medio = $this->getTotalPorTerritorio($anoReferencia, 'Amazônia Legal', 'medio');
-
-
-        $data->regiao_semiarido = new \stdClass();
-        $data->regiao_semiarido->total = $this->getTotalPorTerritorio($anoReferencia, 'Semiárido');
-        $data->regiao_semiarido->anos_iniciais = $this->getTotalPorTerritorio($anoReferencia, 'Semiárido', 'iniciais');
-        $data->regiao_semiarido->anos_finais = $this->getTotalPorTerritorio($anoReferencia, 'Semiárido', 'finais');
-        $data->regiao_semiarido->medio = $this->getTotalPorTerritorio($anoReferencia, 'Semiárido', 'medio');
 
         $this->saveBrasil(2, $tipo, $anoReferencia, $data);
 

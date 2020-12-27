@@ -5,48 +5,48 @@
              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="225px"
              height="225px" xml:space="preserve">
 
-        <style type="text/css">
-            .st0 {
-                fill: #64C6E3;
-            }
+                            <style type="text/css">
+                                .st0 {
+                                    fill: #64C6E3;
+                                }
 
-            .st1 {
-                fill: #018BB3;
-            }
+                                .st1 {
+                                    fill: #018BB3;
+                                }
 
-            .st2 {
-                fill: #ECB615;
-            }
+                                .st2 {
+                                    fill: #ECB615;
+                                }
 
-            .st3 {
-                fill: #E38524;
-            }
+                                .st3 {
+                                    fill: #E38524;
+                                }
 
-            .st4 {
-                fill: #CC3282;
-            }
+                                .st4 {
+                                    fill: #CC3282;
+                                }
 
-            .st0:hover {
-                fill: #3E7A8B;
-            }
+                                .st0:hover {
+                                    fill: #3E7A8B;
+                                }
 
-            .st1:hover {
-                fill: #055871;
-            }
+                                .st1:hover {
+                                    fill: #055871;
+                                }
 
-            .st2:hover {
-                fill: #A3810F;
-            }
+                                .st2:hover {
+                                    fill: #A3810F;
+                                }
 
-            .st3:hover {
-                fill: #9E5F14;
-            }
+                                .st3:hover {
+                                    fill: #9E5F14;
+                                }
 
-            .st4:hover {
-                fill: #9F2965;
-            }
+                                .st4:hover {
+                                    fill: #9F2965;
+                                }
 
-        </style>
+                            </style>
 
             <a xlink:href="#norte" class="region">
                 <g>
