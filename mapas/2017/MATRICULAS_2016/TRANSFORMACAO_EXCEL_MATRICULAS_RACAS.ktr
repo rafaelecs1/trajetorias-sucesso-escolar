@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>TRANSFORMACAO_EXCEL_MATRICULAS</name>
+    <name>TRANSFORMACAO_EXCEL_MATRICULAS_2016</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -440,7 +441,7 @@
     <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>trajetorias1</database>
+    <database>trajetorias</database>
     <port>3306</port>
     <username>root</username>
     <password>Encrypted 2be98afc86aa7f2e4cb79ce10bec3fd89</password>
@@ -1001,7 +1002,7 @@
     <accept_field/>
     <accept_stepname/>
     <file>
-      <name>/home/unicef/Documents/www/trajetorias-sucesso-escolar/Planilhas/MATRICULAS_ESTADUAL_MUNICIPAL_2019_2.xlsx</name>
+      <name>/home/unicef/Documents/www/trajetorias-sucesso-escolar/Planilhas/2016/MATRICULAS_ESTADUAL_MUNICIPAL_2016_2.xlsx</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -2067,7 +2068,7 @@
     </fields>
     <sheets>
       <sheet>
-        <name>Matriculas_Cor_raca</name>
+        <name>Matriculas_Cor_Raca2</name>
         <startrow>3</startrow>
         <startcol>0</startcol>
       </sheet>
@@ -2100,7 +2101,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
+      <xloc>64</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>

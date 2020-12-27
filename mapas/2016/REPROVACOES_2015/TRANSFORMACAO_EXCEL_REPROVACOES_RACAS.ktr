@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>TRANSFORMACAO_EXCEL_REPROVACOES_RACAS</name>
+    <name>TRANSFORMACAO_EXCEL_REPROVACOES_RACAS_2015</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -441,7 +441,7 @@
     <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>trajetorias1</database>
+    <database>trajetorias</database>
     <port>3306</port>
     <username>root</username>
     <password>Encrypted 2be98afc86aa7f2e4cb79ce10bec3fd89</password>

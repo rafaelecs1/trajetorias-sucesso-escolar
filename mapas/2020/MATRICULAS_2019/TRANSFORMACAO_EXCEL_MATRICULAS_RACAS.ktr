@@ -440,7 +440,7 @@
     <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>trajetorias1</database>
+    <database>trajetorias</database>
     <port>3306</port>
     <username>root</username>
     <password>Encrypted 2be98afc86aa7f2e4cb79ce10bec3fd89</password>
@@ -754,7 +754,7 @@
     </remotesteps>
     <GUI>
       <xloc>576</xloc>
-      <yloc>368</yloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -862,7 +862,7 @@
     </remotesteps>
     <GUI>
       <xloc>576</xloc>
-      <yloc>112</yloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -970,7 +970,7 @@
     </remotesteps>
     <GUI>
       <xloc>576</xloc>
-      <yloc>304</yloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1001,7 +1001,7 @@
     <accept_field/>
     <accept_stepname/>
     <file>
-      <name>/home/unicef/Documents/www/trajetorias-sucesso-escolar/Planilhas/MATRICULAS_ESTADUAL_MUNICIPAL_2019_2.xlsx</name>
+      <name>/home/unicef/Documents/www/trajetorias-sucesso-escolar/Planilhas/2019/MATRICULAS_ESTADUAL_MUNICIPAL_2019_2.xlsx</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -2209,7 +2209,7 @@
     </remotesteps>
     <GUI>
       <xloc>576</xloc>
-      <yloc>32</yloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2425,7 +2425,7 @@
     </remotesteps>
     <GUI>
       <xloc>576</xloc>
-      <yloc>160</yloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

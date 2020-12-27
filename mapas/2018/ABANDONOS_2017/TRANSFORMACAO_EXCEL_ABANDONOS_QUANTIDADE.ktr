@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>TRANSFORMACAO_EXCEL_ABANDONOS_QUANTIDADE</name>
+    <name>TRANSFORMACAO_EXCEL_ABANDONOS_QUANTIDADE_2017</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -441,7 +441,7 @@
     <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>trajetorias1</database>
+    <database>trajetorias</database>
     <port>3306</port>
     <username>root</username>
     <password>Encrypted 2be98afc86aa7f2e4cb79ce10bec3fd89</password>
@@ -525,12 +525,7 @@
     <accept_field/>
     <accept_stepname/>
     <file>
-      <name>/Users/manoelfilho/Downloads/tabelas_24_outubro/tabela2_padrao_abandono_2410.xlsx</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-      <name>/home/unicef/Documents/www/trajetorias-sucesso-escolar/Planilhas/ABANDONO_DEP_EST_MUN_2019.xlsx</name>
+      <name>/home/unicef/Documents/www/trajetorias-sucesso-escolar/Planilhas/2017/ABANDONO_ESTADUAL_MUNICIPAL_2017.xlsx</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
