@@ -168,17 +168,15 @@ class FrontEnd
         $rDistorcaoMapa = new MySQLMapaRepository();
         $distorcaoMapa = $rDistorcaoMapa->getBrasil($this->year);
 
-        if( $this->year == 2019 ){
+        $matriculasObj = new MySQLMatriculaRepository();
+        $matriculas = $matriculasObj->getDataMapaBrasil($this->year);
 
-            $matriculasObj = new MySQLMatriculaRepository();
-            $matriculas = $matriculasObj->getDataMapaBrasil($this->year);
+        $abandonosObj = new MySQLAbandonoRepository();
+        $abandonos = $abandonosObj->getDataMapaBrasil($this->year);
 
-            $abandonosObj = new MySQLAbandonoRepository();
-            $abandonos = $abandonosObj->getDataMapaBrasil($this->year);
+        $reprovacoesObj = new MySQLReprovacaoRepository();
+        $reprovacoes = $reprovacoesObj->getDataMapaBrasil($this->year);
 
-            $reprovacoesObj = new MySQLReprovacaoRepository();
-            $reprovacoes = $reprovacoesObj->getDataMapaBrasil($this->year);
-        }
 
 
         ob_start();
@@ -200,15 +198,15 @@ class FrontEnd
             
             <ul class="abas" >
 
-                <?php if ($this->year != 2019) { ?>
+<!--                --><?php //if ($this->year != 2019) { ?>
                     <li id="tab-link-1" class="tablinks active"><a href="#">Distorção idade-série </a></li>
                     <li id="tab-link-2" class="tablinks"><a  href="#">Reprovação</a></li>
                     <li id="tab-link-3" class="tablinks"><a href="#">Abandono</a></li>
-                <?php } ?>
+<!--                --><?php //} ?>
 
-                <?php if ($this->year == 2018) { ?>
-                    <li id="tab-link-1" class="tablink active"><a href="#">Distorção idade-série </a></li>
-                <?php } ?>
+<!--                --><?php //if ($this->year == 2018) { ?>
+<!--                    <li id="tab-link-1" class="tablink active"><a href="#">Distorção idade-série </a></li>-->
+<!--                --><?php //} ?>
 
             </ul>
 
@@ -217,28 +215,27 @@ class FrontEnd
             </section>
 
             <section id="tab-2" class="aba-home tabcontent" style="display: none;">
-                <?php if( $this->year == 2019 ) include_once 'wp-includes/tabs_home/tab2-brasil.php'; ?>
+                <?php include_once 'wp-includes/tabs_home/tab2-brasil.php'; ?>
             </section>
 
             <section id="tab-3" class="aba-home tabcontent" style="display: none;">
-                <?php if( $this->year == 2019 ) include_once 'wp-includes/tabs_home/tab3-brasil.php'; ?>
+                <?php include_once 'wp-includes/tabs_home/tab3-brasil.php'; ?>
             </section>
             
         </section>
-
         <section id="slider-tabs" class="regiao_territorial regiao_mapas">
             
             <ul class="abas" >
 
-                <?php if ($this->year == 2019) { ?>
+<!--                --><?php //if ($this->year == 2019) { ?>
                     <li id="tab-link-4" class="tablinks"><a href="#">Distorção idade-série </a></li>
                     <li id="tab-link-5" class="tablinks"><a  href="#">Reprovação</a></li>
                     <li id="tab-link-6" class="tablinks"><a href="#">Abandono</a></li>
-                <?php } ?>
+<!--                --><?php //} ?>
 
-                <?php if ($this->year == 2018) { ?>
-                    <li id="tab-link-1" class="tablink"><a href="#">Distorção idade-série </a></li>
-                <?php } ?>
+<!--                --><?php //if ($this->year == 2018) { ?>
+<!--                    <li id="tab-link-1" class="tablink"><a href="#">Distorção idade-série </a></li>-->
+<!--                --><?php //} ?>
 
             </ul>
 
@@ -247,11 +244,11 @@ class FrontEnd
             </section>
 
             <section id="tab-5" class="aba-home tabcontent" style="display: none;">
-                <?php if( $this->year == 2019 ) include_once 'wp-includes/tabs_home/tab5-brasil.php'; ?>
+                <?php include_once 'wp-includes/tabs_home/tab5-brasil.php'; ?>
             </section>
 
             <section id="tab-6" class="aba-home tabcontent" style="display: none;">
-                <?php if( $this->year == 2019 ) include_once 'wp-includes/tabs_home/tab6-brasil.php'; ?>
+                <?php include_once 'wp-includes/tabs_home/tab6-brasil.php'; ?>
             </section>
             
         </section>
@@ -279,7 +276,7 @@ class FrontEnd
         $rDistorcaoPainel = new MySQLPainelRepository();
         $painel = $rDistorcaoPainel->getBrasil($this->year);
 
-        if($this->year == 2019 ){
+//        if($this->year == 2019 ){
             $matriculasObj = new MySQLMatriculaRepository();
             $matriculas = $matriculasObj->getDataPainelBrasil($this->year);
 
@@ -288,7 +285,7 @@ class FrontEnd
 
             $reprovacoesObj = new MySQLReprovacaoRepository();
             $reprovacoes = $reprovacoesObj->getDataPainelBrasil($this->year);
-        }
+//        }
 
         ob_start();
 
@@ -297,13 +294,25 @@ class FrontEnd
             <form name="form-year" id="form-year" method="post">
                 <label>Ano referência
                     <select class="select-year" id="select-year" name="select-year">
-                        <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel-brasil/2018/"; ?>" <?php if ((int)$this->year == 2019) {
+                        <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel-brasil/2019/"; ?>" <?php if ((int)$this->year == 2020) {
+                            echo "selected";
+                        } ?> >2019
+                        </option>
+                            <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel-brasil/2018/"; ?>" <?php if ((int)$this->year == 2019) {
                             echo "selected";
                         } ?> >2018
                         </option>
-                        <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel-brasil/2017/"; ?>" <?php if ((int)$this->year == 2018) {
+                            <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel-brasil/2017/"; ?>" <?php if ((int)$this->year == 2018) {
                             echo "selected";
                         } ?> >2017
+                        </option>
+                        <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel-brasil/2016/"; ?>" <?php if ((int)$this->year == 2017) {
+                            echo "selected";
+                        } ?> >2016
+                        </option>
+                        <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel-brasil/2015/"; ?>" <?php if ((int)$this->year == 2016) {
+                            echo "selected";
+                        } ?> >2015
                         </option>
                     </select>
                 </label>
@@ -312,28 +321,18 @@ class FrontEnd
 
         <section id="slider-tabs">
             <ul class="abas-paineis" >
-
-                <?php if ($this->year == 2019) { ?>
                     <li id="tab-link-1" class="tablinks active"><a href="#">Distorção Idade-série</a></li>
                     <li id="tab-link-2" class="tablinks"><a  href="#">Reprovação</a></li>
                     <li id="tab-link-3" class="tablinks"><a href="#">Abandono</a></li>
-                <?php } ?>
-
-                <?php if ($this->year == 2018) { ?>
-                    <li id="tab-link-1" class="tablink active"><a href="#">Distorção Idade-série</a></li>
-                <?php } ?>
-
             </ul>
             <section id="tab-1" class="aba-panel tabcontent active" style="display: block;">
-
                 <?php include 'wp-includes/tabs_panels/tab1-panel-estado-municio-escola.php'; ?>
-
             </section>
             <section id="tab-2" class="aba-panel tabcontent" style="display: none;">
-                <?php if($this->year == 2019 ) include 'wp-includes/tabs_panels/tab2-panel-estado-municio-escola.php'; ?>
+                <?php  include 'wp-includes/tabs_panels/tab2-panel-estado-municio-escola.php'; ?>
             </section>
             <section id="tab-3" class="aba-panel tabcontent" style="display: none;">
-                <?php if($this->year == 2019 ) include 'wp-includes/tabs_panels/tab3-panel-estado-municio-escola.php'; ?>
+                <?php include 'wp-includes/tabs_panels/tab3-panel-estado-municio-escola.php'; ?>
             </section>
         </section>
 
@@ -402,8 +401,6 @@ class FrontEnd
                 $rEst = new MySQLEstadoRepository();
                 $origem = $rEst->get($id);
 
-                if($this->year == 2019 ) {
-
                     $matriculasObj = new MySQLMatriculaRepository();
                     $matriculas = $matriculasObj->getDataMatriculaEstado($id, $this->year);
 
@@ -412,8 +409,6 @@ class FrontEnd
 
                     $abandonosObj = new MySQLAbandonoRepository();
                     $abandonos = $abandonosObj->getDataAbandonoEstado($id, $this->year);
-
-                }
 
                 $rPainel = new MySQLPainelRepository();
                 $painel = $rPainel->get($origem, $this->year, "EstadoDistorcao", $origem->getId(), null);
@@ -424,8 +419,6 @@ class FrontEnd
                 $rMun = new MySQLMunicipioRepository();
                 $origem = $rMun->get($id);
 
-                if($this->year == 2019 ) {
-
                     $matriculasObj = new MySQLMatriculaRepository();
                     $matriculas = $matriculasObj->getDataMatriculaMunicipio($id, $this->year);
 
@@ -434,8 +427,6 @@ class FrontEnd
 
                     $abandonosObj = new MySQLAbandonoRepository();
                     $abandonos = $abandonosObj->getDataAbandonoMunicipio($id, $this->year);
-
-                }
 
                 $idMunicipio = $id;
 
@@ -447,8 +438,6 @@ class FrontEnd
                 $rEsc = new MySQLEscolaRepository();
                 $origem = $rEsc->get($id);
 
-                if($this->year == 2019 ) {
-
                     $matriculasObj = new MySQLMatriculaRepository();
                     $matriculas = $matriculasObj->getDataMatriculaEscola($id, $this->year);
 
@@ -457,8 +446,6 @@ class FrontEnd
 
                     $abandonosObj = new MySQLAbandonoRepository();
                     $abandonos = $abandonosObj->getDataAbandonoEscola($id, $this->year);
-
-                }
 
                 $rPainel = new MySQLPainelRepository();
                 $painel = $rPainel->get($origem, $this->year, null, null, null);
@@ -478,6 +465,10 @@ class FrontEnd
                     <form name="form-year" id="form-year" method="post">
                         <label>Ano referência
                             <select class="select-year" id="select-year" name="select-year">
+                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/estado/" . substr($_SERVER['REQUEST_URI'], 15, 2) . "/2019"; ?>" <?php if ((int)$this->year == 2020) {
+                                    echo "selected";
+                                } ?> >2019
+                                </option>
                                 <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/estado/" . substr($_SERVER['REQUEST_URI'], 15, 2) . "/2018"; ?>" <?php if ((int)$this->year == 2019) {
                                     echo "selected";
                                 } ?> >2018
@@ -485,6 +476,14 @@ class FrontEnd
                                 <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/estado/" . substr($_SERVER['REQUEST_URI'], 15, 2) . "/2017"; ?>" <?php if ((int)$this->year == 2018) {
                                     echo "selected";
                                 } ?> >2017
+                                </option>
+                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/estado/" . substr($_SERVER['REQUEST_URI'], 15, 2) . "/2016"; ?>" <?php if ((int)$this->year == 2017) {
+                                    echo "selected";
+                                } ?> >2016
+                                </option>
+                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/estado/" . substr($_SERVER['REQUEST_URI'], 15, 2) . "/2015"; ?>" <?php if ((int)$this->year == 2016) {
+                                    echo "selected";
+                                } ?> >2015
                                 </option>
                             </select>
                         </label>
@@ -497,13 +496,25 @@ class FrontEnd
                     <form name="form-year" id="form-year" method="post">
                         <label>Ano referência
                             <select class="select-year" id="select-year" name="select-year">
-                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/municipio/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2018"; ?>" <?php if ((int)$this->year == 2019) {
+                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/municipio/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2019"; ?>" <?php if ((int)$this->year == 2020) {
+                                    echo "selected";
+                                } ?> >2019
+                                </option>
+                                    <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/municipio/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2018"; ?>" <?php if ((int)$this->year == 2019) {
                                     echo "selected";
                                 } ?> >2018
                                 </option>
-                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/municipio/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2017"; ?>" <?php if ((int)$this->year == 2018) {
+                                    <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/municipio/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2017"; ?>" <?php if ((int)$this->year == 2018) {
                                     echo "selected";
                                 } ?> >2017
+                                </option>
+                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/municipio/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2016"; ?>" <?php if ((int)$this->year == 2017) {
+                                    echo "selected";
+                                } ?> >2016
+                                </option>
+                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/municipio/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2015"; ?>" <?php if ((int)$this->year == 2016) {
+                                    echo "selected";
+                                } ?> >2015
                                 </option>
                             </select>
                         </label>
@@ -516,13 +527,25 @@ class FrontEnd
                     <form name="form-year" id="form-year" method="post">
                         <label>Ano referência
                             <select class="select-year" id="select-year" name="select-year">
-                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/escola/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2018"; ?>" <?php if ((int)$this->year == 2019) {
+                                 <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/escola/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2019"; ?>" <?php if ((int)$this->year == 2020) {
+                                    echo "selected";
+                                } ?> >2019
+                                </option>
+                                     <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/escola/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2018"; ?>" <?php if ((int)$this->year == 2019) {
                                     echo "selected";
                                 } ?> >2018
                                 </option>
-                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/escola/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2017"; ?>" <?php if ((int)$this->year == 2018) {
+                                     <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/escola/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2017"; ?>" <?php if ((int)$this->year == 2018) {
                                     echo "selected";
                                 } ?> >2017
+                                </option>
+                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/escola/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2016"; ?>" <?php if ((int)$this->year == 2017) {
+                                    echo "selected";
+                                } ?> >2016
+                                </option>
+                                <option value="<?php echo "http://" . $_SERVER[HTTP_HOST] . "/painel/escola/" . $this->getNumberMunicipioOrSchool($_SERVER['REQUEST_URI']) . "/2015"; ?>" <?php if ((int)$this->year == 2016) {
+                                    echo "selected";
+                                } ?> >2015
                                 </option>
                             </select>
                         </label>
@@ -533,32 +556,28 @@ class FrontEnd
             <section id="slider-tabs">
 
                 <ul class="abas-paineis" >
-                    <?php if ($this->year == 2019) { ?>
+
                         <li id="tab-link-1" class="tablinks active"><a href="#">Distorção Idade-série</a></li>
                         <li id="tab-link-2" class="tablinks"><a  href="#">Reprovação</a></li>
                         <li id="tab-link-3" class="tablinks"><a href="#">Abandono</a></li>
-                    <?php } ?>
 
-                    <?php if ($this->year == 2018) { ?>
-                        <li id="tab-link-1" class="tablink active"><a href="#">Distorção Idade-série</a></li>
-                    <?php } ?>
                 </ul>
 
-                <section id="tab-1" class="aba-panel tabcontent active">
+                <section id="tab-1" class="aba-panel tabcontent active" style="display: block;">
                     <?php
                         include_once 'wp-includes/tabs_panels/tab1-panel-estado-municio-escola.php'
                     ?>
                 </section>
 
-                <section id="tab-2" class="aba-panel tabcontent" style="display: <?php echo $this->year == 2019 ? "block" : "none"; ?>">
+                <section id="tab-2" class="aba-panel tabcontent" style="display: none;">
                     <?php
-                        if( $this->year == 2019 ) include_once 'wp-includes/tabs_panels/tab2-panel-estado-municio-escola.php'
+                        include_once 'wp-includes/tabs_panels/tab2-panel-estado-municio-escola.php'
                     ?>
                 </section>
 
-                <section id="tab-3" class="aba-panel tabcontent" style="display: <?php echo $this->year == 2019 ? "block" : "none"; ?>">
+                <section id="tab-3" class="aba-panel tabcontent" style="display: none;">
                     <?php
-                        if( $this->year == 2019 ) include_once 'wp-includes/tabs_panels/tab3-panel-estado-municio-escola.php'
+                        include_once 'wp-includes/tabs_panels/tab3-panel-estado-municio-escola.php'
                     ?>
                 </section>
 

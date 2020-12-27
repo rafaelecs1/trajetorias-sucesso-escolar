@@ -81,48 +81,48 @@ jQuery(document).ready(function ($) {
 })
 
 
-jQuery(document).ready(function ($) {
-
-    //fecha o slide de territorios
-    document.getElementsByClassName('regiao_territorial')[0].style.display = "none";
-
-    var contador = 0;
-
-    window.intervalo = setInterval(function () {
-        
-        if (contador === 0) {
-            $('#regiao_geografica').trigger('click');
-            $('ul>li.tablinks>a:eq(0)').trigger('click');
-        }
-
-        if (contador === 1) {
-            $('ul>li.tablinks>a:eq(1)').trigger('click');
-        }
-
-        if (contador === 2) {
-            $('ul>li.tablinks>a:eq(2)').trigger('click');
-        }
-
-        if (contador === 3) {
-            $('#regiao_territorial').trigger('click');
-            $('ul>li.tablinks>a:eq(3)').trigger('click');
-        }
-
-        if (contador === 4) {
-            $('ul>li.tablinks>a:eq(4)').trigger('click');
-        }
-
-        if (contador === 5) {
-            $('ul>li.tablinks>a:eq(5)').trigger('click');
-        }
-
-        if (contador > 5) {
-            contador = -1;
-        }
-        
-        contador++;
-
-    }, 6000);
-
-});
+// jQuery(document).ready(function ($) {
+//
+//     //fecha o slide de territorios
+//     document.getElementsByClassName('regiao_territorial')[0].style.display = "none";
+//
+//     var contador = 0;
+//
+//     window.intervalo = setInterval(function () {
+//
+//         if (contador === 0) {
+//             $('#regiao_geografica').trigger('click');
+//             $('ul>li.tablinks>a:eq(0)').trigger('click');
+//         }
+//
+//         if (contador === 1) {
+//             $('ul>li.tablinks>a:eq(1)').trigger('click');
+//         }
+//
+//         if (contador === 2) {
+//             $('ul>li.tablinks>a:eq(2)').trigger('click');
+//         }
+//
+//         if (contador === 3) {
+//             $('#regiao_territorial').trigger('click');
+//             $('ul>li.tablinks>a:eq(3)').trigger('click');
+//         }
+//
+//         if (contador === 4) {
+//             $('ul>li.tablinks>a:eq(4)').trigger('click');
+//         }
+//
+//         if (contador === 5) {
+//             $('ul>li.tablinks>a:eq(5)').trigger('click');
+//         }
+//
+//         if (contador > 5) {
+//             contador = -1;
+//         }
+//
+//         contador++;
+//
+//     }, 6000);
+//
+// });
 
