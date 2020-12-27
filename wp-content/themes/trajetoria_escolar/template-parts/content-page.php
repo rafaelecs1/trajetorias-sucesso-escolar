@@ -232,6 +232,12 @@
                             <option value="2018" <?php if ((int)$_POST['select-year'] == 2018) {
                                 echo "selected";
                             } ?>>2017
+                            <option value="2017" <?php if ((int)$_POST['select-year'] == 2017) {
+                                echo "selected";
+                            } ?>>2016
+                            <option value="2016" <?php if ((int)$_POST['select-year'] == 2016) {
+                                echo "selected";
+                            } ?>>2015
                             </option>
                             <option value="2017" <?php if ((int)$_POST['select-year'] == 2017) {
                                 echo "selected";

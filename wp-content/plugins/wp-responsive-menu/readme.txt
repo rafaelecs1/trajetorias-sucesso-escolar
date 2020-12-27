@@ -3,8 +3,8 @@ Contributors: sagarseth9,magnigenie,kshirod-patel
 Tags: WordPress Responsive Menu, Genesis responsive menu, Genesis Mobile Menu, Thesis Mobile Menu, Thesis Responsive Menu,  Mobile Menu, Responsive Menu Plugin, WP Responsive Menu, WordPress mobile menu
 Requires at least: 3.0
 Requires PHP: 5.4
-Tested up to: 5.0.3
-Stable tag: 3.1.3
+Tested up to: 5.5
+Stable tag: 3.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,6 +35,7 @@ WP Responsive Menu is a simple plugin that lets you add a highly customizable re
 * Allows to add social media icons to menu(PRO).
 * You can easily change the menu fonts with any custom/google fonts(PRO).
 * Change the sub menu and menu icons easily(PRO).
+* Plugin has the functionality where you can easily import predefined demo by doing a single click.
 * And much more coming soon...
 
 This plugin works out of box with any theme frameworks like genesis or thesis or any theme and it also works fine with multisite setups.
@@ -43,7 +44,7 @@ This plugin works out of box with any theme frameworks like genesis or thesis or
 [youtube https://www.youtube.com/watch?v=6_XqAfZoRJ8]
 
 = Important Notes =
-[Upgrade to PRO](http://magnigenie.com/wp-responsive-menu-pro/)  to avail better support and unrestricted access to WP Responsive Menu.
+[Upgrade to PRO](http://magnigenie.com/wp-responsive-menu-pro/) to avail better support and unrestricted access to WP Responsive Menu.
 
 If you have any  suggestions for a new plugin, feel free to email us at info@magnigenie.com.
 
@@ -84,7 +85,17 @@ If you have any  suggestions for a new plugin, feel free to email us at info@mag
 
 
 == ChangeLog ==
+
+= Version 3.1.4 =
+
+* Changed core structure
+* Admin ui changed
+* css and js optimized
+* Changed live preview functionality
+* Fixed issue with demo import
+
 = Version 3.1.3 =
+
 * Fixed css issue for html overflow property
 
 = Version 3.1.2 =
@@ -202,6 +213,6 @@ If you have any  suggestions for a new plugin, feel free to email us at info@mag
 
 == Upgrade Notice ==
 
-= Version 3.0.2 =
+= Version 3.1.4 =
 
 * New update is available.

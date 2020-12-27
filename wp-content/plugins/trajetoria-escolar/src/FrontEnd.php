@@ -17,6 +17,7 @@ use Unicef\TrajetoriaEscolar\Repository\MySQLMunicipioRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLEscolaRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLMapaRepository;
 use Unicef\TrajetoriaEscolar\Repository\MySQLPainelRepository;use Unicef\TrajetoriaEscolar\Repository\MySQLReprovacaoRepository;
+use Unicef\TrajetoriaEscolar\Repository\MySQLTrajetoriaRepository;
 
 /**
  * Classe que implementa os requisitos para o front-end (páginas)
@@ -47,6 +48,8 @@ class FrontEnd
         add_shortcode('mapa_brasil', array($this, 'mapaBrasil'));
         add_shortcode('painel_distorcao_brasil', array($this, 'painelDistorcaoBrasil'));
         add_shortcode('mapa_distorcao', array($this, 'mapaDistorcao'));
+
+        add_shortcode('painel_trajetorias', array($this, 'painelTrajetorias'));
 
         add_action('wp_ajax_get_cidades', array($this, 'mapaGetCidades'));
         add_action('wp_ajax_nopriv_get_cidades', array($this, 'mapaGetCidades'));
@@ -102,6 +105,7 @@ class FrontEnd
                          src="<?php echo admin_url('images/loading.gif'); ?>"/>
                     <header id="selecione-municipio" style="display: none;"><h3>Selecione um município:</h3></header>
                 </section>
+
                 <section id="legenda">
                     <h3>Distorção idade-série</h3>
                     <ul>
@@ -113,6 +117,7 @@ class FrontEnd
                         <li><span></span> De 60% a 100%</li>
                     </ul>
                 </section>
+                
             </div>
         </section>
         <section id="container-mapa" class="home-col">
@@ -742,5 +747,108 @@ class FrontEnd
     {
         preg_match('/[0-9]+/', $text, $m);
         return isset($m[0]) ? $m[0] : false;
+    }
+
+    //retorna o painel trajetorias
+    public function painelTrajetorias(){
+
+        global $wp_query;
+
+        $rTrajetoria = new MySQLTrajetoriaRepository();
+        $rEstado = new MySQLEstadoRepository();
+
+        $estados = $rEstado->getLimites();
+
+        $uf = (isset($wp_query->query_vars['painel_uf'])) ? (int)$wp_query->query_vars['painel_uf'] : null;
+        $municipio = (isset($wp_query->query_vars['painel_municipio'])) ? (int)$wp_query->query_vars['painel_municipio'] : null;
+
+        if( $uf == null AND $municipio == null){
+            $trajetorias = $rTrajetoria->getTrajetoriasNacional();
+        }
+
+        if( $uf != null AND $municipio == null){
+            $trajetorias = $rTrajetoria->getTrajetoriasPorUF($uf);
+        }
+
+        if( $uf != null AND $municipio != null){
+            $trajetorias = $rTrajetoria->getTrajetoriasPorCidadeId($municipio);
+        }
+
+        ob_start();
+
+        ?>
+
+        <div id="painel_trajetorias">
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean porta malesuada elit, ut accumsan turpis pharetra a. Ut accumsan tellus sapien, ut cursus nisi varius vitae. Praesent facilisis est elit, vitae ornare diam finibus sit amet.</p>
+            
+            <div id="seletores">
+            
+                <div id="uf_selector" class="item_seletores">
+                    <label>Estado</label>
+                    <select class="select" name="select-uf" id="select-uf">
+                        <option value="0">Nacional</option>
+                        <?php
+                            foreach ($estados as $k => $v) {
+                                if ($k == $uf){
+                                    echo sprintf(
+                                        '<option value="%d" data-n="%f" data-s="%f" data-l="%f" data-o="%f" selected>%s</option>',
+                                        $k,
+                                        $v['limites']['n'],
+                                        $v['limites']['s'],
+                                        $v['limites']['l'],
+                                        $v['limites']['o'],
+                                        $v['nome']
+                                    );
+                                }else{
+                                    echo sprintf(
+                                        '<option value="%d" data-n="%f" data-s="%f" data-l="%f" data-o="%f">%s</option>',
+                                        $k,
+                                        $v['limites']['n'],
+                                        $v['limites']['s'],
+                                        $v['limites']['l'],
+                                        $v['limites']['o'],
+                                        $v['nome']
+                                    );
+                                }
+                            }
+                        ?>
+                    </select>
+                </div>
+            
+                <div class="item_seletores">
+                    <img style="display: none; margin-top: 15px; margin-left: 15px;" alt="Processando..." title="Processando..." src="<?php echo admin_url('images/loading.gif'); ?>"/>
+                </div>
+
+                <div id="municipio_selector" class="item_seletores">
+                    <label>Município</label>
+                    <select class="select" name="select-municipio" id="select-municipio">
+                        <option>Selecione o estado</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <canvas id="trajetoria1"></canvas> <br/><br/>
+            <canvas id="trajetoria2"></canvas> <br/><br/>
+            <canvas id="trajetoria3"></canvas>
+
+        </div>
+
+        <?php
+
+        wp_enqueue_script('painel_trajetorias_utils', plugin_dir_url(dirname(__FILE__)) . 'js/painel_trajetorias_utils.js', array('jquery'), false, true);
+        wp_enqueue_script('painel_trajetorias', plugin_dir_url(dirname(__FILE__)) . 'js/painel_trajetorias.js', array('jquery'), false, true);
+        wp_localize_script('painel_trajetorias', 'painel', array(
+            'siteUrl' => site_url('/'),
+            'actionGetCidades' => 'get_cidades',
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'uf' => $uf,
+            'municipio' => $municipio,
+            'trajetorias' => $trajetorias
+        ));
+
+        wp_enqueue_script('charts_js', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js', null, false, true);
+        return ob_get_clean();
     }
 }

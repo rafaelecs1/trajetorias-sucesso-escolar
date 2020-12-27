@@ -2763,3 +2763,30 @@ iframe {
 .pr-0 {
     padding-right: 0px !important;
 }
+
+/* 
+    Painel trajetorias 
+*/
+
+#painel_trajetorias #seletores{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#painel_trajetorias #seletores .select {
+    border: 2px solid #F3F4F4;
+    height: 50px;
+    min-width: 250px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#painel_trajetorias #seletores label {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-family: 'steelfish';
+    font-size: 22px;
+    color: #045396;
+}
