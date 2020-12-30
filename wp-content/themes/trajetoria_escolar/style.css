@@ -1080,7 +1080,7 @@ a.situacao-das-escolas,
 #graficos-por-tipo-ensino ul.abas li,
 #graficos-por-tipo-ensino ul.abas_reprovacoes li,
 #graficos-por-tipo-ensino ul.abas_abandonos li,
-.entry-header span.pre-h1 {
+.entry-header span.pre-h1{
     font-family: 'steelfish';
 }
 
@@ -1321,17 +1321,19 @@ a.situacao-das-escolas:hover {
     width: 100%
 }
 
-#slider-tabs ul.abas {
+#slider-tabs ul.abas,
+#slider-tabs ul.abas_idades {
     margin: 0;
     padding: 0
 }
 
-#slider-tabs ul.abas li {
+#slider-tabs ul.abas li,
+#slider-tabs ul.abas_idades li  {
     display: inline;
-
 }
 
 #slider-tabs ul.abas li a,
+#slider-tabs ul.abas_idades li a,
 #slider-tabs ul.abas_reprovacoes li a,
 #slider-tabs ul.abas_abandonos li a {
     padding: 1.5%;
@@ -1345,12 +1347,14 @@ a.situacao-das-escolas:hover {
 }
 
 #slider-tabs ul.abas li a:hover,
+#slider-tabs ul.abas_idades li a:hover,
 #slider-tabs ul.abas_reprovacoes li a:hover,
 #slider-tabs ul.abas_abandonos li a:hover {
     background-color: #ffb400
 }
 
 #slider-tabs ul.abas li.active a,
+#slider-tabs ul.abas_idades li.active a,
 #slider-tabs ul.abas_reprovacoes li.active a,
 #slider-tabs ul.abas_abandonos li.active a {
     background: #ffb400;
@@ -1391,12 +1395,14 @@ a.situacao-das-escolas:hover {
 @media only screen and (max-device-width: 480px) {
 
     #slider-tabs ul.abas li,
+    #slider-tabs ul.abas_idades li,
     #slider-tabs ul.abas-paineis li{
         display: block;
         margin: 0px;
     }
 
     #slider-tabs ul.abas li a,
+    #slider-tabs ul.abas_idades li a,
     #slider-tabs ul.abas-paineis li a{
         width: 100%;
         border-right: 0px;
@@ -1407,6 +1413,7 @@ a.situacao-das-escolas:hover {
 /** Fim */
 
 .aba,
+.aba_idade,
 .aba_reprovacao,
 .aba_abandono {
     padding: 7%;
@@ -1437,8 +1444,17 @@ a.situacao-das-escolas:hover {
     margin-right: 1%;
 }
 
-#deficiencia {
+#deficiencia,
+#grafico-por-idades {
     width: 100%;
+}
+
+#grafico-por-idades {
+    margin-top: 20px;
+}
+
+#grafico-por-idades > ul > li{
+    font-family: 'steelfish';
 }
 
 #localizacao .localizacao {

@@ -117,6 +117,11 @@ class DistorcaoIdade extends Distorcao
     private $_20_e_mais;
 
     /**
+    * Quantidade de crianças e adolescentes com menos de 10 anos
+    */
+    private $_10_menos;
+
+    /**
     * Quantidade de crianças e adolescentes com menos de 11 anos
     */
     private $_11_menos;
@@ -276,7 +281,15 @@ class DistorcaoIdade extends Distorcao
 
 	public function set_20_e_mais($_20_e_mais){
 		$this->_20_e_mais = $_20_e_mais;
+    }
+    
+    public function get_10_menos(){
+		return $this->_10_menos;
 	}
+
+	public function set_10_menos($_10_menos){
+		$this->_10_menos = $_10_menos;
+    }
 
 	public function get_11_menos(){
 		return $this->_11_menos;
@@ -319,6 +332,7 @@ class DistorcaoIdade extends Distorcao
         * @param int $_15_e_mais;
         * @param int $_18_e_mais;
         * @param int $_20_e_mais;
+        * @param int $_10_menos;
         * @param int $_11_menos;
         * @param int $_15_menos;
         * 
@@ -346,6 +360,7 @@ class DistorcaoIdade extends Distorcao
                                 $_15_e_mais = 0,
                                 $_18_e_mais = 0, 
                                 $_20_e_mais = 0, 
+                                $_10_menos = 0,
                                 $_11_menos = 0, 
                                 $_15_menos)
     {
@@ -371,6 +386,7 @@ class DistorcaoIdade extends Distorcao
         $this->set_15_e_mais($_15_e_mais);
         $this->set_18_e_mais($_18_e_mais);
         $this->set_20_e_mais($_20_e_mais);
+        $this->set_10_menos($_10_menos);
         $this->set_11_menos($_11_menos);
         $this->set_15_menos($_15_menos);
         parent::__construct();

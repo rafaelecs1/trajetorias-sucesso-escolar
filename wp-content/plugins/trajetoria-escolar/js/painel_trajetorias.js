@@ -8,16 +8,16 @@ jQuery(document).ready(function ($) {
     var color = Chart.helpers.color;
 
     var tipos_trajetorias = [
-        {id: 1, cssSelector: 'trajetoria1', title: 'Matrículas iniciais de 6 anos no 1º ano do Ensino Fundamental', backgroundColor: color(window.chartColors.red).rgbString(), borderColor: window.chartColors.red },
-        {id: 2, cssSelector: 'trajetoria2', title: 'Matrículas iniciais de 10 anos no 5º ano do Ensino Fundamental', backgroundColor: color(window.chartColors.green).rgbString(), borderColor: window.chartColors.green },
-        {id: 3, cssSelector: 'trajetoria3', title: 'Matrículas iniciais de 14 anos no 9º ano do Ensino Fundamental', backgroundColor: color(window.chartColors.blue).rgbString(), borderColor: window.chartColors.blue }
+        {id: 1, cssSelector: 'trajetoria1', title: 'Matrículas iniciais de 6 anos no 1º ano do Ensino Fundamental', backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(), borderColor: window.chartColors.red },
+        {id: 2, cssSelector: 'trajetoria2', title: 'Matrículas iniciais de 10 anos no 5º ano do Ensino Fundamental', backgroundColor: color(window.chartColors.green).alpha(0.5).rgbString(), borderColor: window.chartColors.green },
+        {id: 3, cssSelector: 'trajetoria3', title: 'Matrículas iniciais de 14 anos no 9º ano do Ensino Fundamental', backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(), borderColor: window.chartColors.blue }
     ];
 
     $('#select-uf').change(function () {
         let me = $(this);
         id = parseInt($(me).val());
         if (id > 0){
-            window.location.href = painel.siteUrl + 'painel-trajetorias/'+id+'/';
+            window.location.href = painel.siteUrl + 'painel-trajetorias/'+id+'/+#primary';
         }
         if (id == 0){
             window.location.href = painel.siteUrl + 'painel-trajetorias';
@@ -28,7 +28,7 @@ jQuery(document).ready(function ($) {
         let me = $(this);
         id = parseInt($(me).val());
         if (id > 0){
-            window.location.href = painel.siteUrl + 'painel-trajetorias/'+painel.uf+'/'+id;
+            window.location.href = painel.siteUrl + 'painel-trajetorias/'+painel.uf+'/'+id+'/#primary';
         }
     });
 
@@ -138,7 +138,7 @@ jQuery(document).ready(function ($) {
                     },
 
                     animation: {
-                        duration: 1,
+                        //duration: 1,
                         onComplete: function () {
                             var chartInstance = this.chart,
                                 ctx = chartInstance.ctx;

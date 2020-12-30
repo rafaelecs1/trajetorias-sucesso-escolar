@@ -85,10 +85,19 @@ jQuery(document).ready(function ($) {
 
         painel.graficoDistorcaoPorRedes.unshift(legendaPorAtraso);
 
+        iniciaAbasGraficosAnos();
+        iniciaAbasGraficosIdades();
+
+    }
+
+    function iniciaAbasGraficosAnos(){
+        //fecha todas as abas dos gráficos inicias/finais/medio -por ano
         $('section.aba:not(:eq(0))').hide();
 
+        //ativa a primeira aba dos graficos  -por an
         $('ul.abas>li:eq(0)').addClass('active');
 
+        //click nas abas dos graficos inicias/finais/medio -por ano
         $('ul.abas>li>a').click(function (e) {
             e.preventDefault();
             if (!e.isTrigger) {
@@ -106,7 +115,33 @@ jQuery(document).ready(function ($) {
                 chartsDistorcao();
             });
         });
+    }
 
+    function iniciaAbasGraficosIdades(){
+        //fecha todas as abas dos gráficos inicias/finais/medio -por idade
+        $('section.aba_idade:not(:eq(0))').hide();
+
+        //ativa a primeira aba dos graficos  -por an
+        $('ul.abas_idades>li:eq(0)').addClass('active');
+
+        //click nas abas dos graficos inicias/finais/medio -por idade
+        $('ul.abas_idades>li>a').click(function (e) {
+            e.preventDefault();
+            if (!e.isTrigger) {
+                clearInterval(window.intervalo);
+            }
+            let me = $(this),
+                id = $(me).attr('href'),
+                par = $(me).parent();
+            vel = 'fast';
+            $('section.aba_idade').fadeOut(vel, function () {
+                $('div.grafico', id).empty();
+            });
+            $(par).addClass('active').siblings('li').not(par).removeClass('active');
+            $(id).fadeIn(vel, function () {
+                
+            });
+        });
     }
 
     function iniciaGraficosReprovacao() {
@@ -180,6 +215,7 @@ jQuery(document).ready(function ($) {
     function chartsDistorcao() {
 
         let options = {
+            backgroundColor: '#e4e4e4',
             width: '100%',
             height: 400,
             legend: {
@@ -187,7 +223,8 @@ jQuery(document).ready(function ($) {
                 alignment: 'center',
                 maxLines: 3,
                 textStyle: {
-                    fontSize: 12
+                    fontSize: 12,
+                    fontFamily: 'raleway'
                 }
             },
             bar: {
@@ -210,8 +247,7 @@ jQuery(document).ready(function ($) {
                 3: {
                     color: '#045396'
                 },
-            },
-            backgroundColor: 'none',
+            }
         };
 
         for (var g in painel.graficosDistorcaoPorTipoAno) {
@@ -407,7 +443,7 @@ jQuery(document).ready(function ($) {
     });
 
     function drawChart(id, data, options) {
-        let chart = new google.charts.Bar(document.getElementById(id));
+        let chart = new google.visualization.ColumnChart(document.getElementById(id));
         chart.draw(data, google.charts.Bar.convertOptions(options));
     }
 
@@ -437,7 +473,6 @@ jQuery(document).ready(function ($) {
 
         }
     );
-
 
     //Action for select year of panel
     $('#select-year').change(function () {

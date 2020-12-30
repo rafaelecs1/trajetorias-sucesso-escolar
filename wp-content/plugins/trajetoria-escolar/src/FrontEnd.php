@@ -177,8 +177,6 @@ class FrontEnd
         $reprovacoesObj = new MySQLReprovacaoRepository();
         $reprovacoes = $reprovacoesObj->getDataMapaBrasil($this->year);
 
-
-
         ob_start();
         wp_enqueue_style('mapa-nacional', plugin_dir_url(dirname(__FILE__)) . 'css/mapa-nacional.css');
         wp_enqueue_style('animate', plugin_dir_url(dirname(__FILE__)) . 'css/animate.css');
@@ -197,17 +195,9 @@ class FrontEnd
         <section id="slider-tabs" class="regiao_geografica regiao_mapas">
             
             <ul class="abas" >
-
-<!--                --><?php //if ($this->year != 2019) { ?>
-                    <li id="tab-link-1" class="tablinks active"><a href="#">Distorção idade-série </a></li>
-                    <li id="tab-link-2" class="tablinks"><a  href="#">Reprovação</a></li>
-                    <li id="tab-link-3" class="tablinks"><a href="#">Abandono</a></li>
-<!--                --><?php //} ?>
-
-<!--                --><?php //if ($this->year == 2018) { ?>
-<!--                    <li id="tab-link-1" class="tablink active"><a href="#">Distorção idade-série </a></li>-->
-<!--                --><?php //} ?>
-
+                <li id="tab-link-1" class="tablinks active"><a href="#">Distorção idade-série </a></li>
+                <li id="tab-link-2" class="tablinks"><a  href="#">Reprovação</a></li>
+                <li id="tab-link-3" class="tablinks"><a href="#">Abandono</a></li>
             </ul>
 
             <section id="tab-1" class="aba-home tabcontent active" style="display: block;">
@@ -223,20 +213,13 @@ class FrontEnd
             </section>
             
         </section>
+
         <section id="slider-tabs" class="regiao_territorial regiao_mapas">
             
             <ul class="abas" >
-
-<!--                --><?php //if ($this->year == 2019) { ?>
-                    <li id="tab-link-4" class="tablinks"><a href="#">Distorção idade-série </a></li>
-                    <li id="tab-link-5" class="tablinks"><a  href="#">Reprovação</a></li>
-                    <li id="tab-link-6" class="tablinks"><a href="#">Abandono</a></li>
-<!--                --><?php //} ?>
-
-<!--                --><?php //if ($this->year == 2018) { ?>
-<!--                    <li id="tab-link-1" class="tablink"><a href="#">Distorção idade-série </a></li>-->
-<!--                --><?php //} ?>
-
+                <li id="tab-link-4" class="tablinks"><a href="#">Distorção idade-série </a></li>
+                <li id="tab-link-5" class="tablinks"><a  href="#">Reprovação</a></li>
+                <li id="tab-link-6" class="tablinks"><a href="#">Abandono</a></li>
             </ul>
 
             <section id="tab-4" class="aba-home tabcontent" style="display: block;">
@@ -276,16 +259,14 @@ class FrontEnd
         $rDistorcaoPainel = new MySQLPainelRepository();
         $painel = $rDistorcaoPainel->getBrasil($this->year);
 
-//        if($this->year == 2019 ){
-            $matriculasObj = new MySQLMatriculaRepository();
-            $matriculas = $matriculasObj->getDataPainelBrasil($this->year);
+        $matriculasObj = new MySQLMatriculaRepository();
+        $matriculas = $matriculasObj->getDataPainelBrasil($this->year);
 
-            $abandonosObj = new MySQLAbandonoRepository();
-            $abandonos = $abandonosObj->getDataPainelBrasil($this->year);
+        $abandonosObj = new MySQLAbandonoRepository();
+        $abandonos = $abandonosObj->getDataPainelBrasil($this->year);
 
-            $reprovacoesObj = new MySQLReprovacaoRepository();
-            $reprovacoes = $reprovacoesObj->getDataPainelBrasil($this->year);
-//        }
+        $reprovacoesObj = new MySQLReprovacaoRepository();
+        $reprovacoes = $reprovacoesObj->getDataPainelBrasil($this->year);
 
         ob_start();
 
@@ -343,41 +324,38 @@ class FrontEnd
                 wp_enqueue_style('animate', plugin_dir_url(dirname(__FILE__)) . 'css/animate.css');
                 wp_enqueue_style('remodal_theme', plugin_dir_url(dirname(__FILE__)) . 'css/remodal-default-theme.css', array('remodal'));
                 wp_enqueue_script('remodal', plugin_dir_url(dirname(__FILE__)) . 'js/remodal.js', array('jquery'), false, true);
-
             }
 
             wp_enqueue_script('painel', plugin_dir_url(dirname(__FILE__)) . 'js/painel.js', array('jquery'), false, true);
-//            wp_enqueue_script('painel2', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral2.js', array('jquery'), false, true);
-//            wp_enqueue_script('painel3', plugin_dir_url(dirname(__FILE__)) . 'js/painelGeral3.js', array('jquery'), false, true);
             wp_enqueue_script('tabs', plugin_dir_url(dirname(__FILE__)) . 'js/tabs.js', array('jquery'), false, true);
 
             $voltar = $especificacao = null;
 
-          wp_localize_script('painel', 'painel', array(
-                    'siteUrl' => site_url('/'),
-                    'ajaxUrl' => admin_url('admin-ajax.php'),
-                    'voltar' => $voltar,
-                    'especificacao' => $especificacao,
+            wp_localize_script('painel', 'painel', array(
+                'siteUrl' => site_url('/'),
+                'ajaxUrl' => admin_url('admin-ajax.php'),
+                'voltar' => $voltar,
+                'especificacao' => $especificacao,
 
-                    'graficosDistorcaoPorTipoAno' => $graficosPorTipoAno,
-                    'graficoDistorcaoPorRedes' => $graficoPorRedes,
+                'graficosDistorcaoPorTipoAno' => $graficosPorTipoAno,
+                'graficoDistorcaoPorRedes' => $graficoPorRedes,
 
-                    'graficosReprovacaoPorTipoAno' => $graficosReprovacaoPorTipoAno,
-                    'graficoReprovacaoPorRedes' => $graficoReprovacaoPorRedes,
+                'graficosReprovacaoPorTipoAno' => $graficosReprovacaoPorTipoAno,
+                'graficoReprovacaoPorRedes' => $graficoReprovacaoPorRedes,
 
-                    'graficosAbandonoPorTipoAno' => $graficosAbandonoPorTipoAno,
-                    'graficoAbandonoPorRedes' => $graficoAbandonoPorRedes,
+                'graficosAbandonoPorTipoAno' => $graficosAbandonoPorTipoAno,
+                'graficoAbandonoPorRedes' => $graficoAbandonoPorRedes,
 
-                    'year' => $this->year
-                ));
-//          echo "<pre>";
-//          var_dump($graficosReprovacaoPorTipoAno);
-//          echo "</pre>";
+                'year' => $this->year
+            ));
 
             wp_enqueue_script('google_charts', 'https://www.gstatic.com/charts/loader.js', null, false, true);
             return ob_get_clean();
         }
 
+    
+        
+    
     /**
      * Coordena e exibe as informações para os painéis
      *
@@ -396,19 +374,20 @@ class FrontEnd
         $origem = $painel = null;
 
         if (!empty($id) && in_array($tipo, array('estado', 'municipio', 'escola'))) {
+            
             if ($tipo === 'estado') {
 
                 $rEst = new MySQLEstadoRepository();
                 $origem = $rEst->get($id);
 
-                    $matriculasObj = new MySQLMatriculaRepository();
-                    $matriculas = $matriculasObj->getDataMatriculaEstado($id, $this->year);
+                $matriculasObj = new MySQLMatriculaRepository();
+                $matriculas = $matriculasObj->getDataMatriculaEstado($id, $this->year);
 
-                    $reprovacoesObj = new MySQLReprovacaoRepository();
-                    $reprovacoes = $reprovacoesObj->getDataReprovacaoEstado($id, $this->year);
+                $reprovacoesObj = new MySQLReprovacaoRepository();
+                $reprovacoes = $reprovacoesObj->getDataReprovacaoEstado($id, $this->year);
 
-                    $abandonosObj = new MySQLAbandonoRepository();
-                    $abandonos = $abandonosObj->getDataAbandonoEstado($id, $this->year);
+                $abandonosObj = new MySQLAbandonoRepository();
+                $abandonos = $abandonosObj->getDataAbandonoEstado($id, $this->year);
 
                 $rPainel = new MySQLPainelRepository();
                 $painel = $rPainel->get($origem, $this->year, "EstadoDistorcao", $origem->getId(), null);
@@ -419,14 +398,14 @@ class FrontEnd
                 $rMun = new MySQLMunicipioRepository();
                 $origem = $rMun->get($id);
 
-                    $matriculasObj = new MySQLMatriculaRepository();
-                    $matriculas = $matriculasObj->getDataMatriculaMunicipio($id, $this->year);
+                $matriculasObj = new MySQLMatriculaRepository();
+                $matriculas = $matriculasObj->getDataMatriculaMunicipio($id, $this->year);
 
-                    $reprovacoesObj = new MySQLReprovacaoRepository();
-                    $reprovacoes = $reprovacoesObj->getDataReprovacaoMunicipio($id, $this->year);
+                $reprovacoesObj = new MySQLReprovacaoRepository();
+                $reprovacoes = $reprovacoesObj->getDataReprovacaoMunicipio($id, $this->year);
 
-                    $abandonosObj = new MySQLAbandonoRepository();
-                    $abandonos = $abandonosObj->getDataAbandonoMunicipio($id, $this->year);
+                $abandonosObj = new MySQLAbandonoRepository();
+                $abandonos = $abandonosObj->getDataAbandonoMunicipio($id, $this->year);
 
                 $idMunicipio = $id;
 
@@ -438,14 +417,14 @@ class FrontEnd
                 $rEsc = new MySQLEscolaRepository();
                 $origem = $rEsc->get($id);
 
-                    $matriculasObj = new MySQLMatriculaRepository();
-                    $matriculas = $matriculasObj->getDataMatriculaEscola($id, $this->year);
+                $matriculasObj = new MySQLMatriculaRepository();
+                $matriculas = $matriculasObj->getDataMatriculaEscola($id, $this->year);
 
-                    $reprovacoesObj = new MySQLReprovacaoRepository();
-                    $reprovacoes = $reprovacoesObj->getDataReprovacaoEscola($id, $this->year);
+                $reprovacoesObj = new MySQLReprovacaoRepository();
+                $reprovacoes = $reprovacoesObj->getDataReprovacaoEscola($id, $this->year);
 
-                    $abandonosObj = new MySQLAbandonoRepository();
-                    $abandonos = $abandonosObj->getDataAbandonoEscola($id, $this->year);
+                $abandonosObj = new MySQLAbandonoRepository();
+                $abandonos = $abandonosObj->getDataAbandonoEscola($id, $this->year);
 
                 $rPainel = new MySQLPainelRepository();
                 $painel = $rPainel->get($origem, $this->year, null, null, null);

@@ -107,8 +107,6 @@
             <hr>
             <br/><br/><br/>
 
-
-
             <div class="valor">
                 <?php
                     //echo number_format((int)$painel['total_geral'], 0, ',', '.')
@@ -135,6 +133,69 @@
             }
             ?>
         </section>
+
+    </section>
+
+    <section id="grafico-por-idades">
+
+        <?php
+            $tiposAno = array(
+                'Iniciais' => 'Anos Iniciais - Ensino Fundamental',
+                'Finais' => 'Anos Finais - Ensino Fundamental',
+                'Todos' => 'Ensino Médio',
+            );
+            $graficosPorTipoIdade = array();
+            $lis = $sections = '';
+            foreach ($tiposAno as $tipoIdade => $label) {
+
+                if (array_key_exists($tipoIdade, $painel['idades'])) {
+                    $slug = 'grafico-idades-' . sanitize_title($label);
+                    $id = str_replace('-', '_', $slug);
+                    $lis .= '<li><a href="#' . $slug . '">' . $label . '</a></li>';
+                    $sections .= '<section id="' . $slug . '" class="aba_idade"><span>Número de estudantes em atraso escolar por idade</span><div id="' . $id . '" class="grafico"></div></section>';
+
+                    foreach ($painel['idades'][$tipoIdade] as $ano => $distorcoes) {
+                        $arAux = array();
+                        $arAux[] = $ano . '° ano';
+                        foreach ($distorcoes as $dist) {
+                            $arAux[] = $dist;
+                        }
+                        $graficosPorTipoIdade[$id][] = $arAux;
+                    }
+                }
+
+            }
+
+            if (!empty($lis)) {
+                echo '<ul class="abas_idades">';
+                echo $lis;
+                echo '</ul>';
+                echo $sections;
+            }
+        ?>
+
+        <!-- <ul class="abas_idades">
+            <li class="active"><a href="#grafico-idades-anos-iniciais-ensino-fundamental">Anos Iniciais - Ensino Fundamental</a></li>
+            <li><a href="#grafico-idades-anos-finais-ensino-fundamental">Anos Finais - Ensino Fundamental</a></li>
+            <li><a href="#grafico-idades-ensino-medio">Ensino Médio</a></li>
+        </ul>
+        
+        <section id="grafico-idades-anos-iniciais-ensino-fundamental" class="aba_idade">
+            <span>Número de estudantes em atraso escolar por idade</span>
+            <div id="grafico_anos_iniciais_ensino_fundamental" class="grafico">
+                GRAFICO
+            </div>
+        </section>
+        
+        <section id="grafico-idades-anos-finais-ensino-fundamental" class="aba_idade" style="display: none;">
+            <span>Número de estudantes em atraso escolar por idade</span>
+            GRAFICO
+        </section>
+        
+        <section id="grafico-idades-ensino-medio" class="aba_idade" style="display: none;">
+            <span>Número de estudantes em atraso escolar por idade</span>
+            GRAFICO
+        </section> -->
 
     </section>
 
@@ -181,6 +242,7 @@
         }
         ?>
     </section>
+
     <span class="legenda">* Taxa de distorção idade-serie</span>
 
     <?php if($painel['deficiencia'] != null && $this->year == 2019 ) { ?>

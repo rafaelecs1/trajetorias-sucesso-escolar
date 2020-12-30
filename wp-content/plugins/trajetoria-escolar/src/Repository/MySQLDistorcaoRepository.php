@@ -581,6 +581,213 @@ class MySQLDistorcaoRepository implements IDistorcaoRepository
         return $resul;
     }
 
+    public function getPorIdade(IDistorcao $origem, $anoReferencia = 0)
+    {
+        $resul = array();
+        $sql = sprintf(
+            'SELECT
+                dis.tipo_ano,
+                dis_idade.ano,
+                SUM(dis_idade._6_menos) AS 6_menos,
+                SUM(dis_idade._6_anos) AS 6_anos,
+                SUM(dis_idade._7_anos) AS 7_anos,
+                SUM(dis_idade._8_anos) AS 8_anos,
+                SUM(dis_idade._9_anos) AS 9_anos,
+                SUM(dis_idade._10_anos) AS 10_anos,
+                SUM(dis_idade._11_anos) AS 11_anos,
+                SUM(dis_idade._12_anos) AS 12_anos,
+                SUM(dis_idade._13_anos) AS 13_anos,
+                SUM(dis_idade._14_anos) AS 14_anos,
+                SUM(dis_idade._15_anos) AS 15_anos,
+                SUM(dis_idade._16_anos) AS 16_anos,
+                SUM(dis_idade._17_anos) AS 17_anos,
+                SUM(dis_idade._18_anos) AS 18_anos,
+                SUM(dis_idade._19_anos) AS 19_anos,
+                SUM(dis_idade._15_e_mais) AS 15_mais,
+                SUM(dis_idade._18_e_mais) AS 18_mais,
+                SUM(dis_idade._20_e_mais) AS 20_mais,
+                SUM(dis_idade._10_menos) AS 10_menos,
+                SUM(dis_idade._11_menos) AS 11_menos,
+                SUM(dis_idade._15_menos) AS 15_menos
+            FROM te_estados est,
+                 te_municipios mun,
+                 te_escolas esc,
+                 te_distorcoes dis,
+                 te_distorcoes_idades dis_idade
+            WHERE est.id = mun.estado_id 
+            AND mun.id = esc.municipio_id
+            AND esc.id = dis.escola_id
+            AND dis.id = dis_idade.distorcao_id
+            AND (
+                dis_idade._6_menos > 0
+                OR dis_idade._6_menos > 0
+                OR dis_idade._6_anos > 0
+                OR dis_idade._7_anos > 0
+                OR dis_idade._8_anos > 0
+                OR dis_idade._9_anos > 0
+                OR dis_idade._10_anos > 0
+                OR dis_idade._11_anos > 0
+                OR dis_idade._12_anos > 0
+                OR dis_idade._13_anos > 0
+                OR dis_idade._14_anos > 0
+                OR dis_idade._15_anos > 0
+                OR dis_idade._16_anos > 0
+                OR dis_idade._17_anos > 0
+                OR dis_idade._18_anos > 0
+                OR dis_idade._19_anos > 0
+                OR dis_idade._15_e_mais > 0
+                OR dis_idade._18_e_mais > 0
+                OR dis_idade._20_e_mais > 0
+                OR dis_idade._10_menos > 0
+                OR dis_idade._11_menos > 0
+                OR dis_idade._15_menos > 0
+            )
+            AND dis.ano_referencia = %d
+            AND %s.id = %d
+            GROUP BY                 
+                dis.tipo_ano,
+                dis_idade.ano;',
+            $anoReferencia,
+            $this->getParamAlias($origem),
+            $origem->getId()
+        );
+
+        echo $sql;
+
+        $query = $this->db->get_results($sql, ARRAY_A);
+        if (!empty($query)) {
+            foreach ($query as $item) {
+                if (!isset($resul[$item['tipo_ano']][$item['ano']])) {
+                    $resul[$item['tipo_ano']][$item['ano']] = array(
+                        (int)$item['6_menos'],
+                        (int)$item['6_anos'],
+                        (int)$item['7_anos'],
+                        (int)$item['8_anos'],
+                        (int)$item['9_anos'],
+                        (int)$item['10_anos'],
+                        (int)$item['11_anos'],
+                        (int)$item['12_anos'],
+                        (int)$item['13_anos'],
+                        (int)$item['14_anos'],
+                        (int)$item['15_anos'],
+                        (int)$item['16_anos'],
+                        (int)$item['17_anos'],
+                        (int)$item['18_anos'],
+                        (int)$item['19_anos'],
+                        (int)$item['15_mais'],
+                        (int)$item['18_mais'],
+                        (int)$item['20_mais'],
+                        (int)$item['10_menos'],
+                        (int)$item['11_menos'],
+                        (int)$item['15_menos']
+                    );
+                }
+            }
+        }
+        return $resul;
+    }
+
+    public function getPorIdadeBrasil($anoReferencia = 0)
+    {
+        $resul = array();
+        $sql = sprintf(
+            'SELECT
+                dis.tipo_ano,
+                dis_idade.ano,
+                SUM(dis_idade._6_menos) AS 6_menos,
+                SUM(dis_idade._6_anos) AS 6_anos,
+                SUM(dis_idade._7_anos) AS 7_anos,
+                SUM(dis_idade._8_anos) AS 8_anos,
+                SUM(dis_idade._9_anos) AS 9_anos,
+                SUM(dis_idade._10_anos) AS 10_anos,
+                SUM(dis_idade._11_anos) AS 11_anos,
+                SUM(dis_idade._12_anos) AS 12_anos,
+                SUM(dis_idade._13_anos) AS 13_anos,
+                SUM(dis_idade._14_anos) AS 14_anos,
+                SUM(dis_idade._15_anos) AS 15_anos,
+                SUM(dis_idade._16_anos) AS 16_anos,
+                SUM(dis_idade._17_anos) AS 17_anos,
+                SUM(dis_idade._18_anos) AS 18_anos,
+                SUM(dis_idade._19_anos) AS 19_anos,
+                SUM(dis_idade._15_e_mais) AS 15_mais,
+                SUM(dis_idade._18_e_mais) AS 18_mais,
+                SUM(dis_idade._20_e_mais) AS 20_mais,
+                SUM(dis_idade._10_menos) AS 10_menos,
+                SUM(dis_idade._11_menos) AS 11_menos,
+                SUM(dis_idade._15_menos) AS 15_menos
+            FROM te_estados est,
+                 te_municipios mun,
+                 te_escolas esc,
+                 te_distorcoes dis,
+                 te_distorcoes_idades dis_idade
+            WHERE est.id = mun.estado_id 
+            AND mun.id = esc.municipio_id
+            AND esc.id = dis.escola_id
+            AND dis.id = dis_idade.distorcao_id
+            AND (
+                dis_idade._6_menos > 0
+                OR dis_idade._6_menos > 0
+                OR dis_idade._6_anos > 0
+                OR dis_idade._7_anos > 0
+                OR dis_idade._8_anos > 0
+                OR dis_idade._9_anos > 0
+                OR dis_idade._10_anos > 0
+                OR dis_idade._11_anos > 0
+                OR dis_idade._12_anos > 0
+                OR dis_idade._13_anos > 0
+                OR dis_idade._14_anos > 0
+                OR dis_idade._15_anos > 0
+                OR dis_idade._16_anos > 0
+                OR dis_idade._17_anos > 0
+                OR dis_idade._18_anos > 0
+                OR dis_idade._19_anos > 0
+                OR dis_idade._15_e_mais > 0
+                OR dis_idade._18_e_mais > 0
+                OR dis_idade._20_e_mais > 0
+                OR dis_idade._10_menos > 0
+                OR dis_idade._11_menos > 0
+                OR dis_idade._15_menos > 0
+            )
+            AND dis.ano_referencia = %d
+            GROUP BY                 
+                dis.tipo_ano,
+                dis_idade.ano;',
+            $anoReferencia
+        );
+
+        $query = $this->db->get_results($sql, ARRAY_A);
+        if (!empty($query)) {
+            foreach ($query as $item) {
+                if (!isset($resul[$item['tipo_ano']][$item['ano']])) {
+                    $resul[$item['tipo_ano']][$item['ano']] = array(
+                        (int)$item['6_menos'],
+                        (int)$item['6_anos'],
+                        (int)$item['7_anos'],
+                        (int)$item['8_anos'],
+                        (int)$item['9_anos'],
+                        (int)$item['10_anos'],
+                        (int)$item['11_anos'],
+                        (int)$item['12_anos'],
+                        (int)$item['13_anos'],
+                        (int)$item['14_anos'],
+                        (int)$item['15_anos'],
+                        (int)$item['16_anos'],
+                        (int)$item['17_anos'],
+                        (int)$item['18_anos'],
+                        (int)$item['19_anos'],
+                        (int)$item['15_mais'],
+                        (int)$item['18_mais'],
+                        (int)$item['20_mais'],
+                        (int)$item['10_menos'],
+                        (int)$item['11_menos'],
+                        (int)$item['15_menos']
+                    );
+                }
+            }
+        }
+        return $resul;
+    }
+
 
     /**
      * Retorna as quantidades de crianças e adolescentes com e sem distorção idade-série por localização

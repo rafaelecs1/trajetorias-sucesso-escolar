@@ -239,7 +239,7 @@ abstract class AbstractRepository implements IRestFull
 
         $sql .= $this->tableName . ' join te_escolas te on te.id = ' . $this->tableName . '.escolas_id
                                       join te_municipios tm on tm.id = te.municipio_id
-                                      where tm.territorio = %d AND '. $this->tableName . '.ano_referencia = %s AND ' . $this->tableName . '.cor_raca_id IS NULL AND ' . $this->tableName . '.genero_id IS NULL';
+                                      where tm.territorio = %s AND '. $this->tableName . '.ano_referencia = %d AND ' . $this->tableName . '.cor_raca_id IS NULL AND ' . $this->tableName . '.genero_id IS NULL';
 
         $response = $this->db->get_row($this->db->prepare($sql, $territorio, $anoReferencia), ARRAY_A);
         return (int)$response['qtd'];
