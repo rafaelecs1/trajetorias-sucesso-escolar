@@ -652,8 +652,6 @@ class MySQLDistorcaoRepository implements IDistorcaoRepository
             $origem->getId()
         );
 
-        echo $sql;
-
         $query = $this->db->get_results($sql, ARRAY_A);
         if (!empty($query)) {
             foreach ($query as $item) {
