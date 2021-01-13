@@ -113,8 +113,8 @@
                 ?>
             </div>
 
-
             <div id="grafico_por_redes" class="grafico"></div>
+
             <?php
                 $graficoPorRedes = array();
                 foreach ($painel['tipo_rede'] as $rede => $ensinos) {
@@ -132,6 +132,7 @@
                     $graficoPorRedes[] = $arAux;
             }
             ?>
+
         </section>
 
     </section>
@@ -173,29 +174,6 @@
                 echo $sections;
             }
         ?>
-
-        <!-- <ul class="abas_idades">
-            <li class="active"><a href="#grafico-idades-anos-iniciais-ensino-fundamental">Anos Iniciais - Ensino Fundamental</a></li>
-            <li><a href="#grafico-idades-anos-finais-ensino-fundamental">Anos Finais - Ensino Fundamental</a></li>
-            <li><a href="#grafico-idades-ensino-medio">Ensino Médio</a></li>
-        </ul>
-        
-        <section id="grafico-idades-anos-iniciais-ensino-fundamental" class="aba_idade">
-            <span>Número de estudantes em atraso escolar por idade</span>
-            <div id="grafico_anos_iniciais_ensino_fundamental" class="grafico">
-                GRAFICO
-            </div>
-        </section>
-        
-        <section id="grafico-idades-anos-finais-ensino-fundamental" class="aba_idade" style="display: none;">
-            <span>Número de estudantes em atraso escolar por idade</span>
-            GRAFICO
-        </section>
-        
-        <section id="grafico-idades-ensino-medio" class="aba_idade" style="display: none;">
-            <span>Número de estudantes em atraso escolar por idade</span>
-            GRAFICO
-        </section> -->
 
     </section>
 

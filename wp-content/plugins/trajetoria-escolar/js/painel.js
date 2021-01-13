@@ -76,11 +76,17 @@ jQuery(document).ready(function ($) {
     });
 
     function iniciaGraficosDistorcao() {
+
         let legendaTipoDistorcao = ['', 'Sem atraso escolar', '1 ano de atraso escolar', '2 anos de atraso escolar', '3 anos ou mais de atraso escolar'],
             legendaPorAtraso = ['Redes', 'Estudantes sem distorção idade-série', 'Estudantes em distorção idade-série'];
+            legendaPorIdade = ['', 'Menos de 6 anos', '6 anos', '7 anos', '8 anos', '9 anos', '10 anos', '11 anos', '12 anos', '13 anos', '14 anos', '15 anos', '16 anos', '17 anos', '18 anos', '19 anos', '15 ou mais', '18 ou mais', '20 ou mais', 'Menos de 10 anos', 'Menos de 11 anos', 'Menos de 15 anos'];
 
         for (var g in painel.graficosDistorcaoPorTipoAno) {
             painel.graficosDistorcaoPorTipoAno[g].unshift(legendaTipoDistorcao);
+        }
+
+        for (var g in painel.graficosDistorcaoPorTipoIdade) {
+            painel.graficosDistorcaoPorTipoIdade[g].unshift(legendaPorIdade);
         }
 
         painel.graficoDistorcaoPorRedes.unshift(legendaPorAtraso);
@@ -139,7 +145,7 @@ jQuery(document).ready(function ($) {
             });
             $(par).addClass('active').siblings('li').not(par).removeClass('active');
             $(id).fadeIn(vel, function () {
-                
+                chartsDistorcao();
             });
         });
     }
@@ -214,6 +220,8 @@ jQuery(document).ready(function ($) {
 
     function chartsDistorcao() {
 
+        //por rede e ano
+
         let options = {
             backgroundColor: '#e4e4e4',
             width: '100%',
@@ -256,8 +264,8 @@ jQuery(document).ready(function ($) {
             );
             drawChart(g, data, options);
         }
-        document.getElementById('grafico_por_redes').innerHTML = '';
 
+        document.getElementById('grafico_por_redes').innerHTML = '';
         if (document.getElementById('grafico_por_redes').innerHTML === '') {
             let data = google.visualization.arrayToDataTable(
                 painel.graficoDistorcaoPorRedes
@@ -271,6 +279,58 @@ jQuery(document).ready(function ($) {
                 },
             };
             drawChart('grafico_por_redes', data, options);
+        }
+
+        //por idade
+        let optionsIdade = {
+            backgroundColor: '#e4e4e4',
+            width: '100%',
+            height: 400,
+            legend: {
+                position: 'bottom',
+                alignment: 'left',
+                textStyle: {
+                    fontSize: 12,
+                    fontFamily: 'raleway'
+                }
+            },
+            bar: {
+                groupWidth: '90%'
+            },
+            vAxis: {
+                format: '#,###'
+            },
+            isStacked: true,
+            series: {
+                1: {color: "#005A87"},
+                2: {color: "#007FA3"},
+                3: {color: "#00A4A8"},
+                4: {color: "#1FC699"},
+                5: {color: "#95E380"},
+                6: {color: "#F9F871"},
+                7: {color: "#FFB400"},
+                8: {color: "#98B224"},
+                9: {color: "#39A056"},
+                10: {color: "#008675"},
+                11: {color: "#006775"},
+                12: {color: "#2F4858"},
+                13: {color: "#007CBA"},
+                14: {color: "#009ECA"},
+                15: {color: "#00BCC2"},
+                16: {color: "#18D7A6"},
+                17: {color: "#9AEC85"},
+                18: {color: "#F9F871"},
+                19: {color: "#EA8DB5"},
+                20: {color: "#EEE8A9"},
+                21: {color: "#4B827B"}
+            }
+        };
+
+        for (var g in painel.graficosDistorcaoPorTipoIdade) {
+            let data = google.visualization.arrayToDataTable(
+                painel.graficosDistorcaoPorTipoIdade[g]
+            );
+            drawChart(g, data, optionsIdade);
         }
 
     }
