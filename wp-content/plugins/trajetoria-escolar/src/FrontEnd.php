@@ -809,9 +809,9 @@ class FrontEnd
 
             </div>
 
-            <canvas id="trajetoria1"></canvas> <br/><br/>
-            <canvas id="trajetoria2"></canvas> <br/><br/>
-            <canvas id="trajetoria3"></canvas>
+            <canvas id="trajetoria1" height="80vh"></canvas> <br/><br/>
+            <canvas id="trajetoria2" height="80vh"></canvas> <br/><br/>
+            <canvas id="trajetoria3" height="80vh"></canvas>
 
         </div>
 

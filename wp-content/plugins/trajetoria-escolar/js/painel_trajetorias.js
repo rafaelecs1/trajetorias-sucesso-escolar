@@ -123,7 +123,7 @@ jQuery(document).ready(function ($) {
                     },
                     title: {
                         display: true,
-                        fontSize: 22,
+                        fontSize: 20,
                         fontColor: '#045396',
                         fontFamily: 'steelfish',
                         text: trajetoria.title
@@ -150,11 +150,18 @@ jQuery(document).ready(function ($) {
                                 var meta = chartInstance.controller.getDatasetMeta(i);
                                 meta.data.forEach(function (bar, index) {
                                     var data = dataset.data[index];
-                                    ctx.fillText(data, bar._model.x, bar._model.y - 5);
-
+                                    ctx.fillText(data, bar._model.x, bar._model.y + 25);
                                 });
                             });
                         }
+                    },
+
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
                     }
                 }
             });
