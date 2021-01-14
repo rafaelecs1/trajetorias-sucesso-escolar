@@ -596,6 +596,7 @@ class FrontEnd
                     'especificacao' => $especificacao,
 
                     'graficosDistorcaoPorTipoAno' => $graficosPorTipoAno,
+                    'graficosDistorcaoPorTipoIdade' => $graficosPorTipoIdade,
                     'graficoDistorcaoPorRedes' => $graficoPorRedes,
 
                     'graficosReprovacaoPorTipoAno' => $graficosReprovacaoPorTipoAno,
