@@ -223,17 +223,15 @@
 
     <span class="legenda">* Taxa de distorção idade-serie</span>
 
-    <?php if($painel['deficiencia'] != null && $this->year == 2019 ) { ?>
-        <section id="deficiencia">
-            <header><h2>Deficiência</h2></header>
-            <section class="deficiencia">
-                <?php
-                    echo self::gerarAmostra('com deficiência', intval($painel['deficiencia']['com']), $matriculas->deficiencia->com);
-                    echo self::gerarAmostra('sem deficiência', intval($painel['deficiencia']['sem']), $matriculas->deficiencia->sem);
-                ?>
-            </section>
+    <section id="deficiencia">
+        <header><h2>Deficiência</h2></header>
+        <section class="deficiencia">
+            <?php
+                echo self::gerarAmostra('com deficiência', intval($painel['deficiencia']['com']), $matriculas->deficiencia->com);
+                echo self::gerarAmostra('sem deficiência', intval($painel['deficiencia']['sem']), $matriculas->deficiencia->sem);
+            ?>
         </section>
-        <span class="legenda">* Taxa de distorção idade-serie</span>
-    <?php } ?>
+    </section>
+    <span class="legenda">* Taxa de distorção idade-serie</span>
 
 </section>
