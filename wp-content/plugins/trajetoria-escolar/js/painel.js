@@ -1,5 +1,54 @@
 jQuery(document).ready(function ($) {
 
+    google.load("visualization", "1", {packages:["corechart", "bar"]});
+
+    //cores default das series distorcoes:
+    var defaultColorsSeriesAno = {
+        0: {
+            color: '#c0d4e5'
+        },
+        1: {
+            color: '#82a9cb'
+        },
+        2: {
+            color: '#437eb0'
+        },
+        3: {
+            color: '#045396'
+        },
+    }
+    var defaultColorsSerieRede = {
+        0: {
+            color: '#ffda80'
+        },
+        1: {
+            color: '#ffb400'
+        },
+    }
+    var defaultColorsSerieIdades = {
+        1: {color: "#005A87"},
+        2: {color: "#007FA3"},
+        3: {color: "#00A4A8"},
+        4: {color: "#1FC699"},
+        5: {color: "#95E380"},
+        6: {color: "#F9F871"},
+        7: {color: "#FFB400"},
+        8: {color: "#98B224"},
+        9: {color: "#39A056"},
+        10: {color: "#008675"},
+        11: {color: "#006775"},
+        12: {color: "#2F4858"},
+        13: {color: "#007CBA"},
+        14: {color: "#009ECA"},
+        15: {color: "#00BCC2"},
+        16: {color: "#18D7A6"},
+        17: {color: "#9AEC85"},
+        18: {color: "#F9F871"},
+        19: {color: "#EA8DB5"},
+        20: {color: "#EEE8A9"},
+        21: {color: "#4B827B"}
+    }
+
     //Interface
     $('#voltar').attr('href', painel.siteUrl + painel.voltar);
 
@@ -220,19 +269,22 @@ jQuery(document).ready(function ($) {
 
     function chartsDistorcao() {
 
-        //por rede e ano
 
-        let options = {
+        //por ano
+        let optionsAnos = {
             backgroundColor: '#e4e4e4',
-            width: '100%',
+            chartArea: {
+                left: 0,
+                height: 350,
+                width: 450
+            },
             height: 400,
+            width: 650,
             legend: {
-                position: 'right',
-                alignment: 'center',
-                maxLines: 3,
+                position: "right",
+                alignment: "center",
                 textStyle: {
-                    fontSize: 12,
-                    fontFamily: 'raleway'
+                    fontSize: 12
                 }
             },
             bar: {
@@ -262,36 +314,65 @@ jQuery(document).ready(function ($) {
             let data = google.visualization.arrayToDataTable(
                 painel.graficosDistorcaoPorTipoAno[g]
             );
-            drawChart(g, data, options);
+            drawChart(g, data, optionsAnos);
         }
 
-        document.getElementById('grafico_por_redes').innerHTML = '';
-        if (document.getElementById('grafico_por_redes').innerHTML === '') {
-            let data = google.visualization.arrayToDataTable(
-                painel.graficoDistorcaoPorRedes
-            );
-            options.series = {
+        //por rede
+        let optionsRede = {
+            backgroundColor: '#eeeeee',
+            chartArea: {
+                left: 0,
+                height: 350,
+                width: 150
+            },
+            height: 400,
+            width: 350,
+            legend: {
+                position: "right",
+                alignment: "center",
+                textStyle: {
+                    fontSize: 12
+                }
+            },
+            bar: {
+                groupWidth: '90%'
+            },
+            vAxis: {
+                format: '#,###'
+            },
+            isStacked: true,
+            series: {
                 0: {
                     color: '#ffda80'
                 },
                 1: {
                     color: '#ffb400'
                 },
-            };
-            drawChart('grafico_por_redes', data, options);
+            }
+        };
+
+        document.getElementById('grafico_por_redes').innerHTML = '';
+        if (document.getElementById('grafico_por_redes').innerHTML === '') {
+            let data = google.visualization.arrayToDataTable(
+                painel.graficoDistorcaoPorRedes
+            );
+            drawChart('grafico_por_redes', data, optionsRede);
         }
 
         //por idade
         let optionsIdade = {
             backgroundColor: '#e4e4e4',
-            width: '100%',
-            height: 400,
+            chartArea: {
+                left: 0,
+                height: 400,
+                width: 700
+            },
+            height: 500,
+            width: 900,
             legend: {
-                position: 'bottom',
-                alignment: 'left',
+                position: "right",
                 textStyle: {
-                    fontSize: 12,
-                    fontFamily: 'raleway'
+                    fontSize: 12
                 }
             },
             bar: {
@@ -496,15 +577,66 @@ jQuery(document).ready(function ($) {
     iniciaGraficosReprovacao();
     iniciaGraficosAbandono();
 
-
-    google.charts.load('current', {
-        'packages': ['corechart', 'bar'],
-        'language': 'pt_br'
-    });
-
     function drawChart(id, data, options) {
         let chart = new google.visualization.ColumnChart(document.getElementById(id));
         chart.draw(data, google.charts.Bar.convertOptions(options));
+
+        //listener para toogle das legendas
+        var columns = [];
+        var series = {};
+        for (var i = 0; i < data.getNumberOfColumns(); i++) {
+          columns.push(i);
+          if (i > 0) {
+            series[i - 1] = {};
+          }
+        }
+
+        google.visualization.events.addListener(chart, 'select', function() {
+            var sel = chart.getSelection();
+            // if selection length is 0, we deselected an element
+            if (sel.length > 0) {
+              // if row is undefined, we clicked on the legend
+              if (sel[0].row === null) {
+                var col = sel[0].column;
+                if (columns[col] == col) {
+                  // hide the data series
+                  columns[col] = {
+                    label: data.getColumnLabel(col),
+                    type: data.getColumnType(col),
+                    calc: function() {
+                      return null;
+                    }
+                  };
+      
+                  // grey out the legend entry
+                  options.series[col - 1].color = '#CCCCCC';
+
+                } else {
+
+                  // show the data series
+                  columns[col] = col;
+
+                  //650 -> anos; 350 ->redes; 900 -> idades
+                  if(options.width == 650){
+                      console.log(defaultColorsSeriesAno[col - 1].color);
+                    options.series[col - 1].color = defaultColorsSeriesAno[col - 1].color
+                  }
+                  if(options.width == 350){
+                    options.series[col - 1].color = defaultColorsSerieRede[col - 1].color
+                  }
+                  if(options.width == 900){
+                    options.series[col - 1].color = defaultColorsSerieIdades[col - 1].color
+                  }
+
+                }
+                var view = new google.visualization.DataView(data);
+                view.setColumns(columns);
+                chart.draw(view, options);
+              }
+            }
+          });
+
+        //----toggle
     }
 
     //resize window

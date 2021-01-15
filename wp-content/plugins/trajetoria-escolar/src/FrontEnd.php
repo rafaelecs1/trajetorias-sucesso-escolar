@@ -305,6 +305,7 @@ class FrontEnd
                     <li id="tab-link-1" class="tablinks active"><a href="#">Distorção Idade-série</a></li>
                     <li id="tab-link-2" class="tablinks"><a  href="#">Reprovação</a></li>
                     <li id="tab-link-3" class="tablinks"><a href="#">Abandono</a></li>
+                    <li id="tab-link-4" class=""><a href="/painel-trajetorias">Trajetórias</a></li>
             </ul>
             <section id="tab-1" class="aba-panel tabcontent active" style="display: block;">
                 <?php include 'wp-includes/tabs_panels/tab1-panel-estado-municio-escola.php'; ?>
