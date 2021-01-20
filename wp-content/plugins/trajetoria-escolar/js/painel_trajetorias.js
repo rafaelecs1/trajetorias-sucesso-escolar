@@ -73,105 +73,101 @@ jQuery(document).ready(function ($) {
         return labels;
     };
 
-    window.onload = function() {
-
-        //Tem UF selecionada? Carrega as cidades e coloca o seletor no local
-        if( painel.uf != null ){
-                
-            $.ajax({
-                type: 'GET',
-                url: painel.ajaxUrl,
-                data: {
-                    'action': painel.actionGetCidades,
-                    'estado': painel.uf
-                },
-                dataType: 'json',
-                success: function (cidades) {
-                    let selCidades = '<div id="municipio_selector" class="item_seletores"><label>Município</label><select class="select" name="select-municipio" id="select-municipio"><option value="">--</option>';
-                    $.each(cidades, function (k, v) {
-                        if( painel.municipio != null && painel.municipio == k){
-                            selCidades += '<option value="' + k + '" selected>' + v.nome + '</option>';
-                        }else{
-                            selCidades += '<option value="' + k + '">' + v.nome + '</option>';
-                        }
-                    });
-                    selCidades += '</select></div>';
-                    $('#municipio_selector').fadeIn().replaceWith(selCidades);
-                }
-            });
-
-        } 
-
-        //percorrer os tres tipos de trajetorias para geracao de graficos separados
-        //cada trajetoria tem um seletor css associado a div do front para incorporar o grafico
-        tipos_trajetorias.forEach( function(trajetoria){
-
-            var datasets = getDatasetsByArrayTrajetorias(painel.trajetorias, trajetoria);
-            var labels = getLabelsTrajetoriasByArray(painel.trajetorias, trajetoria);
-
-            var ctx = document.getElementById(trajetoria.cssSelector).getContext('2d');
-        
-            var barChartData = {
-                labels: labels,
-                datasets: datasets
-            };
+     //Tem UF selecionada? Carrega as cidades e coloca o seletor no local
+    if( painel.uf != null ){
             
-            window.myBar = new Chart(ctx, {
-                type: 'bar',
-                data: barChartData,
-                options: {
-                    responsive: true,
-                    legend: {
-                        display: false, //desativados, pois cada barra aparece em um gráfico
-                    },
-                    title: {
-                        display: true,
-                        fontSize: 20,
-                        fontColor: '#045396',
-                        fontFamily: 'steelfish',
-                        text: trajetoria.title
-                    },
-                    
-                    tooltips: {
-                        enabled: true
-                    },
-
-                    hover: {
-                        animationDuration: 1
-                    },
-
-                    animation: {
-                        //duration: 1,
-                        onComplete: function () {
-                            var chartInstance = this.chart,
-                                ctx = chartInstance.ctx;
-                                ctx.textAlign = 'center';
-                                ctx.fillStyle = trajetoria.color;
-                                ctx.textBaseline = 'bottom';
-    
-                            this.data.datasets.forEach(function (dataset, i) {
-                                var meta = chartInstance.controller.getDatasetMeta(i);
-                                meta.data.forEach(function (bar, index) {
-                                    var data = dataset.data[index];
-                                    ctx.fillText(data, bar._model.x, bar._model.y + 25);
-                                });
-                            });
-                        }
-                    },
-
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    }
+    $.ajax({
+        type: 'GET',
+        url: painel.ajaxUrl,
+        data: {
+            'action': painel.actionGetCidades,
+            'estado': painel.uf
+        },
+        dataType: 'json',
+        success: function (cidades) {
+            let selCidades = '<div id="municipio_selector" class="item_seletores"><label>Município</label><select class="select" name="select-municipio" id="select-municipio"><option value="">--</option>';
+            $.each(cidades, function (k, v) {
+                if( painel.municipio != null && painel.municipio == k){
+                    selCidades += '<option value="' + k + '" selected>' + v.nome + '</option>';
+                }else{
+                    selCidades += '<option value="' + k + '">' + v.nome + '</option>';
                 }
             });
+            selCidades += '</select></div>';
+            $('#municipio_selector').fadeIn().replaceWith(selCidades);
+        }
+    });
 
+    } 
 
+    //percorrer os tres tipos de trajetorias para geracao de graficos separados
+    //cada trajetoria tem um seletor css associado a div do front para incorporar o grafico
+    tipos_trajetorias.forEach( function(trajetoria){
+
+        var datasets = getDatasetsByArrayTrajetorias(painel.trajetorias, trajetoria);
+        var labels = getLabelsTrajetoriasByArray(painel.trajetorias, trajetoria);
+
+        var ctx = document.getElementById(trajetoria.cssSelector).getContext('2d');
+    
+        var barChartData = {
+            labels: labels,
+            datasets: datasets
+        };
+        
+        window.myBar = new Chart(ctx, {
+            type: 'bar',
+            data: barChartData,
+            options: {
+                responsive: true,
+                legend: {
+                    display: false, //desativados, pois cada barra aparece em um gráfico
+                },
+                title: {
+                    display: true,
+                    fontSize: 20,
+                    fontColor: '#045396',
+                    fontFamily: 'steelfish',
+                    text: trajetoria.title
+                },
+                
+                tooltips: {
+                    enabled: true
+                },
+
+                hover: {
+                    animationDuration: 1
+                },
+
+                animation: {
+                    //duration: 1,
+                    onComplete: function () {
+                        var chartInstance = this.chart,
+                            ctx = chartInstance.ctx;
+                            ctx.textAlign = 'center';
+                            ctx.fillStyle = trajetoria.color;
+                            ctx.textBaseline = 'bottom';
+
+                        this.data.datasets.forEach(function (dataset, i) {
+                            var meta = chartInstance.controller.getDatasetMeta(i);
+                            meta.data.forEach(function (bar, index) {
+                                var data = dataset.data[index];
+                                ctx.fillText(data, bar._model.x, bar._model.y + 25);
+                            });
+                        });
+                    }
+                },
+
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
         });
 
-    };
+
+    });
 
 });
