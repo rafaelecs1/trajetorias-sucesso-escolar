@@ -1151,7 +1151,8 @@ article .entry-header {
 
 #total-em-distorcao,
 #rede-estadual,
-#rede-municipal {
+#rede-municipal,
+#rede-trajetorias {
     padding: 4%
 }
 
@@ -1171,6 +1172,13 @@ article .entry-header {
     min-height: 444px
 }
 
+#rede-trajetorias {
+    background-color: #eeeeee;
+    min-height: 300px;
+    width: 100%;
+    min-height: 444px
+}
+
 .escola #rede-estadual,
 .escola #rede-municipal {
     width: 74%;
@@ -1179,7 +1187,8 @@ article .entry-header {
 
 
 #total-em-distorcao,
-#rede-municipal {
+#rede-municipal,
+#rede-trajetorias {
     margin-right: 1%;
 }
 
@@ -2562,6 +2571,7 @@ span.wpcf7-not-valid-tip {
 @media screen and (max-width: 800px) {
     #total-em-distorcao,
     #rede-municipal,
+    #rede-trajetorias,
     #rede-estadual,
     #genero,
     #deficiencia,
@@ -2587,6 +2597,7 @@ span.wpcf7-not-valid-tip {
     #total-em-distorcao,
     #rede-estadual,
     #rede-municipal,
+    #rede-trajetorias,
     .cor-raca,
     #localizacao .localizacao,
     .localizacao-diferenciada {
@@ -2805,4 +2816,10 @@ iframe {
     font-family: 'steelfish';
     font-size: 22px;
     color: #045396;
+}
+
+#square {
+    width: 100px;
+    height: 100px;
+    display:block;
 }

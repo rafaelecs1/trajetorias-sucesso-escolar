@@ -135,6 +135,17 @@ jQuery(document).ready(function ($) {
         }
 
         for (var g in painel.graficosDistorcaoPorTipoIdade) {
+            
+            // painel.graficosDistorcaoPorTipoIdade[g].forEach( function(part, index, theArray) {
+            //     part.forEach( function(value, index2) {
+            //         if(value == 0 ){
+            //             theArray[index][index2] = null;
+            //         }
+            //     });
+            // });
+
+            // console.log(painel.graficosDistorcaoPorTipoIdade[g]);
+
             painel.graficosDistorcaoPorTipoIdade[g].unshift(legendaPorIdade);
         }
 
@@ -607,9 +618,11 @@ jQuery(document).ready(function ($) {
                       return null;
                     }
                   };
-      
+
                   // grey out the legend entry
-                  options.series[col - 1].color = '#CCCCCC';
+                  if (options.series[col - 1] != undefined){
+                     options.series[col - 1].color = '#CCCCCC';
+                  }
 
                 } else {
 

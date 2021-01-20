@@ -16,7 +16,11 @@ get_header();
 
 global $post;
 $centerContent = false;
-if (!has_shortcode($post->post_content, 'mapa_distorcao') && !has_shortcode($post->post_content, 'painel_distorcao') && !has_shortcode($post->post_content, 'painel_distorcao_brasil')) {
+if ( !has_shortcode($post->post_content, 'mapa_distorcao') && 
+	 !has_shortcode($post->post_content, 'painel_distorcao') && 
+	 !has_shortcode($post->post_content, 'painel_distorcao_brasil') &&
+	 !has_shortcode($post->post_content, 'painel_trajetorias') 
+   ) {
     $centerContent = true;
 }
 if($centerContent) {

@@ -87,6 +87,11 @@
                 '</a>';
         }
 
+        if(strpos($_SERVER['REQUEST_URI'], '/painel-trajetorias/') !== false) {
+            $faixa =
+                '<a href="#" class="button" id="voltar">Voltar</a>';
+        }
+
         if(!empty($faixa)) {
             echo '<div class="faixa"><div class="center">', $faixa, '</div></div>';
         }

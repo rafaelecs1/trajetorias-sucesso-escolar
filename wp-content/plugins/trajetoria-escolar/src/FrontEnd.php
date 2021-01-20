@@ -195,9 +195,9 @@ class FrontEnd
         <section id="slider-tabs" class="regiao_geografica regiao_mapas">
             
             <ul class="abas" >
-                <li id="tab-link-1" class="tablinks active"><a href="#">Distorção idade-série </a></li>
-                <li id="tab-link-2" class="tablinks"><a  href="#">Reprovação</a></li>
-                <li id="tab-link-3" class="tablinks"><a href="#">Abandono</a></li>
+                <li id="tab-link-1" class="tablinks active"><a href="#distorcao-idade-serie">Distorção idade-série </a></li>
+                <li id="tab-link-2" class="tablinks"><a  href="#reprovacao">Reprovação</a></li>
+                <li id="tab-link-3" class="tablinks"><a href="#abandono">Abandono</a></li>
             </ul>
 
             <section id="tab-1" class="aba-home tabcontent active" style="display: block;">
@@ -217,9 +217,9 @@ class FrontEnd
         <section id="slider-tabs" class="regiao_territorial regiao_mapas">
             
             <ul class="abas" >
-                <li id="tab-link-4" class="tablinks"><a href="#">Distorção idade-série </a></li>
-                <li id="tab-link-5" class="tablinks"><a  href="#">Reprovação</a></li>
-                <li id="tab-link-6" class="tablinks"><a href="#">Abandono</a></li>
+                <li id="tab-link-4" class="tablinks"><a href="#distorcao-idade-serie">Distorção idade-série </a></li>
+                <li id="tab-link-5" class="tablinks"><a  href="#reprovacao">Reprovação</a></li>
+                <li id="tab-link-6" class="tablinks"><a href="#abandono">Abandono</a></li>
             </ul>
 
             <section id="tab-4" class="aba-home tabcontent" style="display: block;">
@@ -302,10 +302,10 @@ class FrontEnd
 
         <section id="slider-tabs">
             <ul class="abas-paineis" >
-                    <li id="tab-link-1" class="tablinks active"><a href="#">Distorção Idade-série</a></li>
-                    <li id="tab-link-2" class="tablinks"><a  href="#">Reprovação</a></li>
-                    <li id="tab-link-3" class="tablinks"><a href="#">Abandono</a></li>
-                    <li id="tab-link-4" class=""><a href="/painel-trajetorias">Trajetórias</a></li>
+                    <li id="tab-link-1" class="tablinks active"><a href="#distorcao-idade-serie">Distorção Idade-série</a></li>
+                    <li id="tab-link-2" class="tablinks"><a  href="#reprovacao">Reprovação</a></li>
+                    <li id="tab-link-3" class="tablinks"><a href="#abandono">Abandono</a></li>
+                    <li id="tab-link-4" class=""><a href="/painel-trajetorias/<?php echo $this->year-1; ?>">Trajetórias</a></li>
             </ul>
             <section id="tab-1" class="aba-panel tabcontent active" style="display: block;">
                 <?php include 'wp-includes/tabs_panels/tab1-panel-estado-municio-escola.php'; ?>
@@ -320,7 +320,7 @@ class FrontEnd
 
 
         <?php
-        if ($tipo !== 'escola') {
+            if ($tipo !== 'escola') {
                 wp_enqueue_style('remodal', plugin_dir_url(dirname(__FILE__)) . 'css/remodal.css');
                 wp_enqueue_style('animate', plugin_dir_url(dirname(__FILE__)) . 'css/animate.css');
                 wp_enqueue_style('remodal_theme', plugin_dir_url(dirname(__FILE__)) . 'css/remodal-default-theme.css', array('remodal'));
@@ -353,17 +353,14 @@ class FrontEnd
 
             wp_enqueue_script('google_charts', 'https://www.gstatic.com/charts/loader.js', null, false, true);
             return ob_get_clean();
-        }
-
-    
-        
+    }
     
     /**
      * Coordena e exibe as informações para os painéis
      *
      * @return string
      */
-    public function painelDistorcao()
+     public function painelDistorcao()
     {
         global $wp_query;
         $id = (int)(isset($wp_query->query_vars['painel_id'])) ? $wp_query->query_vars['painel_id'] : 0;
@@ -538,9 +535,17 @@ class FrontEnd
 
                 <ul class="abas-paineis" >
 
-                        <li id="tab-link-1" class="tablinks active"><a href="#">Distorção Idade-série</a></li>
-                        <li id="tab-link-2" class="tablinks"><a  href="#">Reprovação</a></li>
-                        <li id="tab-link-3" class="tablinks"><a href="#">Abandono</a></li>
+                        <li id="tab-link-1" class="tablinks active"><a href="#distorcao-idade-serie">Distorção Idade-série</a></li>
+                        <li id="tab-link-2" class="tablinks"><a  href="#reprovacao">Reprovação</a></li>
+                        <li id="tab-link-3" class="tablinks"><a href="#abandono">Abandono</a></li>
+                        
+                        <?php if ($tipo === "estado") { ?>
+                            <li id="tab-link-4" class=""><a href="/painel-trajetorias/<?php echo $origem->getId(); ?>/<?php echo $this->year-1; ?>">Trajetórias</a></li>
+                        <?php } ?>
+                        
+                        <?php if ($tipo === "municipio") { ?>
+                            <li id="tab-link-4" class=""><a href="/painel-trajetorias/<?php echo $origem->getEstado()->getId()."/". $origem->getId() ?>/<?php echo $this->year-1; ?>">Trajetórias</a></li>
+                        <?php } ?>
 
                 </ul>
 
@@ -722,6 +727,32 @@ class FrontEnd
                 $post->post_title = $id . ' - ' . $nome;
             }
         }
+
+        //para fornecer titulo para painel trajetorias
+        if( strpos( $_SERVER['REQUEST_URI'], 'painel-trajetorias' ) ){
+
+            $uf = (isset($wp_query->query_vars['painel_uf'])) ? (int)$wp_query->query_vars['painel_uf'] : null;
+            $municipio = (isset($wp_query->query_vars['painel_municipio'])) ? (int)$wp_query->query_vars['painel_municipio'] : null;
+            $ano = (isset($wp_query->query_vars['painel_ano'])) ? (int)$wp_query->query_vars['painel_ano'] : null;
+
+            if( $uf == null AND $municipio == null){
+                $post->post_title = "Painel Brasil";
+            }
+
+            if( $uf != null AND $municipio == null){
+                $rEstado = new MySQLEstadoRepository();
+                $estado = $rEstado->get($uf);
+                $post->post_title = $estado->getId()." - ".$estado->getNome();
+            }
+
+            if( $uf != null AND $municipio != null){
+                $rMunicipio = new MySQLMunicipioRepository();
+                $municipio = $rMunicipio->get($municipio);
+                $post->post_title = $municipio->getId()." - ".$municipio->getNome();
+            }
+
+        }
+            
     }
 
     //Function to return the number of municipio where painel is type cidade
@@ -734,88 +765,121 @@ class FrontEnd
     //retorna o painel trajetorias
     public function painelTrajetorias(){
 
-        global $wp_query;
+        global $wp_query, $post;
 
         $rTrajetoria = new MySQLTrajetoriaRepository();
         $rEstado = new MySQLEstadoRepository();
 
-        $estados = $rEstado->getLimites();
+        //$estados = $rEstado->getLimites();
 
         $uf = (isset($wp_query->query_vars['painel_uf'])) ? (int)$wp_query->query_vars['painel_uf'] : null;
         $municipio = (isset($wp_query->query_vars['painel_municipio'])) ? (int)$wp_query->query_vars['painel_municipio'] : null;
+        $ano = (isset($wp_query->query_vars['painel_ano'])) ? (int)$wp_query->query_vars['painel_ano'] : null;
 
         if( $uf == null AND $municipio == null){
             $trajetorias = $rTrajetoria->getTrajetoriasNacional();
+            $link = "/painel-brasil/".$ano;
         }
 
         if( $uf != null AND $municipio == null){
             $trajetorias = $rTrajetoria->getTrajetoriasPorUF($uf);
+            $link = "/painel/estado/".$uf."/".$ano;
         }
 
         if( $uf != null AND $municipio != null){
             $trajetorias = $rTrajetoria->getTrajetoriasPorCidadeId($municipio);
+            $link = "/painel/municipio/".$municipio."/".$ano;
         }
 
         ob_start();
 
         ?>
 
-        <div id="painel_trajetorias">
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean porta malesuada elit, ut accumsan turpis pharetra a. Ut accumsan tellus sapien, ut cursus nisi varius vitae. Praesent facilisis est elit, vitae ornare diam finibus sit amet.</p>
-            
-            <div id="seletores">
-            
-                <div id="uf_selector" class="item_seletores">
-                    <label>Estado</label>
-                    <select class="select" name="select-uf" id="select-uf">
-                        <option value="0">Nacional</option>
-                        <?php
-                            foreach ($estados as $k => $v) {
-                                if ($k == $uf){
-                                    echo sprintf(
-                                        '<option value="%d" data-n="%f" data-s="%f" data-l="%f" data-o="%f" selected>%s</option>',
-                                        $k,
-                                        $v['limites']['n'],
-                                        $v['limites']['s'],
-                                        $v['limites']['l'],
-                                        $v['limites']['o'],
-                                        $v['nome']
-                                    );
-                                }else{
-                                    echo sprintf(
-                                        '<option value="%d" data-n="%f" data-s="%f" data-l="%f" data-o="%f">%s</option>',
-                                        $k,
-                                        $v['limites']['n'],
-                                        $v['limites']['s'],
-                                        $v['limites']['l'],
-                                        $v['limites']['o'],
-                                        $v['nome']
-                                    );
-                                }
-                            }
-                        ?>
-                    </select>
+
+        <section id="slider-tabs" style="margin-top: 300px;">
+
+            <ul class="abas-paineis" >
+                <li id="tab-link-1" class="tablinks"><a href="<?php echo $link; ?>"><</a></li>
+                <li id="tab-link-2" class="tablinks active"><a  href="#">Trajetórias</a></li>
+            </ul>
+            <section id="tab-1" class="aba-panel tabcontent active" style="display: block;">
+
+                <div class="ficha animated fadeIn" style="margin-top: 20px;">
+
+                    <section id="redes-de-ensino">
+
+                        <header>
+                            <h2 class="mt-0">Painel Trajetórias</h2>
+                        </header>
+                        <section id="rede-trajetorias">
+                            
+                            <div id="painel_trajetorias">
+
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean porta malesuada elit, ut accumsan turpis pharetra a. Ut accumsan tellus sapien, ut cursus nisi varius vitae. Praesent facilisis est elit, vitae ornare diam finibus sit amet.</p>
+                            
+                                <!-- <div id="seletores">
+                                
+                                    <div id="uf_selector" class="item_seletores">
+                                        <label>Estado</label>
+                                        <select class="select" name="select-uf" id="select-uf">
+                                            <option value="0">Nacional</option>
+                                            <?php
+                                                foreach ($estados as $k => $v) {
+                                                    if ($k == $uf){
+                                                        echo sprintf(
+                                                            '<option value="%d" data-n="%f" data-s="%f" data-l="%f" data-o="%f" selected>%s</option>',
+                                                            $k,
+                                                            $v['limites']['n'],
+                                                            $v['limites']['s'],
+                                                            $v['limites']['l'],
+                                                            $v['limites']['o'],
+                                                            $v['nome']
+                                                        );
+                                                    }else{
+                                                        echo sprintf(
+                                                            '<option value="%d" data-n="%f" data-s="%f" data-l="%f" data-o="%f">%s</option>',
+                                                            $k,
+                                                            $v['limites']['n'],
+                                                            $v['limites']['s'],
+                                                            $v['limites']['l'],
+                                                            $v['limites']['o'],
+                                                            $v['nome']
+                                                        );
+                                                    }
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                
+                                    <div class="item_seletores">
+                                        <img style="display: none; margin-top: 15px; margin-left: 15px;" alt="Processando..." title="Processando..." src="<?php echo admin_url('images/loading.gif'); ?>"/>
+                                    </div>
+
+                                    <div id="municipio_selector" class="item_seletores">
+                                        <label>Município</label>
+                                        <select class="select" name="select-municipio" id="select-municipio">
+                                            <option>Selecione o estado</option>
+                                        </select>
+                                    </div>
+
+                                </div> -->
+
+                                <canvas id="trajetoria1" height="80vh"></canvas> <br/><br/>
+                                <canvas id="trajetoria2" height="80vh"></canvas> <br/><br/>
+                                <canvas id="trajetoria3" height="80vh"></canvas>
+
+                            </div>
+
+                        </section>
+
+                    </section>
+
                 </div>
+
+            </section>
             
-                <div class="item_seletores">
-                    <img style="display: none; margin-top: 15px; margin-left: 15px;" alt="Processando..." title="Processando..." src="<?php echo admin_url('images/loading.gif'); ?>"/>
-                </div>
-
-                <div id="municipio_selector" class="item_seletores">
-                    <label>Município</label>
-                    <select class="select" name="select-municipio" id="select-municipio">
-                        <option>Selecione o estado</option>
-                    </select>
-                </div>
-
-            </div>
-
-            <canvas id="trajetoria1" height="80vh"></canvas> <br/><br/>
-            <canvas id="trajetoria2" height="80vh"></canvas> <br/><br/>
-            <canvas id="trajetoria3" height="80vh"></canvas>
-
-        </div>
+        </section>
 
         <?php
 
@@ -827,10 +891,12 @@ class FrontEnd
             'ajaxUrl' => admin_url('admin-ajax.php'),
             'uf' => $uf,
             'municipio' => $municipio,
-            'trajetorias' => $trajetorias
+            'trajetorias' => $trajetorias,
+            'link' => $link
         ));
 
         wp_enqueue_script('charts_js', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js', null, false, true);
+        
         return ob_get_clean();
     }
 }

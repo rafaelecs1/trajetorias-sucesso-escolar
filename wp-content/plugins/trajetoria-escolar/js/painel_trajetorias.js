@@ -5,6 +5,9 @@ jQuery(document).ready(function ($) {
         https://www.chartjs.org/docs/latest/configuration/legend.html
     */
 
+    //Interface
+    $('#voltar').attr('href', painel.link);
+
     var color = Chart.helpers.color;
 
     var tipos_trajetorias = [
