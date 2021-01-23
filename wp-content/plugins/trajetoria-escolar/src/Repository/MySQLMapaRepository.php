@@ -102,10 +102,6 @@ class MySQLMapaRepository implements IMapaRepository
         }
         // Gera informações regionais
         $mapa->regiao = $valores;
-        
-        // Gera informações territoriais
-        $mapa->territorio = $this->getTotalBrasilPorTerritorios($anoReferencia);
-
         $mapa = $this->saveBrasil(2, $anoReferencia, $mapa);
 
         return (object)json_decode($mapa, true);
@@ -264,24 +260,6 @@ class MySQLMapaRepository implements IMapaRepository
                     JOIN te_municipios as m ON m.id = e.municipio_id
                     JOIN te_estados as es ON es.id = m.estado_id
                     GROUP BY es.regiao, d.tipo_ano, d.ano_referencia HAVING d.ano_referencia = %s',
-            $anoReferencia
-        );
-        return $this->db->get_results($sql);
-    }
-
-    public function getTotalBrasilPorTerritorios($anoReferencia = 0)
-    {
-        $sql = sprintf(
-            'SELECT 
-                        d.tipo_ano, m.territorio,
-                        SUM(da.distorcao_3 + da.distorcao_2) as total,
-                        SUM(da.sem_distorcao + da.distorcao_1 + da.distorcao_2 + da.distorcao_3) AS total_geral
-                    FROM te_distorcoes d
-                    JOIN te_distorcoes_anos as da ON d.id = da.distorcao_id
-                    JOIN te_escolas as e ON e.id = d.escola_id
-                    JOIN te_municipios as m ON m.id = e.municipio_id
-                    WHERE m.territorio IS NOT NULL 
-                    GROUP BY m.territorio, d.tipo_ano, d.ano_referencia HAVING d.ano_referencia = %s',
             $anoReferencia
         );
         return $this->db->get_results($sql);
