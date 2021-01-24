@@ -165,7 +165,7 @@
                 </div> -->
 
                 <div class="font">
-                    <span><a href="https://trajetoriaescolar.org.br/wp-content/uploads/2021/01/caderno_enfrentamento_da_cultura_do_fracasso_escolar_22_janeiro_2021.pdf" target="_blank" style="color: white; size: 13px;">Saiba mais</a> </span></br>
+                    <!-- <span><a href="LINK" target="_blank" style="color: white; size: 13px;">Saiba mais</a> </span></br> -->
                     <span>Estudo desenvolvido em parceria com CENPEC Educação</span>
                 </div>
 
