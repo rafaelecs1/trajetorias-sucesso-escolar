@@ -165,8 +165,8 @@
                 </div> -->
 
                 <div class="font">
-                    <span><a href="https://trajetoriaescolar.org.br/wp-content/uploads/2019/12/Relatorio_Trajetorias-Sucesso-Escolar.pdf" target="_blank" style="color: white; size: 13px;">Saiba mais</a> </span></br>
-                    <span>FONTE: Censo Escolar 2018 das redes municipais e estaduais de ensino do Brasil. </span>
+                    <span><a href="https://trajetoriaescolar.org.br/wp-content/uploads/2021/01/caderno_enfrentamento_da_cultura_do_fracasso_escolar_22_janeiro_2021.pdf" target="_blank" style="color: white; size: 13px;">Saiba mais</a> </span></br>
+                    <span>Estudo desenvolvido em parceria com CENPEC Educação</span>
                 </div>
 
             </div>
