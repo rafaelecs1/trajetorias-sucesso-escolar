@@ -153,7 +153,7 @@
                     $slug = 'grafico-idades-' . sanitize_title($label);
                     $id = str_replace('-', '_', $slug);
                     $lis .= '<li><a href="#' . $slug . '">' . $label . '</a></li>';
-                    $sections .= '<section id="' . $slug . '" class="aba_idade"><span><strong>Número de estudantes em atraso escolar por idade</strong></span><div id="' . $id . '" class="grafico"></div></section>';
+                    $sections .= '<section id="' . $slug . '" class="aba_idade"><span><strong>Matrículas por idade por ano escolar</strong></span><div id="' . $id . '" class="grafico"></div></section>';
 
                     foreach ($painel['idades'][$tipoIdade] as $ano => $distorcoes) {
                         $arAux = array();
