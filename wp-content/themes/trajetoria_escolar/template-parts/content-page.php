@@ -32,9 +32,7 @@
 
                                 <div class="frases">
 
-                                Cultura do fracasso escolar afeta milhões de estudantes e desigualdade se agrava na pandemia, alertam UNICEF e Instituto Claro <br/>
-
-                                <span> Estudo mostra que reprovação, abandono escolar e distorção idade-série já impactavam os estudantes mais vulneráveis, antes da pandemia. Com a chegada da Covid-19, os desafios são ainda maiores.</span>
+                                A cultura do fracasso escolar afeta milhões de estudantes e a desigualdade se agrava na pandemia, alertam UNICEF e Instituto Claro: estudo mostra que reprovação, abandono escolar e distorção idade-série já impactavam os estudantes mais vulneráveis, antes da pandemia. Com a chegada da Covid-19, os desafios são ainda maiores.
 
                                 </div>
 
@@ -166,7 +164,7 @@
 
                 <div class="font">
                     <!-- <span><a href="LINK" target="_blank" style="color: white; size: 13px;">Saiba mais</a> </span></br> -->
-                    <span>Estudo desenvolvido em parceria com CENPEC Educação</span>
+                    <span>Estudo desenvolvido em parceria com CENPEC Educação – Divulgação dos resultados no dia 28/01 às 10h30 (YouTube.Com/unicefbrasil)</span>
                 </div>
 
             </div>
