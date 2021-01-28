@@ -27,7 +27,7 @@ get_header();
             
 			<section id="todos-os-cadernos">
 				<div>
-					<a href="<?php echo content_url('https://trajetoriaescolar.org.br/wp-content/uploads/2019/03/todos_os_materiais_6_marco.zip'); ?>" download="trajetoriaescolar.zip">
+					<a href="<?php echo content_url('https://trajetoriaescolar.org.br/wp-content/uploads/2021/01/todos_os_materiais_28_jan_2021.zip'); ?>" download="trajetoriaescolar.zip">
 						Faça o download de todos os cadernos
 					</a>
 				</div>

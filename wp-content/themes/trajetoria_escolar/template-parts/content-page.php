@@ -163,8 +163,8 @@
                 </div> -->
 
                 <div class="font">
-                    <!-- <span><a href="LINK" target="_blank" style="color: white; size: 13px;">Saiba mais</a> </span></br> -->
-                    <span>Estudo desenvolvido em parceria com CENPEC Educação – Divulgação dos resultados no dia 28/01 às 10h30 (YouTube.Com/unicefbrasil)</span>
+                    <span><a href="https://trajetoriaescolar.org.br/wp-content/uploads/2021/01/web_unicef-cultura-fracasso-escolar-vf.pdf" target="_blank" style="color: white; size: 13px;">Saiba mais</a> </span></br>
+                    <!-- <span>Estudo desenvolvido em parceria com CENPEC Educação – Divulgação dos resultados no dia 28/01 às 10h30 (YouTube.Com/unicefbrasil)</span> -->
                 </div>
 
             </div>
