@@ -24,23 +24,45 @@ if (is_front_page()) {
 }
 ?>
 <footer id="colophon" class="site-footer">
-    <div class="center">
-        <ul class="realizacao">
-            <?php
-            $realizacao = array(
-                'unicef' => array('url' => 'https://www.unicef.org/brazil/pt', 'tipo' => 'Realização'),
-                'netclaroembratel' => array('url' => 'https://www.institutonetclaroembratel.org.br', 'tipo' => 'Parceiro Estratégico'),
-                'itau' => array('url' => 'https://www.itausocial.org.br', 'tipo' => 'Apoio'),
-                'aprendiz' => array('url' => 'https://www.cidadeescolaaprendiz.org.br', 'tipo' => 'Parceiro técnico'),
-                'cedac' => array('url' => 'http://www.comunidadeeducativa.org.br', 'tipo' => ''),
-                'avisa_la' => array('url' => 'https://avisala.org.br', 'tipo' => ''),
 
-            );
-            foreach ($realizacao as $k => $v) {
-                echo '<li><strong><span>', $v['tipo'], '</span></strong><a href="', $v['url'], '" class="realizador ', $k, '" target="_blank"><img src="', get_template_directory_uri(), '/img/logo/', $k, '.png" alt="', strtoupper($k), '" title="', strtoupper($k), '"/></a></li>';
-            }
-            ?>
-        </ul>
+    <div class="center" style="display: flex; flex-wrap: wrap">
+
+        <div class="item" style="max-width: 600px;">
+            <ul class="realizacao">
+                <?php
+                $realizacao = array(
+                    'unicef' => array('url' => 'https://www.unicef.org/brazil/pt', 'tipo' => 'Realização'),
+                    'netclaroembratel' => array('url' => 'https://www.institutonetclaroembratel.org.br', 'tipo' => 'Parceiro Estratégico'),
+                    'itau' => array('url' => 'https://www.itausocial.org.br', 'tipo' => 'Apoio')
+
+                );
+                foreach ($realizacao as $k => $v) {
+                    echo '<li><strong><span>', $v['tipo'], '</span></strong><a href="', $v['url'], '" class="realizador ', $k, '" target="_blank"><img src="', get_template_directory_uri(), '/img/logo/', $k, '.png" alt="', strtoupper($k), '" title="', strtoupper($k), '"/></a></li>';
+                }
+                ?>
+            </ul>
+        </div>
+        
+        <div class="item" style="max-width: 600px;">
+            <ul class="realizacao">
+                <?php
+                $realizacao = array(
+                    'aprendiz' => array('url' => 'https://www.cidadeescolaaprendiz.org.br', 'tipo' => 'Parceiro técnico'),
+                    'cedac' => array('url' => 'http://www.comunidadeeducativa.org.br', 'tipo' => ''),
+                    'avisa_la' => array('url' => 'https://avisala.org.br', 'tipo' => ''),
+                    'cenpec' => array('url' => 'https://www.cenpec.org.br', 'tipo' => ''),
+
+                );
+                foreach ($realizacao as $k => $v) {
+                    echo '<li><strong><span>', $v['tipo'], '</span></strong><a href="', $v['url'], '" class="realizador ', $k, '" target="_blank"><img src="', get_template_directory_uri(), '/img/logo/', $k, '.png" alt="', strtoupper($k), '" title="', strtoupper($k), '"/></a></li>';
+                }
+                ?>
+            </ul>
+        </div>
+        
+    </div>
+
+    <div class="center">
         <ul class="share">
             <?php
             global $arShare;
@@ -50,6 +72,7 @@ if (is_front_page()) {
             ?>
         </ul>
     </div>
+    
 </footer><!-- #colophon -->
 </div><!-- #page -->
 <?php wp_footer(); ?>
