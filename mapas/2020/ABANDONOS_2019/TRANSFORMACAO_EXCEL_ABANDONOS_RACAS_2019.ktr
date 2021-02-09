@@ -438,13 +438,13 @@
   </notepads>
   <connection>
     <name>trajetorias</name>
-    <server>localhost</server>
+    <server>192.168.10.10</server>
     <type>MYSQL</type>
     <access>Native</access>
     <database>trajetorias</database>
     <port>3306</port>
-    <username>root</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb79ce10bec3fd89</password>
+    <username>homestead</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb79bd75dd80aace</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -978,7 +978,7 @@
     <accept_field/>
     <accept_stepname/>
     <file>
-      <name>/home/unicef/Documents/www/trajetorias-sucesso-escolar/Planilhas/2019/ABANDONO_DEP_EST_MUN_2019.xlsx</name>
+      <name>C:\Users\mansouza\Downloads\abandonos finais\ABANDONO_DEP_EST_MUN_2019.xlsx</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
