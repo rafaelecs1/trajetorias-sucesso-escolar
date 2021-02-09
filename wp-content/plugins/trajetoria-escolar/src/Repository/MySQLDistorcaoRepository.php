@@ -1245,6 +1245,7 @@ class MySQLDistorcaoRepository implements IDistorcaoRepository
         );
         return (int)$this->db->get_var($sql);
     }
+    
     private function getParamAlias(IDistorcao $origem)
     {
         $nome = get_class($origem);

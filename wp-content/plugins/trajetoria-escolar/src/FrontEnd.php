@@ -816,8 +816,10 @@ class FrontEnd
                             
                             <div id="painel_trajetorias">
 
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean porta malesuada elit, ut accumsan turpis pharetra a. Ut accumsan tellus sapien, ut cursus nisi varius vitae. Praesent facilisis est elit, vitae ornare diam finibus sit amet.</p>
-                            
+                                <p>
+                                Esse painel apresenta simulações de trajetórias educacionais entre 2015 a 2019 para três segmentos: Matriculas de 6 anos no 1º ano do Ensino Fundamental em 2015, Matrículas de 10 anos no 5º ano do Ensino Fundamental em 2015 e Matriculas de 14 anos no 9º ano do Ensino Fundamental em 2016. Para cada um desses segmentos acompanhou-se as matriculas nos anos seguintes segundo a idade. Por exemplo, para o primeiro segmento acompanhou-se as matriculas de 7 anos no 2º ano do Ensino Fundamental em 2016 e assim sucessivamente até as matriculas de 10 anos no 5º ano do Ensino Fundamental. O mesmo procedimento foi adotado para os outros segmentos. Dessa forma é possível, para a região analisada, acompanhar o processo de sucesso e de exclusão da escola a cada ano, indicando os casos mais críticos e que necessitam de ações visando garantir o direito de todos e todas à educação.
+                                </p>
+
                                 <!-- <div id="seletores">
                                 
                                     <div id="uf_selector" class="item_seletores">

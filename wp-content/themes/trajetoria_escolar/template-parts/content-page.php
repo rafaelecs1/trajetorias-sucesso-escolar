@@ -22,7 +22,8 @@
                     O enfrentamento da cultura do fracasso escolar é urgente porque...
                 </h2>
 
-                <div class="owl-carousel">
+                <!-- <div class="owl-carousel"> -->
+                <div>
 
                     <div class="itens">
 
@@ -32,8 +33,7 @@
 
                                 <div class="frases">
 
-                                    + As redes estaduais e municipais do Brasil somam 6,4 milhões de estudantes com dois ou mais anos de atraso escolar e
-                                    2,6 milhões reprovados.
+                                A cultura do fracasso escolar afeta milhões de estudantes e a desigualdade se agrava na pandemia, alertam UNICEF e Instituto Claro: estudo mostra que reprovação, abandono escolar e distorção idade-série já impactavam os estudantes mais vulneráveis, antes da pandemia. Com a chegada da Covid-19, os desafios são ainda maiores.
 
                                 </div>
 
@@ -43,7 +43,7 @@
 
                     </div>
 
-                    <div class="itens">
+                    <!-- <div class="itens">
 
                         <div class="text item">
 
@@ -149,11 +149,11 @@
 
                         </div>
 
-                    </div>
+                    </div> -->
 
                 </div>
 
-                <div class="navigation-owl">
+                <!-- <div class="navigation-owl">
                     <label data="0">&emsp;</label>
                     <label data="1">&emsp;</label>
                     <label data="2">&emsp;</label>
@@ -161,11 +161,11 @@
                     <label data="4">&emsp;</label>
                     <label data="5">&emsp;</label>
                     <label data="6">&emsp;</label>
-                </div>
+                </div> -->
 
                 <div class="font">
-                    <span><a href="https://trajetoriaescolar.org.br/wp-content/uploads/2019/12/Relatorio_Trajetorias-Sucesso-Escolar.pdf" target="_blank" style="color: white; size: 13px;">Veja mais dados</a> </span></br>
-                    <span>FONTE: Censo Escolar 2018 das redes municipais e estaduais de ensino do Brasil. </span>
+                    <span><a href="https://trajetoriaescolar.org.br/wp-content/uploads/2021/01/web_unicef-cultura-fracasso-escolar-vf.pdf" target="_blank" style="color: white; size: 13px;">Saiba mais</a> </span></br>
+                    <!-- <span>Estudo desenvolvido em parceria com CENPEC Educação – Divulgação dos resultados no dia 28/01 às 10h30 (YouTube.Com/unicefbrasil)</span> -->
                 </div>
 
             </div>

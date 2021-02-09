@@ -1796,6 +1796,11 @@ Faixa
     text-align: center;
 }
 
+#post-28 > div.faixa_frases > div > div:nth-child(2) > div > div > div > div {
+    font-size: 20px;
+    line-height: 1.0!;
+}
+
 .faixa_frases .font {
     font-size: 12px;
     margin: 0 auto;

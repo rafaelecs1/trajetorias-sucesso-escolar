@@ -24,7 +24,15 @@ get_header();
                 }
 				?>
 			</header><!-- .page-header -->
-            <section id="todos-os-cadernos"><div><a href="<?php echo content_url('uploads/2019/12/todos_materiais_23_12_2019.zip'); ?>" download="trajetoriaescolar.zip">Faça o download de todos os cadernos</a></div></section>
+            
+			<section id="todos-os-cadernos">
+				<div>
+					<a href="<?php echo content_url('uploads/2021/01/todos_os_materiais_28_jan_2021.zip'); ?>" download="trajetoriaescolar.zip">
+						Faça o download de todos os cadernos
+					</a>
+				</div>
+			</section>
+			
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) :
