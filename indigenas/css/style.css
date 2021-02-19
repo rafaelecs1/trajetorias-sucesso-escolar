@@ -1,0 +1,705 @@
+/* ::-webkit-scrollbar {
+    display: none;
+} */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
+    display: block;
+}
+audio, canvas, video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+[hidden] {
+    display: none;
+}
+html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%}
+html, button, input, select, textarea {
+    font-family: sans-serif;
+}
+body {
+    margin: 0;
+}
+a:focus {
+    outline: thin dotted;
+}
+a:active, a:hover {
+    outline: 0;
+}
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+h2 {
+    font-size: 1.5em;
+    margin: 0.83em 0;
+}
+h3 {
+    font-size: 1.17em;
+    margin: 1em 0;
+}
+h4 {
+    font-size: 1em;
+    margin: 1.33em 0;
+}
+h5 {
+    font-size: 0.83em;
+    margin: 1.67em 0;
+}
+h6 {
+    font-size: 0.75em;
+    margin: 2.33em 0;
+}
+abbr[title] {
+    border-bottom: 1px dotted;
+}
+b, strong {
+    font-weight: bold;
+}
+blockquote {
+    margin: 1em 40px;
+}
+dfn {
+    font-style: italic;
+}
+mark {
+    background: #ff0;
+    color: #000;
+}
+p, pre {
+    margin: 1em 0;
+}
+code, kbd, pre, samp {
+    font-family: monospace,  serif;
+    _font-family: 'courier new',  monospace;
+    font-size: 1em;
+}
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+q {
+    quotes: none;
+}
+q:before, q:after {
+    content: '';
+    content: none;
+}
+small {
+    font-size: 80%}
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+sup {
+    top: -0.5em;
+}
+sub {
+    bottom: -0.25em;
+}
+dl, menu, ol, ul {
+    margin: 1em 0;
+}
+dd {
+    margin: 0 0 0 40px;
+}
+menu, ol, ul {
+    padding: 0 0 0 40px;
+}
+nav ul, nav ol {
+    list-style: none;
+    list-style-image: none;
+}
+img {
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
+svg:not(:root) {
+    overflow: hidden;
+}
+figure {
+    margin: 0;
+}
+form {
+    margin: 0;
+}
+fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+}
+legend {
+    border: 0;
+    padding: 0;
+    white-space: normal;
+    *margin-left: -7px;
+}
+button, input, select, textarea {
+    font-size: 100%;
+    margin: 0;
+    vertical-align: baseline;
+    *vertical-align: middle;
+}
+button, input {
+    line-height: normal;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+    *overflow: visible;
+}
+button[disabled], input[disabled] {
+    cursor: default;
+}
+input[type="checkbox"], input[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+    *height: 13px;
+    *width: 13px;
+}
+input[type="search"] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+button::-moz-focus-inner, input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+textarea {
+    overflow: auto;
+    vertical-align: top;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+html, button, input, select, textarea {
+    color: #222;
+}
+body {
+    font-size: 1em;
+    line-height: 1.4;
+}
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+img {
+    vertical-align: middle;
+}
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+textarea {
+    resize: vertical;
+}
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    *text-indent: -9999px;
+}
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%}
+.clearfix:before, .clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    *zoom: 1;
+}
+body {
+    font-family: 'Roboto Slab', serif;
+    color: #3d3d3d;
+}
+em {
+    font-weight: 500;
+    font-style: normal;
+}
+img {
+    position: absolute;
+}
+
+#skrollr-body {
+    width: 100%;
+    height: 100%}
+.loading {
+    width: 100%;
+    height: 100%;
+    background: #d49e99;
+    position: absolute;
+}
+.loading-container {
+    width: 197px;
+    height: 170px;
+    background: transparent url("../img/every-last-drop.png") no-repeat 0 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -98px;
+    margin-top: -85px;
+}
+img.loading-gif {
+    position: absolute;
+    top: 141px;
+    left: 104px;
+}
+
+/* ====================================== */
+
+.btn_mobile {
+  display: none !important;
+}
+
+.btn_desktop {
+  display: block !important;
+}
+
+.desktop {display: block !important;}
+.mobile {display: none !important;}
+
+/* =======================================
+ */
+.area_site {
+}
+
+.scene {
+  position: fixed;
+  width: 100vw;
+  height: 51.25vw;
+  max-height: 100vh;
+}
+
+.scene_altura {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: none;
+  background: #9c7a61;
+}
+
+.intro {
+  background: #ddd;
+  background: url('../img/abertura.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.texto_abertura {
+  position: absolute;
+  right: 5vw;
+  max-width: 500px;
+}
+
+  .titulo_abertura {
+    position: relative;
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+  }
+
+  .btn_comecar {
+    text-align: right;
+    margin: 0 auto;
+    margin-bottom: -40px;
+    z-index: 9
+  }
+    .btn_comecar p {
+      font-style: 12px;
+      display: inline-block;
+      text-align: center;
+      padding: 10px 20px;
+      background: #edd368;
+      border: 1px solid #edd368;
+      border-radius: 10px;
+      color: #2b1206;
+      margin-bottom: -30px;
+    }
+
+
+.texto {
+  position: absolute;
+  color: #fff;
+  max-width: 50vw;
+  max-height: 60vh;
+}
+
+
+@keyframes "mexendo" {
+    0% {
+    margin-top: 10px;
+  }
+  50% {
+      margin-top: -15px;
+  }
+  100% {
+      margin-top: 6px;
+  }
+}
+@-moz-keyframes mexendo {
+    0% {
+    margin-top: 10px;
+  }
+  50% {
+      margin-top: -15px;
+  }
+  100% {
+      margin-top: 6px;
+  }
+}
+@-webkit-keyframes "mexendo" {
+    0% {
+    margin-top: 10px;
+  }
+  50% {
+      margin-top: -15px;
+  }
+  100% {
+      margin-top: 6px;
+  }
+}
+@-ms-keyframes "mexendo" {
+    0% {
+    margin-top: 10px;
+  }
+  50% {
+      margin-top: -15px;
+  }
+  100% {
+      margin-top: 6px;
+  }
+}@-o-keyframes "mexendo" {
+    0% {
+    margin-top: 10px;
+  }
+  50% {
+      margin-top: -15px;
+  }
+  100% {
+      margin-top: 6px;
+  }
+}
+
+.mexendo {
+    -webkit-animation-name: mexendo;
+    -moz-animation-name: mexendo;
+    -ms-animation-name: mexendo;
+    -o-animation-name: mexendo;
+    animation-name: mexendo;
+    -webkit-animation-duration: 2.5s;
+    -moz-animation-duration: 2.5s;
+    -ms-animation-duration: 2.5s;
+    -o-animation-duration: 2.5s;
+    animation-duration: 2.5s;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    -ms-animation-timing-function: ease-in-out;
+    -o-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+    -ms-animation-delay: 0.5s;
+    -o-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: infinite;
+    -o-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+}
+
+.menina {
+  position: absolute;
+  color: #fff;
+  max-width: 40vw;
+  max-height: 40vw;
+}
+
+.exemplo {
+  position: absolute;
+  color: #fff;
+  max-width: 40vw;
+  max-height: 20vw;
+}
+
+.fotos {
+  position: absolute;
+  color: #fff;
+  max-height: 30vw;
+  max-width: 25vw;
+}
+  .foto1 {
+
+  }
+
+.btn_saiba {
+  position: absolute;
+  width: 100px;
+  cursor: pointer;
+}
+  .btn_saiba img {
+    width: 100%;
+  }
+
+
+  .invisivel {
+    display: none;
+  }
+
+  .visivel {
+    display: block;
+  }
+
+  .modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    background: url('../img/textura_parede.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+  }
+  .modal .fechar {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    display: block;
+    width: 30px;
+    height: 30px;
+    text-indent: -9999px;
+    background: url('../img/fechar.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+  }
+
+  .area_modal {
+    border: 3px solid #000;
+    border-radius: 30px;
+    position: fixed;
+    top: 5%;
+    right: 5%;
+    bottom: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+  }
+  .titulo_saiba {
+    position: absolute;
+    left: 50%;
+    top: -5%;
+    transform: translate(-50%, 0%);
+  }
+
+
+
+.intro1 {
+  background: #ddd;
+  background: url('../img/intro1.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+  .aldeia1 {
+    background: #ddd;
+    background: url('../img/aldeia1.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .aldeia2 {
+    background: #ddd;
+    background: url('../img/aldeia2.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .aldeia3 {
+    background: #ddd;
+    background: url('../img/aldeia3.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .aldeia4 {
+    background: #ddd;
+    background: url('../img/aldeia4.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .aldeia5 {
+    background: #ddd;
+    background: url('../img/aldeia5.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+.chao_fechado {
+  background: #ddd;
+  background: url('../img/chao_fechado.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.chao_aberto {
+  background: #ddd;
+  background: url('../img/chao_aberto.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.fundo_marrom {
+  background: #2b1206;
+}
+  .padrao {
+     top: 5%;
+     left: 50%;
+     transform: translate(-50%, -10%);
+     max-width: 130%;
+  }
+
+.festa {
+  background: #ddd;
+  background: url('../img/festa.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+
+
+
+.creditos {
+  position: absolute;
+  background: #1BAEBA;
+  padding: 60px;
+  border-radius: 40px;
+  width: 60%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.lista_creditos {
+  columns: 3;
+  -webkit-columns: 3;
+  -moz-columns: 3;
+}
+
+.lista_creditos li {
+  margin-bottom: 20px;
+  list-style: none;
+}
+
+
+@media (max-width: 1400px) {
+}
+
+@media (max-width: 900px) {
+  .btn_mobile {
+    display: block !important;
+  }
+  .btn_desktop {
+    display: none !important;
+  }
+
+  .desktop {display: none !important;}
+  .mobile {display: block !important;}
+
+  /* =========================== */
+
+  .texto_abertura {
+    font-size: 12px;
+    max-width: 90%;
+  }
+  .titulo_abertura {
+    max-width: 70vh;
+  }
+
+  .btn_saiba {
+    width: 70px;
+  }
+
+  .titulo_saiba {
+    width: 100px;
+  }
+
+
+
+
+
+  .creditos {
+    padding: 20px;
+    border-radius: 40px;
+    width: 90%;
+    transform: translate(-50%, -50%) scale(0.8);
+    font-size: 12px;
+  }
+
+    .lista_creditos {
+      columns: 4;
+      -webkit-columns: 4;
+      -moz-columns: 4;
+    }
+
+    .lista_creditos li {
+      margin-bottom: 15px;
+      list-style: none;
+    }
+
+}
