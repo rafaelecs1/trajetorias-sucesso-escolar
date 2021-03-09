@@ -27,23 +27,7 @@ if (is_front_page()) {
 
     <div class="center" style="display: flex; flex-wrap: wrap">
 
-        <div class="item" style="max-width: 600px;">
-            <ul class="realizacao">
-                <?php
-                $realizacao = array(
-                    'unicef' => array('url' => 'https://www.unicef.org/brazil/pt', 'tipo' => 'Realização'),
-                    'netclaroembratel' => array('url' => 'https://www.institutonetclaroembratel.org.br', 'tipo' => 'Parceiro Estratégico'),
-                    'itau' => array('url' => 'https://www.itausocial.org.br', 'tipo' => 'Apoio')
-
-                );
-                foreach ($realizacao as $k => $v) {
-                    echo '<li><strong><span>', $v['tipo'], '</span></strong><a href="', $v['url'], '" class="realizador ', $k, '" target="_blank"><img src="', get_template_directory_uri(), '/img/logo/', $k, '.png" alt="', strtoupper($k), '" title="', strtoupper($k), '"/></a></li>';
-                }
-                ?>
-            </ul>
-        </div>
-        
-        <div class="item" style="max-width: 600px;">
+        <div class="item" style="max-width: 400px; margin-right:50px;">
             <ul class="realizacao">
                 <?php
                 $realizacao = array(
@@ -59,6 +43,36 @@ if (is_front_page()) {
                 ?>
             </ul>
         </div>
+        
+        <div class="item" style="max-width: 400px;">
+            <ul class="realizacao">
+                <?php
+                $realizacao = array(
+                    'netclaroembratel' => array('url' => 'https://www.institutonetclaroembratel.org.br', 'tipo' => 'Parceiro Estratégico'),
+                    'itau' => array('url' => 'https://www.itausocial.org.br', 'tipo' => '')
+
+                );
+                foreach ($realizacao as $k => $v) {
+                    echo '<li><strong><span>', $v['tipo'], '</span></strong><a href="', $v['url'], '" class="realizador ', $k, '" target="_blank"><img src="', get_template_directory_uri(), '/img/logo/', $k, '.png" alt="', strtoupper($k), '" title="', strtoupper($k), '"/></a></li>';
+                }
+                ?>
+            </ul>
+        </div>
+
+        <div class="item" style="max-width: 300px;">
+            <ul class="realizacao">
+                <?php
+                $realizacao = array(
+                    'unicef' => array('url' => 'https://www.unicef.org/brazil/pt', 'tipo' => 'Iniciativa'),
+                );
+                foreach ($realizacao as $k => $v) {
+                    echo '<li><strong><span>', $v['tipo'], '</span></strong><a href="', $v['url'], '" class="realizador ', $k, '" target="_blank"><img src="', get_template_directory_uri(), '/img/logo/', $k, '.png" alt="', strtoupper($k), '" title="', strtoupper($k), '"/></a></li>';
+                }
+                ?>
+            </ul>
+        </div>
+        
+        
         
     </div>
 
