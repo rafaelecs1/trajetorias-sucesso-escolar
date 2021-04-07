@@ -166,11 +166,36 @@ class FrontEnd
     public function getAbandonos()
     {
 
-        $matriculasObj = new MySQLMatriculaRepository();
-        $matriculas = $matriculasObj->getDataMapaBrasil($this->year);
+        extract($_GET);
+        $regiao = (int)(isset($regiao)) ? $regiao : 0;
+        $estado = (int)(isset($estado)) ? $estado : 0;
+        $municipio = (int)(isset($municipio)) ? $municipio : 0;
 
+        $matriculasObj = new MySQLMatriculaRepository();
         $abandonosObj = new MySQLAbandonoRepository();
-        $abandonos = $abandonosObj->getDataPainelBrasil($this->year);
+
+        $matriculas = new \stdClass();
+        $abandonos = new \stdClass();
+
+
+        if (!empty($regiao)) {
+            
+        }
+
+        if (!empty($estado)) {
+            $matriculas = $matriculasObj->getDataMatriculaEstado($estado, $this->year);
+            $abandonos = $abandonosObj->getDataAbandonoEstado($estado, $this->year);
+        }
+
+        if (!empty($municipio)) {
+            $matriculas = $matriculasObj->getDataMatriculaMunicipio($municipio, $this->year);
+            $abandonos = $abandonosObj->getDataAbandonoMunicipio($municipio, $this->year);
+        }
+
+        if( empty($regiao) && !empty($estado) && !empty($municipio) ){
+            $matriculas = $matriculasObj->getDataMapaBrasil($this->year);
+            $abandonos = $abandonosObj->getDataPainelBrasil($this->year);
+        }
 
         $json = array('matriculas' => $matriculas, 'abandonos' => $abandonos);
         $json_data = json_encode($json);
