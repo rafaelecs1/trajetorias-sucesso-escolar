@@ -54,6 +54,9 @@ class FrontEnd
         add_action('wp_ajax_get_cidades', array($this, 'mapaGetCidades'));
         add_action('wp_ajax_nopriv_get_cidades', array($this, 'mapaGetCidades'));
 
+        add_action('wp_ajax_get_abandonos', array($this, 'getAbandonos'));
+        add_action('wp_ajax_nopriv_get_abandonos', array($this, 'getAbandonos'));
+
         add_action('wp_ajax_get_escolas', array($this, 'getEscolas'));
         add_action('wp_ajax_nopriv_get_escolas', array($this, 'getEscolas'));
 
@@ -155,6 +158,23 @@ class FrontEnd
         header('Content-type: application/json;charset=UTF-8');
         echo $mapa;
         die();
+    }
+
+    /*
+     * Retorna objeto json com dados de abandono do ano default
+     *
+     * @return string JSON contendo cidades de um estado
+     */
+    public function getAbandonos()
+    {
+
+        $abandonosObj = new MySQLAbandonoRepository();
+        $abandonos = $abandonosObj->getDataPainelBrasil($this->year);
+        
+        header('Content-type: application/json;charset=UTF-8');
+        echo json_encode($abandonos);
+        die();
+    
     }
 
     /**
