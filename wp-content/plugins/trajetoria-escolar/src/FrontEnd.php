@@ -161,18 +161,22 @@ class FrontEnd
     }
 
     /*
-     * Retorna objeto json com dados de abandono do ano default
-     *
-     * @return string JSON contendo cidades de um estado
+     * Retorna um json com dados de abandono e matrículas do ano default
      */
     public function getAbandonos()
     {
 
+        $matriculasObj = new MySQLMatriculaRepository();
+        $matriculas = $matriculasObj->getDataMapaBrasil($this->year);
+
         $abandonosObj = new MySQLAbandonoRepository();
         $abandonos = $abandonosObj->getDataPainelBrasil($this->year);
+
+        $json = array('matriculas' => $matriculas, 'abandonos' => $abandonos);
+        $json_data = json_encode($json);
         
         header('Content-type: application/json;charset=UTF-8');
-        echo json_encode($abandonos);
+        echo $json_data;
         die();
     
     }
