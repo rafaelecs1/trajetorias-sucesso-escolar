@@ -192,7 +192,7 @@ class FrontEnd
             $abandonos = $abandonosObj->getDataAbandonoMunicipio($municipio, $this->year);
         }
 
-        if( empty($regiao) && !empty($estado) && !empty($municipio) ){
+        if( empty($regiao) && empty($estado) && empty($municipio) ){
             $matriculas = $matriculasObj->getDataMapaBrasil($this->year);
             $abandonos = $abandonosObj->getDataPainelBrasil($this->year);
         }
