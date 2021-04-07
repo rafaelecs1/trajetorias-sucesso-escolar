@@ -132,6 +132,16 @@ function trajetoria_escolar_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'trajetoria_escolar_scripts' );
 
+
+/**
+ * 
+ */
+function add_cors_http_header(){
+    header("Access-Control-Allow-Origin: http://localhost:8000");
+    header("Access-Control-Allow-Credentials: true");
+}
+add_action('init','add_cors_http_header'); 
+
 /**
  * Implement the Custom Header feature.
  */
