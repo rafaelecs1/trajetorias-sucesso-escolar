@@ -620,7 +620,7 @@
       <exclude_filemask/>
       <file_required>N</file_required>
       <include_subfolders>N</include_subfolders>
-      <name>C:\Users\mansouza\Documents\www\arquivos\Trajetorias 2020\dados finais\Distorcao Idade Serie - Idades\Grafico_distorcao_idade_serie2019.xlsx</name>
+      <name>C:\Users\mansouza\Documents\www\arquivos\Trajetorias 2020\dados finais\Distorcao Idade Serie - Idades\Grafico_distorcao_idade_serie2018.xlsx</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -2387,8 +2387,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>560</yloc>
+      <xloc>544</xloc>
+      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2563,8 +2563,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>624</yloc>
+      <xloc>544</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2739,8 +2739,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>688</yloc>
+      <xloc>544</xloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2915,8 +2915,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>752</yloc>
+      <xloc>544</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3790,8 +3790,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
-      <yloc>656</yloc>
+      <xloc>352</xloc>
+      <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3831,8 +3831,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>656</yloc>
+      <xloc>240</xloc>
+      <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

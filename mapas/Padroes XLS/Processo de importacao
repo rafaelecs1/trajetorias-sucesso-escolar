@@ -1,0 +1,30 @@
+
+Procedimentos para importação dos dados
+
+Antes de dar início ao processo é essencial ter um backup da produção atual.
+
+É fundamental seguir a ordem de importação de acordo com o número de cada arquivo de exemplo. As escolas devem ser cadastradas primeiro. Esse processo é feito junto a importação dos arquivos extraídos do arquivo 1.
+
+Os arquivos apresentam o ano anterior. Arquivos com registros de 2015 serão registrados no banco de dados com o ano de 2016. Os seletores do site representam o ano do censo.
+
+Arquivos etapa 1:
+
+O sistema do Wordpress permite a importacao de modo automático de três arquivos relacionados a Distorção-idade-série. A ferramenta está disponível no Painel Admninistrativo do site na opção Importação. Os arquivos que podem ser importados devem etar no formato CVS. Eles são extraídos das abas Matrícula Distorção, Matrícula Distorção cor raça, Matrícula Distorção genêro, Matrícula Distorção deficiência. O padrão do arquivo XLS de onde os arquivos CSV podem ser gerados é o de número 1 (1 - importacao_wordpress_padrao_distorcoes_idade_serie.xlsx). Cada aba do arquivo deve ser salvo com um csv correspondente. As linha de cabecalho devem ser removidas.
+
+Arquivos etapa 2, 3 e 4:
+
+Matrículas, Abandonos e Reprovados
+
+Esse processo deve ser feito com auxílio da ferramenta Pentaho Data Integration:
+https://www.hitachivantara.com/en-us/products/data-management-analytics/pentaho/download-pentaho.html
+
+As matrículas, abandonos e reprovados devem ser cadastradas na seguinte ordem: TIPO_QUANTIDADE, TIPO_GENERO e TIPO_RACA. Existe um arquivo com extensão .KTR nas pastas de cada ano. Cada um relacionado ao tipo informado aqui. Esse arquivo precisa da indicação da URL do arquivo XLS a ser importado e a base de dados configurada. 
+
+
+Arquivo etapa 5
+
+As distorções dividas por idades (5 - importacao_via_data_integration_padrao_distorcao2_idades) são importadas com o arquivo IMPORTACAO DISTORCAO IDADES ANO.KTR
+
+Arquivo etapa 6
+
+As informações relacionadas a deficiência para Matrículas, Abandonos, Reprovados e Distorções são importadas com auxílio dos arquivos TRANSFORMACAO_EXCEL_SEM_DEFICIENCIA_TIPO.KTR e TRANSFORMACAO_EXCEL_COM_DEFICIENCIA_TIPO.KTR
