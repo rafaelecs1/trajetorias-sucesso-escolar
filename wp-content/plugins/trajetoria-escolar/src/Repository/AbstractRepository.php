@@ -152,7 +152,7 @@ abstract class AbstractRepository implements IRestFull
         return (int)$response['qtd'];
     }
 
-    public function getTotalPainelDeficiente($anoReferencia = null, $deficienciaId = null, $situacao, $estado_id = null, $municipio_id = null)
+    public function getTotalPainelDeficiente($anoReferencia = null, $deficienciaId = null, $situacao, $estado_id = null, $municipio_id = null, $regiaoId = null)
     {
 
         switch ($situacao) {
@@ -192,6 +192,12 @@ abstract class AbstractRepository implements IRestFull
             case "MunicipioDistorcao":
                 $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id where te_municipios.id = '.$municipio_id.' and tse_deficiencia.situacao_id = 4';
                 break;
+            case "RegiaoMatricula":
+                    $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id inner join te_estados on te_estados.id = te_municipios.estado_id where tse_deficiencia.situacao_id != 4 and te_estados.regiao = "'.self::REGIOES[$regiaoId].'"';
+                    break;
+            case "RegiaoAbandono":
+                    $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id inner join te_estados on te_estados.id = te_municipios.estado_id where te_estados.regiao = "'.self::REGIOES[$regiaoId].'" and tse_deficiencia.situacao_id = 1';
+                    break;
         }
 
         $sql .= ' and tse_deficiencia.deficiencia = %d and tse_deficiencia.ano_referencia = %d';
@@ -471,8 +477,7 @@ abstract class AbstractRepository implements IRestFull
         ));
     }
 
-
-    protected function getTotalMatriculasEstadoMunicipioEscola($anoReferencia = null, $corRacaId = null, $generoId = null, $estadoId = null, $municipioId = null, $escolaId = null, $deficienciaId = null)
+    protected function getTotalMatriculasEstadoMunicipioEscola($anoReferencia = null, $corRacaId = null, $generoId = null, $estadoId = null, $municipioId = null, $escolaId = null, $deficienciaId = null, $regiaoId = null)
     {
         //TODO Colocar um redirect aqui
         //TODO Validar numeros!
@@ -496,6 +501,14 @@ abstract class AbstractRepository implements IRestFull
             ? ''
             : ' INNER JOIN te_escolas on te_escolas.id = ' . $this->tableName . '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id';
 
+        $join .= $regiaoId == null
+            ? ''
+            : ' INNER JOIN te_escolas on te_escolas.id = ' . $this->tableName . '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id INNER JOIN te_estados on te_estados.id = te_municipios.estado_id';
+
+        $where .= $regiaoId == null
+            ? ''
+            : ' AND te_estados.regiao = "' . self::REGIOES[$regiaoId] . '"';
+        
         $where .= $municipioId == null
             ? ''
             : ' AND te_municipios.id = ' . $municipioId;
@@ -519,7 +532,7 @@ abstract class AbstractRepository implements IRestFull
         return (float)$response['qtd'];
     }
 
-    protected function getTotalAnosIniciaisEstadoMunicipioEscola($anoReferencia = null, $corRacaId = null, $generoId = null, $estadoId = null, $municipioId = null, $escolaId = null)
+    protected function getTotalAnosIniciaisEstadoMunicipioEscola($anoReferencia = null, $corRacaId = null, $generoId = null, $estadoId = null, $municipioId = null, $escolaId = null, $regiaoId = null)
     {
         //TODO Colocar um redirect aqui
         //TODO Validar numeros!
@@ -547,6 +560,14 @@ abstract class AbstractRepository implements IRestFull
             ? ''
             : ' AND te_municipios.id = ' . $municipioId;
 
+        $join .= $regiaoId == null
+            ? ''
+            : ' INNER JOIN te_escolas on te_escolas.id = ' . $this->tableName . '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id INNER JOIN te_estados on te_estados.id = te_municipios.estado_id';
+
+        $where .= $regiaoId == null
+            ? ''
+            : ' AND te_estados.regiao = "' . self::REGIOES[$regiaoId] . '"';
+
         $where .= $escolaId == null
             ? ''
             : ' AND ' . $this->tableName . '.escolas_id =' . $escolaId;
@@ -566,7 +587,7 @@ abstract class AbstractRepository implements IRestFull
         return (float)$response['qtd'];
     }
 
-    protected function getTotalAnosFinaisEstadoMunicipioEscola($anoReferencia = null, $corRacaId = null, $generoId = null, $estadoId = null, $municipioId = null, $escolaId = null)
+    protected function getTotalAnosFinaisEstadoMunicipioEscola($anoReferencia = null, $corRacaId = null, $generoId = null, $estadoId = null, $municipioId = null, $escolaId = null, $regiaoId = null)
     {
         //TODO Colocar um redirect aqui
         //TODO Validar numeros!
@@ -594,6 +615,14 @@ abstract class AbstractRepository implements IRestFull
             ? ''
             : ' AND te_municipios.id = ' . $municipioId;
 
+        $join .= $regiaoId == null
+            ? ''
+            : ' INNER JOIN te_escolas on te_escolas.id = ' . $this->tableName . '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id INNER JOIN te_estados on te_estados.id = te_municipios.estado_id';
+
+        $where .= $regiaoId == null
+            ? ''
+            : ' AND te_estados.regiao = "' . self::REGIOES[$regiaoId] . '"';
+
         $where .= $escolaId == null
             ? ''
             : ' AND ' . $this->tableName . '.escolas_id =' . $escolaId;
@@ -614,7 +643,7 @@ abstract class AbstractRepository implements IRestFull
 
     }
 
-    protected function getTotalAnosMedioEstadoMunicipioEscola($anoReferencia = null, $corRacaId = null, $generoId = null, $estadoId = null, $municipioId = null, $escolaId = null)
+    protected function getTotalAnosMedioEstadoMunicipioEscola($anoReferencia = null, $corRacaId = null, $generoId = null, $estadoId = null, $municipioId = null, $escolaId = null, $regiaoId = null)
     {
         //TODO Colocar um redirect aqui
         //TODO Validar numeros!
@@ -642,6 +671,14 @@ abstract class AbstractRepository implements IRestFull
             ? ''
             : ' AND te_municipios.id = ' . $municipioId;
 
+        $join .= $regiaoId == null
+            ? ''
+            : ' INNER JOIN te_escolas on te_escolas.id = ' . $this->tableName . '.escolas_id INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id INNER JOIN te_estados on te_estados.id = te_municipios.estado_id';
+
+        $where .= $regiaoId == null
+            ? ''
+            : ' AND te_estados.regiao = "' . self::REGIOES[$regiaoId] . '"';
+
         $where .= $escolaId == null
             ? ''
             : ' AND ' . $this->tableName . '.escolas_id =' . $escolaId;
@@ -661,7 +698,7 @@ abstract class AbstractRepository implements IRestFull
         return (float)$response['qtd'];
     }
 
-    protected function getTotalDependenciaEstadoMunicipioEscola($anoReferencia = null, $dependencia = null, $tipoAno = null, $estadoId = null, $municipioId = null, $escolaId = null)
+    protected function getTotalDependenciaEstadoMunicipioEscola($anoReferencia = null, $dependencia = null, $tipoAno = null, $estadoId = null, $municipioId = null, $escolaId = null, $regiaoId = null)
     {
 
         //TODO Colocar um redirect aqui
@@ -715,6 +752,14 @@ abstract class AbstractRepository implements IRestFull
             ? ''
             : ' AND ' . $this->tableName . '.escolas_id =' . $escolaId;
 
+        $join .= $regiaoId == null
+            ? ''
+            : ' INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id INNER JOIN te_estados on te_estados.id = te_municipios.estado_id';
+
+        $where .= $regiaoId == null
+            ? ''
+            : ' AND te_estados.regiao = "' . self::REGIOES[$regiaoId] . '"';
+
         $where .= ' AND ' . $this->tableName . '.cor_raca_id IS NULL AND ' . $this->tableName . '.genero_id IS NULL';
 
         $sql .= $join . $where;
@@ -724,7 +769,7 @@ abstract class AbstractRepository implements IRestFull
         return (float)$response['qtd'];
     }
 
-    protected function getTotalLocalizacaoEstadoMunicipioEscola($anoReferencia = null, $localizacao = null, $tipoAno = null, $estadoId = null, $municipioId = null, $escolaId = null)
+    protected function getTotalLocalizacaoEstadoMunicipioEscola($anoReferencia = null, $localizacao = null, $tipoAno = null, $estadoId = null, $municipioId = null, $escolaId = null, $regiaoId = null)
     {
 
         //TODO Colocar um redirect aqui
@@ -774,6 +819,14 @@ abstract class AbstractRepository implements IRestFull
             ? ''
             : ' AND te_municipios.id = ' . $municipioId;
 
+        $join .= $regiaoId == null
+            ? ''
+            : ' INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id INNER JOIN te_estados on te_estados.id = te_municipios.estado_id';
+
+        $where .= $regiaoId == null
+            ? ''
+            : ' AND te_estados.regiao = "' . self::REGIOES[$regiaoId] . '"';
+
         $where .= $escolaId == null
             ? ''
             : ' AND ' . $this->tableName . '.escolas_id =' . $escolaId;
@@ -787,7 +840,7 @@ abstract class AbstractRepository implements IRestFull
         return (float)$response['qtd'];
     }
 
-    protected function getTotalLocalizacaoDiferenciadaEstadoMunicipioEscola($anoReferencia = null, $localizacaoDiferenciada = null, $tipoAno = null, $estadoId = null, $municipioId = null, $escolaId = null)
+    protected function getTotalLocalizacaoDiferenciadaEstadoMunicipioEscola($anoReferencia = null, $localizacaoDiferenciada = null, $tipoAno = null, $estadoId = null, $municipioId = null, $escolaId = null, $regiaoId = null)
     {
 
         //TODO Colocar um redirect aqui
@@ -837,6 +890,14 @@ abstract class AbstractRepository implements IRestFull
             ? ''
             : ' AND te_municipios.id = ' . $municipioId;
 
+        $join .= $regiaoId == null
+            ? ''
+            : ' INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id INNER JOIN te_estados on te_estados.id = te_municipios.estado_id';
+
+        $where .= $regiaoId == null
+            ? ''
+            : ' AND te_estados.regiao = "' . self::REGIOES[$regiaoId] . '"';
+
         $where .= $escolaId == null
             ? ''
             : ' AND ' . $this->tableName . '.escolas_id =' . $escolaId;
@@ -851,7 +912,7 @@ abstract class AbstractRepository implements IRestFull
     }
 
 
-    protected function getArrayMatriculasReprovacoesAbandonos($anoReferencia = null, $estadoId = null, $municipioId = null, $escolaId = null)
+    protected function getArrayMatriculasReprovacoesAbandonos($anoReferencia = null, $estadoId = null, $municipioId = null, $escolaId = null, $regiaoId = null)
     {
 
         $anos = array();
@@ -859,111 +920,111 @@ abstract class AbstractRepository implements IRestFull
         $anos['Iniciais'] = array(
             '1' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'matriculas') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'reprovacoes') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'abandonos'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'reprovacoes'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'abandonos')
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'matriculas', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'reprovacoes', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'abandonos', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'reprovacoes', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano1', 'abandonos', $regiaoId)
                 ],
             '2' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano2', 'matriculas') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano2', 'reprovacoes') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano2', 'abandonos'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano2', 'reprovacoes'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano2', 'abandonos')
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano2', 'matriculas', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano2', 'reprovacoes', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano2', 'abandonos', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano2', 'reprovacoes', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano2', 'abandonos', $regiaoId)
                 ],
             '3' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano3', 'matriculas') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano3', 'reprovacoes') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano3', 'abandonos'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano3', 'reprovacoes'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano3', 'abandonos')
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano3', 'matriculas', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano3', 'reprovacoes', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano3', 'abandonos', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano3', 'reprovacoes', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano3', 'abandonos', $regiaoId)
                 ],
             '4' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano4', 'matriculas') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano4', 'reprovacoes') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano4', 'abandonos'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano4', 'reprovacoes'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano4', 'abandonos')
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano4', 'matriculas', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano4', 'reprovacoes', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano4', 'abandonos', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano4', 'reprovacoes', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano4', 'abandonos', $regiaoId)
                 ],
             '5' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano5', 'matriculas') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano5', 'reprovacoes') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano5', 'abandonos'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano5', 'reprovacoes'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano5', 'abandonos')
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano5', 'matriculas', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano5', 'reprovacoes', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano5', 'abandonos', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano5', 'reprovacoes', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano5', 'abandonos', $regiaoId)
                 ],
         );
         $anos['Finais'] = array(
             '6' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano6', 'matriculas') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano6', 'reprovacoes') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano6', 'abandonos'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano6', 'reprovacoes'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano6', 'abandonos')
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano6', 'matriculas', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano6', 'reprovacoes', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano6', 'abandonos', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano6', 'reprovacoes', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano6', 'abandonos', $regiaoId)
                 ],
             '7' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano7', 'matriculas') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano7', 'reprovacoes') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano7', 'abandonos'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano7', 'reprovacoes'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano7', 'abandonos')
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano7', 'matriculas', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano7', 'reprovacoes', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano7', 'abandonos', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano7', 'reprovacoes', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano7', 'abandonos', $regiaoId)
                 ],
             '8' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano8', 'matriculas') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano8', 'reprovacoes') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano8', 'abandonos'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano8', 'reprovacoes'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano8', 'abandonos')
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano8', 'matriculas', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano8', 'reprovacoes', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano8', 'abandonos', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano8', 'reprovacoes', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano8', 'abandonos', $regiaoId)
                 ],
             '9' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano9', 'matriculas') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano9', 'reprovacoes') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano9', 'abandonos'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano9', 'reprovacoes'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano9', 'abandonos')
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano9', 'matriculas', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano9', 'reprovacoes', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano9', 'abandonos', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano9', 'reprovacoes', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano9', 'abandonos', $regiaoId)
                 ],
         );
         $anos['Medio'] = array(
             '10' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'matriculas') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'reprovacoes') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'abandonos'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'reprovacoes'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'abandonos')
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'matriculas', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'reprovacoes', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'abandonos', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'reprovacoes', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano10', 'abandonos', $regiaoId)
                 ],
             '11' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'matriculas') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'reprovacoes') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'abandonos'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'reprovacoes'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'abandonos')
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'matriculas', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'reprovacoes', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'abandonos', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'reprovacoes', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano11', 'abandonos', $regiaoId)
                 ],
             '12' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'matriculas') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'reprovacoes') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'abandonos'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'reprovacoes'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'abandonos')
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'matriculas', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'reprovacoes', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'abandonos', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'reprovacoes', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano12', 'abandonos', $regiaoId)
                 ],
             '13' =>
                 [
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'matriculas') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'reprovacoes') -
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'abandonos'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'reprovacoes'),
-                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'abandonos')
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'matriculas', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'reprovacoes', $regiaoId) -
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'abandonos', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'reprovacoes', $regiaoId),
+                    $this->getTotalPorAno($anoReferencia, $estadoId, $municipioId, $escolaId, 'ano13', 'abandonos', $regiaoId)
                 ],
         );
 
@@ -971,7 +1032,7 @@ abstract class AbstractRepository implements IRestFull
 
     }
 
-    private function getTotalPorAno($anoReferencia = null, $estadoId = null, $municipioId = null, $escolaId = null, $ano = null, $tipoSoma)
+    private function getTotalPorAno($anoReferencia = null, $estadoId = null, $municipioId = null, $escolaId = null, $ano = null, $tipoSoma, $regiaoId = null)
     {
 
         //TODO Colocar um redirect aqui
@@ -1019,6 +1080,14 @@ abstract class AbstractRepository implements IRestFull
         $where .= $municipioId == null
             ? ''
             : ' AND te_municipios.id = ' . $municipioId;
+
+        $join .= $regiaoId == null
+            ? ''
+            : ' INNER JOIN te_municipios on te_municipios.id = te_escolas.municipio_id INNER JOIN te_estados on te_estados.id = te_municipios.estado_id';
+
+        $where .= $regiaoId == null
+            ? ''
+            : ' AND te_estados.regiao = "' . self::REGIOES[$regiaoId] . '"';
 
         $where .= $escolaId == null
             ? ''

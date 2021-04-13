@@ -179,7 +179,8 @@ class FrontEnd
 
 
         if (!empty($regiao)) {
-            
+            $matriculas = $matriculasObj->getDataMatriculaRegiao($regiao, $this->year);
+            $abandonos = $abandonosObj->getDataAbandonoRegiao($regiao, $this->year);
         }
 
         if (!empty($estado)) {

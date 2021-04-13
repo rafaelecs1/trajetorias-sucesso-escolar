@@ -46,7 +46,16 @@ interface IRestFull
     const ESCOLA_ABANDONO = 'EscolaAbandono';
     const ESCOLA_REPROVACAO = 'EscolaReprovacao';
 
+    const REGIAO_MATRICULA = 'RegiaoMatricula';
+    const REGIAO_ABANDONO = 'RegiaoAbandono';
 
+    const REGIOES = [
+        6 => 'Norte',
+        7 => 'Nordeste',
+        8 => 'Sudeste',
+        9 => 'Sul',
+        10 => 'Centro-Oeste'
+    ];
 
     /**
      * @param $param
