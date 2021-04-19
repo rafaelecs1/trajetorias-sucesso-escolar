@@ -9,7 +9,7 @@ Os arquivos apresentam o ano anterior. Arquivos com registros de 2015 serão reg
 
 Arquivos etapa 1:
 
-O sistema do Wordpress permite a importacao de modo automático de três arquivos relacionados a Distorção-idade-série. A ferramenta está disponível no Painel Admninistrativo do site na opção Importação. Os arquivos que podem ser importados devem etar no formato CVS. Eles são extraídos das abas Matrícula Distorção, Matrícula Distorção cor raça, Matrícula Distorção genêro, Matrícula Distorção deficiência. O padrão do arquivo XLS de onde os arquivos CSV podem ser gerados é o de número 1 (1 - importacao_wordpress_padrao_distorcoes_idade_serie.xlsx). Cada aba do arquivo deve ser salvo com um csv correspondente. As linha de cabecalho devem ser removidas.
+O sistema do Wordpress permite a importacao de modo automático de três arquivos relacionados a Distorção-idade-série. A ferramenta está disponível no Painel Admninistrativo do site na opção Importação. Os arquivos que podem ser importados devem etar no formato CVS. Eles são extraídos das abas Matrícula Distorção, Matrícula Distorção cor raça, Matrícula Distorção genêro, Matrícula Distorção deficiência. O padrão do arquivo XLS de onde os arquivos CSV podem ser gerados é o de número 1 (1 - importacao_wordpress_padrao_distorcoes_idade_serie.xlsx). Cada aba do arquivo deve ser salvo com um csv correspondente. As linhas de cabecalho devem ser removidas.
 
 Arquivos etapa 2, 3 e 4:
 
@@ -27,4 +27,4 @@ As distorções dividas por idades (5 - importacao_via_data_integration_padrao_d
 
 Arquivo etapa 6
 
-As informações relacionadas a deficiência para Matrículas, Abandonos, Reprovados e Distorções são importadas com auxílio dos arquivos TRANSFORMACAO_EXCEL_SEM_DEFICIENCIA_TIPO.KTR e TRANSFORMACAO_EXCEL_COM_DEFICIENCIA_TIPO.KTR
+As informações relacionadas a deficiência para Matrículas, Abandonos, Reprovados e Distorções são importadas com auxílio dos arquivos TRANSFORMACAO_EXCEL_SEM_DEFICIENCIA_TIPO.KTR e TRANSFORMACAO_EXCEL_COM_DEFICIENCIA_TIPO.KTR. Os arquivos estão na pasta MAPAS PCD
