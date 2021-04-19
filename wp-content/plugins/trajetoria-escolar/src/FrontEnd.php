@@ -194,7 +194,7 @@ class FrontEnd
         }
 
         if( empty($regiao) && empty($estado) && empty($municipio) ){
-            $matriculas = $matriculasObj->getDataMapaBrasil($this->year);
+            $matriculas = $matriculasObj->getDataPainelBrasil($this->year);
             $abandonos = $abandonosObj->getDataPainelBrasil($this->year);
         }
 
