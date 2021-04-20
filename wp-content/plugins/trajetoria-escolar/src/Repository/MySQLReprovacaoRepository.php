@@ -204,4 +204,67 @@ class MySQLReprovacaoRepository extends AbstractRepository
 
     }
 
+    public function getDataReprovacaoRegiao($regiaoId, $anoReferencia)
+    {
+
+        $mapa = $this->getCacheBrasil($regiaoId, $anoReferencia, self::REGIAO_REPROVACAO);
+
+        if (!empty($mapa)) {
+            return json_decode($mapa);
+        }
+
+        $data = new \stdClass();
+        $data->total = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, null, null, null, null, null, $regiaoId);
+        $data->anos_iniciais = $this->getTotalAnosIniciaisEstadoMunicipioEscola($anoReferencia,  null, null, null, null, null, $regiaoId);
+        $data->anos_finais = $this->getTotalAnosFinaisEstadoMunicipioEscola($anoReferencia,  null, null, null, null, null, $regiaoId);
+        $data->medio = $this->getTotalAnosMedioEstadoMunicipioEscola($anoReferencia,  null, null, null, null, null, $regiaoId);
+
+        $data->municipal = new \stdClass();
+        $data->municipal->total = $this->getTotalDependenciaEstadoMunicipioEscola($anoReferencia, 'Municipal', null, null, null, null, $regiaoId);
+        $data->municipal->anos_iniciais = $this->getTotalDependenciaEstadoMunicipioEscola($anoReferencia, 'Municipal', 'iniciais', null, null, null, $regiaoId);
+        $data->municipal->anos_finais = $this->getTotalDependenciaEstadoMunicipioEscola($anoReferencia, 'Municipal', 'finais', null, null, null, $regiaoId);
+        $data->municipal->medio = $this->getTotalDependenciaEstadoMunicipioEscola($anoReferencia, 'Municipal', 'medio', null, null, null, $regiaoId);
+
+        $data->estadual = new \stdClass();
+        $data->estadual->total = $this->getTotalDependenciaEstadoMunicipioEscola($anoReferencia, 'Estadual', null, null, null, null, $regiaoId);
+        $data->estadual->anos_iniciais = $this->getTotalDependenciaEstadoMunicipioEscola($anoReferencia, 'Estadual', 'iniciais', null, null, null, $regiaoId);
+        $data->estadual->anos_finais = $this->getTotalDependenciaEstadoMunicipioEscola($anoReferencia, 'Estadual', 'finais', null, null, null, $regiaoId);
+        $data->estadual->medio = $this->getTotalDependenciaEstadoMunicipioEscola($anoReferencia, 'Estadual', 'medio', null, null, null, $regiaoId);
+
+        $data->anos = $this->getArrayMatriculasReprovacoesAbandonos( $anoReferencia, null, null, null, $regiaoId);
+
+        $data->localizacao = new \stdClass();
+        $data->localizacao->rural = $this->getTotalLocalizacaoEstadoMunicipioEscola($anoReferencia, 'Rural', null, null, null, null, $regiaoId);
+        $data->localizacao->urbana = $this->getTotalLocalizacaoEstadoMunicipioEscola($anoReferencia, 'Urbana', null, null, null, null, $regiaoId);
+
+        $data->localizacao_diferenciada = new \stdClass();
+        $data->localizacao_diferenciada->area_de_assentamento = $this->getTotalLocalizacaoDiferenciadaEstadoMunicipioEscola($anoReferencia, 'Área de assentamento', null, null, null, null, $regiaoId);
+        $data->localizacao_diferenciada->area_remanecente_quilombola = $this->getTotalLocalizacaoDiferenciadaEstadoMunicipioEscola($anoReferencia, 'Área remanescente de quilombos', null, null, null, null, $regiaoId);
+        $data->localizacao_diferenciada->terra_inidigena = $this->getTotalLocalizacaoDiferenciadaEstadoMunicipioEscola($anoReferencia, 'Terra indígena', null, null, null, null, $regiaoId);
+        $data->localizacao_diferenciada->unidade_uso_sustentavel = $this->getTotalLocalizacaoDiferenciadaEstadoMunicipioEscola($anoReferencia, 'Unidade de uso sustentável', null, null, null, null, $regiaoId);
+        $data->localizacao_diferenciada->unidade_uso_sustentavel_em_area_remancente_de_quilombo = $this->getTotalLocalizacaoDiferenciadaEstadoMunicipioEscola($anoReferencia, 'Unidade de uso sustentável em área remanescente de quilombos', null, null, null, null, $regiaoId);
+        $data->localizacao_diferenciada->unidade_uso_sustentavel_em_terra_indigena = $this->getTotalLocalizacaoDiferenciadaEstadoMunicipioEscola($anoReferencia, 'Unidade de uso sustentável em terra indígena', null, null, null, null, $regiaoId);
+
+        $data->cor_raca = new \stdClass();
+        $data->cor_raca->nao_declarada = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  1, null, null, null, null, null, $regiaoId);
+        $data->cor_raca->branca = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  2, null, null, null, null, null, $regiaoId);
+        $data->cor_raca->preta = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  3, null, null, null, null, null, $regiaoId);
+        $data->cor_raca->parda = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  4, null, null, null, null, null, $regiaoId);
+        $data->cor_raca->amarela = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  5, null, null, null, null, null, $regiaoId);
+        $data->cor_raca->indigena = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  6, null, null, null, null, $regiaoId);
+
+        $data->genero = new \stdClass();
+        $data->genero->masculino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 1, null, null, null, null, $regiaoId);
+        $data->genero->feminino = $this->getTotalMatriculasEstadoMunicipioEscola($anoReferencia,  null, 2, null, null, null, null, $regiaoId);
+
+        $data->deficiencia = new \stdClass();
+        $data->deficiencia->com = $this->getTotalPainelDeficiente($anoReferencia, 1, self::REGIAO_REPROVACAO, null, null, $regiaoId);
+        $data->deficiencia->sem = $this->getTotalPainelDeficiente($anoReferencia, 0, self::REGIAO_REPROVACAO, null, null, $regiaoId);
+
+        $this->saveBrasil($regiaoId, self::REGIAO_REPROVACAO, $anoReferencia, $data);
+
+        return $data;
+
+    }
+
 }

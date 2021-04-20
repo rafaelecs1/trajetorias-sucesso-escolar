@@ -48,6 +48,7 @@ interface IRestFull
 
     const REGIAO_MATRICULA = 'RegiaoMatricula';
     const REGIAO_ABANDONO = 'RegiaoAbandono';
+    const REGIAO_REPROVACAO = 'RegiaoReprovacao';
 
     const REGIOES = [
         6 => 'Norte',

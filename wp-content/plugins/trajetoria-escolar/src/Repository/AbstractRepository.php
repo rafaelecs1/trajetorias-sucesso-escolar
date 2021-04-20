@@ -198,6 +198,9 @@ abstract class AbstractRepository implements IRestFull
             case "RegiaoAbandono":
                     $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id inner join te_estados on te_estados.id = te_municipios.estado_id where te_estados.regiao = "'.self::REGIOES[$regiaoId].'" and tse_deficiencia.situacao_id = 1';
                     break;
+            case "RegiaoReprovacao":
+                $sql = 'SELECT SUM(tse_deficiencia.qtd) as qtd FROM tse_deficiencia inner join te_municipios on te_municipios.id = tse_deficiencia.te_municipios_id inner join te_estados on te_estados.id = te_municipios.estado_id where te_estados.regiao = "'.self::REGIOES[$regiaoId].'" and tse_deficiencia.situacao_id = 2';
+                break;
         }
 
         $sql .= ' and tse_deficiencia.deficiencia = %d and tse_deficiencia.ano_referencia = %d';

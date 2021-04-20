@@ -173,32 +173,38 @@ class FrontEnd
 
         $matriculasObj = new MySQLMatriculaRepository();
         $abandonosObj = new MySQLAbandonoRepository();
+        $reprovacoesObj = new MySQLReprovacaoRepository();
 
         $matriculas = new \stdClass();
         $abandonos = new \stdClass();
+        $reprovacoes = new \stdClass();
 
 
         if (!empty($regiao)) {
             $matriculas = $matriculasObj->getDataMatriculaRegiao($regiao, $this->year);
             $abandonos = $abandonosObj->getDataAbandonoRegiao($regiao, $this->year);
+            $reprovacoes = $reprovacoesObj->getDataReprovacaoRegiao($regiao, $this->year);
         }
 
         if (!empty($estado)) {
             $matriculas = $matriculasObj->getDataMatriculaEstado($estado, $this->year);
             $abandonos = $abandonosObj->getDataAbandonoEstado($estado, $this->year);
+            $reprovacoes = $reprovacoesObj->getDataReprovacaoEstado($estado, $this->year);
         }
 
         if (!empty($municipio)) {
             $matriculas = $matriculasObj->getDataMatriculaMunicipio($municipio, $this->year);
             $abandonos = $abandonosObj->getDataAbandonoMunicipio($municipio, $this->year);
+            $reprovacoes = $reprovacoesObj->getDataReprovacaoMunicipio($municipio, $this->year);
         }
 
         if( empty($regiao) && empty($estado) && empty($municipio) ){
             $matriculas = $matriculasObj->getDataPainelBrasil($this->year);
             $abandonos = $abandonosObj->getDataPainelBrasil($this->year);
+            $reprovacoes = $reprovacoesObj->getDataPainelBrasil($this->year);
         }
 
-        $json = array('matriculas' => $matriculas, 'abandonos' => $abandonos);
+        $json = array('matriculas' => $matriculas, 'abandonos' => $abandonos, 'reprovacoes' => $reprovacoes);
         $json_data = json_encode($json);
         
         header('Content-type: application/json;charset=UTF-8');
