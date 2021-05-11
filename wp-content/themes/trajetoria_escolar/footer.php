@@ -48,7 +48,7 @@ if (is_front_page()) {
             <ul class="realizacao">
                 <?php
                 $realizacao = array(
-                    'netclaroembratel' => array('url' => 'https://www.institutonetclaroembratel.org.br', 'tipo' => 'Parceiro Estratégico'),
+                    'netclaroembratel' => array('url' => 'https://www.institutoclaro.org.br', 'tipo' => 'Parceiro Estratégico'),
                     'itau' => array('url' => 'https://www.itausocial.org.br', 'tipo' => '')
 
                 );
