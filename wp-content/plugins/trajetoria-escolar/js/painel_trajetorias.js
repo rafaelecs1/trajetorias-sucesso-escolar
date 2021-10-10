@@ -139,24 +139,24 @@ jQuery(document).ready(function ($) {
                     animationDuration: 1
                 },
 
-                animation: {
-                    //duration: 1,
-                    onComplete: function () {
-                        var chartInstance = this.chart,
-                            ctx = chartInstance.ctx;
-                            ctx.textAlign = 'center';
-                            ctx.fillStyle = trajetoria.color;
-                            ctx.textBaseline = 'bottom';
+                // animation: {
+                //     //duration: 1,
+                //     onComplete: function () {
+                //         var chartInstance = this.chart,
+                //             ctx = chartInstance.ctx;
+                //             ctx.textAlign = 'center';
+                //             ctx.fillStyle = trajetoria.color;
+                //             ctx.textBaseline = 'bottom';
 
-                        this.data.datasets.forEach(function (dataset, i) {
-                            var meta = chartInstance.controller.getDatasetMeta(i);
-                            meta.data.forEach(function (bar, index) {
-                                var data = dataset.data[index];
-                                ctx.fillText(data, bar._model.x, bar._model.y + 25);
-                            });
-                        });
-                    }
-                },
+                //         this.data.datasets.forEach(function (dataset, i) {
+                //             var meta = chartInstance.controller.getDatasetMeta(i);
+                //             meta.data.forEach(function (bar, index) {
+                //                 var data = dataset.data[index];
+                //                 ctx.fillText(data, bar._model.x, bar._model.y + 25);
+                //             });
+                //         });
+                //     }
+                // },
 
                 scales: {
                     yAxes: [{
