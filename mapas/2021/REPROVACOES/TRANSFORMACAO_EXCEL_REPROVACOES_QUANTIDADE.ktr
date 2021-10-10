@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>TRANSFORMACAO_EXCEL_ABANDONOS_QUANTIDADE_2017</name>
+    <name>TRANSFORMACAO_EXCEL_REPROVACOES_QUANTIDADE_2019</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -489,7 +489,7 @@
     <accept_field/>
     <accept_stepname/>
     <file>
-      <name>/Users/manoelfilho/ProjectsWeb/busca_ativa/projeto/arquivos/Atualizacoes - 2020/dados_escolares_2020/abandono_2020.xlsx</name>
+      <name>/Users/manoelfilho/ProjectsWeb/busca_ativa/projeto/arquivos/Atualizacoes - 2020/dados_escolares_2020/reprovações_2020.xlsx</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -775,7 +775,7 @@
     </fields>
     <sheets>
       <sheet>
-        <name>Abandono-Total</name>
+        <name>Reprovação-Total</name>
         <startrow>3</startrow>
         <startcol>0</startcol>
       </sheet>
@@ -826,7 +826,7 @@
     </partitioning>
     <connection>trajetorias</connection>
     <schema>trajetorias</schema>
-    <table>tse_qtd_abandonos</table>
+    <table>tse_qtd_reprovacoes</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>

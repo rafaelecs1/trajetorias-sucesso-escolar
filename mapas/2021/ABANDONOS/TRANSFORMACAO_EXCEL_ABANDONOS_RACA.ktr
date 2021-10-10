@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>TRANSFORMACAO_EXCEL_ABANDONOS_RACAS_2017</name>
+    <name>TRANSFORMACAO_EXCEL_ABANDONOS_RACAS_2019</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -438,20 +438,56 @@
   </notepads>
   <connection>
     <name>trajetorias</name>
-    <server>localhost</server>
+    <server>192.168.10.10</server>
     <type>MYSQL</type>
     <access>Native</access>
     <database>trajetorias</database>
-    <port>3320</port>
-    <username>root</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb79ce10cc9da0ce</password>
+    <port>3306</port>
+    <username>homestead</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb79bd75dd80aace</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
     <attributes>
       <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
         <code>PORT_NUMBER</code>
-        <attribute>3320</attribute>
+        <attribute>3306</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>STREAM_RESULTS</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
       </attribute>
     </attributes>
   </connection>
@@ -603,7 +639,7 @@
       <schema_name/>
     </partitioning>
     <connection>trajetorias</connection>
-    <schema>trajetorias</schema>
+    <schema/>
     <table>tse_qtd_abandonos</table>
     <commit>1000</commit>
     <truncate>N</truncate>
@@ -711,7 +747,7 @@
       <schema_name/>
     </partitioning>
     <connection>trajetorias</connection>
-    <schema>trajetorias</schema>
+    <schema/>
     <table>tse_qtd_abandonos</table>
     <commit>1000</commit>
     <truncate>N</truncate>
@@ -819,7 +855,7 @@
       <schema_name/>
     </partitioning>
     <connection>trajetorias</connection>
-    <schema>trajetorias</schema>
+    <schema/>
     <table>tse_qtd_abandonos</table>
     <commit>1000</commit>
     <truncate>N</truncate>
@@ -942,7 +978,7 @@
     <accept_field/>
     <accept_stepname/>
     <file>
-      <name>/Users/manoelfilho/ProjectsWeb/busca_ativa/projeto/arquivos/Atualizacoes - 2020/dados_escolares_2020/abandono_2020.xlsx</name>
+      <name>C:\Users\mansouza\Downloads\abandonos finais\ABANDONO_DEP_EST_MUN_2019.xlsx</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -951,7 +987,7 @@
     <fields>
       <field>
         <name>Código da Escola</name>
-        <type>Integer</type>
+        <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -1995,7 +2031,7 @@
       </field>
       <field>
         <name>Ano do Censo</name>
-        <type>Integer</type>
+        <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -2008,7 +2044,7 @@
     </fields>
     <sheets>
       <sheet>
-        <name>Abandono-Cor-Raça</name>
+        <name>ABAND_Cor_Raca</name>
         <startrow>3</startrow>
         <startcol>0</startcol>
       </sheet>
@@ -2058,7 +2094,7 @@
       <schema_name/>
     </partitioning>
     <connection>trajetorias</connection>
-    <schema>trajetorias</schema>
+    <schema/>
     <table>tse_qtd_abandonos</table>
     <commit>1000</commit>
     <truncate>N</truncate>
@@ -2166,7 +2202,7 @@
       <schema_name/>
     </partitioning>
     <connection>trajetorias</connection>
-    <schema>trajetorias</schema>
+    <schema/>
     <table>tse_qtd_abandonos</table>
     <commit>1000</commit>
     <truncate>N</truncate>
@@ -2274,7 +2310,7 @@
       <schema_name/>
     </partitioning>
     <connection>trajetorias</connection>
-    <schema>trajetorias</schema>
+    <schema/>
     <table>tse_qtd_abandonos</table>
     <commit>1000</commit>
     <truncate>N</truncate>

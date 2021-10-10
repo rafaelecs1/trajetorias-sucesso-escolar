@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>TRANSFORMACAO_EXCEL_ABANDONOS_RACAS_2017</name>
+    <name>TRANSFORMACAO_EXCEL_REPROVACOES_RACAS_2019</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -586,7 +586,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>304</xloc>
+      <xloc>240</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
@@ -604,7 +604,7 @@
     </partitioning>
     <connection>trajetorias</connection>
     <schema>trajetorias</schema>
-    <table>tse_qtd_abandonos</table>
+    <table>tse_qtd_reprovacoes</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -694,8 +694,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
-      <yloc>368</yloc>
+      <xloc>512</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -712,7 +712,7 @@
     </partitioning>
     <connection>trajetorias</connection>
     <schema>trajetorias</schema>
-    <table>tse_qtd_abandonos</table>
+    <table>tse_qtd_reprovacoes</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -802,8 +802,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
-      <yloc>112</yloc>
+      <xloc>512</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -820,7 +820,7 @@
     </partitioning>
     <connection>trajetorias</connection>
     <schema>trajetorias</schema>
-    <table>tse_qtd_abandonos</table>
+    <table>tse_qtd_reprovacoes</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -910,8 +910,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
-      <yloc>304</yloc>
+      <xloc>512</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -942,7 +942,7 @@
     <accept_field/>
     <accept_stepname/>
     <file>
-      <name>/Users/manoelfilho/ProjectsWeb/busca_ativa/projeto/arquivos/Atualizacoes - 2020/dados_escolares_2020/abandono_2020.xlsx</name>
+      <name>/Users/manoelfilho/ProjectsWeb/busca_ativa/projeto/arquivos/Atualizacoes - 2020/dados_escolares_2020/reprovações_2020.xlsx</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -2008,7 +2008,7 @@
     </fields>
     <sheets>
       <sheet>
-        <name>Abandono-Cor-Raça</name>
+        <name>Reprovação-Cor-Raça</name>
         <startrow>3</startrow>
         <startcol>0</startcol>
       </sheet>
@@ -2059,7 +2059,7 @@
     </partitioning>
     <connection>trajetorias</connection>
     <schema>trajetorias</schema>
-    <table>tse_qtd_abandonos</table>
+    <table>tse_qtd_reprovacoes</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -2149,7 +2149,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
+      <xloc>512</xloc>
       <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2167,7 +2167,7 @@
     </partitioning>
     <connection>trajetorias</connection>
     <schema>trajetorias</schema>
-    <table>tse_qtd_abandonos</table>
+    <table>tse_qtd_reprovacoes</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -2257,8 +2257,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
-      <yloc>240</yloc>
+      <xloc>512</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2275,7 +2275,7 @@
     </partitioning>
     <connection>trajetorias</connection>
     <schema>trajetorias</schema>
-    <table>tse_qtd_abandonos</table>
+    <table>tse_qtd_reprovacoes</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -2365,8 +2365,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
-      <yloc>176</yloc>
+      <xloc>512</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

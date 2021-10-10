@@ -11,9 +11,9 @@ jQuery(document).ready(function ($) {
     var color = Chart.helpers.color;
 
     var tipos_trajetorias = [
-        {id: 1, cssSelector: 'trajetoria1', title: 'Matrículas iniciais de 6 anos no 1º ano do Ensino Fundamental', backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(), borderColor: window.chartColors.red },
-        {id: 2, cssSelector: 'trajetoria2', title: 'Matrículas iniciais de 10 anos no 5º ano do Ensino Fundamental', backgroundColor: color(window.chartColors.green).alpha(0.5).rgbString(), borderColor: window.chartColors.green },
-        {id: 3, cssSelector: 'trajetoria3', title: 'Matrículas iniciais de 14 anos no 9º ano do Ensino Fundamental', backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(), borderColor: window.chartColors.blue }
+        {id: 1, cssSelector: 'trajetoria1', title: 'Coorte de matrículas de 6 anos no 1º ano do Ensino Fundamental (EF) em 2015', backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(), borderColor: window.chartColors.red },
+        {id: 2, cssSelector: 'trajetoria2', title: 'Coorte de matrículas de 10 anos no 5º ano do Ensino Fundamental (EF) em 2015', backgroundColor: color(window.chartColors.green).alpha(0.5).rgbString(), borderColor: window.chartColors.green },
+        {id: 3, cssSelector: 'trajetoria3', title: 'Coorte de matrículas de 14 anos no 9º ano do Ensino Fundamental (EF) em 2016', backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(), borderColor: window.chartColors.blue }
     ];
 
     $('#select-uf').change(function () {
@@ -57,7 +57,7 @@ jQuery(document).ready(function ($) {
         var data = [];
         trajetoriasArray.forEach(function(e){
             if( idTrajetoria == parseInt(e.tipo) ){
-                data.push( parseInt(e.matriculas) );
+                data.push( parseInt(e.matriculas).toLocaleString('pt-BR') );
             }
         });
         return data;
@@ -131,7 +131,8 @@ jQuery(document).ready(function ($) {
                 },
                 
                 tooltips: {
-                    enabled: true
+                    enabled: true,
+                    backgroundColor: 'rgba(0, 0, 0, 1.0)'
                 },
 
                 hover: {

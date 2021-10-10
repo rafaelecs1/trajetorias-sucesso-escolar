@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Unicef\TrajetoriaEscolar\BackEnd | BackEnd.php
  * @author André Keher
@@ -115,17 +116,17 @@ class BackEnd
     public function formImportarCsv()
     {
         wp_enqueue_style('admin', plugin_dir_url(dirname(__FILE__)) . 'css/admin.css');
-        ?>
+?>
         <section>
             <header>
                 <h1>Importar informações sobre distorção idade-série no Brasil</h1>
                 <?php
                 if (isset($_GET['resultado'])) {
-                    ?>
+                ?>
                     <div id="message" class="updated notice notice-success is-dismissible">
                         <p>Importação realizada com sucesso! Ano Referencia: <?php echo $_GET['ano_referencia'] ?> Tipo de Dado: <?php echo $_GET['tipo_informacao'] ?></p>
                     </div>
-                    <?php
+                <?php
                 }
                 ?>
             </header>
@@ -133,9 +134,8 @@ class BackEnd
                 <div class="form-item">
                     <label for="tipo_informacao">Qual o tipo de informações sobre distorção idade-série gostaria de
                         importar?</label>
-                    <br/>
-                    <select id="tipo_informacao" name="tipo_informacao"
-                            data-validation="Por favor, informe qual o tipo de informação sobre distorção idade-série gostaria de importar.">
+                    <br />
+                    <select id="tipo_informacao" name="tipo_informacao" data-validation="Por favor, informe qual o tipo de informação sobre distorção idade-série gostaria de importar.">
                         <option value="">--</option>
                         <option value="<?php echo self::TIPO_ETAPAS_ENSINO; ?>"><?php echo self::TIPO_ETAPAS_ENSINO; ?></option>
                         <option value="<?php echo self::TIPO_COR_RACA; ?>"><?php echo self::TIPO_COR_RACA; ?></option>
@@ -145,9 +145,8 @@ class BackEnd
                 <div class="form-item">
                     <label for="ano_referencia">Qual o ano de referência das informações sobre distorção
                         idade-série?</label>
-                    <br/>
-                    <select id="ano_referencia" name="ano_referencia"
-                            data-validation="Por favor, informe o ano de referência das informações sobre distorção idade-série.">
+                    <br />
+                    <select id="ano_referencia" name="ano_referencia" data-validation="Por favor, informe o ano de referência das informações sobre distorção idade-série.">
                         <option value="">--</option>
                         <?php
                         $anoAtual = date('Y');
@@ -160,8 +159,8 @@ class BackEnd
                 </div>
                 <div class="form-item">
                     <label for="ano_referencia">Arquivo no formato CSV.</label>
-                    <br/>
-                    <input type="file" name="csv" accept=".csv" data-validation="Por favor, informe um arquivo CSV."/>
+                    <br />
+                    <input type="file" name="csv" accept=".csv" data-validation="Por favor, informe um arquivo CSV." />
                 </div>
                 <fieldset>
                     <legend>Observações antes de importar:</legend>
@@ -180,15 +179,14 @@ class BackEnd
             </form>
             <div id="importando" style="display: none;">
                 <h3>Importando o arquivo CSV. Por favor, aguarde.</h3>
-                <img src="<?php echo plugin_dir_url(dirname(__FILE__)); ?>/img/loading.gif" alt="Processando..."
-                     title="Processando..."/>
+                <img src="<?php echo plugin_dir_url(dirname(__FILE__)); ?>/img/loading.gif" alt="Processando..." title="Processando..." />
             </div>
         </section>
         <script type="text/javascript">
-            jQuery(document).ready(function ($) {
-                $('#submit').click(function () {
+            jQuery(document).ready(function($) {
+                $('#submit').click(function() {
                     let status = true;
-                    $('form *[data-validation]').each(function () {
+                    $('form *[data-validation]').each(function() {
                         if ($(this).val() === '') {
                             $(this).addClass('error-validation');
                             alert($(this).data('validation'));
@@ -202,19 +200,19 @@ class BackEnd
                         if (!confirm('Atenção! Por favor, confira atentamente as opções selecionadas para a importação:\n\nTipo de informação: ' + tipo + '\nAno de referência: ' + ano + '\n\nDeseja realmente prosseguir?')) {
                             return false;
                         } else {
-                            $('#wpbody-content h2, #wpbody-content div#message, #wpbody-content form').fadeOut('normal', function () {
+                            $('#wpbody-content h2, #wpbody-content div#message, #wpbody-content form').fadeOut('normal', function() {
                                 $('#importando').fadeIn('fast');
                             });
                         }
                     }
                     return status;
                 });
-                $(document).on('click', '.error-validation', function () {
+                $(document).on('click', '.error-validation', function() {
                     $(this).removeClass('error-validation');
                 });
             });
         </script>
-        <?php
+    <?php
     }
 
     /**
@@ -285,7 +283,7 @@ class BackEnd
             $interpreter->addObserver(function (array $columns) use (&$estados, &$municipios, &$escolas, &$anoReferencia, &$tipoInformacao) {
                 foreach ($columns as $k => $v) {
                     //Verifica a codidicação do csv enviado
-                    $utf = mb_detect_encoding($v, 'UTF-8, ISO-8859-1');//Adicione outras codificações se precisar verificar outros tipos. Documentação em: https://www.php.net/manual/pt_BR/function.mb-detect-encoding.php
+                    $utf = mb_detect_encoding($v, 'UTF-8, ISO-8859-1'); //Adicione outras codificações se precisar verificar outros tipos. Documentação em: https://www.php.net/manual/pt_BR/function.mb-detect-encoding.php
                     // Se a codificação for diferente de UTF-8 aplica a coficação utp-8;
                     if ($utf !== 'UTF-8') {
                         $columns[$k] = trim(utf8_encode($v));
@@ -486,7 +484,7 @@ class BackEnd
     public function formLimparCaches()
     {
         wp_enqueue_style('admin', plugin_dir_url(dirname(__FILE__)) . 'css/admin.css');
-        ?>
+    ?>
         <section>
             <h1>Limpar caches</h1>
             <section>
@@ -494,16 +492,16 @@ class BackEnd
                     <h2>Limpar cache de mapas de estados</h2>
                     <?php
                     if (isset($_GET['mapas'])) {
-                        ?>
+                    ?>
                         <div id="message" class="updated notice notice-success is-dismissible">
                             <p>Limpeza realizada com sucesso!</p>
                         </div>
-                        <?php
+                    <?php
                     }
                     ?>
                 </header>
                 <form method="post">
-                    <input type="hidden" name="limpar_cache_mapas" value="1"/>
+                    <input type="hidden" name="limpar_cache_mapas" value="1" />
                     <?php submit_button('Limpar', 'primary', 'submit', true) ?>
                 </form>
                 <?php
@@ -524,16 +522,16 @@ class BackEnd
                     <h2>Limpar cache de painéis de estados, municípios e escolas</h2>
                     <?php
                     if (isset($_GET['paineis'])) {
-                        ?>
+                    ?>
                         <div id="message" class="updated notice notice-success is-dismissible">
                             <p>Limpeza realizada com sucesso!</p>
                         </div>
-                        <?php
+                    <?php
                     }
                     ?>
                 </header>
                 <form method="post">
-                    <input type="hidden" name="limpar_cache_paineis" value="1"/>
+                    <input type="hidden" name="limpar_cache_paineis" value="1" />
                     <?php submit_button('Limpar', 'primary', 'submit', true) ?>
                 </form>
                 <?php
@@ -554,7 +552,7 @@ class BackEnd
                 ?>
             </section>
         </section>
-        <?php
+    <?php
     }
 
     /**
@@ -595,7 +593,7 @@ class BackEnd
 
         add_rewrite_rule('^painel/([^/]*)/([^/]*)/([^/]*)/?', 'index.php?page_id=25&painel_tipo=$matches[1]&painel_id=$matches[2]&painel_ano=$matches[3]', 'top');
         add_rewrite_rule('^painel-brasil/([^/]*)/?', 'index.php?page_id=129&painel_ano=$matches[1]', 'top');
-        
+
         add_rewrite_rule('^painel-trajetorias/([^/]*)/([^/]*)/([^/]*)?', 'index.php?page_id=164&painel_uf=$matches[1]&painel_municipio=$matches[2]&painel_ano=$matches[3]', 'top');
         add_rewrite_rule('^painel-trajetorias/([^/]*)/([^/]*)?', 'index.php?page_id=164&painel_uf=$matches[1]&painel_ano=$matches[2]', 'top');
         add_rewrite_rule('^painel-trajetorias/([^/]*)?', 'index.php?page_id=164&painel_ano=$matches[1]', 'top');
@@ -691,14 +689,14 @@ class BackEnd
     {
         wp_enqueue_style('admin', plugin_dir_url(dirname(__FILE__)) . 'css/admin.css');
         $url = get_post_meta($post->ID, '_url', true);
-        ?>
+    ?>
         <section>
             <label for="url">Endereço do material: </label>
-            <br/>
-            <input type="url" name="url" id="url" required="true" value="<?php echo $url; ?>"/>
+            <br />
+            <input type="url" name="url" id="url" required="true" value="<?php echo $url; ?>" />
             <i>Por favor, informe o endereço com o protocolo (ex.: http://, https://, ftp://, etc).</i>
         </section>
-        <?php
+<?php
     }
 
     /**

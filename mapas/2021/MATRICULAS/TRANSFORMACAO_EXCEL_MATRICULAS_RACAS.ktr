@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>TRANSFORMACAO_EXCEL_ABANDONOS_RACAS_2017</name>
+    <name>TRANSFORMACAO_EXCEL_MATRICULAS</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
-    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -442,16 +441,52 @@
     <type>MYSQL</type>
     <access>Native</access>
     <database>trajetorias</database>
-    <port>3320</port>
+    <port>3306</port>
     <username>root</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb79ce10cc9da0ce</password>
+    <password>Encrypted 2be98afc86aa7f2e4cb79ce10bec3fd89</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
     <attributes>
       <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
         <code>PORT_NUMBER</code>
-        <attribute>3320</attribute>
+        <attribute>3306</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>STREAM_RESULTS</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
       </attribute>
     </attributes>
   </connection>
@@ -576,6 +611,30 @@
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
+      <field>
+        <name>ano_referencia2018</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>2018</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>ano_referencia2019</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>2019</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -603,8 +662,8 @@
       <schema_name/>
     </partitioning>
     <connection>trajetorias</connection>
-    <schema>trajetorias</schema>
-    <table>tse_qtd_abandonos</table>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -620,6 +679,10 @@
     <return_keys>N</return_keys>
     <return_field/>
     <fields>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
       <field>
         <column_name>cor_raca_id</column_name>
         <stream_name>id_raca_amarela</stream_name>
@@ -680,10 +743,6 @@
         <column_name>ano13</column_name>
         <stream_name>Amarela_12</stream_name>
       </field>
-      <field>
-        <column_name>escolas_id</column_name>
-        <stream_name>Código da Escola</stream_name>
-      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -695,7 +754,7 @@
     </remotesteps>
     <GUI>
       <xloc>576</xloc>
-      <yloc>368</yloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -711,8 +770,8 @@
       <schema_name/>
     </partitioning>
     <connection>trajetorias</connection>
-    <schema>trajetorias</schema>
-    <table>tse_qtd_abandonos</table>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -728,6 +787,10 @@
     <return_keys>N</return_keys>
     <return_field/>
     <fields>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
       <field>
         <column_name>cor_raca_id</column_name>
         <stream_name>id_raca_branca</stream_name>
@@ -788,10 +851,6 @@
         <column_name>ano13</column_name>
         <stream_name>Branca_12</stream_name>
       </field>
-      <field>
-        <column_name>escolas_id</column_name>
-        <stream_name>Código da Escola</stream_name>
-      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -803,7 +862,7 @@
     </remotesteps>
     <GUI>
       <xloc>576</xloc>
-      <yloc>112</yloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -819,8 +878,8 @@
       <schema_name/>
     </partitioning>
     <connection>trajetorias</connection>
-    <schema>trajetorias</schema>
-    <table>tse_qtd_abandonos</table>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -836,6 +895,10 @@
     <return_keys>N</return_keys>
     <return_field/>
     <fields>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
       <field>
         <column_name>ano_referencia</column_name>
         <stream_name>Ano do Censo</stream_name>
@@ -896,10 +959,6 @@
         <column_name>ano13</column_name>
         <stream_name>Indígena_12</stream_name>
       </field>
-      <field>
-        <column_name>escolas_id</column_name>
-        <stream_name>Código da Escola</stream_name>
-      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -911,7 +970,7 @@
     </remotesteps>
     <GUI>
       <xloc>576</xloc>
-      <yloc>304</yloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -942,7 +1001,7 @@
     <accept_field/>
     <accept_stepname/>
     <file>
-      <name>/Users/manoelfilho/ProjectsWeb/busca_ativa/projeto/arquivos/Atualizacoes - 2020/dados_escolares_2020/abandono_2020.xlsx</name>
+      <name>/home/unicef/Documents/www/trajetorias-sucesso-escolar/Planilhas/2019/MATRICULAS_ESTADUAL_MUNICIPAL_2019_2.xlsx</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -951,7 +1010,7 @@
     <fields>
       <field>
         <name>Código da Escola</name>
-        <type>Integer</type>
+        <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -1995,7 +2054,7 @@
       </field>
       <field>
         <name>Ano do Censo</name>
-        <type>Integer</type>
+        <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -2008,7 +2067,7 @@
     </fields>
     <sheets>
       <sheet>
-        <name>Abandono-Cor-Raça</name>
+        <name>Matriculas_Cor_raca</name>
         <startrow>3</startrow>
         <startcol>0</startcol>
       </sheet>
@@ -2058,8 +2117,8 @@
       <schema_name/>
     </partitioning>
     <connection>trajetorias</connection>
-    <schema>trajetorias</schema>
-    <table>tse_qtd_abandonos</table>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -2075,6 +2134,10 @@
     <return_keys>N</return_keys>
     <return_field/>
     <fields>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
       <field>
         <column_name>cor_raca_id</column_name>
         <stream_name>id_raca_nao_declarada</stream_name>
@@ -2135,10 +2198,6 @@
         <column_name>ano13</column_name>
         <stream_name>Não declarada_12</stream_name>
       </field>
-      <field>
-        <column_name>escolas_id</column_name>
-        <stream_name>Código da Escola</stream_name>
-      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -2150,7 +2209,7 @@
     </remotesteps>
     <GUI>
       <xloc>576</xloc>
-      <yloc>32</yloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2166,8 +2225,8 @@
       <schema_name/>
     </partitioning>
     <connection>trajetorias</connection>
-    <schema>trajetorias</schema>
-    <table>tse_qtd_abandonos</table>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -2183,6 +2242,10 @@
     <return_keys>N</return_keys>
     <return_field/>
     <fields>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
       <field>
         <column_name>cor_raca_id</column_name>
         <stream_name>id_raca_parda</stream_name>
@@ -2243,10 +2306,6 @@
         <column_name>ano13</column_name>
         <stream_name>Parda_12</stream_name>
       </field>
-      <field>
-        <column_name>escolas_id</column_name>
-        <stream_name>Código da Escola</stream_name>
-      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -2274,8 +2333,8 @@
       <schema_name/>
     </partitioning>
     <connection>trajetorias</connection>
-    <schema>trajetorias</schema>
-    <table>tse_qtd_abandonos</table>
+    <schema/>
+    <table>tse_qtd_matriculas</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -2291,6 +2350,10 @@
     <return_keys>N</return_keys>
     <return_field/>
     <fields>
+      <field>
+        <column_name>escolas_id</column_name>
+        <stream_name>Código da Escola</stream_name>
+      </field>
       <field>
         <column_name>cor_raca_id</column_name>
         <stream_name>id_raca_preta</stream_name>
@@ -2350,10 +2413,6 @@
       <field>
         <column_name>ano13</column_name>
         <stream_name>Preta_12</stream_name>
-      </field>
-      <field>
-        <column_name>escolas_id</column_name>
-        <stream_name>Código da Escola</stream_name>
       </field>
     </fields>
     <attributes/>
