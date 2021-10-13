@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template part for displaying page content in page.php
  *
@@ -32,7 +33,7 @@
 
                                 <div class="frases">
 
-                                A cultura do fracasso escolar afeta milhões de estudantes e a desigualdade se agrava na pandemia, alertam UNICEF e Instituto Claro: estudo mostra que reprovação, abandono escolar e distorção idade-série já impactavam os estudantes mais vulneráveis, antes da pandemia. Com a chegada da Covid-19, os desafios são ainda maiores.
+                                    A cultura do fracasso escolar afeta milhões de estudantes e a desigualdade se agrava na pandemia, alertam UNICEF e Instituto Claro: estudo mostra que reprovação, abandono escolar e distorção idade-série já impactavam os estudantes mais vulneráveis, antes da pandemia. Com a chegada da Covid-19, os desafios são ainda maiores.
 
                                 </div>
 
@@ -175,33 +176,29 @@
 
             <div class="center content_video">
 
-                    <div class="item text">
-                        <h3 class="entry-header-home">Sobre a estratégia</h3>
+                <div class="item text">
+                    <h3 class="entry-header-home">Sobre a estratégia</h3>
 
-                        <p class="alignjustify">A estratégia <b>Trajetórias de Sucesso Escolar</b> é uma iniciativa do UNICEF, do
-                            Instituto Claro e outros parceiros para o enfrentamento da cultura de fracasso escolar no
-                            Brasil. O site disponibiliza indicadores de fluxo escolar nacionais, estaduais, municipais e por
-                            escola retirados do Censo Escolar. O objetivo é facilitar um diagnóstico amplo sobre a distorção
-                            idade-série no país – quando um estudante está com dois ou mais anos de  atraso escolar – e
-                            oferecer um conjunto de recomendações para o desenvolvimento de políticas educacionais que
-                            promovam o acesso, permanência e aprendizagem desses estudantes. Além das taxas de distorção e
-                            índices de abandono e reprovação, o site disponibiliza recortes por gênero, raça e localidade
-                            que mostram as relações entre o atraso escolar e as desigualdades brasileiras. 
-                        </p>
+                    <p class="alignjustify">A estratégia <b>Trajetórias de Sucesso Escolar</b> é uma iniciativa do UNICEF, do
+                        Instituto Claro e outros parceiros para o enfrentamento da cultura de fracasso escolar no
+                        Brasil. O site disponibiliza indicadores de fluxo escolar nacionais, estaduais, municipais e por
+                        escola retirados do Censo Escolar. O objetivo é facilitar um diagnóstico amplo sobre a distorção
+                        idade-série no país – quando um estudante está com dois ou mais anos de  atraso escolar – e
+                        oferecer um conjunto de recomendações para o desenvolvimento de políticas educacionais que
+                        promovam o acesso, permanência e aprendizagem desses estudantes. Além das taxas de distorção e
+                        índices de abandono e reprovação, o site disponibiliza recortes por gênero, raça e localidade
+                        que mostram as relações entre o atraso escolar e as desigualdades brasileiras. 
+                    </p>
 
-                    </div>
+                </div>
 
-                    <div class="item video">
+                <div class="item video">
 
-                        <iframe src="https://www.youtube.com/embed/7MuJKuRBIxY"
-                                frameborder="0"
-                                color="white"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen>
+                    <iframe src="https://www.youtube.com/embed/7MuJKuRBIxY" frameborder="0" color="white" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 
-                        </iframe>
+                    </iframe>
 
-                    </div>
+                </div>
 
             </div>
 
@@ -211,7 +208,7 @@
 
 
     <header class="entry-header">
-        
+
         <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
 
         <?php if (is_front_page()) { ?>
@@ -221,25 +218,29 @@
                     <label>Ano referência
                         <select class="select-year" id="select-year" name="select-year">
                             <option>Selecione</option>
-                            <option value="2020" <?php if ((int)$_POST['select-year'] == 2020 OR (int)$_POST['select-year'] == 0) {
-                                echo "selected";
-                            } ?> >2019
+                            <option value="2021" <?php if ((int)$_POST['select-year'] == 2021 or (int)$_POST['select-year'] == 0) {
+                                                        echo "selected";
+                                                    } ?>>2020
+                            </option>
+                            <option value="2020" <?php if ((int)$_POST['select-year'] == 2020) {
+                                                        echo "selected";
+                                                    } ?>>2019
                             </option>
                             <option value="2019" <?php if ((int)$_POST['select-year'] == 2019) {
-                                echo "selected";
-                            } ?> >2018
+                                                        echo "selected";
+                                                    } ?>>2018
                             </option>
                             <option value="2018" <?php if ((int)$_POST['select-year'] == 2018) {
-                                echo "selected";
-                            } ?>>2017
+                                                        echo "selected";
+                                                    } ?>>2017
                             </option>
                             <option value="2017" <?php if ((int)$_POST['select-year'] == 2017) {
-                                echo "selected";
-                            } ?>>2016
+                                                        echo "selected";
+                                                    } ?>>2016
                             </option>
                             <option value="2016" <?php if ((int)$_POST['select-year'] == 2016) {
-                                echo "selected";
-                            } ?>>2015
+                                                        echo "selected";
+                                                    } ?>>2015
                             </option>
                         </select>
                     </label>
@@ -253,7 +254,7 @@
             </div>
 
         <?php } ?>
-        
+
     </header><!-- .entry-header -->
 
     <?php trajetoria_escolar_post_thumbnail(); ?>
@@ -275,7 +276,7 @@
             edit_post_link(
                 sprintf(
                     wp_kses(
-                    /* translators: %s: Name of current post. Only visible to screen readers */
+                        /* translators: %s: Name of current post. Only visible to screen readers */
                         __('Edit <span class="screen-reader-text">%s</span>', 'trajetoria_escolar'),
                         array(
                             'span' => array(
@@ -291,5 +292,5 @@
             ?>
         </footer><!-- .entry-footer -->
     <?php endif; ?>
-    
+
 </article><!-- #post-<?php the_ID(); ?> -->
