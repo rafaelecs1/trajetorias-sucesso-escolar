@@ -1,6 +1,6 @@
 #!/bin/bash
 # array with years of trajetorias
-array1=( 2015 2016 2017 2018 2019 )
+array1=( 2015 2016 2017 2018 2019 2020)
 for a in "${array1[@]}"
 do
 	# array with states id
