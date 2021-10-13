@@ -877,7 +877,7 @@ class FrontEnd
 
                 <ul class="abas-paineis">
                     <li id="tab-link-1" class="tablinks"><a href="<?php echo $link; ?>">
-                            << /a>
+                            << </a>
                     </li>
                     <li id="tab-link-2" class="tablinks active"><a href="#">Trajetórias</a></li>
                 </ul>
