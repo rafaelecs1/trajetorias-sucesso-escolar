@@ -895,22 +895,23 @@ class FrontEnd
                                 <div id="painel_trajetorias">
 
                                     <p>
-
-                                    <p>Esse painel apresenta simulações de trajetórias educacionais entre 2015 até 2020 para quatro segmentos:
-                                        <br>
-                                        <li>Coorte de matrículas de 6 anos no 1º ano do Ensino Fundamental em 2015;</li>
-                                        <br>
-                                        <li>Coorte de matrículas de 10 anos no 5º ano do Ensino Fundamental em 2015;</li>
-                                        <br>
-                                        <li>Coorte de matrículas de 14 anos no 9º ano do Ensino Fundamental em 2016;</li>
-                                        <br>
-                                        <li>Coorte de matrículas de 14 anos no 9º ano do Ensino Fundamental em 2017.</li>
-                                    <p>Para cada um desses segmentos acompanhou-se as matrículas nos anos seguintes, segundo a idade, por exemplo: para o primeiro segmento, acompanhou-se as matrículas de 7 anos no 2º ano do Ensino Fundamental em 2016, e assim sucessivamente até as matriculas de 11 anos no 6º ano do Ensino Fundamental em 2020.
-                                        <br>O mesmo procedimento foi adotado para os demais segmentos.
-                                    </p>
-                                    <p>Dessa forma é possível, para a região analisada, acompanhar o processo de sucesso e de exclusão da escola a cada ano, indicando os casos mais críticos e que necessitam de ações visando garantir o direito de todos e todas à educação.</P>
-
-
+                                    Esse painel apresenta simulações de trajetórias educacionais entre 2015 até 2020 para quatro 
+                                    Coorte de matrículas de 6 anos no 1º ano do Ensino Fundamental em 2015, de matrículas de 10 anos no 5º ano do Ensino Fundamental em 2015,
+                                    Coorte de matrículas de 14 anos no 9º ano do Ensino Fundamental em 2016 eCoorte de matrículas de 14 anos no 9º ano do Ensino Fundamental em 2017. 
+                                    Para cada um desses segmentos acompanhou-se as matrículas nos anos seguintes segundo a idade. 
+                                    Por exemplo, para o primeiro segmento acompanhou-se as matrículas de 7 anos no 2º ano do Ensino Fundamental em 2016 e assim sucessivamente até as
+                                     matriculas de 11 anos no 6º ano do Ensino Fundamental em 2020.O mesmo procedimento foi adotado para os outros segmentos.</p>
+                                     <p>
+                                     Para cada gráfico apresentado pode-se visualizar as alterações no total de matriculas a cada ano.
+                                      Por exemplo, em 2015 o total de matriculas de seis anos no Brasil no 1º ano do Ensino Fundamental correspondia a 1.955.305 e 
+                                      se não ocorresse abandono, reprovação ou mortalidade esse seria o total de matriculas no 6º ano do Ensino Fundamental em 2020,
+                                       no entanto o total de matriculas dessa idade nessa série em 2020 é de 1.684.275. Esse valor corresponde a 86% das matriculas do 
+                                       inicio da coorte em 2015. A diferença entre esses valores no período de 2015 a 2020 pode ser explicada pela ocorrência de reprovações,
+                                        evasões, mortalidade entre outros fatores.
+                                     </p>  
+                                     <p>
+                                     Dessa forma é possível, para a região analisada, acompanhar o processo de sucesso e de exclusão da escola a cada ano, indicando os casos mais críticos e que necessitam de ações visando garantir o direito de todos e todas à educação.
+                                     </p>
                                     </p>
 
                                     <!-- <div id="seletores">
