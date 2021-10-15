@@ -11,9 +11,10 @@ jQuery(document).ready(function ($) {
     var color = Chart.helpers.color;
 
     var tipos_trajetorias = [
-        {id: 1, cssSelector: 'trajetoria1', title: 'Coorte de matrículas de 6 anos no 1º ano do Ensino Fundamental (EF) em 2015', backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(), borderColor: window.chartColors.red },
-        {id: 2, cssSelector: 'trajetoria2', title: 'Coorte de matrículas de 10 anos no 5º ano do Ensino Fundamental (EF) em 2015', backgroundColor: color(window.chartColors.green).alpha(0.5).rgbString(), borderColor: window.chartColors.green },
-        {id: 3, cssSelector: 'trajetoria3', title: 'Coorte de matrículas de 14 anos no 9º ano do Ensino Fundamental (EF) em 2016', backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(), borderColor: window.chartColors.blue }
+        {id: 1, cssSelector: 'trajetoria1', title: 'Coorte de matrículas de 6 anos no 1º ano do Ensino Fundamental (EF) em 2015', backgroundColor: color(window.chartColors.red).rgbString(), borderColor: window.chartColors.red },
+        {id: 2, cssSelector: 'trajetoria2', title: 'Coorte de matrículas de 10 anos no 5º ano do Ensino Fundamental (EF) em 2015', backgroundColor: color(window.chartColors.green).rgbString(), borderColor: window.chartColors.green },
+        {id: 3, cssSelector: 'trajetoria3', title: 'Coorte de matrículas de 14 anos no 9º ano do Ensino Fundamental (EF) em 2016', backgroundColor: color(window.chartColors.blue).rgbString(), borderColor: window.chartColors.blue },
+        {id: 4, cssSelector: 'trajetoria4', title: 'Coorte de matrículas de 14 anos no 9º ano do Ensino Fundamental (EF) em 2017', backgroundColor: color(window.chartColors.yellow).rgbString(), borderColor: window.chartColors.yellow }
     ];
 
     $('#select-uf').change(function () {
@@ -57,7 +58,7 @@ jQuery(document).ready(function ($) {
         var data = [];
         trajetoriasArray.forEach(function(e){
             if( idTrajetoria == parseInt(e.tipo) ){
-                data.push( parseInt(e.matriculas).toLocaleString('pt-BR') );
+                data.push( parseInt(e.matriculas) );
             }
         });
         return data;
@@ -124,7 +125,7 @@ jQuery(document).ready(function ($) {
                 },
                 title: {
                     display: true,
-                    fontSize: 20,
+                    fontSize: 25,
                     fontColor: '#045396',
                     fontFamily: 'steelfish',
                     text: trajetoria.title
