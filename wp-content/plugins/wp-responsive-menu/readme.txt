@@ -3,8 +3,8 @@ Contributors: sagarseth9,magnigenie,kshirod-patel
 Tags: WordPress Responsive Menu, Genesis responsive menu, Genesis Mobile Menu, Thesis Mobile Menu, Thesis Responsive Menu,  Mobile Menu, Responsive Menu Plugin, WP Responsive Menu, WordPress mobile menu
 Requires at least: 3.0
 Requires PHP: 5.4
-Tested up to: 5.5
-Stable tag: 3.1.4
+Tested up to: 5.8
+Stable tag: 3.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -85,6 +85,11 @@ If you have any  suggestions for a new plugin, feel free to email us at info@mag
 
 
 == ChangeLog ==
+
+= Version 3.1.5 =
+
+* Tested with latest WordPress and PHP.
+* Fixed issues related PHP 8.0
 
 = Version 3.1.4 =
 

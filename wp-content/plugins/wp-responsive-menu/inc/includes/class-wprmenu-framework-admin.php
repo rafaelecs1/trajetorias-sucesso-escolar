@@ -200,6 +200,8 @@ class WPRMenu_Framework_Admin {
 
     wp_register_script( 'wprmenu-import-demo', $this->wprmenu_admin_url() . '/assets/js/wprmenu-import-demo.js', array('jquery', 'wpr-exit-intent', 'Sweetalert2-js'),  WPRMENU_VERSION );
 
+    $enable_preview = !empty( $options ) ? $options['wpr_live_preview'] : 0;
+
     $params = array(
       'ajax_url'            =>  admin_url( 'admin-ajax.php' ),
       'please_wait'         => __('Please Wait !', 'wprmenu'),
@@ -213,7 +215,7 @@ class WPRMenu_Framework_Admin {
       'import_error_title'  => __('Oops...', 'wprmenu'),
       'pro_version_error'   => __('Please upgrade to PRO Version to import this demo.', 'wprmenu'),
       'preview_url'         => home_url(),
-      'enable_preview'      => $options['wpr_live_preview'],
+      'enable_preview'      => $enable_preview,
       'import_error'        => __('Something went wrong', 'wprmenu'),
     );
 
@@ -421,7 +423,7 @@ class WPRMenu_Framework_Admin {
       }
 
       // For a value to be submitted to database it must pass through a sanitization filter
-      if ( has_filter( 'wpr_of_sanitize_' . $option['type'] ) ) {
+      if ( has_filter( 'wpr_of_sanitize_' . $option['type'] ) && !empty( $input[$id] ) ) {
         $clean[$id] = apply_filters( 'wpr_of_sanitize_' . $option['type'], $input[$id], $option );
       }
     }

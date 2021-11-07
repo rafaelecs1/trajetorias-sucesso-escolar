@@ -126,7 +126,7 @@ add_filter( 'wpr_of_sanitize_info', 'wpr_of_sanitize_allowedposttags' );
 
 function wpr_of_sanitize_enum( $input, $option ) {
 	$output = '';
-	if ( array_key_exists( $input, $option['options'] ) ) {
+	if ( is_array( $option['options'] ) && array_key_exists( $input, $option['options'] ) ) {
 		$output = $input;
 	}
 	return $output;
