@@ -897,7 +897,7 @@ class FrontEnd
                                     <p>
                                         Esse painel apresenta simulações de trajetórias educacionais entre 2015 até 2020 para quatro
                                         Coorte de matrículas de 6 anos no 1º ano do Ensino Fundamental em 2015, de matrículas de 10 anos no 5º ano do Ensino Fundamental em 2015,
-                                        Coorte de matrículas de 14 anos no 9º ano do Ensino Fundamental em 2016 eCoorte de matrículas de 14 anos no 9º ano do Ensino Fundamental em 2017.
+                                        Coorte de matrículas de 14 anos no 9º ano do Ensino Fundamental em 2016 e Coorte de matrículas de 14 anos no 9º ano do Ensino Fundamental em 2017.
                                         Para cada um desses segmentos acompanhou-se as matrículas nos anos seguintes segundo a idade.
                                         Por exemplo, para o primeiro segmento acompanhou-se as matrículas de 7 anos no 2º ano do Ensino Fundamental em 2016 e assim sucessivamente até as
                                         matriculas de 11 anos no 6º ano do Ensino Fundamental em 2020.O mesmo procedimento foi adotado para os outros segmentos.</p>
