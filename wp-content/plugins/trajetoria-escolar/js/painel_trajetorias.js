@@ -68,7 +68,7 @@ jQuery(document).ready(function ($) {
         var labels = [];
         trajetoriasArray.forEach( function(e) {
             if (trajetoriaObj.id === parseInt(e.tipo)){
-                if($.inArray(e.ano, labels) === -1) labels.push(e.ano);
+                if($.inArray(e.ano, labels) === -1) labels.push(getLabelForYear(e.ano));
             }
         });
         return labels;
@@ -133,7 +133,16 @@ jQuery(document).ready(function ($) {
                 
                 tooltips: {
                     enabled: true,
-                    backgroundColor: 'rgba(0, 0, 0, 1.0)'
+                    backgroundColor: 'rgba(0, 0, 0, 1.0)',
+                    titleFontSize: 16,
+                    bodyFontSize: 14,
+
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            return returnNumber(tooltipItem.yLabel);
+                        }
+                    }
+                    
                 },
 
                 hover: {
@@ -160,16 +169,34 @@ jQuery(document).ready(function ($) {
                 // },
 
                 scales: {
+                   
                     yAxes: [{
                         ticks: {
                             beginAtZero: true
                         }
                     }]
+                    
                 }
             }
         });
 
 
     });
+
+    function getLabelForYear(year) {
+        var years = {
+            '2015': ['6 anos no 1º ano', ' no EF em 2015'],
+            '2016': ['7 anos no 2º ano', ' no EF em 2016'],
+            '2017': ['8 anos no 3º ano', ' no EF em 2017'],
+            '2018': ['8 anos no 4º ano', ' no EF em 2018'],
+            '2019': ['10 anos no 5º ano', ' no EF em 2019'],
+            '2020': ['11 anos no 6º ano', ' no EF em 2020']
+        }
+        return years[year];
+    }
+
+    function returnNumber(number){
+        return number ? number.toLocaleString('pt-BR') : 0;
+    }
 
 });

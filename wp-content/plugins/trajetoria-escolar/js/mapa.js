@@ -4,8 +4,10 @@ var map,
     infoWindow;
 jQuery(document).ready(function ($) {
 
-    $('h1:eq(1)').after('<p class="entry-header-description">Redes públicas municipais e estaduais (Censo Escolar - INEP/MEC)</p> ');
+    $('h1:eq(1)').after('<p class="entry-header-description"><a href="http://testes.trajetoriaescolar.org.br/wp-content/uploads/2021/11/nota_sobre_o_ano_de_2020_e_o_rendimento-escolar.docx" style="text-decoration: underline;">Nota sobre os dados de rendimento escolar com base no Censo Escolar 2020</a></p>');
+    $('h1:eq(1)').after('<p class="entry-header-description">Redes públicas municipais e estaduais (Censo Escolar - INEP/MEC)</p>');
     $('h1:eq(1)').after('<p class="entry-header-description">Distorção idade-série, reprovação e abandono</p> ');
+    
 
     $('#select-year').change(function () {
         $('#form-year').submit();
