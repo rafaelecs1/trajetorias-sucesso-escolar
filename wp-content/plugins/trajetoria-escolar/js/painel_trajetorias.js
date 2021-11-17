@@ -188,7 +188,7 @@ jQuery(document).ready(function ($) {
             '2015': ['6 anos no 1º ano', ' no EF em 2015'],
             '2016': ['7 anos no 2º ano', ' no EF em 2016'],
             '2017': ['8 anos no 3º ano', ' no EF em 2017'],
-            '2018': ['8 anos no 4º ano', ' no EF em 2018'],
+            '2018': ['9 anos no 4º ano', ' no EF em 2018'],
             '2019': ['10 anos no 5º ano', ' no EF em 2019'],
             '2020': ['11 anos no 6º ano', ' no EF em 2020']
         }
