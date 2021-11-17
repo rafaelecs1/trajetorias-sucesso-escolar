@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying the footer
  *
@@ -13,14 +14,14 @@
 </div><!-- #content -->
 <?php
 if (is_front_page()) {
-    ?>
+?>
     <section id="faixa-bottom">
         <div class="center">
             <p>Tem uma experiência interessante em seu município ou estado para compartilhar? </p>
             <a href="<?php echo site_url('/fale-conosco/'); ?>">Fale conosco</a>
         </div>
     </section>
-    <?php
+<?php
 }
 ?>
 <footer id="colophon" class="site-footer">
@@ -43,7 +44,7 @@ if (is_front_page()) {
                 ?>
             </ul>
         </div>
-        
+
         <div class="item" style="max-width: 400px;">
             <ul class="realizacao">
                 <?php
@@ -63,7 +64,7 @@ if (is_front_page()) {
             <ul class="realizacao">
                 <?php
                 $realizacao = array(
-                    'unicef' => array('url' => 'https://www.unicef.org/brazil/pt', 'tipo' => 'Iniciativa'),
+                    'unicef' => array('url' => 'https://www.unicef.org/brazil', 'tipo' => 'Iniciativa'),
                 );
                 foreach ($realizacao as $k => $v) {
                     echo '<li><strong><span>', $v['tipo'], '</span></strong><a href="', $v['url'], '" class="realizador ', $k, '" target="_blank"><img src="', get_template_directory_uri(), '/img/logo/', $k, '.png" alt="', strtoupper($k), '" title="', strtoupper($k), '"/></a></li>';
@@ -71,9 +72,9 @@ if (is_front_page()) {
                 ?>
             </ul>
         </div>
-        
-        
-        
+
+
+
     </div>
 
     <div class="center">
@@ -86,9 +87,10 @@ if (is_front_page()) {
             ?>
         </ul>
     </div>
-    
+
 </footer><!-- #colophon -->
 </div><!-- #page -->
 <?php wp_footer(); ?>
 </body>
+
 </html>
