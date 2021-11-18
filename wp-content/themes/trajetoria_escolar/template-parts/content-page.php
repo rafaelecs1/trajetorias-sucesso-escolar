@@ -255,7 +255,7 @@
 
         <?php } else { ?>
 
-            <p class=""><a href="http://testes.trajetoriaescolar.org.br/wp-content/uploads/2021/11/nota_sobre_o_ano_de_2020_e_o_rendimento-escolar.pdf" style="text-decoration: underline; font-size: 20px;">Nota sobre os dados de rendimento escolar com base no Censo Escolar 2020</a></p>
+            <p class=""><a href="https://trajetoriaescolar.org.br/wp-content/uploads/2021/11/nota_sobre_o_ano_de_2020_e_o_rendimento-escolar-v2.pdf" style="text-decoration: underline; font-size: 20px;">Nota sobre os dados de rendimento escolar com base no Censo Escolar 2020</a></p>
 
         <?php } ?>
 
