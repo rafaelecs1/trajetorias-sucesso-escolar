@@ -507,14 +507,10 @@ img.loading-gif {
 
 
 .creditos {
-  position: absolute;
-  background: #1BAEBA;
-  padding: 60px;
-  border-radius: 40px;
-  width: 60%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%) scale(1);
+  background: url('../img/creditos_semiarido.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .lista_creditos {
@@ -565,14 +561,6 @@ img.loading-gif {
 
 
 
-
-  .creditos {
-    padding: 20px;
-    border-radius: 40px;
-    width: 90%;
-    transform: translate(-50%, -50%) scale(0.8);
-    font-size: 12px;
-  }
 
     .lista_creditos {
       columns: 4;

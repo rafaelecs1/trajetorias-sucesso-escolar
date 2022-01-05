@@ -475,10 +475,95 @@ img.loading-gif {
 
   }
 
+
+
+  @keyframes "inflando" {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+  }
+  @-moz-keyframes inflando {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+  }
+  @-webkit-keyframes "inflando" {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+  }
+  @-ms-keyframes "inflando" {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+  }@-o-keyframes "inflando" {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+  }
+
+
 .btn_saiba {
   position: absolute;
   width: 100px;
   cursor: pointer;
+  -webkit-animation-name: inflando;
+  -moz-animation-name: inflando;
+  -ms-animation-name: inflando;
+  -o-animation-name: inflando;
+  animation-name: inflando;
+  -webkit-animation-duration: 2.5s;
+  -moz-animation-duration: 2.5s;
+  -ms-animation-duration: 2.5s;
+  -o-animation-duration: 2.5s;
+  animation-duration: 2.5s;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  -ms-animation-timing-function: ease-in-out;
+  -o-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  -ms-animation-delay: 0.5s;
+  -o-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -ms-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  box-shadow: 0px 20px 20px 10px #edd368;
 }
   .btn_saiba img {
     width: 100%;
@@ -513,7 +598,7 @@ img.loading-gif {
     position: absolute;
     top: 30px;
     right: 30px;
-    display: block;
+    display: none;
     width: 30px;
     height: 30px;
     text-indent: -9999px;
@@ -625,14 +710,10 @@ img.loading-gif {
 
 
 .creditos {
-  position: absolute;
-  background: #1BAEBA;
-  padding: 60px;
-  border-radius: 40px;
-  width: 60%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%) scale(1);
+  background: url('../img/creditos_indigenas.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .lista_creditos {
@@ -682,14 +763,6 @@ img.loading-gif {
 
 
 
-
-  .creditos {
-    padding: 20px;
-    border-radius: 40px;
-    width: 90%;
-    transform: translate(-50%, -50%) scale(0.8);
-    font-size: 12px;
-  }
 
     .lista_creditos {
       columns: 4;
