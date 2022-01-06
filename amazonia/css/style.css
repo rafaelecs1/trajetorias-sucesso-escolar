@@ -1,0 +1,1288 @@
+/* ::-webkit-scrollbar {
+    display: none;
+} */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
+    display: block;
+}
+audio, canvas, video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+[hidden] {
+    display: none;
+}
+html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%}
+html, button, input, select, textarea {
+    font-family: sans-serif;
+}
+body {
+    margin: 0;
+}
+a:focus {
+    outline: thin dotted;
+}
+a:active, a:hover {
+    outline: 0;
+}
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+h2 {
+    font-size: 1.5em;
+    margin: 0.83em 0;
+}
+h3 {
+    font-size: 1.17em;
+    margin: 1em 0;
+}
+h4 {
+    font-size: 1em;
+    margin: 1.33em 0;
+}
+h5 {
+    font-size: 0.83em;
+    margin: 1.67em 0;
+}
+h6 {
+    font-size: 0.75em;
+    margin: 2.33em 0;
+}
+abbr[title] {
+    border-bottom: 1px dotted;
+}
+b, strong {
+    font-weight: bold;
+}
+blockquote {
+    margin: 1em 40px;
+}
+dfn {
+    font-style: italic;
+}
+mark {
+    background: #ff0;
+    color: #000;
+}
+p, pre {
+    margin: 1em 0;
+}
+code, kbd, pre, samp {
+    font-family: monospace,  serif;
+    _font-family: 'courier new',  monospace;
+    font-size: 1em;
+}
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+q {
+    quotes: none;
+}
+q:before, q:after {
+    content: '';
+    content: none;
+}
+small {
+    font-size: 80%}
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+sup {
+    top: -0.5em;
+}
+sub {
+    bottom: -0.25em;
+}
+dl, menu, ol, ul {
+    margin: 1em 0;
+}
+dd {
+    margin: 0 0 0 40px;
+}
+menu, ol, ul {
+    padding: 0 0 0 40px;
+}
+nav ul, nav ol {
+    list-style: none;
+    list-style-image: none;
+}
+img {
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
+svg:not(:root) {
+    overflow: hidden;
+}
+figure {
+    margin: 0;
+}
+form {
+    margin: 0;
+}
+fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+}
+legend {
+    border: 0;
+    padding: 0;
+    white-space: normal;
+    *margin-left: -7px;
+}
+button, input, select, textarea {
+    font-size: 100%;
+    margin: 0;
+    vertical-align: baseline;
+    *vertical-align: middle;
+}
+button, input {
+    line-height: normal;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+    *overflow: visible;
+}
+button[disabled], input[disabled] {
+    cursor: default;
+}
+input[type="checkbox"], input[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+    *height: 13px;
+    *width: 13px;
+}
+input[type="search"] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+button::-moz-focus-inner, input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+textarea {
+    overflow: auto;
+    vertical-align: top;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+html, button, input, select, textarea {
+    color: #222;
+}
+body {
+    font-size: 1em;
+    line-height: 1.4;
+}
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+img {
+    vertical-align: middle;
+}
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+textarea {
+    resize: vertical;
+}
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    *text-indent: -9999px;
+}
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%}
+.clearfix:before, .clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    *zoom: 1;
+}
+body {
+    font-family: arial, sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    color: #3d3d3d;
+    width: 100%;
+    height: 100%;
+}
+em {
+    font-weight: 500;
+    font-style: normal;
+}
+img {
+    position: absolute;
+}
+
+#skrollr-body {
+    width: 100%;
+    height: 100%}
+.loading {
+    width: 100%;
+    height: 100%;
+    background: #d49e99;
+    position: absolute;
+}
+.loading-container {
+    width: 197px;
+    height: 170px;
+    background: transparent url("../img/every-last-drop.png") no-repeat 0 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -98px;
+    margin-top: -85px;
+}
+img.loading-gif {
+    position: absolute;
+    top: 141px;
+    left: 104px;
+}
+
+
+@keyframes "macaco_pulando" {
+    0% {
+    margin-top: 10px;
+}
+50% {
+    margin-top: -2px;
+}
+100% {
+    margin-top: 6px;
+}
+}@-moz-keyframes macaco_pulando {
+    0% {
+    margin-top: 10px;
+}
+50% {
+    margin-top: -2px;
+}
+100% {
+    margin-top: 6px;
+}
+}@-webkit-keyframes "macaco_pulando" {
+    0% {
+    margin-top: 10px;
+}
+50% {
+    margin-top: -2px;
+}
+100% {
+    margin-top: 6px;
+}
+}@-ms-keyframes "macaco_pulando" {
+    0% {
+    margin-top: 10px;
+}
+50% {
+    margin-top: -2px;
+}
+100% {
+    margin-top: 6px;
+}
+}@-o-keyframes "macaco_pulando" {
+    0% {
+    margin-top: 10px;
+}
+50% {
+    margin-top: -2px;
+}
+100% {
+    margin-top: 6px;
+}
+}.macaco_pula {
+  -webkit-animation-name: macaco_pulando;
+  -moz-animation-name: macaco_pulando;
+  -ms-animation-name: macaco_pulando;
+  -o-animation-name: macaco_pulando;
+  animation-name: macaco_pulando;
+  -webkit-animation-duration: 0.5s;
+  -moz-animation-duration: 0.5s;
+  -ms-animation-duration: 0.5s;
+  -o-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  -ms-animation-timing-function: ease-in-out;
+  -o-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  -ms-animation-delay: 0.5s;
+  -o-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -ms-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+}
+
+
+@keyframes "menino_voando" {
+    0% {
+    margin-top: 10px;
+  }
+  50% {
+      margin-top: -15px;
+  }
+  100% {
+      margin-top: 6px;
+  }
+}
+@-moz-keyframes menino_voando {
+    0% {
+    margin-top: 10px;
+  }
+  50% {
+      margin-top: -15px;
+  }
+  100% {
+      margin-top: 6px;
+  }
+}
+@-webkit-keyframes "menino_voando" {
+    0% {
+    margin-top: 10px;
+  }
+  50% {
+      margin-top: -15px;
+  }
+  100% {
+      margin-top: 6px;
+  }
+}
+@-ms-keyframes "menino_voando" {
+    0% {
+    margin-top: 10px;
+  }
+  50% {
+      margin-top: -15px;
+  }
+  100% {
+      margin-top: 6px;
+  }
+}@-o-keyframes "menino_voando" {
+    0% {
+    margin-top: 10px;
+  }
+  50% {
+      margin-top: -15px;
+  }
+  100% {
+      margin-top: 6px;
+  }
+}
+
+.menino_voando {
+    -webkit-animation-name: menino_voando;
+    -moz-animation-name: menino_voando;
+    -ms-animation-name: menino_voando;
+    -o-animation-name: menino_voando;
+    animation-name: menino_voando;
+    -webkit-animation-duration: 2.5s;
+    -moz-animation-duration: 2.5s;
+    -ms-animation-duration: 2.5s;
+    -o-animation-duration: 2.5s;
+    animation-duration: 2.5s;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    -ms-animation-timing-function: ease-in-out;
+    -o-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+    -ms-animation-delay: 0.5s;
+    -o-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: infinite;
+    -o-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+}
+
+.area_site {
+}
+
+.scene {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: none;
+  background: #595A36;
+}
+
+.intro {
+  background: #ddd;
+  background: url('../img/bg4.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+  .titulo1 {
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    margin-top: 10vh;
+    max-width: 100%;
+  }
+
+  .texto_abertura {
+    width: 600px;
+    max-width: 60vw;
+    margin: 0 auto;
+    background: #FFEC00;
+    padding: 30px;
+    margin-top: 40px;
+    border-radius: 20px;
+    opacity: 0;
+    display: block;
+    color: #4B1816;
+  }
+
+  .btn_comecar {
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: -40px;
+    z-index: 9
+  }
+    .btn_comecar p {
+      display: inline-block;
+      text-align: center;
+      margin: 0 auto;
+      padding: 10px 20px;
+      background: #6666FF;
+      border: 1px solid #4B1816;
+      border-radius: 10px;
+      color: #fff;
+      margin-bottom: -30px;
+    }
+
+.capitulo1 {
+  background: #ddd;
+}
+
+  .barra {
+    position: absolute;
+    display: block;
+    top: 20px;
+    height: 20px;
+    width: 100%;
+    z-index: 1;
+  }
+    .barra img {
+      right: 20px;
+    }
+
+  .bg1 {
+    display: block;
+    background: url('../img/bg1.jpg');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .menino_costas {
+    width: 300px;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .menino_frente2{
+    width: 300px;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  /* .child{
+    margin: 50vh auto 0;
+    transform: translateY(-50%);
+  } */
+
+  .msg_inicio {
+    position: absolute;
+    right: 10vw;
+    bottom: 10vh;
+    width: 300px;
+    max-width: 80vw;
+    color: #4B1816;
+    background: #FFEC00;
+    border-radius: 40px;
+    padding: 40px 40px;
+    font-family: 'Permanent Marker', cursive;
+    text-align: center;
+  }
+
+  .bg_pia {
+    display: block;
+    background: url('../img/pia.jpg');
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .mao_copo {
+    left: -50px;
+    bottom: 0;
+    height: 600px;
+  }
+
+  .gota {
+    left: 44vw;
+    top: 25vh;
+    height: 60px;
+  }
+
+  .x {
+    left: 42vw;
+    top: 20vh;
+    height: 150px;
+  }
+
+  .rosto {
+    right: 10vw;
+    bottom: 5vh;
+    width: 400px;
+    max-width: 90%;
+  }
+
+  .bg_branco {
+    display: block;
+    background: #ffffff61;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .mao_relogio {
+    left: 32vw;
+    bottom: -100px;
+    width: 600px;
+  }
+
+  .mao_dedo {
+    left: -50px;
+    bottom: 0;
+    height: 600px;
+  }
+
+  .menino_frente {
+    width: 300px;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .menina {
+    width: 200px;
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    transform: translate(-10%, -10%);
+  }
+  .msg_menino {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 300px;
+    max-width: 80vw;
+    color: #4B1816;
+    background: #f1dfa5;
+    border-radius: 100%;
+    padding: 40px 40px;
+    font-family: 'Permanent Marker', cursive;
+    text-align: center;
+  }
+  .msg_menina {
+    position: absolute;
+    bottom: 10%;
+    right: 370px;
+    width: 300px;
+    max-width: 80vw;
+    color: #4B1816;
+    background: #00FFFF;
+    border-radius: 100%;
+    padding: 40px 40px;
+    font-family: 'Permanent Marker', cursive;
+    text-align: center;
+  }
+
+  .msg_menina2 {
+    position: absolute;
+    bottom: 14%;
+    right: 370px;
+    width: 300px;
+    max-width: 80vw;
+    color: #4B1816;
+    background: #00FFFF;
+    border-radius: 100%;
+    padding: 40px 40px;
+    font-family: 'Permanent Marker', cursive;
+    text-align: center;
+  }
+
+  .mao_tele {
+    right: 10vw;
+    bottom: -150px;
+    width: 850px;
+  }
+
+  .mao_dedo2 {
+    left: -50px;
+    bottom: 0;
+    height: 600px;
+  }
+
+.capitulo3,
+.capitulo2 {
+  top: 0%;
+  display: block;
+  background: #595A36;
+}
+
+  .titulo2 {
+    display: block;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    transform: translate(-20%, -20%);
+  }
+
+  .menino_costas2 {
+    width: 250px;
+    position: absolute;
+    bottom: 0%;
+    right: 30%;
+    transform: translate(-40%, -0%);
+  }
+  .msg_menino2 {
+    position: absolute;
+    top: 40%;
+    left: 10%;
+    width: 200px;
+    max-width: 80vw;
+    color: #4B1816;
+    background: #f1dfa5;
+    border-radius: 100%;
+    padding: 40px 40px;
+    font-family: 'Permanent Marker', cursive;
+    text-align: center;
+  }
+
+  .bg3,
+  .bg2 {
+    display: block;
+    height: 90%;
+  }
+
+  .bg3b {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+
+  .faixa_caminho {
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #595A36;
+  }
+
+  .bg4 {
+    top: -200%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 100%;
+  }
+
+  .bg5 {
+    display: block;
+    background: url('../img/bg5.jpg');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  .area-personagem1 {
+    width: auto;
+    height: 300px;
+    position: absolute;
+    bottom: 50px;
+  }
+
+  .personagem {
+    height: 300px;
+  }
+  .personagem_frente {
+    left: 20px;
+  }
+
+  .texto {
+    font-family: 'MuseoModerno', cursive;
+    position: absolute;
+    top: 10%;
+    width: 300px;
+    background: #00ffffe6;
+    padding: 30px;
+    border-radius: 50px;
+    opacity: 0;
+    display: block;
+  }
+
+  .texto strong {
+    font-weight: 800;
+  }
+
+  .texto_imagem {
+    position: absolute;
+    top: 20%;
+    width: 300px;
+    padding: 30px;
+    display: block;
+  }
+
+  .macaco {
+    height: 150px;
+    left: 200px;
+    bottom: 0;
+  }
+
+    .macaco1 {
+      height: 150px;
+      left: 200px;
+      bottom: 0;
+    }
+    .macaco2 {
+      height: 150px;
+      right: 50vw;
+      bottom: 0;
+    }
+  .msg_menino_macaco {
+    position: absolute;
+    top: -160px;
+    left: 40px;
+    width: 250px;
+    max-width: 80vw;
+    color: #4B1816;
+    background: #f1dfa5;
+    border-radius: 100%;
+    padding: 40px 40px;
+    font-family: 'Permanent Marker', cursive;
+    text-align: center;
+  }
+
+  .msg_macaco {
+    position: absolute;
+    background: #EAEAEA;
+    padding: 40px 40px;
+    border-radius: 100%;
+    width: 200px;
+    left: 230px;
+    bottom: 160px;
+    font-family: 'Permanent Marker', cursive;
+    text-align: center;
+  }
+
+    .msg_macaco1 {
+      position: absolute;
+      background: #EAEAEA;
+      padding: 40px 40px;
+      border-radius: 100%;
+      width: 200px;
+      left: 230px;
+      bottom: 160px;
+      font-family: 'Permanent Marker', cursive;
+      text-align: center;
+    }
+    .msg_macaco2 {
+      position: absolute;
+      background: #EAEAEA;
+      padding: 40px 40px;
+      border-radius: 100%;
+      width: 200px;
+      right: 50vw;
+      bottom: 160px;
+      font-family: 'Permanent Marker', cursive;
+      text-align: center;
+    }
+
+.area-itens {
+  width: auto;
+  height: 40px;
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+}
+  .item {
+    height: 40px;
+  }
+  .bau {
+    width: 60px;
+    position: absolute;
+    bottom: 50px;
+  }
+  .elemento {
+    width: 60px;
+    position: absolute;
+    bottom: 100px;
+  }
+
+
+
+  .creditos {
+    background: url('../img/creditos_amazonia.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .lista_creditos {
+    columns: 3;
+    -webkit-columns: 3;
+    -moz-columns: 3;
+  }
+
+  .lista_creditos li {
+    margin-bottom: 20px;
+    list-style: none;
+  }
+
+  .cap4 {
+    background: #fff;
+    height: 100%;
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  @media (max-width: 1400px) {
+    .mao_copo {
+      left: -50px;
+      bottom: 0;
+      height: 400px;
+    }
+
+    .x {
+      left: 40vw;
+      top: 25vh;
+      height: 150px;
+    }
+
+    .mao_relogio {
+      left: 30vw;
+      bottom: -100px;
+      width: 500px;
+    }
+
+    .mao_dedo {
+      left: 0px;
+      bottom: 0;
+      height: 400px;
+    }
+
+    .mao_tele {
+      right: 100px;
+      bottom: -20px !important;
+      width: 650px;
+    }
+
+    .mao_dedo2 {
+      left: -30px !important;
+      bottom: 55px;
+      height: 400px;
+    }
+
+    .menino_frente {
+      width: 250px;
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+  }
+
+
+@media (max-width: 1000px) {
+  .mao_copo {
+    left: 0px;
+    bottom: 100px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .menino_costas {
+    width: 200px;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .msg_inicio {
+    position: absolute;
+    right: 10vw;
+    bottom: 10vh;
+    width: 300px;
+    max-width: 60vw;
+    color: #4B1816;
+    background: #FFEC00;
+    border-radius: 40px;
+    padding: 20px 20px;
+  }
+
+  .barra img {
+    height: 20px;
+  }
+
+  .titulo1 {
+    max-width: 50%;
+    margin-top: 15vh !important;
+  }
+
+  .mao_copo {
+    left: -330px;
+    bottom: 150px;
+    height: 140px;
+  }
+
+  .gota {
+    left: 58vw;
+    top: 25vh;
+    height: 30px;
+  }
+
+  .x {
+    left: 42vw;
+    top: 25vh;
+    height: 170px;
+  }
+
+  .mao_relogio {
+    left: 60vw;
+    bottom: 10px !important;
+    width: 200px;
+  }
+
+  .mao_dedo {
+    left: -330px;
+    bottom: 55px;
+    height: 200px;
+  }
+
+  .menina {
+    width: 100px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    transform: translate(-10%, -10%);
+  }
+
+  .msg_menino {
+    position: absolute;
+    top: 40px;
+    left: 10%;
+    width: 300px;
+    max-width: 60vw;
+    color: #4B1816;
+    background: #f1dfa5;
+    border-radius: 100%;
+    padding: 40px 40px;
+  }
+
+  .msg_menina2,
+  .msg_menina {
+    position: absolute;
+    bottom: 10%;
+    right: 60px;
+    width: 300px;
+    max-width: 60vw;
+    color: #4B1816;
+    background: #00FFFF;
+    border-radius: 100%;
+    padding: 40px 40px;
+    font-size: 12px;
+  }
+
+  .mao_tele {
+    right: -200px;
+    bottom: -0px !important;
+    width: 350px;
+  }
+
+  .mao_dedo2 {
+    left: -130px !important;
+    bottom: 55px;
+    height: 200px;
+  }
+
+  .titulo2 {
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: -100px;
+    transform: scale(0.5) !important;
+  }
+
+  .menino_costas2 {
+    width: 150px;
+    position: absolute;
+    bottom: 0%;
+    right: 30%;
+    transform: translate(-40%, -0%);
+  }
+
+  .bg3,
+  .bg2 {
+    display: block;
+    height: 63% !important;
+  }
+
+  .area-personagem1 {
+    width: auto;
+    height: 220px !important;
+    position: absolute;
+    bottom: 0px !important;
+  }
+
+  .macaco {
+    height: 100px;
+    left: -120px;
+    bottom: 0;
+  }
+    .macaco1 {
+      height: 100px;
+      left: 0px;
+      bottom: 0px;
+    }
+    .macaco2 {
+      height: 100px;
+      right: 50vw;
+    }
+
+  .msg_macaco {
+    position: absolute;
+    padding: 40px 40px;
+    border-radius: 100%;
+    width: 150px;
+    left: -150px;
+    bottom: 100px;
+  }
+    .msg_macaco1 {
+      position: absolute;
+      padding: 40px 40px;
+      border-radius: 100%;
+      width: 150px;
+      left: -100px;
+      bottom: 80px;
+    }
+
+    .msg_macaco2 {
+      position: absolute;
+      background: #EAEAEA;
+      padding: 40px 40px;
+      border-radius: 100%;
+      width: 200px;
+      right: 20vw;
+      bottom: 160px;
+    }
+
+  .msg_menino_macaco {
+    position: absolute;
+    top: -150px;
+    left: -20px;
+    width: 250px;
+    max-width: 80vw;
+    color: #4B1816;
+    background: #f1dfa5;
+    border-radius: 100%;
+    padding: 40px 40px;
+  }
+
+  .bg4 {
+    top: -20vh;
+    left: 50%;
+    width: 100%;
+  }
+
+  .cap4 {
+    background: #fff;
+    height: 100%;
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .bg5 {
+    display: block;
+    background: url('../img/bg5.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100vh;
+    height: 100%;
+    position: absolute;
+    left: -100vw !important;
+  }
+
+  .aguia {
+    width: 200px;
+  }
+
+  .area-itens {
+    width: auto;
+    height: 20px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+  }
+    .item {
+      height: 20px;
+    }
+    .bau {
+      width: 40px;
+      position: absolute;
+      bottom: 30px;
+    }
+    .elemento {
+      width: 40px;
+      position: absolute;
+      bottom: 80px;
+    }
+
+  .menino_frente2 {
+    width: 350px !important;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1) !important;
+  }
+
+  .texto_final {
+    top: 30px !important;
+  }
+
+
+  .texto {
+    width: 200px;
+  }
+
+  .bg2 {
+    display: block;
+    height: 65%;
+  }
+
+  .area-personagem1 {
+      width: auto;
+      height: 300px;
+      position: fixed;
+      bottom: 50px;
+  }
+
+  .personagem {
+    height: 200px;
+  }
+
+
+  .lista_creditos li {
+    font-size: 13px;
+    margin-bottom: 5px;
+    list-style: none;
+  }
+
+  .lista_creditos {
+      columns: 1;
+      -webkit-columns: 1;
+      -moz-columns: 1;
+      padding-inline-start: 0px;
+  }
+}
