@@ -9,11 +9,15 @@ RewriteBase /
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteCond %{REQUEST_URI} ^/amazonia2/(.*)$ [OR]
+RewriteCond %{REQUEST_URI} ^/semiarido2/(.*)$ [OR]
+RewriteCond %{REQUEST_URI} ^/indigenas2/(.*)$ [OR]
+
 RewriteRule . /index.php [L]
 </IfModule>
 
 # END WordPress
-
 <IfModule mod_deflate.c>
 SetOutputFilter DEFLATE
 </IfModule>
